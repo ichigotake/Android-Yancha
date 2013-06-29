@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include layout="@layout/common_message_cell_list" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@layout/common_message_cell_list"
+        android:background="#004065"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
+
+        <RelativeLayout
+            android:id="@+id/input_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff" >
+
+            <Button
+                android:id="@+id/button_send"
+                android:layout_width="74dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/st_submit" />
+
+            <EditText
+                android:id="@+id/editText_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@id/button_send"
+                android:drawableLeft="@drawable/ic_action_search"
+                android:hint="@string/st_search_keyword" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/search_option"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/relativeLayout1"
+        android:background="#dddddd"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="@string/st_search_option"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
