@@ -2,7 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    tools:context=".LoginActivity" >
 
-    <include layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/behind_fragment"
+        android:tag="Behind"
+        android:name="net.ichigotake.yancha.MainFragment"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        ></fragment>
 </RelativeLayout>

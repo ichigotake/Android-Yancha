@@ -50,16 +50,18 @@ public final class R {
         public static final int ic_launcher=0x7f020017;
     }
     public static final class id {
-        public static final int action_about=0x7f09000c;
-        public static final int action_hints=0x7f09000a;
-        public static final int action_logout=0x7f09000d;
-        public static final int action_settings=0x7f09000b;
-        public static final int button1=0x7f090007;
+        public static final int action_about=0x7f09000e;
+        public static final int action_hints=0x7f09000c;
+        public static final int action_logout=0x7f09000f;
+        public static final int action_settings=0x7f09000d;
+        public static final int behind_fragment=0x7f09000a;
+        public static final int button_login_simple=0x7f090009;
+        public static final int button_login_twitter=0x7f090007;
         public static final int button_send=0x7f090003;
         public static final int editText_message=0x7f090004;
         public static final int ic_join_users=0x7f090001;
         public static final int input_area=0x7f090000;
-        public static final int messages=0x7f090009;
+        public static final int messages=0x7f09000b;
         public static final int relativeLayout1=0x7f090005;
         public static final int search_option=0x7f090006;
         public static final int selected_tag=0x7f090002;
