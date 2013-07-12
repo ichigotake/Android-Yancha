@@ -14,7 +14,7 @@
         android:gravity="center">
 
     <Button
-        android:id="@+id/button_login_twitter"
+        android:id="@+id/button_loginTwitter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/st_login_twitter"
@@ -41,7 +41,7 @@
         android:textSize="24sp" />
 
     <Button
-        android:id="@+id/button_login_simple"
+        android:id="@+id/button_loginSimple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/st_login"

@@ -25,6 +25,7 @@
     <string name="st_default_tag">#PUBLIC</string>
     
     <!-- net status -->
+    <string name="join_users_image_content_description">you</string>
     <string name="st_chat_status_offline">オフラインです</string>
     
     <!-- information -->
