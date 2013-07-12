@@ -8,28 +8,55 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
 
 import android.net.Uri;
 import android.os.StrictMode;
 import android.util.Log;
 
-public class ApiLogin {
+public class YanchaApi {
 
-	public static String simpleLogin(String nickname) {
+	final public static String SERVER_SCHEME = "http";
+	final public static String SERVER_FQDN = "xrly.net:3333";
+	final public static String SERVER_URL = SERVER_SCHEME + "://" + SERVER_FQDN;
+	
+	public YanchaApi() {
 		StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
-		//TODO: APIリクエストの基幹処理を別クラスへ
-		Uri.Builder builder = new Uri.Builder()
-			.scheme("http")
-			.encodedAuthority("xrly.net:3333")
-			.path("/login")
-			.appendQueryParameter("nick", nickname)
-			.appendQueryParameter("token_only", "1")
+	}
+	
+	/**
+	 * Return initialized API-builder
+	 * 
+	 * @param endpoint
+	 * @return builder
+	 */
+	public Uri.Builder buildEndpoint(String endpoint) {
+		return new Uri.Builder()
+			.scheme(SERVER_SCHEME)
+			.encodedAuthority(SERVER_FQDN)
+			.path(endpoint)
 			;
-		Log.d("ApiLogin", builder.build().toString());
+	}
+	
+	/**
+	 * Request to Yancha API with Uri.Builder
+	 * 
+	 * @param builder
+	 * @return response
+	 */
+	public HttpResponse request(Uri.Builder builder) {
+		return request(builder.build().toString());		
+	}
+	
+	/**
+	 * Request to Yancha API
+	 * 
+	 * @param requestUri
+	 * @return response
+	 */
+	public HttpResponse request(String requestUri) {
 		DefaultHttpClient client = new DefaultHttpClient();
 		HttpResponse response = null;
-		HttpUriRequest method = new HttpGet(builder.build().toString());
+		HttpUriRequest method = new HttpGet(requestUri);
 		try {
 			response = client.execute(method);
 			int status = response.getStatusLine().getStatusCode();
@@ -42,15 +69,6 @@ public class ApiLogin {
 			e.printStackTrace();
 		}
 
-		try {
-			return EntityUtils.toString(response.getEntity(), "UTF-8");
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return "";
+		return response;
 	}
-
 }

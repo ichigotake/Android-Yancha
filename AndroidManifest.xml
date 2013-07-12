@@ -15,7 +15,7 @@
         android:label="@string/st_app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="net.ichigotake.yancha.login.LoginActivity"
+            android:name="net.ichigotake.yancha.MainActivity"
             android:label="@string/st_app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

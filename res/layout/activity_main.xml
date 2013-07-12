@@ -6,7 +6,7 @@
 
     <fragment
 	        android:id="@+id/wrap_fragment"
-	        android:name="net.ichigotake.yancha.MainFragment"
+	        android:name="net.ichigotake.yancha.login.LoginFragment"
 	        android:layout_height="match_parent"
 	        android:layout_width="match_parent"
 	        >

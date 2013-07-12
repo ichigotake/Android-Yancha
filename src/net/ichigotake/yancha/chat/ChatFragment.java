@@ -5,9 +5,10 @@ import io.socket.IOCallback;
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.net.Chat;
+import net.ichigotake.yancha.net.YanchaApi;
+import net.ichigotake.yancha.net.YanchaEmitter;
 import net.ichigotake.yancha.ui.FragmentTransit;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
@@ -22,7 +23,11 @@ import android.view.ViewGroup;
 
 public class ChatFragment extends Fragment {
 
-	private Chat chat;
+	private static Chat chat;
+
+	private YanchaEmitter emitter;
+	
+	private String token;
 	
 	public ChatFragment() {
 	}
@@ -48,7 +53,10 @@ public class ChatFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 		
-		chat = new Chat("http://xrly.net:3333/", new IOCallback() {
+		final SharedPreferences pref = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
+		token = pref.getString("token", "");
+
+		chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
 			
 			@Override
 			public void onMessage(JSONObject json, IOAcknowledge ack) {
@@ -77,19 +85,11 @@ public class ChatFragment extends Fragment {
 			@Override
 			public void onConnect() {
 				Log.d("yancha-ChatFragment", "onconnect");
-				try {
-					SharedPreferences pref = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
-					String token = pref.getString("token", "");
-					JSONObject args = new JSONObject();
-					args.put("token", token);
-					chat.emit("token login", args);
-					
-					JSONObject tags = new JSONObject();
-					tags.put("PUBLIC", "PUBLIC");
-					chat.emit("join tag", tags);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
+				
+				emitter.emitTokenLogin(token);
+				
+				//TODO: default tag is NOT HARD CODING
+				emitter.emitJoinTag("PUBLIC");
 			}
 			
 			@Override
@@ -97,6 +97,7 @@ public class ChatFragment extends Fragment {
 				Log.d("yancha-ChatFragment", "on: " + event);
 			}
 		});
+		emitter = new YanchaEmitter(chat);
 		
 		chat.start();
 	}

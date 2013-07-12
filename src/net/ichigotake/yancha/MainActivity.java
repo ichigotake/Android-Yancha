@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.login;
+package net.ichigotake.yancha;
 
 import net.ichigotake.yancha.R;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 
-public class LoginActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity {
 
 	Fragment fragment;
 	

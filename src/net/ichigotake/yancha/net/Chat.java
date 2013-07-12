@@ -7,17 +7,18 @@ import java.net.MalformedURLException;
 
 import org.json.JSONObject;
 
+
 public class Chat extends Thread {
 	
 	private static String serverUrl;
 	
-	private IOCallback callback;
+	final private IOCallback callback;
 
 	private SocketIO socket;
 	
 	public Chat(String serverUrl, IOCallback callback) {
 		this.callback = callback;
-		this.serverUrl = serverUrl;
+		Chat.serverUrl = serverUrl;
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class Chat extends Thread {
 			}
 
 	}
-		
+
 	public void emit(String event, JSONObject args) {
 		socket.emit(event, args);
 	}
