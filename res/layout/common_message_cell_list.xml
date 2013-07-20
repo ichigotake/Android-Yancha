@@ -5,7 +5,7 @@
      >
     
     <ListView
-        android:id="@+id/messages"
+        android:id="@+id/common_message_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:drawable/divider_horizontal_textfield"

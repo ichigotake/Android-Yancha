@@ -3,17 +3,16 @@ package net.ichigotake.yancha.ui;
 import net.ichigotake.yancha.R;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 
 public class FragmentTransit {
 
-	private FragmentActivity activity;
+	private Fragment fragment;
 	
 	public FragmentTransit(Fragment fragment) {
-		this.activity = fragment.getActivity();
+		this.fragment = fragment;
 	}
 	
 	public void toNext(final Fragment nextFragment) {
@@ -32,7 +31,7 @@ public class FragmentTransit {
 	
 	public void toNextSync(final Fragment nextFragment) {
 		Log.d("FragmentTransit", "before toNextSync");
-		FragmentManager manager = activity.getSupportFragmentManager();
+		FragmentManager manager = fragment.getFragmentManager();
 		FragmentTransaction transaction = manager.beginTransaction();
 		transaction.replace(R.id.wrap_fragment, nextFragment);
 		transaction.addToBackStack(null);

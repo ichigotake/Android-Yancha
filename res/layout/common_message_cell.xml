@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/common_message_cell"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+        
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        >
+
+		<jp.sharakova.android.urlimageview.UrlImageView
+	        android:id="@+id/common_message_cell_profile_image_url"
+	        android:layout_width="48dp"
+	        android:layout_height="48dp"
+	        android:adjustViewBounds="true"
+	        android:layout_gravity="center" />
+	
+		
+		<RelativeLayout
+		    android:layout_height="wrap_content"
+		    android:layout_width="0dp"
+		    android:layout_weight="1">
+		    
+		    <TextView
+   		        android:id="@+id/common_message_cell_nickname"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:text="ichigotake"
+		        android:textColor="#666666"
+		        />
+
+   		    <TextView
+   		        android:id="@+id/common_message_cell_timestamp"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"
+		        android:layout_alignParentRight="true"
+		        android:text="0分前"
+		        android:textColor="#333333"
+		        />
+   		    
+   		    <TextView
+   		        android:id="@+id/common_message_cell_n"
+   		        android:layout_height="1dp"
+   		        android:layout_width="match_parent"
+   		        android:layout_marginTop="40dp"
+   		        />
+   		    
+   			<TextView 
+   		        android:id="@+id/common_message_cell_message"
+   		        android:layout_alignBottom="@+id/common_message_cell_n"
+			    android:layout_height="wrap_content"
+			    android:layout_width="match_parent"
+			    android:text="おは¥nよう¥nござい¥n¥n¥nんすす"
+			    android:textColor="#333333"
+		    />
+   			
+		</RelativeLayout>
+	</LinearLayout>
+	
+    <TextView
+        android:id="@+id/common_message_cell_plusplus"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        />
+	<TextView
+	    android:id="@+id/common_message_divider"
+	    android:layout_height="1dp"
+	    android:layout_width="match_parent"
+	    android:background="#dddddd"
+	    />
+</LinearLayout>

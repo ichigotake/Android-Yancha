@@ -7,18 +7,18 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.net.Chat;
 import net.ichigotake.yancha.net.YanchaApi;
 import net.ichigotake.yancha.net.YanchaEmitter;
-import net.ichigotake.yancha.ui.FragmentTransit;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 
 public class ChatFragment extends Fragment {
@@ -27,7 +27,12 @@ public class ChatFragment extends Fragment {
 
 	private YanchaEmitter emitter;
 	
+	//TODO PreferenceÇ≈ä«óù
 	private String token;
+	
+	private Handler handler;
+	
+	private ChatContainer chatContainer;
 	
 	public ChatFragment() {
 	}
@@ -40,19 +45,18 @@ public class ChatFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.activity_chat_main, container, false);
 		
-		view.findViewById(R.id.textView_linkSearch).setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View view) {
-				new FragmentTransit(ChatFragment.this).toNext(ChatLogSearchFragment.createInstance());
-			}
-		});
+		chatContainer = new ChatContainer(this);
+		chatContainer.initializeView(view);
+		
+		handler = new Handler();
+		
 		return view;
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		final SharedPreferences pref = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
 		token = pref.getString("token", "");
 
@@ -85,16 +89,31 @@ public class ChatFragment extends Fragment {
 			@Override
 			public void onConnect() {
 				Log.d("yancha-ChatFragment", "onconnect");
-				
 				emitter.emitTokenLogin(token);
 				
-				//TODO: default tag is NOT HARD CODING
+				//TODO: É^ÉOÇÕPreferenceÇ≈ä«óùÇµÇ‹ÇµÇÂ
 				emitter.emitJoinTag("PUBLIC");
 			}
 			
 			@Override
 			public void on(String event, IOAcknowledge ack, Object... args) {
-				Log.d("yancha-ChatFragment", "on: " + event);
+				emitter.emitJoinTag("PUBLIC");
+				if (event.equals(YanchaEmitter.CONNECTING)) {
+					chat.emit("connecting", ack.toString());
+				} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
+					try {
+						final JSONObject a = new JSONObject(args[0].toString());
+						handler.post(new Runnable() {
+							
+							@Override
+							public void run() {
+								chatContainer.addMessage(a);
+							}
+						});
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		});
 		emitter = new YanchaEmitter(chat);
@@ -102,4 +121,10 @@ public class ChatFragment extends Fragment {
 		chat.start();
 	}
 	
+	@Override
+	public void onStop() {
+		super.onStart();
+		chat = null;
+	}
+
 }

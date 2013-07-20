@@ -3,13 +3,15 @@ package net.ichigotake.yancha.net;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 /**
  * Event emitter
  */
 public class YanchaEmitter {
 
 	final public static String ANNOUNCEMENT 		= "announcement";
-	final public static String CONNECT		 		= "nicknames";
+	final public static String CONNECT		 		= "connect";
+	final public static String CONNECTING		 	= "connecting";
 	final public static String DELETE_USER_MESSAGE	= "nicknames";
 	final public static String ERROR 				= "error";
 	final public static String JOIN_TAG 			= "join tag";
@@ -32,13 +34,7 @@ public class YanchaEmitter {
 	 * @param token
 	 */
 	public void emitTokenLogin(String token) {
-		try {
-			JSONObject args = new JSONObject();
-			args.put("token", token);
-			chat.emit(TOKEN_LOGIN, args);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		chat.emit(TOKEN_LOGIN, token);
 	}
 	
 	/**
@@ -50,7 +46,7 @@ public class YanchaEmitter {
 		try {
 			JSONObject tags = new JSONObject();
 			tags.put(tag, tag);
-			chat.emit(JOIN_TAG, tags);		
+			chat.emit(JOIN_TAG, tags);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

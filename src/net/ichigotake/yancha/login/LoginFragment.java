@@ -1,4 +1,5 @@
 package net.ichigotake.yancha.login;
+
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.ChatFragment;
 import net.ichigotake.yancha.net.YanchaApiLogin;
