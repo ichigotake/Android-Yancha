@@ -36,5 +36,9 @@ public class Chat extends Thread {
 	public void emit(String event, JSONObject args) {
 		socket.emit(event, args);
 	}
-	
+
+	public void emit(String event, String args) {
+		socket.emit(event, args);
+	}
+
 }

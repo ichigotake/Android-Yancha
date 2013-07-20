@@ -6,6 +6,8 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.message.MessageCell;
 import net.ichigotake.yancha.message.MessageListAdapter;
 import net.ichigotake.yancha.ui.FragmentTransit;
+import net.ichigotake.yancha.ui.SendMessage;
+import net.ichigotake.yancha.ui.SendMessageListener;
 import net.ichigotake.yancha.ui.ViewContainer;
 
 import org.json.JSONException;
@@ -15,11 +17,17 @@ import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+
+import com.google.common.eventbus.EventBus;
 
 public class ChatContainer implements ViewContainer {
 
-	private Fragment fragment;
+	final private EventBus eventBus = new EventBus();
+	
+	final private Fragment fragment;
 	
 	private ListView messageListView;
 	
@@ -46,6 +54,26 @@ public class ChatContainer implements ViewContainer {
 			}
 		});
 
+		final EditText viewMessage = (EditText) view.findViewById(R.id.editText_message);
+		Button viewSubmit = (Button) view.findViewById(R.id.button_send);
+		viewSubmit.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				String message = viewMessage.getText().toString();
+				if (message.isEmpty()) {
+					return ;
+				}
+				
+				eventBus.post(new SendMessage(message));
+				//TODO 発言失敗等での再利用用に発言ヒストリーを取っておきたい
+				viewMessage.setText("");
+			}
+		});
+	}
+	
+	public void registerListener(SendMessageListener listener) {
+		eventBus.register(listener);
 	}
 	
 	public void addMessage(JSONObject json) {		

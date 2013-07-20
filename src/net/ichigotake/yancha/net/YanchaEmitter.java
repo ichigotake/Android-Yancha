@@ -1,13 +1,20 @@
 package net.ichigotake.yancha.net;
 
+import net.ichigotake.yancha.ui.SendMessage;
+import net.ichigotake.yancha.ui.SendMessageListener;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
+
+import com.google.common.eventbus.Subscribe;
 
 
 /**
  * Event emitter
  */
-public class YanchaEmitter {
+public class YanchaEmitter implements SendMessageListener {
 
 	final public static String ANNOUNCEMENT 		= "announcement";
 	final public static String CONNECT		 		= "connect";
@@ -26,6 +33,10 @@ public class YanchaEmitter {
 	
 	public YanchaEmitter(Chat chat) {
 		this.chat = chat;
+	}
+	
+	public void emitUserMessage(String message) {
+		chat.emit(USER_MESSAGE, message);
 	}
 	
 	/**
@@ -50,5 +61,10 @@ public class YanchaEmitter {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Subscribe
+	public void sendMessage(SendMessage message) {
+		emitUserMessage(message.getMessage());
 	}
 }

@@ -15,7 +15,6 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +85,6 @@ public class ChatFragment extends Fragment {
 			
 			@Override
 			public void onConnect() {
-				Log.d("yancha-ChatFragment", "onconnect");
 				emitter.emitTokenLogin(user.getToken());
 				
 				//TODO: É^ÉOÇÕPreferenceÇ≈ä«óùÇµÇ‹ÇµÇÂ
@@ -115,8 +113,10 @@ public class ChatFragment extends Fragment {
 			}
 		});
 		emitter = new YanchaEmitter(chat);
+		chatContainer.registerListener(emitter);
 		
 		chat.start();
+		
 	}
 	
 	@Override
@@ -124,5 +124,6 @@ public class ChatFragment extends Fragment {
 		super.onStart();
 		chat = null;
 	}
+
 
 }
