@@ -11,8 +11,6 @@ import net.ichigotake.yancha.net.YanchaEmitter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -57,9 +55,8 @@ public class ChatFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 
-		final SharedPreferences pref = getActivity().getSharedPreferences("owner", Context.MODE_PRIVATE);
-		token = pref.getString("token", "");
 
+		//TODO コールバックを別クラスへ
 		chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
 			
 			@Override
