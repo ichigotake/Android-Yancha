@@ -4,6 +4,7 @@ import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.data.User;
 import net.ichigotake.yancha.net.Chat;
 import net.ichigotake.yancha.net.YanchaApi;
 import net.ichigotake.yancha.net.YanchaEmitter;
@@ -25,8 +26,7 @@ public class ChatFragment extends Fragment {
 
 	private YanchaEmitter emitter;
 	
-	//TODO Preferenceで管理
-	private String token;
+	private User user;
 	
 	private Handler handler;
 	
@@ -55,6 +55,7 @@ public class ChatFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 
+		user = new User(getActivity());
 
 		//TODO コールバックを別クラスへ
 		chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
@@ -86,7 +87,7 @@ public class ChatFragment extends Fragment {
 			@Override
 			public void onConnect() {
 				Log.d("yancha-ChatFragment", "onconnect");
-				emitter.emitTokenLogin(token);
+				emitter.emitTokenLogin(user.getToken());
 				
 				//TODO: タグはPreferenceで管理しましょ
 				emitter.emitJoinTag("PUBLIC");
