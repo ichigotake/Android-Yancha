@@ -2,6 +2,7 @@ package net.ichigotake.yancha.login;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.ChatFragment;
+import net.ichigotake.yancha.data.User;
 import net.ichigotake.yancha.net.YanchaAuth;
 import net.ichigotake.yancha.ui.FragmentTransit;
 import net.ichigotake.yancha.ui.ViewContainer;
@@ -19,9 +20,12 @@ public class LoginContainer implements ViewContainer {
 	
 	final private YanchaAuth auth;
 	
+	final private User user;
+	
 	public LoginContainer(Fragment fragment) {
 		this.fragment = fragment;
 		this.auth = new YanchaAuth(fragment.getActivity());
+		this.user = new User(fragment.getActivity());
 	}
 	
 	@Override
@@ -42,6 +46,7 @@ public class LoginContainer implements ViewContainer {
 		});
 		
 		EditText loginSimple = (EditText) view.findViewById(R.id.loginAuthSimpleNickname);
+		loginSimple.setText(user.getNickname());
 		loginSimple.setOnEditorActionListener(new OnEditorActionListener() {	
 			
 			@Override
