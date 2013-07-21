@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 
 public class ChatFragment extends Fragment {
 
-	private static Chat chat;
+	private Chat chat;
 
 	private YanchaEmitter emitter;
 	
@@ -53,77 +53,94 @@ public class ChatFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
+		chat.start();
+		handler.postDelayed(new Runnable() {
+			
+			@Override
+			public void run() {
+				emitter.emitTokenLogin(user.getToken());
+			}
+		}, 1*1000);
+	}
 
+	@Override
+	public void onStart() {
+		super.onStart();
 		user = new User(getActivity());
 
 		//TODO コールバックを別クラスへ
-		chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
-			
-			@Override
-			public void onMessage(JSONObject json, IOAcknowledge ack) {
-				// TODO Auto-generated method stub
+		if (chat == null) {
+			chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
 				
-			}
-			
-			@Override
-			public void onMessage(String data, IOAcknowledge ack) {
-				// TODO Auto-generated method stub
+				@Override
+				public void onMessage(JSONObject json, IOAcknowledge ack) {
+					// TODO Auto-generated method stub
+					
+				}
 				
-			}
-			
-			@Override
-			public void onError(SocketIOException socketIOException) {
-				// TODO Auto-generated method stub
+				@Override
+				public void onMessage(String data, IOAcknowledge ack) {
+					// TODO Auto-generated method stub
+					
+				}
 				
-			}
-			
-			@Override
-			public void onDisconnect() {
-				// TODO Auto-generated method stub
+				@Override
+				public void onError(SocketIOException socketIOException) {
+					// TODO Auto-generated method stub
+					
+				}
 				
-			}
-			
-			@Override
-			public void onConnect() {
-				emitter.emitTokenLogin(user.getToken());
+				@Override
+				public void onDisconnect() {
+					// TODO Auto-generated method stub
+					
+				}
 				
-				//TODO: タグはPreferenceで管理しましょ
-				emitter.emitJoinTag("PUBLIC");
-			}
-			
-			@Override
-			public void on(String event, IOAcknowledge ack, Object... args) {
-				emitter.emitJoinTag("PUBLIC");
-				if (event.equals(YanchaEmitter.CONNECTING)) {
-					chat.emit("connecting", ack.toString());
-				} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
-					try {
-						final JSONObject a = new JSONObject(args[0].toString());
-						handler.post(new Runnable() {
-							
-							@Override
-							public void run() {
-								chatContainer.addMessage(a);
-							}
-						});
-					} catch (JSONException e) {
-						e.printStackTrace();
+				@Override
+				public void onConnect() {
+					emitter.emitTokenLogin(user.getToken());
+					
+					//TODO: タグはPreferenceで管理しましょ
+					emitter.emitJoinTag("PUBLIC");
+				}
+				
+				@Override
+				public void on(String event, IOAcknowledge ack, Object... args) {
+					if (event.equals(YanchaEmitter.CONNECTING)) {
+						chat.emit("connecting", ack.toString());
+					} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
+						try {
+							final JSONObject a = new JSONObject(args[0].toString());
+							handler.post(new Runnable() {
+								
+								@Override
+								public void run() {
+									chatContainer.addMessage(a);
+								}
+							});
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
 					}
 				}
-			}
-		});
-		emitter = new YanchaEmitter(chat);
-		chatContainer.registerListener(emitter);
-		
-		chat.start();
-		
+			});
+			emitter = new YanchaEmitter(chat);
+			chatContainer.registerListener(emitter);
+			
+			chat.run();
+		}
 	}
 	
 	@Override
 	public void onStop() {
-		super.onStart();
-		chat = null;
+		super.onStop();
+		emitter.emitDisconnect();
 	}
 
+	@Override
+	public void onPause() {
+		super.onStop();
+		emitter.emitDisconnect();
+	}
 
 }

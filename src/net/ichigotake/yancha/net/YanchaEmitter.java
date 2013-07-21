@@ -6,8 +6,6 @@ import net.ichigotake.yancha.ui.SendMessageListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 import com.google.common.eventbus.Subscribe;
 
 
@@ -19,6 +17,7 @@ public class YanchaEmitter implements SendMessageListener {
 	final public static String ANNOUNCEMENT 		= "announcement";
 	final public static String CONNECT		 		= "connect";
 	final public static String CONNECTING		 	= "connecting";
+	final public static String DISCONNECT		 	= "disconnect";
 	final public static String DELETE_USER_MESSAGE	= "nicknames";
 	final public static String ERROR 				= "error";
 	final public static String JOIN_TAG 			= "join tag";
@@ -61,6 +60,14 @@ public class YanchaEmitter implements SendMessageListener {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void emitConnect() {
+		chat.emit(CONNECT, "");
+	}
+	
+	public void emitDisconnect() {
+		chat.emit(DISCONNECT, "bye");
 	}
 	
 	@Subscribe

@@ -10,7 +10,7 @@ import org.json.JSONObject;
 
 public class Chat extends Thread {
 	
-	private static String serverUrl;
+	final private String serverUrl;
 	
 	final private IOCallback callback;
 
@@ -18,18 +18,18 @@ public class Chat extends Thread {
 	
 	public Chat(String serverUrl, IOCallback callback) {
 		this.callback = callback;
-		Chat.serverUrl = serverUrl;
+		this.serverUrl = serverUrl;
 	}
 
 	@Override
 	public void run() {
-			try {
-				socket = new SocketIO(serverUrl);
-				socket.connect(callback);
-			} catch (MalformedURLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+		try {
+			socket = new SocketIO(serverUrl);
+			socket.connect(callback);
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 	}
 
