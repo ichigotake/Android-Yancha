@@ -54,7 +54,7 @@ public class ChatContainer implements ViewContainer {
 			}
 		});
 
-		final EditText viewMessage = (EditText) view.findViewById(R.id.messageCellMessage);
+		final EditText viewMessage = (EditText) view.findViewById(R.id.chatSendMessageText);
 		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
 		viewSubmit.setOnClickListener(new OnClickListener() {
 			
