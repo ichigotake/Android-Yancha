@@ -18,7 +18,7 @@ public class ChatLogSearchFragment extends Fragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.activity_chat_search, container, false);
+		View view = inflater.inflate(R.layout.yc_chat_search, container, false);
 		
 		return view;
 	}

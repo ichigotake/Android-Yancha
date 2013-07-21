@@ -40,7 +40,7 @@ public class ChatFragment extends Fragment {
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.activity_chat_main, container, false);
+		View view = inflater.inflate(R.layout.yc_chat_main, container, false);
 		
 		chatContainer = new ChatContainer(this);
 		chatContainer.initializeView(view);

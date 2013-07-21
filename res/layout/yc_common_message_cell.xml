@@ -12,7 +12,7 @@
         >
 
 		<jp.sharakova.android.urlimageview.UrlImageView
-	        android:id="@+id/common_message_cell_profile_image_url"
+	        android:id="@+id/messageCellProfileImageUrl"
 	        android:layout_width="48dp"
 	        android:layout_height="48dp"
 	        android:adjustViewBounds="true"
@@ -25,7 +25,7 @@
 		    android:layout_weight="1">
 		    
 		    <TextView
-   		        android:id="@+id/common_message_cell_nickname"
+   		        android:id="@+id/messageCellNickname"
 		        android:layout_height="wrap_content"
 		        android:layout_width="wrap_content"
 		        android:text="ichigotake"
@@ -33,7 +33,7 @@
 		        />
 
    		    <TextView
-   		        android:id="@+id/common_message_cell_timestamp"
+   		        android:id="@+id/messageCellTimestamp"
 		        android:layout_height="wrap_content"
 		        android:layout_width="wrap_content"
 		        android:layout_alignParentRight="true"
@@ -42,15 +42,15 @@
 		        />
    		    
    		    <TextView
-   		        android:id="@+id/common_message_cell_n"
+   		        android:id="@+id/messageCellInnerDivider"
    		        android:layout_height="1dp"
    		        android:layout_width="match_parent"
    		        android:layout_marginTop="40dp"
    		        />
    		    
    			<TextView 
-   		        android:id="@+id/common_message_cell_message"
-   		        android:layout_alignBottom="@+id/common_message_cell_n"
+   		        android:id="@+id/messageCellMessage"
+   		        android:layout_alignBottom="@+id/messageCellInnerDivider"
 			    android:layout_height="wrap_content"
 			    android:layout_width="match_parent"
 			    android:text="おは¥nよう¥nござい¥n¥n¥nんすす"
@@ -61,13 +61,14 @@
 	</LinearLayout>
 	
     <TextView
-        android:id="@+id/common_message_cell_plusplus"
+        android:id="@+id/messageCellPlusplus"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:visibility="gone"
         />
+    
 	<TextView
-	    android:id="@+id/common_message_divider"
+	    android:id="@+id/messageCellDivider"
 	    android:layout_height="1dp"
 	    android:layout_width="match_parent"
 	    android:background="#dddddd"

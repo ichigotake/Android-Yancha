@@ -20,7 +20,7 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 	private ArrayList<MessageCell> messageList;
 	
 	public MessageListAdapter(Context context, ArrayList<MessageCell> messageList) {
-		super(context, R.layout.common_message_cell, messageList);
+		super(context, R.layout.yc_common_message_cell, messageList);
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.messageList = messageList;
 	}
@@ -47,22 +47,22 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 	@Override
 	public View getView(final int position, View contentView, ViewGroup parent) {
 		if (contentView == null) {
-			contentView = inflater.inflate(R.layout.common_message_cell, null);
+			contentView = inflater.inflate(R.layout.yc_common_message_cell, null);
 		}
 		
 		MessageCell message = getItem(position);
 		if (message != null) {
-			TextView viewNickname = (TextView) contentView.findViewById(R.id.common_message_cell_nickname);
+			TextView viewNickname = (TextView) contentView.findViewById(R.id.messageCellNickname);
 			viewNickname.setText(message.getNickname());
 			
-			TextView viewMessage = (TextView) contentView.findViewById(R.id.common_message_cell_message);
+			TextView viewMessage = (TextView) contentView.findViewById(R.id.messageCellMessage);
 			viewMessage.setText(message.getMessage());
 			
-			UrlImageView viewProfileImageUrl = (UrlImageView) contentView.findViewById(R.id.common_message_cell_profile_image_url);
+			UrlImageView viewProfileImageUrl = (UrlImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
 			viewProfileImageUrl.setImageUrl(message.getProfileImageUrl());
 			
 			int plusplus = message.getPlusplus();
-			TextView viewPlusplus = (TextView) contentView.findViewById(R.id.common_message_cell_plusplus);
+			TextView viewPlusplus = (TextView) contentView.findViewById(R.id.messageCellPlusplus);
 			if (plusplus > 0) {
 				String plusplusText;
 				if (plusplus >= 50) {
@@ -80,7 +80,7 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 				viewPlusplus.setVisibility(View.GONE);
 			}
 			
-			TextView viewTimestamp = (TextView) contentView.findViewById(R.id.common_message_cell_timestamp);
+			TextView viewTimestamp = (TextView) contentView.findViewById(R.id.messageCellTimestamp);
 			viewTimestamp.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getCreatedTime()/100));
 		}
 		

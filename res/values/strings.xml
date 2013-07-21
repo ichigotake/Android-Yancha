@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="st_app_name">yancha for Android</string>
+    <string name="yc_app_name">yancha for Android</string>
     
     <!-- action menu -->
-    <string name="st_action_hints">HINTS</string>
-    <string name="st_action_info">INFO</string>
-    <string name="st_action_settings">設定</string>
-    <string name="st_action_logout">ログアウト</string>
-    <string name="st_action_about">yanchaについて</string>
-    <string name="st_action_join_users">ログインユーザー一覧</string>
-    <string name="st_hello_world">Hello world!</string>
+    <string name="yc_action_hints">HINTS</string>
+    <string name="yc_action_info">INFO</string>
+    <string name="yc_action_settings">設定</string>
+    <string name="yc_action_logout">ログアウト</string>
+    <string name="yc_action_about">yanchaについて</string>
+    <string name="yc_action_join_users">ログインユーザー一覧</string>
+    <string name="yc_hello_world">Hello world!</string>
 
-    <string name="st_login_twitter">Twitterでログイン</string>
-    <string name="st_nickname">ニックネーム</string>
-    <string name="st_login">ログイン</string>
-    <string name="st_version_full">yancha for Android ver x.x</string>
+    <string name="yc_login_twitter">Twitterでログイン</string>
+    <string name="yc_nickname">ニックネーム</string>
+    <string name="yc_login">ログイン</string>
+    <string name="yc_version_full">yancha for Android ver x.x</string>
     
     <!-- misc -->
-    <string name="st_submit">送信</string>
-    <string name="st_link_search"><u>過去ログ検索</u></string>
-    <string name="st_search_option">検索オプション</string>
-    <string name="st_search_keyword">検索キーワード</string>
-    <string name="st_default_tag">#PUBLIC</string>
+    <string name="yc_submit">送信</string>
+    <string name="yc_link_search"><u>過去ログ検索</u></string>
+    <string name="yc_search_option">検索オプション</string>
+    <string name="yc_search_keyword">検索キーワード</string>
+    <string name="yc_default_tag">#PUBLIC</string>
     
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
-    <string name="st_chat_status_offline">オフラインです</string>
+    <string name="yc_chat_status_offline">オフラインです</string>
     
     <!-- information -->
-    <string name="st_about">yancha (旧名yairc) はログの保全、リアルタイム性、モバイル端末への対応を重視した、Perlで作成されたチャットシステムです。</string>
+    <string name="yc_about">yancha (旧名yairc) はログの保全、リアルタイム性、モバイル端末への対応を重視した、Perlで作成されたチャットシステムです。</string>
     <!-- hints -->
-    <string name="st_hints_quotation">&gt;&gt;
+    <string name="yc_hints_quotation">&gt;&gt;
 引用テキスト
 &lt;&lt;</string>
-    <string name="st_hints_javascript">&gt;|javascript|
+    <string name="yc_hints_javascript">&gt;|javascript|
 console.log("syntax hiright for javascript");
 ||&lt;</string>
-    <string name="st_hints_perl">&gt;|perl|
+    <string name="yc_hints_perl">&gt;|perl|
 print "syntax hiright for Perl";
 ||&lt;</string>
     

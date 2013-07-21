@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/st_action_info"
+        android:text="@string/yc_action_info"
         android:textSize="20sp"
         android:textColor="#004065"
         android:background="#bfd8e7" />
@@ -16,6 +16,6 @@
         android:layout_width="match_parent" 
         android:layout_height="wrap_content"
         android:padding="4dp"
-        android:text="@string/st_about" />
+        android:text="@string/yc_about" />
 
 </LinearLayout>

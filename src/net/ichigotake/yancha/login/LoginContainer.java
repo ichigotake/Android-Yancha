@@ -26,11 +26,11 @@ public class LoginContainer implements ViewContainer {
 	
 	@Override
 	public void initializeView(View view) {
-		view.findViewById(R.id.button_loginSimple).setOnClickListener(new OnClickListener() {
+		view.findViewById(R.id.loginAuthSimpleSend).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
-				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.editText_loginNickname);
+				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.loginAuthSimpleNickname);
 				String nickname = nicknameTextView.getText().toString();
 				
 				//TODO ログイン失敗時の分岐
@@ -41,13 +41,13 @@ public class LoginContainer implements ViewContainer {
 			}
 		});
 		
-		EditText loginSimple = (EditText) view.findViewById(R.id.editText_loginNickname);
+		EditText loginSimple = (EditText) view.findViewById(R.id.loginAuthSimpleNickname);
 		loginSimple.setOnEditorActionListener(new OnEditorActionListener() {	
 			
 			@Override
 			public boolean onEditorAction(TextView v, int actionId,
 					KeyEvent event) {
-				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.editText_loginNickname);
+				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.loginAuthSimpleNickname);
 				String nickname = nicknameTextView.getText().toString();
 				
 				//TODO ログイン失敗時の分岐
@@ -59,7 +59,7 @@ public class LoginContainer implements ViewContainer {
 			}
 		});
 
-		view.findViewById(R.id.button_loginTwitter).setOnClickListener(new OnClickListener() {
+		view.findViewById(R.id.loginAuthTwitter).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				new FragmentTransit(fragment).toNext(ChatFragment.newInstance());

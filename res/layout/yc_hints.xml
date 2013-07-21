@@ -7,7 +7,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/st_action_hints"
+        android:text="@string/yc_action_hints"
         android:textSize="20sp"
         android:textColor="#004065"
         android:background="#bfd8e7" />
@@ -21,7 +21,7 @@
 	    	android:layout_marginLeft="20dp"
 	    	android:padding="4dp"
 	    	android:background="#dddddd"
-	    	android:text="@string/st_hints_quotation" />
+	    	android:text="@string/yc_hints_quotation" />
 
 	<TextView
 	    	android:layout_width="match_parent"
@@ -32,7 +32,7 @@
 	    	android:layout_marginLeft="20dp"
 	    	android:padding="4dp"
 	    	android:background="#dddddd"
-	    	android:text="@string/st_hints_javascript" />
+	    	android:text="@string/yc_hints_javascript" />
 
 	<TextView
 	    	android:layout_width="match_parent"
@@ -43,6 +43,6 @@
 	    	android:layout_marginLeft="20dp"
 	    	android:padding="4dp"
 	    	android:background="#dddddd"
-	    	android:text="@string/st_hints_perl" />
+	    	android:text="@string/yc_hints_perl" />
 
 </LinearLayout>
