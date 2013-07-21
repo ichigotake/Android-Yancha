@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import jp.sharakova.android.urlimageview.UrlImageView;
 import net.ichigotake.yancha.R;
 import android.content.Context;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,14 +46,12 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 	
 	@Override
 	public View getView(final int position, View contentView, ViewGroup parent) {
-		Log.d("MessageListAdapter", "getView()");
 		if (contentView == null) {
 			contentView = inflater.inflate(R.layout.common_message_cell, null);
 		}
 		
 		MessageCell message = getItem(position);
 		if (message != null) {
-			Log.d("MessageListAdapter", "not null");
 			TextView viewNickname = (TextView) contentView.findViewById(R.id.common_message_cell_nickname);
 			viewNickname.setText(message.getNickname());
 			

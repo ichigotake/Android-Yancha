@@ -61,7 +61,8 @@ public class YanchaApi {
 			response = client.execute(method);
 			int status = response.getStatusLine().getStatusCode();
 			if (status != HttpStatus.SC_OK) {
-				Log.d("ApiLogin", "status: " + status);
+				Log.e("ApiLogin", "status: " + status);
+				Log.e("", response.getAllHeaders().toString());
 			}
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
