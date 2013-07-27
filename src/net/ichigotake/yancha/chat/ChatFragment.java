@@ -76,70 +76,8 @@ public class ChatFragment extends Fragment {
 		super.onStart();
 		user = new User(getActivity());
 
-		//TODO コールバックを別クラスへ
 		if (chat == null) {
-			chat = new Chat(YanchaApi.SERVER_URL, new IOCallback() {
-				
-				@Override
-				public void onMessage(JSONObject json, IOAcknowledge ack) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void onMessage(String data, IOAcknowledge ack) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void onError(SocketIOException socketIOException) {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void onDisconnect() {
-					// TODO Auto-generated method stub
-					
-				}
-				
-				@Override
-				public void onConnect() {
-					emitter.emitTokenLogin(user.getToken());
-					
-					//TODO: タグはPreferenceで管理しましょ
-					emitter.emitJoinTag("PUBLIC");
-				}
-				
-				@Override
-				public void on(String event, IOAcknowledge ack, final Object... args) {
-					if (event.equals(YanchaEmitter.CONNECTING)) {
-						chat.emit("connecting", ack.toString());
-					} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
-						try {
-							final JSONObject a = new JSONObject(args[0].toString());
-							handler.post(new Runnable() {
-								
-								@Override
-								public void run() {
-									chatContainer.addMessage(a);
-								}
-							});
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-					} else if (event.equals(YanchaEmitter.NICKNAMES)) {
-						handler.post(new Runnable() {
-							
-							@Override
-							public void run() {
-								chatContainer.updateJoinUsers(args[0].toString());
-							}
-						});
-					}
-				}
-			});
+			chat = new Chat(YanchaApi.SERVER_URL, new ChatCallback());
 			emitter = new YanchaEmitter(chat);
 			chatContainer.registerListener(emitter);
 			
@@ -159,4 +97,66 @@ public class ChatFragment extends Fragment {
 		emitter.emitDisconnect();
 	}
 
+	private class ChatCallback implements IOCallback {
+		
+		@Override
+		public void onMessage(JSONObject json, IOAcknowledge ack) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onMessage(String data, IOAcknowledge ack) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onError(SocketIOException socketIOException) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onDisconnect() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onConnect() {
+			emitter.emitTokenLogin(user.getToken());
+			
+			//TODO: タグはPreferenceで管理しましょ
+			emitter.emitJoinTag("PUBLIC");
+		}
+		
+		@Override
+		public void on(String event, IOAcknowledge ack, final Object... args) {
+			if (event.equals(YanchaEmitter.CONNECTING)) {
+				chat.emit("connecting", ack.toString());
+			} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
+				try {
+					final JSONObject a = new JSONObject(args[0].toString());
+					handler.post(new Runnable() {
+						
+						@Override
+						public void run() {
+							chatContainer.addMessage(a);
+						}
+					});
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			} else if (event.equals(YanchaEmitter.NICKNAMES)) {
+				handler.post(new Runnable() {
+					
+					@Override
+					public void run() {
+						chatContainer.updateJoinUsers(args[0].toString());
+					}
+				});
+			}
+		}
+	}
 }
