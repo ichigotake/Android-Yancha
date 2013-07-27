@@ -62,7 +62,7 @@
 	            android:minWidth="48dp"
 	            android:gravity="center"
 	            android:drawableLeft="@drawable/ic_action_user"
-	            android:text="0人"
+	            android:text="@string/yc_join_users_default"
 	            android:textColor="#ffffff"
 	            android:textSize="16sp"
 	            android:contentDescription="@string/join_users_image_content_description" />

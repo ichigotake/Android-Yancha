@@ -28,7 +28,7 @@
    		        android:id="@+id/messageCellNickname"
 		        android:layout_height="wrap_content"
 		        android:layout_width="wrap_content"
-		        android:text="ichigotake"
+		        android:text="@string/yc_dummy_nickname"
 		        android:textColor="#666666"
 		        />
 
@@ -37,7 +37,7 @@
 		        android:layout_height="wrap_content"
 		        android:layout_width="wrap_content"
 		        android:layout_alignParentRight="true"
-		        android:text="0分前"
+		        android:text="@string/yc_dummy_timestamp"
 		        android:textColor="#333333"
 		        />
    		    
@@ -53,7 +53,7 @@
    		        android:layout_alignBottom="@+id/messageCellInnerDivider"
 			    android:layout_height="wrap_content"
 			    android:layout_width="match_parent"
-			    android:text="おは¥nよう¥nござい¥n¥n¥nんすす"
+			    android:text="@string/yc_dummy_message"
 			    android:textColor="#333333"
 			    android:autoLink="web"
 			    android:maxLines="40"

@@ -24,6 +24,16 @@
     <string name="yc_search_keyword">検索キーワード</string>
     <string name="yc_default_tag">#PUBLIC</string>
     
+    <!--  join users -->
+    <string name="yc_join_users_unit">人</string>
+    
+    <!-- dummy -->
+    <string name="yc_dummy_join_users_count">0人</string>
+    <string name="yc_dummy_message">おはようございます、いい天気ですね¥nおはようございます、いい天気ですね￥のはようございます、いい天気ですね #PUBLIC</string>
+    <string name="yc_dummy_timestamp">0分前</string>
+    <string name="yc_dummy_nickname">名無しさん</string>
+    <string name="yc_dummy_profile_image_url">/static/img/nobody.png</string>
+    
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
     <string name="yc_chat_status_offline">オフラインです</string>
