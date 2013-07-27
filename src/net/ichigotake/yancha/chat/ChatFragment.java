@@ -31,6 +31,8 @@ public class ChatFragment extends Fragment {
 	
 	private ChatContainer chatContainer;
 	
+	private JoinUsersContainer joinUsersContainer;
+	
 	public ChatFragment() {
 	}
 	
@@ -44,6 +46,9 @@ public class ChatFragment extends Fragment {
 		
 		chatContainer = new ChatContainer(this);
 		chatContainer.initializeView(view);
+		
+		joinUsersContainer = new JoinUsersContainer();
+		joinUsersContainer.initializeView(view);
 		
 		handler = new Handler();
 		
@@ -104,7 +109,7 @@ public class ChatFragment extends Fragment {
 				}
 				
 				@Override
-				public void on(String event, IOAcknowledge ack, Object... args) {
+				public void on(String event, IOAcknowledge ack, final Object... args) {
 					if (event.equals(YanchaEmitter.CONNECTING)) {
 						chat.emit("connecting", ack.toString());
 					} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
@@ -120,6 +125,14 @@ public class ChatFragment extends Fragment {
 						} catch (JSONException e) {
 							e.printStackTrace();
 						}
+					} else if (event.equals(YanchaEmitter.NICKNAMES)) {
+						handler.post(new Runnable() {
+							
+							@Override
+							public void run() {
+								chatContainer.updateJoinUsers(args[0].toString());
+							}
+						});
 					}
 				}
 			});

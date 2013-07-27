@@ -1,108 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#ffffff" 
     >
     
     <TextView 
         android:id="@+id/chatLinkSearch"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:paddingTop="3dp"
-        android:paddingBottom="3dp"
+        android:layout_alignParentTop="true"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:text="@string/yc_link_search"
         android:textSize="16sp"
         android:gravity="center"
         android:background="#dddddd"
         />
     
-    <LinearLayout
+   	<include
+   	    android:id="@+id/chatIncludeMessageList"
+    	android:layout_below="@+id/chatLinkSearch"
+    	android:layout_above="@+id/chatInformation"
+       	android:layout_width="match_parent"
+        android:layout_height="match_parent"
+   	    layout="@layout/yc_common_message_cell_list" />
+    
+   	<include
+    	android:layout_above="@+id/chatInformation"
+       	android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:focusable="true"
+        android:visibility="gone"
+   	    layout="@layout/yc_join_users" />
+   	
+   	<RelativeLayout
+        android:id="@+id/chatInformation"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center|left"
+        android:padding="4dp"
+        android:layout_above="@+id/chatInputArea"
+    	android:background="#004065">
 
-    	<include layout="@layout/yc_common_message_cell_list" />
+   	    <LinearLayout
+            android:id="@+id/chatJoinUsersIcon"
+   	        android:layout_height="wrap_content"
+   	        android:layout_width="wrap_content"
+   	        android:orientation="horizontal"
+   	        android:layout_gravity="center_vertical"
+   	        android:layout_marginRight="8dp"
+   	        >
+   	        
+	        <TextView 
+	            android:id="@+id/chatJoinUsersCount"
+	            android:layout_height="wrap_content"
+	            android:layout_width="wrap_content"
+	            android:minHeight="48dp"
+	            android:minWidth="48dp"
+	            android:gravity="center"
+	            android:drawableLeft="@drawable/ic_action_user"
+	            android:text="0人"
+	            android:textColor="#ffffff"
+	            android:textSize="16sp"
+	            android:contentDescription="@string/join_users_image_content_description" />
 
-    </LinearLayout>
-    
-    
-    
-    <LinearLayout
-        android:layout_width="match_parent" 
+   	    </LinearLayout>
+
+        <TextView 
+            android:id="@+id/chatSelectedTagSelected"
+	        android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/chatJoinUsersIcon"
+            android:layout_marginRight="4dp"
+            android:minHeight="36dp"
+            android:paddingRight="6dp"
+            android:paddingLeft="6dp"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:text="@string/yc_default_tag"
+            android:textSize="20sp" />
+        
+        <TextView 
+            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/chatSelectedTagSelected"
+            android:drawableLeft="@drawable/ic_action_refresh"
+            android:text="@string/yc_chat_status_offline"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="#ffffff"/>
+        </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/chatInputArea"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingTop="3dp"
-        android:background="#004065"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="24dp"
-            android:layout_margin="4dp"
-            >
-            <ImageView 
-                android:id="@+id/chatJoinUsersIcon"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-				android:textDirection="inherit"
-                android:src="@drawable/ic_action_user"
-                android:contentDescription="@string/join_users_image_content_description" />
+     android:layout_alignParentBottom="true"
+     android:orientation="vertical"
+     android:paddingTop="3dp"
+     android:background="#ffffff" >
 
-            <TextView 
-                android:id="@+id/chatSelectedTagSelected"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@+id/chatJoinUsersIcon"
-                android:layout_marginRight="4dp"
-                android:paddingRight="6dp"
-                android:paddingLeft="6dp"
-                android:gravity="center"
-                android:background="#ffffff"
-                android:text="@string/yc_default_tag"
-                android:textSize="16sp" />
-            
-            <TextView 
-                android:layout_height="50dp"
-                android:layout_width="wrap_content"
-                android:layout_toRightOf="@+id/chatSelectedTagSelected"
-                android:drawableLeft="@drawable/ic_action_refresh"
-                android:text="@string/yc_chat_status_offline"
-                android:gravity="center"
-                android:textSize="16sp"
-                android:textColor="#ffffff"/>
-            </RelativeLayout>
+        <Button
+            android:id="@+id/chatSendMessageSend"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="@string/yc_submit" />
 
-        <RelativeLayout
+        <EditText
+            android:id="@+id/chatSendMessageText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffffff" >
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:hint=""
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:layout_toLeftOf="@id/chatSendMessageSend"
+             />
 
-            <Button
-                android:id="@+id/chatSendMessageSend"
-                android:layout_width="74dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="@string/yc_submit" />
-
-            <EditText
-                android:id="@+id/chatSendMessageText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:hint=""
-                android:inputType="text"
-                android:imeOptions="actionSend"
-                android:layout_toLeftOf="@id/chatSendMessageSend"
-                 />
-
-        </RelativeLayout>
+    </RelativeLayout>
         
-    </LinearLayout>
-    
-</LinearLayout>
+</RelativeLayout>

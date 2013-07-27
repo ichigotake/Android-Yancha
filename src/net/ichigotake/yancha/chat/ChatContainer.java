@@ -1,8 +1,10 @@
 package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.data.JoinUserListAdapter;
 import net.ichigotake.yancha.message.MessageCell;
 import net.ichigotake.yancha.message.MessageListAdapter;
 import net.ichigotake.yancha.ui.FragmentTransit;
@@ -20,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.common.eventbus.EventBus;
 
@@ -33,7 +36,13 @@ public class ChatContainer implements ViewContainer {
 	
 	private SparseArray<MessageCell> messages;
 	
-	private MessageListAdapter adapter;
+	private MessageListAdapter messageListAdapter;
+	
+	private ListView joinUserListView;
+	
+	private TextView chatJoinUsersCountView;
+	
+	private JoinUserListAdapter joinUserListAdapter;
 	
 	public ChatContainer(Fragment fragment) {
 		this.fragment = fragment;
@@ -42,10 +51,16 @@ public class ChatContainer implements ViewContainer {
 
 	@Override
 	public void initializeView(View view) {
+		chatJoinUsersCountView = (TextView) view.findViewById(R.id.chatJoinUsersCount);
+
+		joinUserListAdapter = new JoinUserListAdapter(fragment.getActivity(), new ArrayList<String>());
+		joinUserListView = (ListView) view.findViewById(R.id.joinUsersList);
+		joinUserListView.setAdapter(joinUserListAdapter);
+		
 		ArrayList<MessageCell> messages = new ArrayList<MessageCell>();
-		adapter = new MessageListAdapter(fragment.getActivity(), messages);
+		messageListAdapter = new MessageListAdapter(fragment.getActivity(), messages);
 		messageListView = (ListView) view.findViewById(R.id.messageList);
-		messageListView.setAdapter(adapter);
+		messageListView.setAdapter(messageListAdapter);
 		
 		view.findViewById(R.id.chatLinkSearch).setOnClickListener(new OnClickListener() {			
 			@Override
@@ -89,10 +104,36 @@ public class ChatContainer implements ViewContainer {
 		MessageCell message = new MessageCell(json);
 		
 		messages.put(message.getId(), message);
-		adapter.add(message);
+		messageListAdapter.add(message);
 	
-		adapter.notifyDataSetChanged();
+		messageListAdapter.notifyDataSetChanged();
 		messageListView.invalidateViews();
+	}
+	
+	public void updateJoinUsers(String response) {
+		JSONObject json;
+		try {
+			json = new JSONObject(response);
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return ;
+		}
+
+		ArrayList<String> joinUserList = new ArrayList<String>();
+		Iterator<?> iter = json.keys();
+		while (iter.hasNext()) {
+			joinUserList.add((String)iter.next());
+		}
+		
+		joinUserListAdapter.clear();
+		joinUserListAdapter.addAll(joinUserList);
+		joinUserListAdapter.notifyDataSetChanged();
+		
+		updateJoinUsersCount(joinUserList.size());
+	}
+	
+	public void updateJoinUsersCount(int count) {
+		chatJoinUsersCountView.setText(count + "êl");
 	}
 	
 }
