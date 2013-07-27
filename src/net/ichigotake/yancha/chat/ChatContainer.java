@@ -77,14 +77,14 @@ public class ChatContainer implements ViewContainer {
 	}
 	
 	public void addMessage(JSONObject json) {		
-			try {
-				if (messages.get(json.getInt("id")) != null) {
-					return ;
-				}
-			} catch (JSONException e) {
-				e.printStackTrace();
+		try {
+			if (messages.get(json.getInt("id")) != null) {
 				return ;
 			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return ;
+		}
 		
 		MessageCell message = new MessageCell(json);
 		

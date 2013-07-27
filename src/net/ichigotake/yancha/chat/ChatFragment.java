@@ -53,7 +53,6 @@ public class ChatFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		chat.start();
 		handler.postDelayed(new Runnable() {
 			
 			@Override
