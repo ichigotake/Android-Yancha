@@ -55,6 +55,8 @@
 			    android:layout_width="match_parent"
 			    android:text="おは¥nよう¥nござい¥n¥n¥nんすす"
 			    android:textColor="#333333"
+			    android:autoLink="web"
+			    android:maxLines="40"
 		    />
    			
 		</RelativeLayout>

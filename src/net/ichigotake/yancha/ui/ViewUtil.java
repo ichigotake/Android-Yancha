@@ -2,6 +2,9 @@ package net.ichigotake.yancha.ui;
 
 import android.view.View;
 
+/**
+ * ビューのための便利クラス
+ */
 public class ViewUtil {
 
 	public void toggle(View view) {

@@ -8,7 +8,7 @@ import org.apache.http.util.EntityUtils;
 import android.net.Uri;
 
 /**
- * Login API accessor
+ * yanchaのログインAPIアクセッサー
  */
 public class YanchaApiLogin {
 

@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import org.json.JSONObject;
 
 
+/**
+ * チャットサーバーと通信をするクラス
+ */
 public class Chat extends Thread {
 	
 	final private String serverUrl;

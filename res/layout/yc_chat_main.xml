@@ -99,10 +99,10 @@
         android:id="@+id/chatInputArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-     android:layout_alignParentBottom="true"
-     android:orientation="vertical"
-     android:paddingTop="3dp"
-     android:background="#ffffff" >
+	     android:layout_alignParentBottom="true"
+	     android:orientation="vertical"
+	     android:paddingTop="3dp"
+	     android:background="#ffffff" >
 
         <Button
             android:id="@+id/chatSendMessageSend"

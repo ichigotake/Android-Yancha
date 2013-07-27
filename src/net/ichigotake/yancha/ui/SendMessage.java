@@ -1,5 +1,8 @@
 package net.ichigotake.yancha.ui;
 
+/**
+ * 送信メッセージのオブジェクト
+ */
 public class SendMessage {
 
 	final private String message;

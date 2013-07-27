@@ -13,6 +13,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+/**
+ * 発言を表示するためのリストアダプター
+ */
 public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 
 	private LayoutInflater inflater;
@@ -34,6 +37,7 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 		
 		return arrayListMessages;
 	}
+	
 	@Override
 	public MessageCell getItem(int position) {
 		return messageList.get(position);

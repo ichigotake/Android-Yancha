@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+/**
+ * 自分自身の接続情報等を扱うデータクラス
+ */
 public class User {
 
 	final SharedPreferences pref;

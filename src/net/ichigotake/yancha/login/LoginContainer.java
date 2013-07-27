@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 
+/**
+ * ログイン画面を表示するビューコンテナ
+ */
 public class LoginContainer implements ViewContainer {
 
 	final private Fragment fragment;

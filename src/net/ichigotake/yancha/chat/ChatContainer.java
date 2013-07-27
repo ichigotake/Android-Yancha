@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.data.JoinUserListAdapter;
 import net.ichigotake.yancha.message.MessageCell;
 import net.ichigotake.yancha.message.MessageListAdapter;
+import net.ichigotake.yancha.search.ChatLogSearchFragment;
 import net.ichigotake.yancha.ui.FragmentTransit;
 import net.ichigotake.yancha.ui.SendMessage;
 import net.ichigotake.yancha.ui.SendMessageListener;
 import net.ichigotake.yancha.ui.ViewContainer;
+import net.ichigotake.yancha.users.JoinUserListAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,6 +27,9 @@ import android.widget.TextView;
 
 import com.google.common.eventbus.EventBus;
 
+/**
+ * チャット画面を出力するビューコンテナ
+ */
 public class ChatContainer implements ViewContainer {
 
 	final private EventBus eventBus = new EventBus();

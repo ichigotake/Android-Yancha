@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
+/**
+ * Fragment‚Ì‘JˆÚ‚ð‚·‚é
+ */
 public class FragmentTransit {
 
 	private Fragment fragment;

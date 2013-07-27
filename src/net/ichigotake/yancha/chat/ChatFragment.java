@@ -8,6 +8,7 @@ import net.ichigotake.yancha.data.User;
 import net.ichigotake.yancha.net.Chat;
 import net.ichigotake.yancha.net.YanchaApi;
 import net.ichigotake.yancha.net.YanchaEmitter;
+import net.ichigotake.yancha.users.JoinUsersContainer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +20,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * ƒ`ƒƒƒbƒg‰æ–Ê
+ */
 public class ChatFragment extends Fragment {
 
 	private Chat chat;

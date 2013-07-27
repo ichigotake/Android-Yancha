@@ -3,6 +3,10 @@ package net.ichigotake.yancha.net;
 import net.ichigotake.yancha.data.User;
 import android.app.Activity;
 
+
+/**
+ * yanchaサーバーへ認証するクラス
+ */
 public class YanchaAuth {
 
 	private User user;

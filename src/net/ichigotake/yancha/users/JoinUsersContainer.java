@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.chat;
+package net.ichigotake.yancha.users;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.ui.ViewContainer;
@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 
+/**
+ * 参加ユーザー一覧を表示するビューコンテナ
+ */
 public class JoinUsersContainer implements ViewContainer {
 
 	private RelativeLayout viewJoinUsers;

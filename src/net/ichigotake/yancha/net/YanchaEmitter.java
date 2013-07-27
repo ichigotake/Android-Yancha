@@ -10,7 +10,7 @@ import com.google.common.eventbus.Subscribe;
 
 
 /**
- * Event emitter
+ * yanchaサーバーとのイベントの送受信をするためのクラス
  */
 public class YanchaEmitter implements SendMessageListener {
 

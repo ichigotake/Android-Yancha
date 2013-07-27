@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+/**
+ * ƒƒOƒCƒ“‰æ–Ê
+ */
 public class LoginFragment extends Fragment {
 
 	public LoginFragment () {

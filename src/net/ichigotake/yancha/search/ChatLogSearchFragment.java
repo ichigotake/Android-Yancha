@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.chat;
+package net.ichigotake.yancha.search;
 
 import net.ichigotake.yancha.R;
 import android.os.Bundle;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * チャットのログ検索
+ */
 public class ChatLogSearchFragment extends Fragment {
 
 	public ChatLogSearchFragment() {
