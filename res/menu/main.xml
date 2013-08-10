@@ -1,5 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-
+	
+    <!-- Searchable -->
+    
+    <item
+        android:id="@+id/menu_search"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/yc_search_keyword"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionViewClass="android.widget.SearchView" />
+    
+    <!-- OptionMenu -->
     <item
         android:id="@+id/action_hints"
         android:orderInCategory="20"
