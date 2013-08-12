@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="yc_app_name">yancha for Android</string>
+    <string name="yc_app_name">yancha</string>
     
     <!-- action menu -->
     <string name="yc_action_hints">HINTS</string>
@@ -15,7 +15,7 @@
     <string name="yc_login_twitter">Twitterでログイン</string>
     <string name="yc_nickname">ニックネーム</string>
     <string name="yc_login">ログイン</string>
-    <string name="yc_version_full">yancha for Android ver x.x</string>
+    <string name="yc_version_full">yancha ver x.x</string>
     
     <!-- misc -->
     <string name="yc_submit">送信</string>
