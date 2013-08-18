@@ -112,6 +112,8 @@ public class ChatContainer implements ViewContainer {
 	
 		messageListAdapter.notifyDataSetChanged();
 		messageListView.invalidateViews();
+		
+		scrollBottomWhenNewMessage();
 	}
 	
 	public void updateJoinUsers(String response) {
@@ -140,4 +142,15 @@ public class ChatContainer implements ViewContainer {
 		chatJoinUsersCountView.setText(count + "êl");
 	}
 	
+	private void scrollBottomWhenNewMessage() {
+		messageListView.post(new Runnable() {			
+			@Override
+			public void run() {
+				final int bottomPosition = messages.size()-1;
+				if (bottomPosition == messageListView.getLastVisiblePosition()+1) {
+					messageListView.setSelection(bottomPosition);
+				}
+			}
+		});
+	}
 }
