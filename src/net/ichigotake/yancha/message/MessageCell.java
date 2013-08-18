@@ -2,6 +2,8 @@ package net.ichigotake.yancha.message;
 
 import java.util.ArrayList;
 
+import net.ichigotake.yancha.net.YanchaApi;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,6 +12,8 @@ import org.json.JSONObject;
  * î≠åæÉfÅ[É^
  */
 public class MessageCell {
+	
+	private final String defaultProfileImageUrl = "/static/img/nobody.png";
 	
 	private int id;
 	
@@ -67,6 +71,10 @@ public class MessageCell {
 
 	public String getProfileImageUrl() {
 		return profileImageUrl;
+	}
+	
+	public String getDefaultProfileImageUrl() {
+		return YanchaApi.SERVER_URL + defaultProfileImageUrl;
 	}
 
 	public void setProfileImageUrl(String profileImageUrl) {

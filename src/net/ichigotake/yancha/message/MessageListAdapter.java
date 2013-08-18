@@ -63,7 +63,12 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 			viewMessage.setText(message.getMessage());
 			
 			UrlImageView viewProfileImageUrl = (UrlImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
-			viewProfileImageUrl.setImageUrl(message.getProfileImageUrl());
+			String profileImageUrl = message.getProfileImageUrl();
+			if (!profileImageUrl.isEmpty()) {
+				viewProfileImageUrl.setImageUrl(profileImageUrl);
+			} else {
+				viewProfileImageUrl.setImageUrl(message.getDefaultProfileImageUrl());
+			}
 			
 			int plusplus = message.getPlusplus();
 			TextView viewPlusplus = (TextView) contentView.findViewById(R.id.messageCellPlusplus);
