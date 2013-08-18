@@ -4,6 +4,7 @@ import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.core.actionbar.ActionBar;
 import net.ichigotake.yancha.data.User;
 import net.ichigotake.yancha.net.Chat;
 import net.ichigotake.yancha.net.YanchaApi;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -45,8 +47,27 @@ public class ChatFragment extends Fragment {
 	}
 	
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setHasOptionsMenu(true);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		boolean hasBeenDone = new ActionBar(getActivity()).setOnOptionsItemSelected(item);
+		if (hasBeenDone) {
+			return true;
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.yc_chat_main, container, false);
+		
+		new ActionBar(getActivity())
+			.setupWithSetDisplayHomeAsUpEnabled();
 		
 		chatContainer = new ChatContainer(this);
 		chatContainer.initializeView(view);

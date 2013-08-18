@@ -6,22 +6,8 @@
     android:background="#ffffff" 
     >
     
-    <TextView 
-        android:id="@+id/chatLinkSearch"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:text="@string/yc_link_search"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:background="#dddddd"
-        />
-    
    	<include
    	    android:id="@+id/chatIncludeMessageList"
-    	android:layout_below="@+id/chatLinkSearch"
     	android:layout_above="@+id/chatInformation"
        	android:layout_width="match_parent"
         android:layout_height="match_parent"

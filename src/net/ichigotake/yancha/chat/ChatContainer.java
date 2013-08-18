@@ -65,13 +65,6 @@ public class ChatContainer implements ViewContainer {
 		messageListAdapter = new MessageListAdapter(fragment.getActivity(), messages);
 		messageListView = (ListView) view.findViewById(R.id.messageList);
 		messageListView.setAdapter(messageListAdapter);
-		
-		view.findViewById(R.id.chatLinkSearch).setOnClickListener(new OnClickListener() {			
-			@Override
-			public void onClick(View view) {
-				new FragmentTransit(fragment).toNext(ChatLogSearchFragment.createInstance());
-			}
-		});
 
 		final EditText viewMessage = (EditText) view.findViewById(R.id.chatSendMessageText);
 		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
