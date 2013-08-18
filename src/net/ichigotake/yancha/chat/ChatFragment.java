@@ -4,6 +4,7 @@ import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.core.ChatStatus;
 import net.ichigotake.yancha.core.actionbar.ActionBar;
 import net.ichigotake.yancha.data.User;
 import net.ichigotake.yancha.net.Chat;
@@ -140,8 +141,7 @@ public class ChatFragment extends Fragment {
 		
 		@Override
 		public void onDisconnect() {
-			// TODO Auto-generated method stub
-			
+			chatContainer.updateStatus(ChatStatus.OFFLINE);
 		}
 		
 		@Override
@@ -150,6 +150,8 @@ public class ChatFragment extends Fragment {
 			
 			//TODO: É^ÉOÇÕPreferenceÇ≈ä«óùÇµÇ‹ÇµÇÂ
 			emitter.emitJoinTag("PUBLIC");
+			
+			chatContainer.updateStatus(ChatStatus.ONLINE);
 		}
 		
 		@Override

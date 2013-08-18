@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.core.ChatStatus;
 import net.ichigotake.yancha.message.MessageCell;
 import net.ichigotake.yancha.message.MessageListAdapter;
 import net.ichigotake.yancha.ui.SendMessage;
@@ -14,6 +15,7 @@ import net.ichigotake.yancha.users.JoinUserListAdapter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.util.SparseArray;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.common.base.Optional;
 import com.google.common.eventbus.EventBus;
 
 /**
@@ -33,6 +36,8 @@ public class ChatContainer implements ViewContainer {
 	final private EventBus eventBus = new EventBus();
 	
 	final private Fragment fragment;
+	
+	final private Handler handler;
 	
 	private ListView messageListView;
 	
@@ -46,9 +51,12 @@ public class ChatContainer implements ViewContainer {
 	
 	private JoinUserListAdapter joinUserListAdapter;
 	
+	private TextView statusView;
+	
 	public ChatContainer(Fragment fragment) {
 		this.fragment = fragment;
 		this.messages = new SparseArray<MessageCell>();
+		handler = new Handler();
 	}
 
 	@Override
@@ -80,6 +88,21 @@ public class ChatContainer implements ViewContainer {
 				viewMessage.setText("");
 			}
 		});
+		
+		statusView = (TextView) view.findViewById(R.id.chatStatus);
+	}
+	
+	public void updateStatus(ChatStatus status) {
+		final Optional<Integer> message = ChatStatus.valueOfMessage(status);
+		if (message.isPresent()) {
+			handler.post(new Runnable() {
+				
+				@Override
+				public void run() {
+					statusView.setText(message.get());
+				}
+			});
+		}
 	}
 	
 	public void registerListener(SendMessageListener listener) {

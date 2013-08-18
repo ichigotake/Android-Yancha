@@ -37,6 +37,7 @@
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
     <string name="yc_chat_status_offline">オフラインです</string>
+    <string name="yc_chat_status_online"></string>
     
     <!-- information -->
     <string name="yc_about">yancha (旧名yairc) はログの保全、リアルタイム性、モバイル端末への対応を重視した、Perlで作成されたチャットシステムです。</string>
