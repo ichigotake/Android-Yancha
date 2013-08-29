@@ -1,8 +1,8 @@
 package net.ichigotake.yancha.users;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.ui.ViewContainer;
-import net.ichigotake.yancha.ui.ViewUtil;
+import net.ichigotake.yancha.core.ui.ViewContainer;
+import net.ichigotake.yancha.core.ui.ViewUtil;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;

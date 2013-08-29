@@ -1,8 +1,8 @@
-package net.ichigotake.yancha.message;
+package net.ichigotake.yancha.core.message;
 
 import java.util.ArrayList;
 
-import net.ichigotake.yancha.net.YanchaApi;
+import net.ichigotake.yancha.core.api.YanchaApi;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.data;
+package net.ichigotake.yancha.core.user;
 
 import android.app.Activity;
 import android.content.Context;

@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.net;
+package net.ichigotake.yancha.core.api;
 
 import io.socket.IOCallback;
 import io.socket.SocketIO;

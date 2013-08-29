@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.message;
+package net.ichigotake.yancha.core.message;
 
 import android.util.SparseArray;
 

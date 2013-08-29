@@ -2,10 +2,10 @@ package net.ichigotake.yancha.login;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.ChatFragment;
-import net.ichigotake.yancha.data.User;
-import net.ichigotake.yancha.net.YanchaAuth;
-import net.ichigotake.yancha.ui.FragmentTransit;
-import net.ichigotake.yancha.ui.ViewContainer;
+import net.ichigotake.yancha.core.api.YanchaAuth;
+import net.ichigotake.yancha.core.ui.FragmentTransit;
+import net.ichigotake.yancha.core.ui.ViewContainer;
+import net.ichigotake.yancha.core.user.User;
 import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.View;

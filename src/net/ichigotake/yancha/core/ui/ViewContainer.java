@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.ui;
+package net.ichigotake.yancha.core.ui;
 
 import android.view.View;
 

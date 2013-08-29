@@ -1,6 +1,6 @@
-package net.ichigotake.yancha.net;
+package net.ichigotake.yancha.core.api;
 
-import net.ichigotake.yancha.data.User;
+import net.ichigotake.yancha.core.user.User;
 import android.app.Activity;
 
 

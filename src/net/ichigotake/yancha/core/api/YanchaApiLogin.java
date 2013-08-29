@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.net;
+package net.ichigotake.yancha.core.api;
 
 import java.io.IOException;
 

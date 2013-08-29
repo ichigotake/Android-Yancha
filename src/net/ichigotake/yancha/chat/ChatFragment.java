@@ -6,10 +6,10 @@ import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.core.ChatStatus;
 import net.ichigotake.yancha.core.actionbar.ActionBar;
-import net.ichigotake.yancha.data.User;
-import net.ichigotake.yancha.net.Chat;
-import net.ichigotake.yancha.net.YanchaApi;
-import net.ichigotake.yancha.net.YanchaEmitter;
+import net.ichigotake.yancha.core.api.Chat;
+import net.ichigotake.yancha.core.api.YanchaApi;
+import net.ichigotake.yancha.core.api.YanchaEmitter;
+import net.ichigotake.yancha.core.user.User;
 import net.ichigotake.yancha.users.JoinUsersContainer;
 
 import org.json.JSONException;

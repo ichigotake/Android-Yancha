@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.ui;
+package net.ichigotake.yancha.core.ui;
 
 /**
  * 送信メッセージのオブジェクト
