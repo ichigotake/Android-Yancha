@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core.actionbar;
+package net.ichigotake.yancha.common.ui.actionbar;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;

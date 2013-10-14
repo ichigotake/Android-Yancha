@@ -1,7 +1,7 @@
-package net.ichigotake.yancha.core.actionbar;
+package net.ichigotake.yancha.common.ui.actionbar;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.ui.FragmentTransit;
+import net.ichigotake.yancha.common.ui.FragmentTransit;
 import net.ichigotake.yancha.search.ChatLogSearchFragment;
 import android.app.SearchManager;
 import android.app.SearchableInfo;

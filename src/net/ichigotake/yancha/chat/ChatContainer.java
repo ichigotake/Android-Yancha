@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.core.ChatStatus;
 import net.ichigotake.yancha.core.message.MessageCell;
 import net.ichigotake.yancha.core.message.MessageListAdapter;
-import net.ichigotake.yancha.core.ui.SendMessage;
-import net.ichigotake.yancha.core.ui.SendMessageListener;
-import net.ichigotake.yancha.core.ui.ViewContainer;
+import net.ichigotake.yancha.core.message.SendMessage;
+import net.ichigotake.yancha.core.message.SendMessageListener;
 import net.ichigotake.yancha.users.JoinUserListAdapter;
 
 import org.json.JSONException;

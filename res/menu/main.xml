@@ -10,6 +10,7 @@
         android:actionViewClass="android.widget.SearchView" />
     
     <!-- OptionMenu -->
+    <!-- 機能実装し次第開放
     <item
         android:id="@+id/action_hints"
         android:orderInCategory="20"
@@ -30,5 +31,6 @@
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/yc_action_logout"/>
+     -->
     
 </menu>

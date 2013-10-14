@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.core.api;
 
-import net.ichigotake.yancha.core.ui.SendMessage;
-import net.ichigotake.yancha.core.ui.SendMessageListener;
+import net.ichigotake.yancha.core.message.SendMessage;
+import net.ichigotake.yancha.core.message.SendMessageListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;

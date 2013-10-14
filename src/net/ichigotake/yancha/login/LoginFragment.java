@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.login;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.actionbar.ActionBar;
+import net.ichigotake.yancha.common.ui.actionbar.ActionBar;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;

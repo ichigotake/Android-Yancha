@@ -19,7 +19,7 @@ import android.util.Log;
 public class YanchaApi {
 
 	final public static String SERVER_SCHEME = "http";
-	final public static String SERVER_FQDN = "xrly.net:3333";
+	final public static String SERVER_FQDN = "192.168.11.100:3000";
 	//final public static String SERVER_FQDN = "yancha.hachiojipm.org";
 	final public static String SERVER_URL = SERVER_SCHEME + "://" + SERVER_FQDN;
 	
