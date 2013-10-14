@@ -30,6 +30,7 @@ public class LoginContainer implements ViewContainer {
 		
 		EditText loginSimple = (EditText) view.findViewById(R.id.loginAuthSimpleNickname);
 		loginSimple.setText(user.getNickname());
+		loginSimple.setSelection(user.getNickname().length());
 		loginSimple.setOnEditorActionListener(new SimpleLoginOnEditorActionListener(mActivity));
 		
 		view.findViewById(R.id.loginAuthTwitter).setOnClickListener(new TwitterLoginOnClickListener());

@@ -39,7 +39,9 @@
         android:imeOptions="actionSend"
         android:hint="@string/yc_nickname"
         android:lines="1"
-        android:textSize="24sp" />
+        android:textSize="24sp" >
+        <requestFocus />
+    </EditText>
 
     <Button
         android:id="@+id/loginAuthSimpleSend"
