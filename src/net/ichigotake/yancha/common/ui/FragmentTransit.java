@@ -3,6 +3,7 @@ package net.ichigotake.yancha.common.ui;
 import net.ichigotake.yancha.R;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
@@ -11,10 +12,22 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class FragmentTransit {
 
-	private Fragment fragment;
+	final private FragmentManager mFragmentManager;
 	
+	private boolean mIsAddBackStack = true;
+	
+	@Deprecated
 	public FragmentTransit(Fragment fragment) {
-		this.fragment = fragment;
+		this.mFragmentManager = fragment.getActivity().getSupportFragmentManager();
+	}
+	
+	public FragmentTransit(FragmentActivity activity) {
+		mFragmentManager = activity.getSupportFragmentManager();
+	}
+	
+	public FragmentTransit setIsAddBackStack(boolean isAdd) {
+		mIsAddBackStack = isAdd;
+		return this;
 	}
 	
 	public void toNext(final Fragment nextFragment) {
@@ -29,10 +42,11 @@ public class FragmentTransit {
 	}
 	
 	public void toNextSync(final Fragment nextFragment) {
-		FragmentManager manager = fragment.getFragmentManager();
-		FragmentTransaction transaction = manager.beginTransaction();
+		FragmentTransaction transaction = mFragmentManager.beginTransaction();
 		transaction.replace(R.id.wrap_fragment, nextFragment);
-		transaction.addToBackStack(null);
+		if (mIsAddBackStack) {
+			transaction.addToBackStack(null);
+		}
 		transaction.commit();
 	}
 	

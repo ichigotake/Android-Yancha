@@ -4,12 +4,9 @@
     android:layout_height="match_parent"
     >
 
-    <fragment
-	        android:id="@+id/wrap_fragment"
-	        android:name="net.ichigotake.yancha.login.LoginFragment"
-	        android:layout_height="match_parent"
-	        android:layout_width="match_parent"
-	        >
-    </fragment>
-	    	
+    <FrameLayout
+        android:id="@+id/wrap_fragment"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
+    	
 </RelativeLayout>

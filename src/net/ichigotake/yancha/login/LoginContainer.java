@@ -1,12 +1,12 @@
 package net.ichigotake.yancha.login;
 
+import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.chat.ChatFragment;
-import net.ichigotake.yancha.common.ui.FragmentTransit;
+import net.ichigotake.yancha.common.ui.ActivityTransit;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.core.api.YanchaAuth;
 import net.ichigotake.yancha.core.user.User;
-import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,16 +19,16 @@ import android.widget.TextView.OnEditorActionListener;
  */
 public class LoginContainer implements ViewContainer {
 
-	final private Fragment fragment;
+	final private FragmentActivity mActivity;
 	
 	final private YanchaAuth auth;
 	
 	final private User user;
 	
-	public LoginContainer(Fragment fragment) {
-		this.fragment = fragment;
-		this.auth = new YanchaAuth(fragment.getActivity());
-		this.user = new User(fragment.getActivity());
+	public LoginContainer(FragmentActivity activity) {
+		this.mActivity = activity;
+		this.auth = new YanchaAuth(activity);
+		this.user = new User(activity);
 	}
 	
 	@Override
@@ -37,14 +37,14 @@ public class LoginContainer implements ViewContainer {
 			
 			@Override
 			public void onClick(View arg0) {
-				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.loginAuthSimpleNickname);
+				EditText nicknameTextView = (EditText) mActivity.findViewById(R.id.loginAuthSimpleNickname);
 				String nickname = nicknameTextView.getText().toString();
 				
 				//TODO ログイン失敗時の分岐
 				auth.simpleLogin(nickname);
-
-				new FragmentTransit(fragment).toNext(ChatFragment.newInstance());
-
+				
+				toChat();
+				
 			}
 		});
 		
@@ -55,14 +55,14 @@ public class LoginContainer implements ViewContainer {
 			@Override
 			public boolean onEditorAction(TextView v, int actionId,
 					KeyEvent event) {
-				EditText nicknameTextView = (EditText) fragment.getActivity().findViewById(R.id.loginAuthSimpleNickname);
+				EditText nicknameTextView = (EditText) mActivity.findViewById(R.id.loginAuthSimpleNickname);
 				String nickname = nicknameTextView.getText().toString();
 				
 				//TODO ログイン失敗時の分岐
 				auth.simpleLogin(nickname);
-
-				new FragmentTransit(fragment).toNext(ChatFragment.newInstance());
-
+				
+				toChat();
+				
 				return false;
 			}
 		});
@@ -70,10 +70,14 @@ public class LoginContainer implements ViewContainer {
 		view.findViewById(R.id.loginAuthTwitter).setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				new FragmentTransit(fragment).toNext(ChatFragment.newInstance());
+				toChat();
 			}
 		});
-
+		
+	}
+	
+	private void toChat() {
+		new ActivityTransit(mActivity).toNext(ChatActivity.class);
 	}
 
 }
