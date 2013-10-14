@@ -15,7 +15,6 @@
     <string name="yc_login_twitter">Twitterでログイン</string>
     <string name="yc_nickname">ニックネーム</string>
     <string name="yc_login">ログイン</string>
-    <string name="yc_version_full">yancha ver x.x</string>
     
     <!-- misc -->
     <string name="yc_submit">送信</string>

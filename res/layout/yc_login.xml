@@ -70,10 +70,11 @@
              />
         
         <TextView 
+            android:id="@+id/loginVersionName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/yc_version_full"
             />
+        
     </LinearLayout>
 </LinearLayout>
