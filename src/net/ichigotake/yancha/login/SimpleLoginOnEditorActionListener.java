@@ -7,10 +7,10 @@ import android.widget.TextView.OnEditorActionListener;
 
 class SimpleLoginOnEditorActionListener implements OnEditorActionListener {
 
-	final private SendSimpleLogin mLogin;
+	final private SubmitSimpleLogin mLogin;
 	
 	SimpleLoginOnEditorActionListener(FragmentActivity activity) {
-		mLogin = new SendSimpleLogin(activity);
+		mLogin = new SubmitSimpleLogin(activity);
 	}
 	
 	@Override

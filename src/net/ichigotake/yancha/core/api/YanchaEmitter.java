@@ -6,6 +6,8 @@ import net.ichigotake.yancha.core.message.SendMessageListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 import com.google.common.eventbus.Subscribe;
 
 
@@ -44,6 +46,7 @@ public class YanchaEmitter implements SendMessageListener {
 	 * @param token
 	 */
 	public void emitTokenLogin(String token) {
+		Log.d(getClass().getSimpleName(), "token:: " + token);
 		chat.emit(TOKEN_LOGIN, token);
 	}
 	

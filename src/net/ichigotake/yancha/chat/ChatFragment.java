@@ -6,8 +6,8 @@ import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.actionbar.ActionBar;
 import net.ichigotake.yancha.core.ChatStatus;
+import net.ichigotake.yancha.core.api.ApiUri;
 import net.ichigotake.yancha.core.api.Chat;
-import net.ichigotake.yancha.core.api.YanchaApi;
 import net.ichigotake.yancha.core.api.YanchaEmitter;
 import net.ichigotake.yancha.core.user.User;
 import net.ichigotake.yancha.users.JoinUsersContainer;
@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,8 +78,23 @@ public class ChatFragment extends Fragment {
 		joinUsersContainer.initializeView(view);
 		
 		handler = new Handler();
+		user = new User(getActivity());
 		
 		return view;
+	}
+	
+	@Override
+	public void onStart() {
+		super.onStart();
+		
+		if (chat == null) {
+			ApiUri uri = new ApiUri();
+			chat = new Chat(uri.getAbsoluteUrl(), new ChatCallback());
+			emitter = new YanchaEmitter(chat);
+			chatContainer.registerListener(emitter);
+			
+			chat.run();
+		}
 	}
 	
 	@Override
@@ -88,25 +104,12 @@ public class ChatFragment extends Fragment {
 			
 			@Override
 			public void run() {
+				Log.d(getClass().getSimpleName(), "token: " + user.getToken());
 				emitter.emitTokenLogin(user.getToken());
 			}
 		}, 1*1000);
 	}
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		user = new User(getActivity());
-
-		if (chat == null) {
-			chat = new Chat(YanchaApi.SERVER_URL, new ChatCallback());
-			emitter = new YanchaEmitter(chat);
-			chatContainer.registerListener(emitter);
-			
-			chat.run();
-		}
-	}
-	
 	@Override
 	public void onStop() {
 		super.onStop();
@@ -123,29 +126,29 @@ public class ChatFragment extends Fragment {
 		
 		@Override
 		public void onMessage(JSONObject json, IOAcknowledge ack) {
-			// TODO Auto-generated method stub
-			
+			Log.d(getClass().getSimpleName(), "onMessage json ack");
 		}
 		
 		@Override
 		public void onMessage(String data, IOAcknowledge ack) {
-			// TODO Auto-generated method stub
-			
+			Log.d(getClass().getSimpleName(), "onMessage data ack");
 		}
 		
 		@Override
 		public void onError(SocketIOException socketIOException) {
-			// TODO Auto-generated method stub
-			
+			emitter.emitTokenLogin(user.getToken());
+			Log.d(getClass().getSimpleName(), "error socketIOException " + socketIOException.getMessage() + " : " + socketIOException.getLocalizedMessage().toString());
 		}
 		
 		@Override
 		public void onDisconnect() {
+			Log.d(getClass().getSimpleName(), "onDisconnect");
 			chatContainer.updateStatus(ChatStatus.OFFLINE);
 		}
 		
 		@Override
 		public void onConnect() {
+			Log.d(getClass().getSimpleName(), "onConnect");
 			emitter.emitTokenLogin(user.getToken());
 			
 			//TODO: É^ÉOÇÕPreferenceÇ≈ä«óùÇµÇ‹ÇµÇÂ
@@ -156,6 +159,7 @@ public class ChatFragment extends Fragment {
 		
 		@Override
 		public void on(String event, IOAcknowledge ack, final Object... args) {
+			Log.d(getClass().getSimpleName(), "on");
 			if (event.equals(YanchaEmitter.CONNECTING)) {
 				chat.emit("connecting", ack.toString());
 			} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {

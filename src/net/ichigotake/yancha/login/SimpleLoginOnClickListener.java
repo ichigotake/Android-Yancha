@@ -6,10 +6,10 @@ import android.view.View.OnClickListener;
 
 class SimpleLoginOnClickListener implements OnClickListener {
 
-	final private SendSimpleLogin mLogin;
+	final private SubmitSimpleLogin mLogin;
 	
 	SimpleLoginOnClickListener(FragmentActivity activity) {
-		mLogin = new SendSimpleLogin(activity);
+		mLogin = new SubmitSimpleLogin(activity);
 	}
 	
 	@Override

@@ -2,7 +2,7 @@ package net.ichigotake.yancha.core.message;
 
 import java.util.ArrayList;
 
-import net.ichigotake.yancha.core.api.YanchaApi;
+import net.ichigotake.yancha.core.api.ApiUri;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +74,7 @@ public class MessageCell {
 	}
 	
 	public String getDefaultProfileImageUrl() {
-		return YanchaApi.SERVER_URL + defaultProfileImageUrl;
+		return ApiUri.HOST.toString() + defaultProfileImageUrl;
 	}
 
 	public void setProfileImageUrl(String profileImageUrl) {
