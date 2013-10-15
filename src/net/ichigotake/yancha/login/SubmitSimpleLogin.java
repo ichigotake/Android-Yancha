@@ -3,6 +3,8 @@ package net.ichigotake.yancha.login;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
+import net.ichigotake.yancha.common.ui.dialog.LoadingProgressDialog;
+import net.ichigotake.yancha.common.ui.dialog.LoadingProgressDialogListener;
 import net.ichigotake.yancha.core.api.ApiEventListener;
 import net.ichigotake.yancha.core.api.ApiResponse;
 import net.ichigotake.yancha.core.api.ApiUri;
@@ -39,6 +41,7 @@ class SubmitSimpleLogin {
 		
 		//TODO ÉçÉOÉCÉìé∏îséûÇÃï™äÚ
 		YanchaApiLogin loginApi = new YanchaApiLogin(new ApiUri(), nickname);
+		loginApi.registerListener(new LoadingProgressDialogListener(mActivity));
 		loginApi.registerListener(new SimpleaApiEventListener());
 		loginApi.start();
 	}

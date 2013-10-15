@@ -8,6 +8,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.AsyncTask;
+import android.os.Handler;
 
 import com.google.common.eventbus.EventBus;
 
@@ -17,6 +18,8 @@ import com.google.common.eventbus.EventBus;
 public abstract class YanchaApiAccessor extends AsyncTask<HttpRequestBase, Integer, Long> {
 
 	final private EventBus mEventBus = new EventBus();
+	
+	final private Handler mHandler = new Handler();
 
 	public abstract HttpRequestBase createRequest();
 	
@@ -31,20 +34,52 @@ public abstract class YanchaApiAccessor extends AsyncTask<HttpRequestBase, Integ
 	@Override
 	protected Long doInBackground(HttpRequestBase... params) {
 		for (HttpRequestBase request : params) {
+			
+			mHandler.post(new Runnable() {
+				@Override
+				public void run() {
+					mEventBus.post(new BeforeApiRequestEvent());
+				}
+			});
+			
 			try {
 				HttpClient client = new DefaultHttpClient();
-				ApiResponse response = new ApiResponse(client.execute(request));
+				final ApiResponse response = new ApiResponse(client.execute(request));
 				if (response.isSuccess()) {
-					mEventBus.post(response);
+					mHandler.post(new Runnable() {
+						
+						@Override
+						public void run() {
+							mEventBus.post(response);
+						}
+					});
 				} else {
-					mEventBus.post(new ApiErrorEventListener());
+					mHandler.post(new Runnable() {
+						
+						@Override
+						public void run() {
+							mEventBus.post(new ApiErrorEventListener());
+						}
+					});
 				}
 			} catch (ClientProtocolException e) {
 				e.printStackTrace();
-				mEventBus.post(new ApiErrorEventListener());
+				mHandler.post(new Runnable() {
+					
+					@Override
+					public void run() {
+						mEventBus.post(new ApiErrorEventListener());
+					}
+				});
 			} catch (IOException e) {
-				mEventBus.post(new ApiErrorEventListener());
 				e.printStackTrace();
+				mHandler.post(new Runnable() {
+					
+					@Override
+					public void run() {
+						mEventBus.post(new ApiErrorEventListener());
+					}
+				});
 			}
 		}
 		return null;
