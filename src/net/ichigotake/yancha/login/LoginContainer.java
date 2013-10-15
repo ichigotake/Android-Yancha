@@ -12,15 +12,21 @@ import android.widget.TextView;
 /**
  * ログイン画面を表示するビューコンテナ
  */
-public class LoginContainer implements ViewContainer {
+class LoginContainer implements ViewContainer {
 
 	final private FragmentActivity mActivity;
 	
 	final private User user;
 	
-	public LoginContainer(FragmentActivity activity) {
+	private LoginContainer(FragmentActivity activity) {
 		this.mActivity = activity;
 		this.user = new User(activity);
+	}
+	
+	static LoginContainer initialize(FragmentActivity activity, View view) {
+		LoginContainer container = new LoginContainer(activity);
+		container.initializeView(view);
+		return container;
 	}
 	
 	@Override

@@ -21,8 +21,7 @@ public class LoginFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.yc_login, container, false);
 		
-		LoginContainer loginContainer = new LoginContainer(getActivity());
-		loginContainer.initializeView(view);
+		LoginContainer.initialize(getActivity(), view);
 		
 		return view;
 	}
