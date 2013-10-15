@@ -31,6 +31,8 @@ public class MessageCell {
 
 	private ArrayList<String> tags;
 	
+	final private String mHost = new ApiUri().getAbsoluteUrl();
+	
 	public MessageCell(JSONObject json) {
 		try {
 			setId(json.getInt("id"));
@@ -74,7 +76,7 @@ public class MessageCell {
 	}
 	
 	public String getDefaultProfileImageUrl() {
-		return ApiUri.HOST.toString() + defaultProfileImageUrl;
+		return mHost + defaultProfileImageUrl;
 	}
 
 	public void setProfileImageUrl(String profileImageUrl) {

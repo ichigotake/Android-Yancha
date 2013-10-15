@@ -5,6 +5,7 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
 import net.ichigotake.yancha.core.api.ApiEventListener;
 import net.ichigotake.yancha.core.api.ApiResponse;
+import net.ichigotake.yancha.core.api.ApiUri;
 import net.ichigotake.yancha.core.api.YanchaApiLogin;
 import net.ichigotake.yancha.core.user.User;
 
@@ -37,7 +38,7 @@ class SubmitSimpleLogin {
 		mUser.setNickname(nickname);
 		
 		//TODO ÉçÉOÉCÉìé∏îséûÇÃï™äÚ
-		YanchaApiLogin loginApi = new YanchaApiLogin(nickname);
+		YanchaApiLogin loginApi = new YanchaApiLogin(new ApiUri(), nickname);
 		loginApi.registerListener(new SimpleaApiEventListener());
 		loginApi.start();
 	}
