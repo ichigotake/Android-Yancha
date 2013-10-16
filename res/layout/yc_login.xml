@@ -6,28 +6,52 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    
     <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
-
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/yc_login_common_margin_vertical"
+        android:paddingRight="@dimen/yc_login_simple_margin_horizntal"
+        android:paddingLeft="@dimen/yc_login_simple_margin_horizntal"
+        android:orientation="horizontal" >
+        
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/yc_login_server" />
+        
+        <EditText
+            android:id="@+id/loginServer"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:hint="@string/yc_login_server_default" />
+        
+    </LinearLayout>
+    
+    
     <Button
         android:id="@+id/loginAuthTwitter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="@string/yc_login_twitter"
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:background="#004065" />
-   </LinearLayout>
     
-    <TextView android:layout_height="120dp" android:layout_width="match_parent" />
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/yc_login_common_margin_vertical"
+        android:gravity="center_horizontal"
+        android:text="@string/yc_login_or" />
     
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/yc_login_common_margin_vertical"
+        android:layout_marginBottom="@dimen/yc_login_common_margin_vertical"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -38,7 +62,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:imeOptions="actionSend"
         android:hint="@string/yc_nickname"
-        android:lines="1"
+        android:singleLine="true"
         android:textSize="24sp" >
         <requestFocus />
     </EditText>
@@ -51,32 +75,13 @@
         android:textColor="#ffffff"
         android:textStyle="bold"
         android:background="#004065" />
-   </LinearLayout>
+    </LinearLayout>
     
-    <TextView android:layout_height="120dp" android:layout_width="match_parent" />
-    
-    <LinearLayout
+    <TextView 
+        android:id="@+id/loginVersionName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        >
-    
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/yc_action_info"
-            android:textSize="24sp"
-	        android:layout_marginBottom="20dp"
-             />
+        android:layout_marginTop="@dimen/yc_login_version_name_margin_top"
+        android:gravity="center" />
         
-        <TextView 
-            android:id="@+id/loginVersionName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            />
-        
-    </LinearLayout>
 </LinearLayout>

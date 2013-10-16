@@ -15,6 +15,9 @@
     <string name="yc_login_twitter">Twitterでログイン</string>
     <string name="yc_nickname">ニックネーム</string>
     <string name="yc_login">ログイン</string>
+    <string name="yc_login_or">または</string>
+    <string name="yc_login_server">接続先</string>
+    <string name="yc_login_server_default">yancha.hachiojipm.org</string>
     
     <!-- misc -->
     <string name="yc_submit">送信</string>

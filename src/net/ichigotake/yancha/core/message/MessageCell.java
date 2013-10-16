@@ -2,8 +2,6 @@ package net.ichigotake.yancha.core.message;
 
 import java.util.ArrayList;
 
-import net.ichigotake.yancha.core.api.ApiUri;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -30,8 +28,6 @@ public class MessageCell {
 	private String message;
 
 	private ArrayList<String> tags;
-	
-	final private String mHost = new ApiUri().getAbsoluteUrl();
 	
 	public MessageCell(JSONObject json) {
 		try {
@@ -76,7 +72,7 @@ public class MessageCell {
 	}
 	
 	public String getDefaultProfileImageUrl() {
-		return mHost + defaultProfileImageUrl;
+		return defaultProfileImageUrl;
 	}
 
 	public void setProfileImageUrl(String profileImageUrl) {

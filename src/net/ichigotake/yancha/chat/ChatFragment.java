@@ -88,7 +88,7 @@ public class ChatFragment extends Fragment {
 		super.onStart();
 		
 		if (chat == null) {
-			ApiUri uri = new ApiUri();
+			ApiUri uri = new User(getActivity()).getApiUri();
 			chat = new Chat(uri.getAbsoluteUrl(), new ChatCallback());
 			emitter = new YanchaEmitter(chat);
 			chatContainer.registerListener(emitter);

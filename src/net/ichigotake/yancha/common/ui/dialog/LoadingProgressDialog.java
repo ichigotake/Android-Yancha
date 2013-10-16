@@ -19,7 +19,7 @@ public class LoadingProgressDialog {
 	}
 	
 	public void dismiss() {
-		mDialog.show();
+		mDialog.dismiss();
 	}
 	
 }

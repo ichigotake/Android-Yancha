@@ -4,4 +4,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- ログイン画面 -->
+    <dimen name="yc_login_simple_margin_horizntal">20dp</dimen>
+    <dimen name="yc_login_common_margin_vertical">40dp</dimen>
+    <dimen name="yc_login_version_name_margin_top">40dp</dimen>
 </resources>

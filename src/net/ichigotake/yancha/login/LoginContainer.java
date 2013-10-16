@@ -3,9 +3,11 @@ package net.ichigotake.yancha.login;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.ui.ViewContainer;
+import net.ichigotake.yancha.core.api.ApiUri;
 import net.ichigotake.yancha.core.user.User;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -31,17 +33,29 @@ class LoginContainer implements ViewContainer {
 	
 	@Override
 	public void initializeView(View view) {
-		view.findViewById(R.id.loginAuthSimpleSend).setOnClickListener(
-				new SimpleLoginOnClickListener(mActivity));
+		LoginViewHolder holder = new LoginViewHolder(view);
 		
-		EditText loginSimple = (EditText) view.findViewById(R.id.loginAuthSimpleNickname);
+		EditText serverHost = holder.getLoginServer();
+		ApiUri uri = user.getApiUri();
+		if (uri.isHostnameEmpty()) {
+			serverHost.setText(R.string.yc_login_server_default);
+		} else {
+			serverHost.setText(uri.getHostname());
+		}
+		
+		holder.getLoginSimpleSubmit().setOnClickListener(
+				new SimpleLoginOnClickListener(mActivity, holder));
+		
+		EditText loginSimple = holder.getLoginSimple();
 		loginSimple.setText(user.getNickname());
 		loginSimple.setSelection(user.getNickname().length());
-		loginSimple.setOnEditorActionListener(new SimpleLoginOnEditorActionListener(mActivity));
+		loginSimple.setOnEditorActionListener(
+				new SimpleLoginOnEditorActionListener(mActivity, holder));
 		
-		view.findViewById(R.id.loginAuthTwitter).setOnClickListener(new TwitterLoginOnClickListener());
+		Button loginTwitter = holder.getLoginTwitter();
+		loginTwitter.setOnClickListener(new TwitterLoginOnClickListener());
 		
-		TextView versionView = (TextView) view.findViewById(R.id.loginVersionName);
+		TextView versionView = holder.getVersionName();
 		String versionName = new AppContext(mActivity).getFullVersionName();
 		versionView.setText(versionName);
 	}

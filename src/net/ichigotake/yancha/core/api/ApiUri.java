@@ -1,16 +1,32 @@
 package net.ichigotake.yancha.core.api;
 
+import android.text.TextUtils;
+
 /**
  * API‚ÌURI
  */
 public class ApiUri {
 
+	final private String mHostname;
+	
+	public ApiUri(String hostname) {
+		mHostname = hostname;
+	}
+	
 	public String getScheme() {
 		return "http";
 	}
 	
 	public String getAuthority() {
-		return "192.168.0.4:3000";
+		return mHostname;
+	}
+	
+	public String getHostname() {
+		return mHostname;
+	}
+	
+	public boolean isHostnameEmpty() {
+		return TextUtils.isEmpty(mHostname);
 	}
 	
 	public String getAbsoluteUrl() {

@@ -58,7 +58,7 @@ public abstract class YanchaApiAccessor extends AsyncTask<HttpRequestBase, Integ
 						
 						@Override
 						public void run() {
-							mEventBus.post(new ApiErrorEventListener());
+							mEventBus.post(new ApiErrorEvent());
 						}
 					});
 				}
@@ -68,7 +68,7 @@ public abstract class YanchaApiAccessor extends AsyncTask<HttpRequestBase, Integ
 					
 					@Override
 					public void run() {
-						mEventBus.post(new ApiErrorEventListener());
+						mEventBus.post(new ApiErrorEvent());
 					}
 				});
 			} catch (IOException e) {
@@ -77,7 +77,7 @@ public abstract class YanchaApiAccessor extends AsyncTask<HttpRequestBase, Integ
 					
 					@Override
 					public void run() {
-						mEventBus.post(new ApiErrorEventListener());
+						mEventBus.post(new ApiErrorEvent());
 					}
 				});
 			}

@@ -9,8 +9,8 @@ class SimpleLoginOnEditorActionListener implements OnEditorActionListener {
 
 	final private SubmitSimpleLogin mLogin;
 	
-	SimpleLoginOnEditorActionListener(FragmentActivity activity) {
-		mLogin = new SubmitSimpleLogin(activity);
+	SimpleLoginOnEditorActionListener(FragmentActivity activity, LoginViewHolder holder) {
+		mLogin = new SubmitSimpleLogin(activity, holder);
 	}
 	
 	@Override

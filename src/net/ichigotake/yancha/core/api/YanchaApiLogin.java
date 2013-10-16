@@ -1,5 +1,7 @@
 package net.ichigotake.yancha.core.api;
 
+import net.ichigotake.yancha.core.user.User;
+
 import org.apache.http.client.methods.HttpRequestBase;
 
 /**
@@ -9,22 +11,19 @@ public class YanchaApiLogin extends YanchaApiAccessor {
 
 	final private ApiUriBuilder mBuilder = new ApiUriBuilder();
 	
-	final private String mNickname;
+	final private User mUser;
 	
-	final private ApiUri mUri;
-	
-	public YanchaApiLogin(ApiUri uri, String nickname) {
-		mNickname = nickname;
-		mUri = uri;
+	public YanchaApiLogin(User user) {
+		mUser = user;
 	}
 	
 	@Override
 	public HttpRequestBase createRequest() {
-		
-		mBuilder.setPath(mUri.getSimpleLoginPath())
-			.setAuthrity(mUri.getAuthority())
-			.setScheme(mUri.getScheme())
-			.appendQueryParameter(YanchaApiField.NICK, mNickname)
+		ApiUri uri = mUser.getApiUri();
+		mBuilder.setPath(uri.getSimpleLoginPath())
+			.setAuthrity(mUser.getConnectServerAuthority())
+			.setScheme(uri.getScheme())
+			.appendQueryParameter(YanchaApiField.NICK, mUser.getNickname())
 			.appendQueryParameter(YanchaApiField.TOKEN_ONLU, "1")
 			;
 		

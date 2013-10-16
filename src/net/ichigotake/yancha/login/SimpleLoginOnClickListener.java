@@ -8,8 +8,8 @@ class SimpleLoginOnClickListener implements OnClickListener {
 
 	final private SubmitSimpleLogin mLogin;
 	
-	SimpleLoginOnClickListener(FragmentActivity activity) {
-		mLogin = new SubmitSimpleLogin(activity);
+	SimpleLoginOnClickListener(FragmentActivity activity, LoginViewHolder holder) {
+		mLogin = new SubmitSimpleLogin(activity, holder);
 	}
 	
 	@Override
