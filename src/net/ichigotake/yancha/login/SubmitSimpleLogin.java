@@ -1,8 +1,11 @@
 package net.ichigotake.yancha.login;
 
 import net.ichigotake.yancha.ChatActivity;
+import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
 import net.ichigotake.yancha.common.ui.dialog.LoadingProgressDialogListener;
+import net.ichigotake.yancha.common.ui.dialog.MessageDialogBuilder;
+import net.ichigotake.yancha.common.ui.dialog.ShowConnectionErrorDialogListener;
 import net.ichigotake.yancha.core.api.ApiEventListener;
 import net.ichigotake.yancha.core.api.ApiResponse;
 import net.ichigotake.yancha.core.api.YanchaApiLogin;
@@ -41,6 +44,7 @@ class SubmitSimpleLogin {
 		//TODO ログイン失敗時の分岐
 		YanchaApiLogin loginApi = new YanchaApiLogin(mUser);
 		loginApi.registerListener(new LoadingProgressDialogListener(mActivity));
+		loginApi.registerListener(new ShowConnectionErrorDialogListener(mActivity));
 		loginApi.registerListener(new SimpleaApiEventListener());
 		loginApi.start();
 	}
@@ -55,7 +59,10 @@ class SubmitSimpleLogin {
 					mUser.setToken(content.get());
 					new ActivityTransit(mActivity).toNext(ChatActivity.class);
 				} else {
-					//TODO エラー処理
+					new MessageDialogBuilder(mActivity)
+						.setMessage(R.string.yc_connection_failed)
+						.setDefaultPositiveText()
+						.show();
 				}
 				
 			} catch (ParseException e) {

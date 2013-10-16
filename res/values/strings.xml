@@ -3,6 +3,8 @@
 
     <string name="yc_app_name">yancha</string>
     
+    <string name="yc_common_ok">OK</string>
+    
     <!-- action menu -->
     <string name="yc_action_hints">HINTS</string>
     <string name="yc_action_info">INFO</string>
@@ -25,6 +27,8 @@
     <string name="yc_search_option">検索オプション</string>
     <string name="yc_search_keyword">検索キーワード</string>
     <string name="yc_default_tag">#PUBLIC</string>
+    
+    <string name="yc_connection_failed">接続に失敗しました</string>
     
     <!--  join users -->
     <string name="yc_join_users_unit">人</string>

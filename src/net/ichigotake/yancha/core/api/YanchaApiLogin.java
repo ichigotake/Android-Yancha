@@ -26,7 +26,6 @@ public class YanchaApiLogin extends YanchaApiAccessor {
 			.appendQueryParameter(YanchaApiField.NICK, mUser.getNickname())
 			.appendQueryParameter(YanchaApiField.TOKEN_ONLU, "1")
 			;
-		
 		return new ApiRequest().createGetRequest(mBuilder.build());
 	}
 
