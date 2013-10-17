@@ -27,6 +27,7 @@ import android.widget.TextView;
 
 import com.google.common.base.Optional;
 import com.google.common.eventbus.EventBus;
+import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
 /**
  * チャット画面を出力するビューコンテナ
@@ -69,9 +70,11 @@ public class ChatContainer implements ViewContainer {
 		
 		ArrayList<MessageCell> messages = new ArrayList<MessageCell>();
 		messageListAdapter = new MessageListAdapter(fragment.getActivity(), messages);
+		ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(messageListAdapter);
 		messageListView = (ListView) view.findViewById(R.id.messageList);
-		messageListView.setAdapter(messageListAdapter);
-
+		animationAdapter.setAbsListView(messageListView);
+		messageListView.setAdapter(animationAdapter);
+		
 		final EditText viewMessage = (EditText) view.findViewById(R.id.chatSendMessageText);
 		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
 		viewSubmit.setOnClickListener(new OnClickListener() {
