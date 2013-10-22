@@ -58,7 +58,9 @@ class SubmitSimpleLogin {
 				Optional<String> content = response.getContent();
 				if (content.isPresent()) {
 					mUser.setToken(content.get());
-					new ActivityTransit(mActivity).toNext(ChatActivity.class);
+					new ActivityTransit(mActivity)
+						.clearTop()
+						.toNext(ChatActivity.class);
 				} else {
 					new MessageDialogBuilder(mActivity)
 						.setMessage(R.string.yc_connection_failed)
