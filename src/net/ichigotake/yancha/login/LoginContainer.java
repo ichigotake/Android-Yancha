@@ -53,7 +53,7 @@ class LoginContainer implements ViewContainer {
 				new SimpleLoginOnEditorActionListener(mActivity, holder));
 		
 		Button loginTwitter = holder.getLoginTwitter();
-		loginTwitter.setOnClickListener(new TwitterLoginOnClickListener());
+		loginTwitter.setOnClickListener(new TwitterLoginOnClickListener(mActivity));
 		
 		TextView versionView = holder.getVersionName();
 		String versionName = new AppContext(mActivity).getFullVersionName();

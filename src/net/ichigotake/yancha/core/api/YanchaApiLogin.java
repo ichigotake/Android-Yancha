@@ -1,11 +1,14 @@
 package net.ichigotake.yancha.core.api;
 
+import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.core.user.User;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
 /**
  * yanchaのログインAPIアクセッサー
+ * 
+ * TODO: LoaderCallbacksへの置き換え時にログインモードの切り替えI/Fを見直し
  */
 public class YanchaApiLogin extends YanchaApiAccessor {
 

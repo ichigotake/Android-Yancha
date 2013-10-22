@@ -7,6 +7,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 
 public class AppContext {
 
+	final public static String URI_SCHEME_LOGIN_CALLBACK = "yancha://login/twitter/callback";
+	
 	final private Context mContext;
 	
 	public AppContext(Context context) {

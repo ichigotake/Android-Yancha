@@ -14,12 +14,13 @@ import net.ichigotake.yancha.core.user.User;
 import org.apache.http.ParseException;
 
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 
 import com.google.common.base.Optional;
 import com.google.common.eventbus.Subscribe;
 
 /**
- * シンプルログインを実行
+ * ログイン処理を実行
  */
 class SubmitSimpleLogin {
 

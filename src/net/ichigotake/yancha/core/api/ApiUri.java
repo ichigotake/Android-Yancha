@@ -36,5 +36,9 @@ public class ApiUri {
 	public String getSimpleLoginPath() {
 		return "/login";
 	}
+	
+	public String getTwitterLoginPath() {
+		return "/login/twitter/start";
+	}
 
 }
