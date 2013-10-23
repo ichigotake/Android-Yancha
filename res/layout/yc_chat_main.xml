@@ -13,14 +13,6 @@
             android:layout_height="match_parent"
             layout="@layout/yc_common_message_cell_list" />
     
-       <include
-            android:layout_above="@+id/chatInformation"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:focusable="true"
-            android:visibility="gone"
-            layout="@layout/yc_join_users" />
-       
        <RelativeLayout
             android:id="@+id/chatInformation"
             android:layout_width="match_parent"

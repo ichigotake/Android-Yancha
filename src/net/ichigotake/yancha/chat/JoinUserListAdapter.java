@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.users;
+package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
 

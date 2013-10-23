@@ -10,7 +10,6 @@ import net.ichigotake.yancha.core.api.ApiUri;
 import net.ichigotake.yancha.core.api.Chat;
 import net.ichigotake.yancha.core.api.YanchaEmitter;
 import net.ichigotake.yancha.core.user.User;
-import net.ichigotake.yancha.users.JoinUsersContainer;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,8 +37,6 @@ public class ChatFragment extends Fragment {
 	private Handler handler;
 	
 	private ChatContainer chatContainer;
-	
-	private JoinUsersContainer joinUsersContainer;
 	
 	public ChatFragment() {
 	}
@@ -73,9 +70,6 @@ public class ChatFragment extends Fragment {
 		
 		chatContainer = new ChatContainer(this);
 		chatContainer.initializeView(view);
-		
-		joinUsersContainer = new JoinUsersContainer();
-		joinUsersContainer.initializeView(view);
 		
 		handler = new Handler();
 		user = new User(getActivity());

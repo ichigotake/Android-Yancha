@@ -10,7 +10,6 @@ import net.ichigotake.yancha.core.message.MessageCell;
 import net.ichigotake.yancha.core.message.MessageListAdapter;
 import net.ichigotake.yancha.core.message.SendMessage;
 import net.ichigotake.yancha.core.message.SendMessageListener;
-import net.ichigotake.yancha.users.JoinUserListAdapter;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,11 +45,9 @@ public class ChatContainer implements ViewContainer {
 	
 	private MessageListAdapter messageListAdapter;
 	
-	private ListView joinUserListView;
-	
 	private TextView chatJoinUsersCountView;
 	
-	private JoinUserListAdapter joinUserListAdapter;
+	private JoinUsersContainer mJoinUsersContainer;
 	
 	private TextView statusView;
 	
@@ -64,9 +61,7 @@ public class ChatContainer implements ViewContainer {
 	public void initializeView(View view) {
 		chatJoinUsersCountView = (TextView) view.findViewById(R.id.chatJoinUsersCount);
 
-		joinUserListAdapter = new JoinUserListAdapter(fragment.getActivity(), new ArrayList<String>());
-		joinUserListView = (ListView) view.findViewById(R.id.joinUsersList);
-		joinUserListView.setAdapter(joinUserListAdapter);
+		mJoinUsersContainer = new JoinUsersContainer(fragment.getActivity(), view);
 		
 		ArrayList<MessageCell> messages = new ArrayList<MessageCell>();
 		messageListAdapter = new MessageListAdapter(fragment.getActivity(), messages);
@@ -148,10 +143,7 @@ public class ChatContainer implements ViewContainer {
 			joinUserList.add((String)iter.next());
 		}
 		
-		joinUserListAdapter.clear();
-		joinUserListAdapter.addAll(joinUserList);
-		joinUserListAdapter.notifyDataSetChanged();
-		
+		mJoinUsersContainer.setUsers(joinUserList);
 		updateJoinUsersCount(joinUserList.size());
 	}
 	
