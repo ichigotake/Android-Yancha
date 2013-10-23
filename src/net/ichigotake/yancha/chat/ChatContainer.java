@@ -1,7 +1,9 @@
 package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ViewContainer;
@@ -10,6 +12,7 @@ import net.ichigotake.yancha.core.message.MessageCell;
 import net.ichigotake.yancha.core.message.MessageListAdapter;
 import net.ichigotake.yancha.core.message.SendMessage;
 import net.ichigotake.yancha.core.message.SendMessageListener;
+import net.ichigotake.yancha.core.user.JoinTagList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +54,10 @@ public class ChatContainer implements ViewContainer {
 	
 	private TextView statusView;
 	
+	private TextView chatSelectedTagSelected;
+	
+	private JoinTagList mTags;
+	
 	public ChatContainer(Fragment fragment) {
 		this.fragment = fragment;
 		this.messages = new SparseArray<MessageCell>();
@@ -70,6 +77,10 @@ public class ChatContainer implements ViewContainer {
 		animationAdapter.setAbsListView(messageListView);
 		messageListView.setAdapter(animationAdapter);
 		
+		mTags = new JoinTagList(view.getContext());
+		//TODO タグ回り、設計どころか仕様も決まってなかった
+		mTags.setAll(getDefaultTagList());
+		
 		final EditText viewMessage = (EditText) view.findViewById(R.id.chatSendMessageText);
 		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
 		viewSubmit.setOnClickListener(new OnClickListener() {
@@ -88,6 +99,13 @@ public class ChatContainer implements ViewContainer {
 		});
 		
 		statusView = (TextView) view.findViewById(R.id.chatStatus);
+		
+		chatSelectedTagSelected = (TextView) view.findViewById(R.id.chatSelectedTagSelected);
+		chatSelectedTagSelected.setOnClickListener(new SelectedTagOnClickListener(mTags.getAll()));
+	}
+	
+	public Map<String, Integer> getTagList() {
+		return mTags.getAll();
 	}
 	
 	public void updateStatus(ChatStatus status) {
@@ -162,4 +180,15 @@ public class ChatContainer implements ViewContainer {
 			}
 		});
 	}
+	
+	final private Map<String, Integer> getDefaultTagList() {
+		Map<String, Integer> tags = new HashMap<String, Integer>();
+		tags.put("PUBLIC", 0);
+		tags.put("FROMLINGR", 0);
+		tags.put("PRECUDA", 0);
+		tags.put("KANKORE", 0);
+		tags.put("GITHUB", 0);
+		return tags;
+	}
+
 }

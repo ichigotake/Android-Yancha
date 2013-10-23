@@ -145,8 +145,7 @@ public class ChatFragment extends Fragment {
 			Log.d(getClass().getSimpleName(), "onConnect");
 			emitter.emitTokenLogin(user.getToken());
 			
-			//TODO: É^ÉOÇÕPreferenceÇ≈ä«óùÇµÇ‹ÇµÇÂ
-			emitter.emitJoinTag("PUBLIC");
+			emitter.emitJoinTag(chatContainer.getTagList());
 			
 			chatContainer.updateStatus(ChatStatus.ONLINE);
 		}

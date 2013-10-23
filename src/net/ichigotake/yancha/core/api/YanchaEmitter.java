@@ -1,5 +1,7 @@
 package net.ichigotake.yancha.core.api;
 
+import java.util.Map;
+
 import net.ichigotake.yancha.core.message.SendMessage;
 import net.ichigotake.yancha.core.message.SendMessageListener;
 
@@ -60,6 +62,18 @@ public class YanchaEmitter implements SendMessageListener {
 			JSONObject tags = new JSONObject();
 			tags.put(tag, tag);
 			chat.emit(JOIN_TAG, tags);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void emitJoinTag(Map<String, Integer> tags) {
+		try {
+			JSONObject postTags = new JSONObject();
+			for (String tag : tags.keySet()) {
+				postTags.put(tag, tag);
+			}
+			chat.emit(JOIN_TAG, postTags);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
