@@ -12,6 +12,7 @@
         android:dividerHeight="1dp"
         android:listSelector="@android:color/transparent"
         android:entries="@array/listview_items"
+        android:fastScrollEnabled="true"
         />
     
 </LinearLayout>
