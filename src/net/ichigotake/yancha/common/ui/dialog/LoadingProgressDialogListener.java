@@ -1,9 +1,9 @@
 package net.ichigotake.yancha.common.ui.dialog;
 
-import net.ichigotake.yancha.core.api.ApiErrorEvent;
-import net.ichigotake.yancha.core.api.ApiEventListener;
-import net.ichigotake.yancha.core.api.ApiResponse;
-import net.ichigotake.yancha.core.api.BeforeApiRequestEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.BeforeHttpRequestEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessErrorEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
 import android.content.Context;
 
 import com.google.common.eventbus.Subscribe;
@@ -11,7 +11,7 @@ import com.google.common.eventbus.Subscribe;
 /**
  * 読み込み中ダイアログを表示するイベントリスナ
  */
-public class LoadingProgressDialogListener implements ApiEventListener {
+public class LoadingProgressDialogListener implements HttpAccessEventListener {
 
 	final private LoadingProgressDialog mDialog;
 	
@@ -20,17 +20,17 @@ public class LoadingProgressDialogListener implements ApiEventListener {
 	}
 	
 	@Subscribe
-	public void before(BeforeApiRequestEvent event) {
+	public void before(BeforeHttpRequestEvent event) {
 		mDialog.show();
 	}
 	
 	@Subscribe
-	public void onSuccess(ApiResponse response) {
+	public void onSuccess(HttpAccessResponse response) {
 		mDialog.dismiss();
 	}
 	
 	@Subscribe
-	public void onError(ApiErrorEvent event) {
+	public void onError(HttpAccessErrorEvent event) {
 		mDialog.dismiss();
 	}
 	

@@ -1,13 +1,13 @@
 package net.ichigotake.yancha.login;
 
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
 import net.ichigotake.yancha.common.ui.dialog.LoadingProgressDialogListener;
 import net.ichigotake.yancha.common.ui.dialog.MessageDialogBuilder;
 import net.ichigotake.yancha.common.ui.dialog.ShowConnectionErrorDialogListener;
-import net.ichigotake.yancha.core.api.ApiEventListener;
-import net.ichigotake.yancha.core.api.ApiResponse;
 import net.ichigotake.yancha.core.api.YanchaApiLogin;
 import net.ichigotake.yancha.core.user.User;
 
@@ -49,10 +49,10 @@ class SubmitSimpleLogin {
 		loginApi.start();
 	}
 	
-	private class SimpleaApiEventListener implements ApiEventListener {
+	private class SimpleaApiEventListener implements HttpAccessEventListener {
 		
 		@Subscribe
-		public void onSuccess(ApiResponse response) {
+		public void onSuccess(HttpAccessResponse response) {
 			try {
 				Optional<String> content = response.getContent();
 				if (content.isPresent()) {

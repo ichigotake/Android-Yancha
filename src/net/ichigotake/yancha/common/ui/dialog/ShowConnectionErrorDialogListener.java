@@ -1,13 +1,13 @@
 package net.ichigotake.yancha.common.ui.dialog;
 
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessErrorEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.api.ApiErrorEvent;
-import net.ichigotake.yancha.core.api.ApiEventListener;
 import android.content.Context;
 
 import com.google.common.eventbus.Subscribe;
 
-public class ShowConnectionErrorDialogListener implements ApiEventListener {
+public class ShowConnectionErrorDialogListener implements HttpAccessEventListener {
 
 	final private MessageDialogBuilder mBuilder;
 	
@@ -19,7 +19,7 @@ public class ShowConnectionErrorDialogListener implements ApiEventListener {
 	}
 	
 	@Subscribe
-	public void onError(ApiErrorEvent event) {
+	public void onError(HttpAccessErrorEvent event) {
 		mBuilder.show();
 	}
 }
