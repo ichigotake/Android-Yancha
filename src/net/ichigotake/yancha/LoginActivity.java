@@ -1,9 +1,9 @@
 package net.ichigotake.yancha;
 
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.lib.intent.UriScheme;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseFragmentActivity;
-import net.ichigotake.yancha.common.intent.UriScheme;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
 import net.ichigotake.yancha.core.user.User;
 import net.ichigotake.yancha.login.LoginFragment;
