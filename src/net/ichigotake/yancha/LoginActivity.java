@@ -1,9 +1,10 @@
 package net.ichigotake.yancha;
 
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseFragmentActivity;
 import net.ichigotake.yancha.common.intent.UriScheme;
 import net.ichigotake.yancha.common.ui.ActivityTransit;
-import net.ichigotake.yancha.common.ui.FragmentTransit;
 import net.ichigotake.yancha.core.user.User;
 import net.ichigotake.yancha.login.LoginFragment;
 import android.content.Intent;
@@ -27,8 +28,8 @@ public class LoginActivity extends BaseFragmentActivity {
 				.toNext(ChatActivity.class);
 		} else {
 			new FragmentTransit(this)
-				.setIsAddBackStack(false)
-				.toNext(LoginFragment.newInstance());
+				.setAddBackStack(false)
+				.toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
 		}
 	}
 	

@@ -1,6 +1,5 @@
 package net.ichigotake.yancha.core.api;
 
-import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.core.user.User;
 
 import org.apache.http.client.methods.HttpRequestBase;

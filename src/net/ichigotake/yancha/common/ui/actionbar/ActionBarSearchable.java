@@ -1,7 +1,8 @@
 package net.ichigotake.yancha.common.ui.actionbar;
 
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.ui.FragmentTransit;
+import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.search.ChatLogSearchFragment;
 import android.app.SearchManager;
 import android.app.SearchableInfo;
@@ -61,8 +62,8 @@ public class ActionBarSearchable {
 			Fragment nextFragment = ChatLogSearchFragment.createInstance();
 			nextFragment.setArguments(args);
 			
-			Fragment currentFragment = fragmentManager.findFragmentById(R.id.wrap_fragment);
-			new FragmentTransit(currentFragment).toNext(nextFragment);
+			new FragmentTransit(fragmentManager)
+				.toReplace(AppContext.FRAGMENT_ID_CONTENT, nextFragment);
 		}
 
 	}

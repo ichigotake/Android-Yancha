@@ -1,8 +1,9 @@
 package net.ichigotake.yancha;
 
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.chat.ChatFragment;
+import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseFragmentActivity;
-import net.ichigotake.yancha.common.ui.FragmentTransit;
 import android.os.Bundle;
 
 /**
@@ -14,7 +15,7 @@ public class ChatActivity extends BaseFragmentActivity {
 		super.onCreate(savedInstanceState);
 		
 		new FragmentTransit(this)
-			.setIsAddBackStack(false)
-			.toNext(ChatFragment.newInstance());
+			.setAddBackStack(false)
+			.toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatFragment.newInstance());
 	}
 }

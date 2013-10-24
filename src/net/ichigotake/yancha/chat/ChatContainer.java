@@ -135,6 +135,10 @@ public class ChatContainer implements ViewContainer {
 			return ;
 		}
 		
+		while (messageListAdapter.getCount() > 100) {
+			messageListAdapter.remove(messageListAdapter.getItem(0));
+		}
+		
 		MessageCell message = new MessageCell(json);
 		
 		messages.put(message.getId(), message);

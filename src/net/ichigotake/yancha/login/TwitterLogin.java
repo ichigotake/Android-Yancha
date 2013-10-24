@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.login;
 
+import net.ichigotake.colorfulsweets.lib.intent.ActionViewStarter;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.intent.ActionViewStarter;
 import android.app.Activity;
 
 public class TwitterLogin {

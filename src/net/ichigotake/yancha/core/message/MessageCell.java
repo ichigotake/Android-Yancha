@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 /**
  * 発言データ
+ * 
+ * @todo Builderパターンへ
  */
 public class MessageCell {
 	
@@ -36,6 +38,7 @@ public class MessageCell {
 			setCreatedTime(json.getLong("created_at_ms"));
 			setMessage(json.getString("text"));
 			setNickname(json.getString("nickname"));
+			setPlusplus(json.getInt("plusplus"));
 			
 			ArrayList<String> tags = new ArrayList<String>();
 			JSONArray argsTags = json.getJSONArray("tags");
