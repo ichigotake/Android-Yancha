@@ -3,7 +3,7 @@ package net.ichigotake.yancha.chat;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.ichigotake.yancha.common.ui.Display;
+import net.ichigotake.colorfulsweets.lib.ui.Display;
 import android.app.Activity;
 import android.view.View;
 import android.widget.ListPopupWindow;
