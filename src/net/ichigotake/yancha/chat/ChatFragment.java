@@ -63,8 +63,8 @@ public class ChatFragment extends Fragment {
 	}
 	
 	@Override
-	public void onStart() {
-		super.onStart();
+	public void onResume() {
+		super.onResume();
 		
 		if (chat == null) {
 			ApiUri uri = new User(getActivity()).getApiUri();
@@ -74,11 +74,7 @@ public class ChatFragment extends Fragment {
 			
 			chat.run();
 		}
-	}
 	
-	@Override
-	public void onResume() {
-		super.onResume();
 		handler.postDelayed(new Runnable() {
 			
 			@Override

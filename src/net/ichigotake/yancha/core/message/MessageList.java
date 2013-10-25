@@ -1,5 +1,6 @@
 package net.ichigotake.yancha.core.message;
 
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.util.SparseArray;
 
 /**
@@ -10,13 +11,13 @@ public class MessageList {
 	/**
 	 * 一意なリストのために発言IDをキーとしたSparseArrayを利用
 	 */
-	private SparseArray<MessageCell> messageList;
+	private SparseArray<PostMessage> messageList;
 
-	public SparseArray<MessageCell> getMessageList() {
+	public SparseArray<PostMessage> getMessageList() {
 		return messageList;
 	}
 
-	public void setMessageList(SparseArray<MessageCell> messageList) {
+	public void setMessageList(SparseArray<PostMessage> messageList) {
 		this.messageList = messageList;
 	}
 

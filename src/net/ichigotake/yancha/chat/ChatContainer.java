@@ -3,16 +3,18 @@ package net.ichigotake.yancha.chat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.core.ChatStatus;
-import net.ichigotake.yancha.core.message.MessageCell;
 import net.ichigotake.yancha.core.message.MessageListAdapter;
 import net.ichigotake.yancha.core.message.SendMessage;
 import net.ichigotake.yancha.core.message.SendMessageListener;
 import net.ichigotake.yancha.core.user.JoinTagList;
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,7 +46,7 @@ public class ChatContainer implements ViewContainer {
 	
 	private ListView messageListView;
 	
-	private SparseArray<MessageCell> messages;
+	private SparseArray<PostMessage> messages;
 	
 	private MessageListAdapter messageListAdapter;
 	
@@ -60,7 +62,7 @@ public class ChatContainer implements ViewContainer {
 	
 	public ChatContainer(Fragment fragment) {
 		this.fragment = fragment;
-		this.messages = new SparseArray<MessageCell>();
+		this.messages = new SparseArray<PostMessage>();
 		handler = new Handler();
 	}
 
@@ -70,7 +72,7 @@ public class ChatContainer implements ViewContainer {
 
 		mJoinUsersContainer = new JoinUsersContainer(fragment.getActivity(), view);
 		
-		ArrayList<MessageCell> messages = new ArrayList<MessageCell>();
+		List<PostMessage> messages = new ArrayList<PostMessage>();
 		messageListAdapter = new MessageListAdapter(fragment.getActivity(), messages);
 		ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(messageListAdapter);
 		messageListView = (ListView) view.findViewById(R.id.messageList);
@@ -139,7 +141,13 @@ public class ChatContainer implements ViewContainer {
 			messageListAdapter.remove(messageListAdapter.getItem(0));
 		}
 		
-		MessageCell message = new MessageCell(json);
+		PostMessage message;
+		try {
+			message = PostMessageFactory.create(json);
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return ;
+		}
 		
 		messages.put(message.getId(), message);
 		messageListAdapter.add(message);

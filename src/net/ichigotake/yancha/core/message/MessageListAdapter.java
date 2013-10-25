@@ -2,9 +2,11 @@ package net.ichigotake.yancha.core.message;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import jp.sharakova.android.urlimageview.UrlImageView;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.content.Context;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -16,20 +18,20 @@ import android.widget.TextView;
 /**
  * 発言を表示するためのリストアダプター
  */
-public class MessageListAdapter extends ArrayAdapter<MessageCell> {
+public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 
 	private LayoutInflater inflater;
 	
-	private ArrayList<MessageCell> messageList;
+	private List<PostMessage> messageList;
 	
-	public MessageListAdapter(Context context, ArrayList<MessageCell> messageList) {
+	public MessageListAdapter(Context context, List<PostMessage> messageList) {
 		super(context, R.layout.yc_common_message_cell, messageList);
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.messageList = messageList;
 	}
 	
-	protected ArrayList<MessageCell> toArrayList(SparseArray<MessageCell> messages) {
-		ArrayList<MessageCell> arrayListMessages = new ArrayList<MessageCell>();
+	protected ArrayList<PostMessage> toArrayList(SparseArray<PostMessage> messages) {
+		ArrayList<PostMessage> arrayListMessages = new ArrayList<PostMessage>();
 		int length = messages.size();
 		for (int i=0; i>length; i++) {
 			arrayListMessages.add(messages.get(i));
@@ -39,7 +41,7 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 	}
 	
 	@Override
-	public MessageCell getItem(int position) {
+	public PostMessage getItem(int position) {
 		return messageList.get(position);
 	}
 	
@@ -54,7 +56,7 @@ public class MessageListAdapter extends ArrayAdapter<MessageCell> {
 			contentView = inflater.inflate(R.layout.yc_common_message_cell, null);
 		}
 		
-		MessageCell message = getItem(position);
+		PostMessage message = getItem(position);
 		if (message != null) {
 			TextView viewNickname = (TextView) contentView.findViewById(R.id.messageCellNickname);
 			viewNickname.setText(message.getNickname());
