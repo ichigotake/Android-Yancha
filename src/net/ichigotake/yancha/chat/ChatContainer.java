@@ -66,7 +66,6 @@ public class ChatContainer implements ViewContainer {
 		handler = new Handler();
 	}
 
-	@Override
 	public void initializeView(View view) {
 		chatJoinUsersCountView = (TextView) view.findViewById(R.id.chatJoinUsersCount);
 

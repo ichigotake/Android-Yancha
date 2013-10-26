@@ -31,7 +31,6 @@ class LoginContainer implements ViewContainer {
 		return container;
 	}
 	
-	@Override
 	public void initializeView(View view) {
 		LoginViewHolder holder = new LoginViewHolder(view);
 		
