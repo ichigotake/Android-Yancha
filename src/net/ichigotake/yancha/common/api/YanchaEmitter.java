@@ -1,9 +1,9 @@
-package net.ichigotake.yancha.core.api;
+package net.ichigotake.yancha.common.api;
 
 import java.util.Map;
 
-import net.ichigotake.yancha.core.message.SendMessage;
-import net.ichigotake.yancha.core.message.SendMessageListener;
+import net.ichigotake.yancha.common.message.SendMessage;
+import net.ichigotake.yancha.common.message.SendMessageListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;

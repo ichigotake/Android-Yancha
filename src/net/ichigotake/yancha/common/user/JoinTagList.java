@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core.user;
+package net.ichigotake.yancha.common.user;
 
 import java.util.HashMap;
 import java.util.HashSet;

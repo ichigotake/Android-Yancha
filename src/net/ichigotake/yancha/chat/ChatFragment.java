@@ -4,11 +4,11 @@ import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.ChatStatus;
-import net.ichigotake.yancha.core.api.ApiUri;
-import net.ichigotake.yancha.core.api.Chat;
-import net.ichigotake.yancha.core.api.YanchaEmitter;
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.ChatStatus;
+import net.ichigotake.yancha.common.api.ApiUri;
+import net.ichigotake.yancha.common.api.Chat;
+import net.ichigotake.yancha.common.api.YanchaEmitter;
+import net.ichigotake.yancha.common.user.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;

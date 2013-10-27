@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core;
+package net.ichigotake.yancha.common;
 
 import net.ichigotake.yancha.R;
 

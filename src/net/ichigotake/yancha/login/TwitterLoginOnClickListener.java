@@ -1,6 +1,6 @@
 package net.ichigotake.yancha.login;
 
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.user.User;
 import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;

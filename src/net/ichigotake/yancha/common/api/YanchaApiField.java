@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core.api;
+package net.ichigotake.yancha.common.api;
 
 public enum YanchaApiField {
 	NICK("nick"),

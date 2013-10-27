@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core.message;
+package net.ichigotake.yancha.common.message;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

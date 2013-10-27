@@ -1,10 +1,10 @@
 package net.ichigotake.yancha.login;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.api.ApiUri;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yancha.core.api.ApiUri;
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.user.User;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;

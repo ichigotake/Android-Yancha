@@ -5,7 +5,7 @@ import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.intent.UriScheme;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseFragmentActivity;
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.user.User;
 import net.ichigotake.yancha.login.LoginFragment;
 import android.content.Intent;
 import android.net.Uri;

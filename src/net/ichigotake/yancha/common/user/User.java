@@ -1,7 +1,7 @@
-package net.ichigotake.yancha.core.user;
+package net.ichigotake.yancha.common.user;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.api.ApiUri;
+import net.ichigotake.yancha.common.api.ApiUri;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;

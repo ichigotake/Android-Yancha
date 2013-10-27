@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.core.message;
+package net.ichigotake.yancha.common.message;
 
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.util.SparseArray;

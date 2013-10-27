@@ -1,8 +1,8 @@
-package net.ichigotake.yancha.core.api;
+package net.ichigotake.yancha.common.api;
 
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessRequest;
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.user.User;
 
 import org.apache.http.client.methods.HttpRequestBase;
 

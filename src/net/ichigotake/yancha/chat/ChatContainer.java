@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.ChatStatus;
+import net.ichigotake.yancha.common.message.MessageListAdapter;
+import net.ichigotake.yancha.common.message.SendMessage;
+import net.ichigotake.yancha.common.message.SendMessageListener;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yancha.core.ChatStatus;
-import net.ichigotake.yancha.core.message.MessageListAdapter;
-import net.ichigotake.yancha.core.message.SendMessage;
-import net.ichigotake.yancha.core.message.SendMessageListener;
-import net.ichigotake.yancha.core.user.JoinTagList;
+import net.ichigotake.yancha.common.user.JoinTagList;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
 

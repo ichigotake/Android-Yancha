@@ -8,8 +8,8 @@ import net.ichigotake.colorfulsweets.lib.ui.dialog.MessageDialogBuilder;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.ShowConnectionErrorDialogListener;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.core.api.YanchaApiLogin;
-import net.ichigotake.yancha.core.user.User;
+import net.ichigotake.yancha.common.api.YanchaApiLogin;
+import net.ichigotake.yancha.common.user.User;
 
 import org.apache.http.ParseException;
 
