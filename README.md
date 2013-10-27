@@ -2,6 +2,12 @@
 
 AndroidのYanchaクライアント
 
+## 開発状況
+
+絶賛開発中です
+
+足りていない機能も多く、まだ実用できる状態ではありません
+
 ## 関連
 
 [yancha](https://github.com/uzulla/yancha)
