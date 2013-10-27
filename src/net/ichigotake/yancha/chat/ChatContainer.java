@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import net.ichigotake.yancha.R;
@@ -12,6 +11,7 @@ import net.ichigotake.yancha.common.message.SendMessageListener;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.JoinTagListStorage;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
+import net.ichigotake.yanchasdk.lib.model.JoinUserFacrory;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
 
@@ -157,22 +157,15 @@ public class ChatContainer implements ViewContainer {
 	}
 	
 	public void updateJoinUsers(String response) {
-		JSONObject json;
+		List<String> users;
 		try {
-			json = new JSONObject(response);
+			users = JoinUserFacrory.createNicknameList(response);
 		} catch (JSONException e) {
-			e.printStackTrace();
-			return ;
-		}
-
-		ArrayList<String> joinUserList = new ArrayList<String>();
-		Iterator<?> iter = json.keys();
-		while (iter.hasNext()) {
-			joinUserList.add((String)iter.next());
+			users = new ArrayList<String>();
 		}
 		
-		mJoinUsersContainer.setUsers(joinUserList);
-		updateJoinUsersCount(joinUserList.size());
+		mJoinUsersContainer.setUsers(users);
+		updateJoinUsersCount(users.size());
 	}
 	
 	public void updateJoinUsersCount(int count) {
