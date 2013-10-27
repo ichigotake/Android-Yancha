@@ -1,5 +1,6 @@
 package net.ichigotake.yancha.common.api;
 
+import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessRequest;
 import net.ichigotake.yancha.common.user.User;
@@ -8,12 +9,10 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 /**
  * yanchaのログインAPIアクセッサー
- * 
- * TODO: LoaderCallbacksへの置き換え時にログインモードの切り替えI/Fを見直し
  */
 public class YanchaApiLogin extends AsyncHttpAccessor {
 
-	final private ApiUriBuilder mBuilder = new ApiUriBuilder();
+	final private UriBuilder mBuilder = new UriBuilder();
 	
 	final private User mUser;
 	
@@ -28,7 +27,7 @@ public class YanchaApiLogin extends AsyncHttpAccessor {
 			.setAuthrity(mUser.getConnectServerAuthority())
 			.setScheme(uri.getScheme())
 			.appendQueryParameter(YanchaApiField.NICK, mUser.getNickname())
-			.appendQueryParameter(YanchaApiField.TOKEN_ONLU, "1")
+			.appendQueryParameter(YanchaApiField.TOKEN_ONLY, "1")
 			;
 		return new HttpAccessRequest().createGetRequest(mBuilder.build());
 	}
