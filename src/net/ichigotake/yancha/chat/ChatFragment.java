@@ -1,22 +1,13 @@
 package net.ichigotake.yancha.chat;
 
-import io.socket.IOAcknowledge;
-import io.socket.IOCallback;
-import io.socket.SocketIOException;
+import java.net.MalformedURLException;
+
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.ChatStatus;
 import net.ichigotake.yancha.common.api.ApiUri;
 import net.ichigotake.yancha.common.api.Chat;
-import net.ichigotake.yancha.common.api.YanchaEmitter;
 import net.ichigotake.yancha.common.user.User;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +19,6 @@ public class ChatFragment extends Fragment {
 
 	private Chat chat;
 
-	private YanchaEmitter emitter;
-	
-	private User user;
-	
-	private Handler handler;
-	
 	private ChatContainer chatContainer;
 	
 	public ChatFragment() {
@@ -56,8 +41,17 @@ public class ChatFragment extends Fragment {
 		chatContainer = new ChatContainer(this);
 		chatContainer.initializeView(view);
 		
-		handler = new Handler();
-		user = new User(getActivity());
+		User user = new User(getActivity());
+		ApiUri uri = user.getApiUri();
+		YanchaCallbackListener yanchaListener = new YanchaCallbackListener(user, chatContainer);
+		try {
+			chat = new Chat(uri.getAbsoluteUrl());
+			chat.setCallbackListener(yanchaListener);
+			chatContainer.setEmitter(chat.getEmitter());
+		} catch (MalformedURLException e) {
+			//TODO âΩÇ©ÇµÇÁëŒçÙÇ
+			e.printStackTrace();
+		}
 		
 		return view;
 	}
@@ -66,98 +60,13 @@ public class ChatFragment extends Fragment {
 	public void onResume() {
 		super.onResume();
 		
-		if (chat == null) {
-			ApiUri uri = new User(getActivity()).getApiUri();
-			chat = new Chat(uri.getAbsoluteUrl(), new ChatCallback());
-			emitter = new YanchaEmitter(chat);
-			chatContainer.registerListener(emitter);
-			
-			chat.run();
-		}
-	
-		handler.postDelayed(new Runnable() {
-			
-			@Override
-			public void run() {
-				Log.d(getClass().getSimpleName(), "token: " + user.getToken());
-				emitter.emitTokenLogin(user.getToken());
-			}
-		}, 1*1000);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		emitter.emitDisconnect();
+		chat.run();
 	}
 
 	@Override
 	public void onPause() {
 		super.onStop();
-		emitter.emitDisconnect();
+		chat.disconnect();
 	}
-
-	private class ChatCallback implements IOCallback {
-		
-		@Override
-		public void onMessage(JSONObject json, IOAcknowledge ack) {
-			Log.d(getClass().getSimpleName(), "onMessage json ack");
-		}
-		
-		@Override
-		public void onMessage(String data, IOAcknowledge ack) {
-			Log.d(getClass().getSimpleName(), "onMessage data ack");
-		}
-		
-		@Override
-		public void onError(SocketIOException socketIOException) {
-			emitter.emitTokenLogin(user.getToken());
-			Log.d(getClass().getSimpleName(), "error socketIOException " + socketIOException.getMessage() + " : " + socketIOException.getLocalizedMessage().toString());
-		}
-		
-		@Override
-		public void onDisconnect() {
-			Log.d(getClass().getSimpleName(), "onDisconnect");
-			chatContainer.updateStatus(ChatStatus.OFFLINE);
-		}
-		
-		@Override
-		public void onConnect() {
-			Log.d(getClass().getSimpleName(), "onConnect");
-			emitter.emitTokenLogin(user.getToken());
-			
-			emitter.emitJoinTag(chatContainer.getTagList());
-			
-			chatContainer.updateStatus(ChatStatus.ONLINE);
-		}
-		
-		@Override
-		public void on(String event, IOAcknowledge ack, final Object... args) {
-			Log.d(getClass().getSimpleName(), "on");
-			if (event.equals(YanchaEmitter.CONNECTING)) {
-				chat.emit("connecting", ack.toString());
-			} else if (event.equals(YanchaEmitter.USER_MESSAGE)) {
-				try {
-					final JSONObject a = new JSONObject(args[0].toString());
-					handler.post(new Runnable() {
-						
-						@Override
-						public void run() {
-							chatContainer.addMessage(a);
-						}
-					});
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-			} else if (event.equals(YanchaEmitter.NICKNAMES)) {
-				handler.post(new Runnable() {
-					
-					@Override
-					public void run() {
-						chatContainer.updateJoinUsers(args[0].toString());
-					}
-				});
-			}
-		}
-	}
+	
 }

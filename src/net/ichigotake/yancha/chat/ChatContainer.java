@@ -5,9 +5,8 @@ import java.util.List;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ChatStatus;
+import net.ichigotake.yancha.common.api.YanchaEmitter;
 import net.ichigotake.yancha.common.message.MessageListAdapter;
-import net.ichigotake.yancha.common.message.SendMessage;
-import net.ichigotake.yancha.common.message.SendMessageListener;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.JoinTagListStorage;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
@@ -29,7 +28,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.common.base.Optional;
-import com.google.common.eventbus.EventBus;
 import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
 /**
@@ -37,8 +35,6 @@ import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationA
  */
 public class ChatContainer implements ViewContainer {
 
-	final private EventBus eventBus = new EventBus();
-	
 	final private Fragment fragment;
 	
 	final private Handler handler;
@@ -58,6 +54,8 @@ public class ChatContainer implements ViewContainer {
 	private TextView chatSelectedTagSelected;
 	
 	private JoinTagList mTags;
+	
+	private YanchaEmitter mEmitter;
 	
 	public ChatContainer(Fragment fragment) {
 		this.fragment = fragment;
@@ -92,7 +90,7 @@ public class ChatContainer implements ViewContainer {
 					return ;
 				}
 				
-				eventBus.post(new SendMessage(message));
+				mEmitter.emitUserMessage(message);
 				//TODO 発言失敗等での再利用用に発言ヒストリーを取っておきたい
 				viewMessage.setText("");
 			}
@@ -102,6 +100,10 @@ public class ChatContainer implements ViewContainer {
 		
 		chatSelectedTagSelected = (TextView) view.findViewById(R.id.chatSelectedTagSelected);
 		chatSelectedTagSelected.setOnClickListener(new SelectedTagOnClickListener(mTags));
+	}
+	
+	public void setEmitter(YanchaEmitter emitter) {
+		mEmitter = emitter;
 	}
 	
 	public JoinTagList getTagList() {
@@ -119,10 +121,6 @@ public class ChatContainer implements ViewContainer {
 				}
 			});
 		}
-	}
-	
-	public void registerListener(SendMessageListener listener) {
-		eventBus.register(listener);
 	}
 	
 	public void addMessage(JSONObject json) {		

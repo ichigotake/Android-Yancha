@@ -1,5 +1,7 @@
 package net.ichigotake.yancha.common.api;
 
+import io.socket.SocketIO;
+
 import java.util.Map;
 
 import net.ichigotake.yancha.common.message.SendMessage;
@@ -19,28 +21,14 @@ import com.google.common.eventbus.Subscribe;
  */
 public class YanchaEmitter implements SendMessageListener {
 
-	final public static String ANNOUNCEMENT 		= "announcement";
-	final public static String CONNECT		 		= "connect";
-	final public static String CONNECTING		 	= "connecting";
-	final public static String DISCONNECT		 	= "disconnect";
-	final public static String DELETE_USER_MESSAGE	= "nicknames";
-	final public static String ERROR 				= "error";
-	final public static String JOIN_TAG 			= "join tag";
-	final public static String NICKNAMES 			= "nicknames";
-	final public static String NO_SESSION 			= "no session";
-	final public static String RECONNECT 			= "reconnect";
-	final public static String RECONNECTING			= "reconnecting";
-	final public static String TOKEN_LOGIN		 	= "token login";
-	final public static String USER_MESSAGE 		= "user message";
-
-	private Chat chat;
+	private SocketIO chat;
 	
-	public YanchaEmitter(Chat chat) {
+	public YanchaEmitter(SocketIO chat) {
 		this.chat = chat;
 	}
 	
 	public void emitUserMessage(String message) {
-		chat.emit(USER_MESSAGE, message);
+		chat.emit(EmitEvent.USER_MESSAGE.getName(), message);
 	}
 	
 	/**
@@ -50,7 +38,7 @@ public class YanchaEmitter implements SendMessageListener {
 	 */
 	public void emitTokenLogin(String token) {
 		Log.d(getClass().getSimpleName(), "token:: " + token);
-		chat.emit(TOKEN_LOGIN, token);
+		chat.emit(EmitEvent.TOKEN_LOGIN.getName(), token);
 	}
 	
 	/**
@@ -64,7 +52,7 @@ public class YanchaEmitter implements SendMessageListener {
 			for (String tag : tags.getAll().keySet()) {
 				json.put(tag, tag);
 			}
-			chat.emit(JOIN_TAG, json);
+			chat.emit(EmitEvent.JOIN_TAG.getName(), json);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -76,18 +64,18 @@ public class YanchaEmitter implements SendMessageListener {
 			for (String tag : tags.keySet()) {
 				postTags.put(tag, tag);
 			}
-			chat.emit(JOIN_TAG, postTags);
+			chat.emit(EmitEvent.JOIN_TAG.getName(), postTags);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void emitConnect() {
-		chat.emit(CONNECT, "");
+		chat.emit(EmitEvent.CONNECT.getName(), "");
 	}
 	
 	public void emitDisconnect() {
-		chat.emit(DISCONNECT, "bye");
+		chat.emit(EmitEvent.DISCONNECT.getName(), "bye");
 	}
 	
 	@Subscribe

@@ -1,9 +1,13 @@
 package net.ichigotake.yancha.common.api;
 
+import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIO;
+import io.socket.SocketIOException;
 
 import java.net.MalformedURLException;
+
+import net.ichigotake.yancha.chat.ChatCallbackListener;
 
 import org.json.JSONObject;
 
@@ -11,37 +15,81 @@ import org.json.JSONObject;
 /**
  * チャットサーバーと通信をするクラス
  */
-public class Chat extends Thread {
+public class Chat extends Thread implements IOCallback {
 	
-	final private String serverUrl;
+	final private String mServerUrl;
 	
-	final private IOCallback callback;
-
-	private SocketIO socket;
+	final private ChatEventDispatcher mDispatcher;
 	
-	public Chat(String serverUrl, IOCallback callback) {
-		this.callback = callback;
-		this.serverUrl = serverUrl;
+	private ChatCallbackListener mListener;
+	
+	private YanchaEmitter mEmitter;
+	
+	private SocketIO mSocket;
+	
+	public Chat(String serverUrl) throws MalformedURLException {
+		mServerUrl = serverUrl;
+		mDispatcher = new ChatEventDispatcher();
+		mSocket = new SocketIO(mServerUrl);
+		mEmitter = new YanchaEmitter(mSocket);
+	}
+	
+	public void setCallbackListener(ChatCallbackListener listener) {
+		mListener = listener;
 	}
 
 	@Override
 	public void run() {
-		try {
-			socket = new SocketIO(serverUrl);
-			socket.connect(callback);
-		} catch (MalformedURLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-
+		connect();
+	}
+	
+	public YanchaEmitter getEmitter() {
+		return mEmitter;
 	}
 
-	public void emit(String event, JSONObject args) {
-		socket.emit(event, args);
+	public void setListener(ChatCallbackListener listener) {
+		mListener = listener;
+	}
+	
+	public void connect() {
+		mSocket.connect(this);
+		mEmitter.emitConnect();
+	}
+	
+	public void disconnect() {
+		mSocket.disconnect();
+		mEmitter.emitDisconnect();
+	}
+	
+	@Override
+	public void onDisconnect() {
+		mListener.onDisconnect();
 	}
 
-	public void emit(String event, String args) {
-		socket.emit(event, args);
+	@Override
+	public void onConnect() {
+		mListener.onConnect(mEmitter);
 	}
 
+	@Override
+	public void onMessage(String data, IOAcknowledge ack) {
+		// no event
+	}
+
+	@Override
+	public void onMessage(JSONObject json, IOAcknowledge ack) {
+		// no event
+	}
+
+	@Override
+	public void on(String event, IOAcknowledge ack, Object... args) {
+		// TODO ArrayIndexOutOfBoundsException対策
+		mDispatcher.dispatch(mEmitter, event, args[0].toString(), mListener);
+	}
+
+	@Override
+	public void onError(SocketIOException socketIOException) {
+		mListener.onError(socketIOException);
+	}
+	
 }
