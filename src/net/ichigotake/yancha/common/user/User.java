@@ -2,7 +2,6 @@ package net.ichigotake.yancha.common.user;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.ApiUri;
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -22,9 +21,9 @@ public class User {
 	
 	final private Context mContext;
 	
-	public User(Activity activity) {
-		this.pref = activity.getSharedPreferences("owner", Context.MODE_PRIVATE);
-		mContext = activity;
+	public User(Context context) {
+		this.pref = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
+		mContext = context;
 	}
 	
 	public String getToken() {

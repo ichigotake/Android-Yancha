@@ -7,7 +7,6 @@ import io.socket.SocketIOException;
 
 import java.net.MalformedURLException;
 
-import net.ichigotake.yancha.chat.ChatCallbackListener;
 
 import org.json.JSONObject;
 
@@ -52,13 +51,17 @@ public class Chat extends Thread implements IOCallback {
 	}
 	
 	public void connect() {
-		mSocket.connect(this);
-		mEmitter.emitConnect();
+		if (! mSocket.isConnected()) {
+			mSocket.connect(this);
+			mEmitter.emitConnect();
+		}
 	}
 	
 	public void disconnect() {
-		mSocket.disconnect();
-		mEmitter.emitDisconnect();
+		if (mSocket.isConnected()) {
+			mSocket.disconnect();
+			mEmitter.emitDisconnect();
+		}
 	}
 	
 	@Override
@@ -68,7 +71,7 @@ public class Chat extends Thread implements IOCallback {
 
 	@Override
 	public void onConnect() {
-		mListener.onConnect(mEmitter);
+		mListener.onConnect();
 	}
 
 	@Override
@@ -84,7 +87,7 @@ public class Chat extends Thread implements IOCallback {
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
 		// TODO ArrayIndexOutOfBoundsExceptionëŒçÙ
-		mDispatcher.dispatch(mEmitter, event, args[0].toString(), mListener);
+		mDispatcher.dispatch(event, args[0].toString(), mListener);
 	}
 
 	@Override

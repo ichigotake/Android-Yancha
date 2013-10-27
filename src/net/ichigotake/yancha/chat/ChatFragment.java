@@ -19,11 +19,6 @@ public class ChatFragment extends Fragment {
 
 	private Chat chat;
 
-	private ChatContainer chatContainer;
-	
-	public ChatFragment() {
-	}
-	
 	public static ChatFragment newInstance() {
 		return new ChatFragment();
 	}
@@ -38,35 +33,37 @@ public class ChatFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.yc_chat_main, container, false);
 		
-		chatContainer = new ChatContainer(this);
-		chatContainer.initializeView(view);
-		
-		User user = new User(getActivity());
-		ApiUri uri = user.getApiUri();
-		YanchaCallbackListener yanchaListener = new YanchaCallbackListener(user, chatContainer);
+		ApiUri uri = new User(getActivity()).getApiUri();
 		try {
 			chat = new Chat(uri.getAbsoluteUrl());
-			chat.setCallbackListener(yanchaListener);
-			chatContainer.setEmitter(chat.getEmitter());
 		} catch (MalformedURLException e) {
 			//TODO âΩÇ©ÇµÇÁëŒçÙÇ
 			e.printStackTrace();
 		}
 		
+		YanchaCallbackListener yanchaListener =
+				new YanchaCallbackListener(chat.getEmitter(), getActivity(), view);
+		chat.setCallbackListener(yanchaListener);
+		
 		return view;
 	}
 	
 	@Override
-	public void onResume() {
-		super.onResume();
-		
+	public void onActivityCreated(Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
 		chat.run();
 	}
-
+	
 	@Override
 	public void onPause() {
 		super.onStop();
 		chat.disconnect();
+	}
+	
+	@Override
+	public void onDestroy() {
+		chat.disconnect();
+		super.onDestroy();
 	}
 	
 }

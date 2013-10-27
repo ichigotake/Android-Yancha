@@ -8,7 +8,6 @@ import jp.sharakova.android.urlimageview.UrlImageView;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.content.Context;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,20 +23,14 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 	
 	private List<PostMessage> messageList;
 	
+	public MessageListAdapter(Context context) {
+		this(context, new ArrayList<PostMessage>());
+	}
+	
 	public MessageListAdapter(Context context, List<PostMessage> messageList) {
 		super(context, R.layout.yc_common_message_cell, messageList);
 		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.messageList = messageList;
-	}
-	
-	protected ArrayList<PostMessage> toArrayList(SparseArray<PostMessage> messages) {
-		ArrayList<PostMessage> arrayListMessages = new ArrayList<PostMessage>();
-		int length = messages.size();
-		for (int i=0; i>length; i++) {
-			arrayListMessages.add(messages.get(i));
-		}
-		
-		return arrayListMessages;
 	}
 	
 	@Override

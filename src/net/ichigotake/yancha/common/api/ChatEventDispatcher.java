@@ -1,13 +1,10 @@
 package net.ichigotake.yancha.common.api;
 
-import net.ichigotake.yancha.chat.ChatCallbackListener;
 
 
 public class ChatEventDispatcher {
 
-	public void dispatch(
-			YanchaEmitter emitter, String eventName,
-			String response, ChatCallbackListener listener) {
+	public void dispatch(String eventName, String response, ChatCallbackListener listener) {
 		EmitEvent event = EmitEvent.get(eventName);
 		if (null == event) {
 			//TODO onError”­‰Î
@@ -17,7 +14,7 @@ public class ChatEventDispatcher {
 		case ANNONCEMENT:
 			break;
 		case CONNECT:
-			listener.onConnect(emitter);
+			listener.onConnect();
 			break;
 		case CONNECTIONG:
 			break;
@@ -31,7 +28,7 @@ public class ChatEventDispatcher {
 		case JOIN_TAG:
 			break;
 		case NICKNAMES:
-			listener.onNicknames(emitter, response);
+			listener.onNicknames(response);
 			break;
 		case NO_SESSION:
 			break;
@@ -42,7 +39,7 @@ public class ChatEventDispatcher {
 		case TOKEN_LOGIN:
 			break;
 		case USER_MESSAGE:
-			listener.onUserMessage(emitter, response);
+			listener.onUserMessage(response);
 			break;
 		default:
 			break;

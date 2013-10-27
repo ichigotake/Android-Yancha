@@ -2,14 +2,19 @@ package net.ichigotake.yancha.chat;
 
 import io.socket.SocketIOException;
 import net.ichigotake.yancha.common.ChatStatus;
+import net.ichigotake.yancha.common.api.ChatCallbackListener;
 import net.ichigotake.yancha.common.api.YanchaEmitter;
 import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 
 public class YanchaCallbackListener implements ChatCallbackListener {
 
@@ -19,27 +24,42 @@ public class YanchaCallbackListener implements ChatCallbackListener {
 	
 	final private ChatContainer mChatContainer;
 	
+	final private YanchaEmitter mEmitter;
+	
 	final private Handler mHandler = new Handler();
 	
-	public YanchaCallbackListener(User user, ChatContainer container) {
-		mUser = user;
-		mChatContainer = container;
+	public YanchaCallbackListener(YanchaEmitter emitter, Activity activity, View view) {
+		mUser = new User(activity);
+		mChatContainer = new ChatContainer(activity, emitter, view);
+		mEmitter = emitter;
 	}
 	
 	@Override
-	public void onConnect(YanchaEmitter emitter) {
+	public void onConnect() {
 		Log.d(TAG, "onConnect");
-		emitter.emitTokenLogin(mUser.getToken());
+		mEmitter.emitTokenLogin(mUser.getToken());
 		
-		emitter.emitJoinTag(mChatContainer.getTagList());
+		mEmitter.emitJoinTag(mChatContainer.getTagList());
 		
-		mChatContainer.updateStatus(ChatStatus.ONLINE);
+		mHandler.post(new Runnable() {
+			
+			@Override
+			public void run() {
+				mChatContainer.updateStatus(ChatStatus.ONLINE);
+			}
+		});
 	}
 
 	@Override
 	public void onDisconnect() {
 		Log.d(TAG, "onDisconnect");
-		mChatContainer.updateStatus(ChatStatus.OFFLINE);
+		mHandler.post(new Runnable() {
+			
+			@Override
+			public void run() {
+				mChatContainer.updateStatus(ChatStatus.OFFLINE);
+			}
+		});
 	}
 
 	@Override
@@ -49,7 +69,7 @@ public class YanchaCallbackListener implements ChatCallbackListener {
 	}
 
 	@Override
-	public void onNicknames(YanchaEmitter emitter, final String response) {
+	public void onNicknames(final String response) {
 		mHandler.post(new Runnable() {
 			
 			@Override
@@ -60,15 +80,24 @@ public class YanchaCallbackListener implements ChatCallbackListener {
 	}
 
 	@Override
-	public void onUserMessage(YanchaEmitter emitter, String response) {
+	public void onUserMessage(String response) {
 		try {
 			Log.d(TAG, "onUserMessage");
-			final JSONObject a = new JSONObject(response);
+			final JSONObject json = new JSONObject(response);
+			final PostMessage message;
+			try {
+				message = PostMessageFactory.create(json);
+			} catch (JSONException e) {
+				e.printStackTrace();
+				return ;
+			}
+			Log.d(TAG, message.getNickname() + " : " + message.getMessage());
+			
 			mHandler.post(new Runnable() {
 				
 				@Override
 				public void run() {
-					mChatContainer.addMessage(a);
+					mChatContainer.addMessage(message);
 				}
 			});
 		} catch (JSONException e) {
