@@ -1,35 +1,38 @@
 package net.ichigotake.yancha.common.user;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
+import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-public class JoinTagList {
+public class JoinTagListStorage {
 
 	final private String KEY_TAG_LIST = "tag_list";
 	
 	final private SharedPreferences mPref;
 	
-	public JoinTagList(Context context) {
+	public JoinTagListStorage(Context context) {
 		mPref = context.getSharedPreferences("join_tag_list", Context.MODE_PRIVATE);
 	}
 	
-	public void setAll(Map<String, Integer> tags) {
+	public void putAll(JoinTagList tags) {
 		Editor editor = mPref.edit();
-		editor.putStringSet(KEY_TAG_LIST, tags.keySet());
+		Set<String> tagSet = new HashSet<String>();
+		for (String tag : tags.getAll().keySet()) {
+			tagSet.add(tag);
+		}
+		editor.putStringSet(KEY_TAG_LIST, tagSet);
 		editor.commit();
 	}
 	
-	public Map<String, Integer> getAll() {
+	public JoinTagList getAll() {
 		Set<String> prefTags = mPref.getStringSet(KEY_TAG_LIST, new HashSet<String>());
-		Map<String, Integer> tags = new HashMap<String, Integer>();
+		JoinTagList tags = new JoinTagList();
 		for (String name : prefTags) {
-			tags.put(name, 0);
+			tags.add(name);
 		}
 		return tags;
 	}

@@ -1,10 +1,8 @@
 package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ChatStatus;
@@ -12,7 +10,8 @@ import net.ichigotake.yancha.common.message.MessageListAdapter;
 import net.ichigotake.yancha.common.message.SendMessage;
 import net.ichigotake.yancha.common.message.SendMessageListener;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yancha.common.user.JoinTagList;
+import net.ichigotake.yancha.common.user.JoinTagListStorage;
+import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
 
@@ -78,9 +77,9 @@ public class ChatContainer implements ViewContainer {
 		animationAdapter.setAbsListView(messageListView);
 		messageListView.setAdapter(animationAdapter);
 		
-		mTags = new JoinTagList(view.getContext());
-		//TODO タグ回り、設計どころか仕様も決まってなかった
-		mTags.setAll(getDefaultTagList());
+		mTags = getDefaultTagList();
+		JoinTagListStorage tagStorage = new JoinTagListStorage(view.getContext());
+		tagStorage.putAll(mTags);
 		
 		final EditText viewMessage = (EditText) view.findViewById(R.id.chatSendMessageText);
 		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
@@ -102,11 +101,11 @@ public class ChatContainer implements ViewContainer {
 		statusView = (TextView) view.findViewById(R.id.chatStatus);
 		
 		chatSelectedTagSelected = (TextView) view.findViewById(R.id.chatSelectedTagSelected);
-		chatSelectedTagSelected.setOnClickListener(new SelectedTagOnClickListener(mTags.getAll()));
+		chatSelectedTagSelected.setOnClickListener(new SelectedTagOnClickListener(mTags));
 	}
 	
-	public Map<String, Integer> getTagList() {
-		return mTags.getAll();
+	public JoinTagList getTagList() {
+		return mTags;
 	}
 	
 	public void updateStatus(ChatStatus status) {
@@ -192,13 +191,13 @@ public class ChatContainer implements ViewContainer {
 		});
 	}
 	
-	final private Map<String, Integer> getDefaultTagList() {
-		Map<String, Integer> tags = new HashMap<String, Integer>();
-		tags.put("PUBLIC", 0);
-		tags.put("FROMLINGR", 0);
-		tags.put("PRECUDA", 0);
-		tags.put("KANKORE", 0);
-		tags.put("GITHUB", 0);
+	final private JoinTagList getDefaultTagList() {
+		JoinTagList tags = new JoinTagList();
+		tags.add("PUBLIC");
+		tags.add("FROMLINGR");
+		tags.add("PRECUDA");
+		tags.add("KANKORE");
+		tags.add("GITHUB");
 		return tags;
 	}
 

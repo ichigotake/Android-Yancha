@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.chat;
 
-import java.util.Map;
-
+import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,11 +9,11 @@ import android.widget.PopupMenu.OnMenuItemClickListener;
 
 class SelectedTagOnClickListener implements OnClickListener {
 
-	final private Map<String, Integer> mTags;
+	final private JoinTagList mTags;
 	
 	private PopupMenu mPopup;
 	
-	public SelectedTagOnClickListener(Map<String, Integer> tags) {
+	public SelectedTagOnClickListener(JoinTagList tags) {
 		mTags = tags;
 	}
 	
@@ -22,7 +21,7 @@ class SelectedTagOnClickListener implements OnClickListener {
 	public void onClick(View view) {
 		mPopup = new PopupMenu(view.getContext(), view);
 		mPopup.setOnMenuItemClickListener(new PopupOnClickListener());
-		for (String tag : mTags.keySet()) {
+		for (String tag : mTags.getAll().keySet()) {
 			mPopup.getMenu().add(tag);
 		}
 		mPopup.show();
