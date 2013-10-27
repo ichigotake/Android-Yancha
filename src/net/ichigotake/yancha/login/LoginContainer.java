@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * ログイン画面を表示するビューコンテナ
+ * ログイン画面を表示する
  */
 class LoginContainer implements ViewContainer {
 
@@ -52,7 +52,8 @@ class LoginContainer implements ViewContainer {
 				new SimpleLoginOnEditorActionListener(mActivity, holder));
 		
 		Button loginTwitter = holder.getLoginTwitter();
-		loginTwitter.setOnClickListener(new TwitterLoginOnClickListener(mActivity));
+		loginTwitter.setOnClickListener(
+				new TwitterLoginOnClickListener(mActivity, serverHost));
 		
 		TextView versionView = holder.getVersionName();
 		String versionName = new AppContext(mActivity).getFullVersionName();
