@@ -5,59 +5,9 @@
     android:background="#ffffff"
     android:orientation="vertical" >
 
-    <include layout="@layout/yc_common_message_cell_list" />
-
-    <RelativeLayout
-        android:id="@+id/searchForm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@layout/yc_common_message_cell_list"
-        android:background="#004065"
-        android:orientation="vertical"
-        android:paddingTop="3dp" >
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="#ffffff" >
-
-            <Button
-                android:id="@+id/searchFormSend"
-                android:layout_width="74dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="@string/yc_submit" />
-
-            <EditText
-                android:id="@+id/searchFormKeyword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
-                android:layout_toLeftOf="@id/searchFormSend"
-                android:drawableLeft="@drawable/ic_action_search"
-                android:hint="@string/yc_search_keyword" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/search_option"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-        </RelativeLayout>
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/searchForm"
-        android:background="#dddddd"
-        android:gravity="center"
-        android:padding="4dp"
-        android:text="@string/yc_search_option"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+    <include
+        layout="@layout/yc_common_message_cell_list"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
 
 </RelativeLayout>

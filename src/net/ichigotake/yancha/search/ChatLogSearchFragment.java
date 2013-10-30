@@ -23,6 +23,8 @@ public class ChatLogSearchFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.yc_chat_search, container, false);
 		
+		new SearchContainer(view).initialize();
+		
 		return view;
 	}
 
