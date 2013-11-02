@@ -1,19 +1,20 @@
 package net.ichigotake.yancha.chat;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONException;
-
-import net.ichigotake.yancha.R;
-import net.ichigotake.yanchasdk.lib.model.JoinUserFacrory;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import net.ichigotake.yancha.R;
+import net.ichigotake.yanchasdk.lib.model.JoinUserFactory;
+
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * 参加ユーザー一覧を表示する
+ * 繝ｭ繧ｰ繧､繝ｳ繝ｦ繝ｼ繧ｶ繝ｼ繧定｡ｨ遉ｺ縺吶ｋ
  */
 class JoinUsersContainer {
 
@@ -32,13 +33,13 @@ class JoinUsersContainer {
 	
 	void setUsers(List<String> users) {
 		mPopup.setUsers(users);
-		mJoinUsersCountView.setText(users.size() + "人");
+		mJoinUsersCountView.setText(users.size() + "莠ｺ");
 	}
 	
 	void update(String response) {
 		List<String> users;
 		try {
-			users = JoinUserFacrory.createNicknameList(response);
+			users = JoinUserFactory.createNicknameList(response);
 		} catch (JSONException e) {
 			users = new ArrayList<String>();
 		}

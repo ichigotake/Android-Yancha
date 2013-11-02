@@ -19,7 +19,7 @@ public class AppContext {
 	}
 	
 	/**
-	 * "x.x.x" 形式でバージョンネームを返す
+	 * "x.x.x" 縺ｮ繝輔か繝ｼ繝槭ャ繝医〒繝舌�ｼ繧ｸ繝ｧ繝ｳ蜷阪ｒ霑斐☆
 	 * @return
 	 */
 	public String getVersionName() {
@@ -36,7 +36,7 @@ public class AppContext {
 	}
 	
 	/**
-	 * "v x.x.x" 形式でバージョンネームを返す
+	 * "v x.x.x" 縺ｮ繝輔か繝ｼ繝槭ャ繝医〒繝舌�ｼ繧ｸ繝ｧ繝ｳ蜷阪ｒ霑斐☆
 	 * @return
 	 */
 	public String getFullVersionName() {

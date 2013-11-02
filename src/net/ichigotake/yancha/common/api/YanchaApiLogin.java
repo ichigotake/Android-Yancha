@@ -8,7 +8,7 @@ import net.ichigotake.yancha.common.user.User;
 import org.apache.http.client.methods.HttpRequestBase;
 
 /**
- * yanchaのログインAPIアクセッサー
+ * yancha縺ｮ繝ｭ繧ｰ繧､繝ｳAPI繧｢繧ｯ繧ｻ繝�繧ｵ繝ｼ
  */
 public class YanchaApiLogin extends AsyncHttpAccessor {
 

@@ -16,6 +16,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
+/**
+ * yanchaからのSocketIOのコールバックリスナ
+ */
 public class YanchaCallbackListener implements ChatCallbackListener {
 
 	final private String TAG = YanchaCallbackListener.class.getSimpleName();

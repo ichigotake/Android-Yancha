@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 
 /**
- * ƒƒOƒCƒ“‰æ–Ê
+ * ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢
  */
 public class LoginFragment extends Fragment {
 

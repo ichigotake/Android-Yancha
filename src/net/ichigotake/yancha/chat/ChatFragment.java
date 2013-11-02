@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * ƒ`ƒƒƒbƒg‰æ–Ê
+ * ãƒãƒ£ãƒƒãƒˆç”»é¢
  */
 public class ChatFragment extends Fragment {
 
@@ -37,7 +37,7 @@ public class ChatFragment extends Fragment {
 		try {
 			chat = new Chat(uri.getAbsoluteUrl());
 		} catch (MalformedURLException e) {
-			//TODO ‰½‚©‚µ‚ç‘Îô‚ğ
+            //TODO ä½•ã‹ã—ã‚‰å¯¾ç­–ã‚’
 			e.printStackTrace();
 		}
 		

@@ -7,7 +7,7 @@ public class ChatEventDispatcher {
 	public void dispatch(String eventName, String response, ChatCallbackListener listener) {
 		EmitEvent event = EmitEvent.get(eventName);
 		if (null == event) {
-			//TODO onError����
+			//TODO onErrorイベントを投げる
 			return ;
 		}
 		switch (event) {

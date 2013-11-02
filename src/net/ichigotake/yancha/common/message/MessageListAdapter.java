@@ -15,7 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 /**
- * ”­Œ¾‚ð•\Ž¦‚·‚é‚½‚ß‚ÌƒŠƒXƒgƒAƒ_ƒvƒ^[
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä¸€è¦§ã‚’è¡¨ç¤ºã™ã‚‹ã‚¢ãƒ€ãƒ—ã‚¿
  */
 public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 
@@ -70,11 +70,11 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 			if (plusplus > 0) {
 				String plusplusText;
 				if (plusplus >= 50) {
-					plusplusText = "™x" + plusplus;
+					plusplusText = "â˜… x " + plusplus;
 				} else {
 					StringBuilder builder = new StringBuilder();
 					for (int i=0; i<plusplus; i++) {
-						builder.append("™");
+						builder.append("â˜…");
 					}
 					plusplusText = builder.toString();
 				}

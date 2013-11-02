@@ -17,7 +17,7 @@ import com.google.common.eventbus.Subscribe;
 
 
 /**
- * yanchaサーバーとのイベントの送受信をするためのクラス
+ * yancha繧ｵ繝ｼ繝舌�ｼ縺ｫ蟇ｾ縺励※SocketIO縺ｮ繧､繝吶Φ繝医ｒ騾√ｋ
  */
 public class YanchaEmitter implements SendMessageListener {
 
@@ -44,7 +44,7 @@ public class YanchaEmitter implements SendMessageListener {
 	/**
 	 * Emit to "join tag"
 	 * 
-	 * @param tag
+	 * @param tags
 	 */
 	public void emitJoinTag(JoinTagList tags) {
 		try {

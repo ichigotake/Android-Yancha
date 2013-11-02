@@ -16,7 +16,7 @@ import android.widget.SearchView;
 import android.widget.SearchView.OnQueryTextListener;
 
 /**
- * アクションバーに検索窓を設置
+ * 繧｢繧ｯ繧ｷ繝ｧ繝ｳ繝舌�ｼ縺ｮ讀懃ｴ｢UI
  */
 public class ActionBarSearchable {
 
@@ -48,8 +48,8 @@ public class ActionBarSearchable {
 		}
 		
 	}
-	
-	// 保留
+
+    // 菫晉蕗
 	private class SearchableOnQueryTextListener implements OnQueryTextListener {
 			
 		@Override

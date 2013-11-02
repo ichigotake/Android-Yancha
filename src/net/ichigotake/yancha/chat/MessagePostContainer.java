@@ -31,7 +31,7 @@ class MessagePostContainer implements ViewContainer {
 			}
 			
 			mEmitter.emitUserMessage(message);
-			//TODO 発言失敗等での再利用用に発言ヒストリーを取っておきたい
+			//TODO 謚慕ｨｿ螟ｱ謨玲凾縺ｮ繝�繧ｭ繧ｹ繝医ｒ螻･豁ｴ縺ｨ縺励※蜿悶▲縺ｦ縺翫″縺溘＞
 			mMessageView.setText("");
 		}
 		

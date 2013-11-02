@@ -7,7 +7,7 @@ import net.ichigotake.yancha.common.context.BaseFragmentActivity;
 import android.os.Bundle;
 
 /**
- * チャット画面のアクティビティ
+ * 繝√Ε繝�繝育判髱｢縺ｮ繧｢繧ｯ繝�繧｣繝薙ユ繧｣
  */
 public class ChatActivity extends BaseFragmentActivity {
 

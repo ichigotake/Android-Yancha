@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * チャットのログ検索
+ * 驕主悉繝ｭ繧ｰ讀懃ｴ｢
  */
 public class ChatLogSearchFragment extends Fragment {
 

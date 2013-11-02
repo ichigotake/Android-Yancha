@@ -3,7 +3,7 @@ package net.ichigotake.yancha.common.api;
 import android.text.TextUtils;
 
 /**
- * APIÇÃURI
+ * API„ÅÆURI
  */
 public class ApiUri {
 

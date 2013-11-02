@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * ƒƒOƒCƒ“‰æ–Ê‚Ìƒrƒ…[‚ğŠi”[
+ * ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ã§åˆ©ç”¨ã™ã‚‹ãƒ“ãƒ¥ãƒ¼ãƒ›ãƒ«ãƒ€
  */
 class LoginViewHolder {
 

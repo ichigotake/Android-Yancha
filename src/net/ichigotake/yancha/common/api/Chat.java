@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 
 /**
- * ƒ`ƒƒƒbƒgƒT[ƒo[‚Æ’ÊM‚ğ‚·‚éƒNƒ‰ƒX
+ * ã‚µãƒ¼ãƒãƒ¼ã¸æ¥ç¶šã™ã‚‹ãƒãƒ£ãƒƒãƒˆã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ
  */
 public class Chat extends Thread implements IOCallback {
 	
@@ -86,7 +86,7 @@ public class Chat extends Thread implements IOCallback {
 
 	@Override
 	public void on(String event, IOAcknowledge ack, Object... args) {
-		// TODO ArrayIndexOutOfBoundsException‘Îô
+		// TODO ArrayIndexOutOfBoundsExceptionå¯¾ç­–
 		mDispatcher.dispatch(event, args[0].toString(), mListener);
 	}
 

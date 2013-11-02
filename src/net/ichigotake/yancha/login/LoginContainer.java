@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /**
- * ƒƒOƒCƒ“‰æ–Ê‚ğ•\¦‚·‚é
+ * ãƒ­ã‚°ã‚¤ãƒ³ç”»é¢ã‚’è¡¨ç¤º
  */
 class LoginContainer implements ViewContainer {
 

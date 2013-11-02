@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.common.message;
 
 /**
- * ƒƒbƒZ[ƒW‘—M‚ÌƒCƒxƒ“ƒgƒŠƒX‚È
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸é€ä¿¡æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆãƒªã‚¹ãƒŠ
  */
 public interface SendMessageListener {
 

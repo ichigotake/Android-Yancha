@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.common.ui;
 
 /**
- * ƒrƒ…[‚ÌŠÇ—‚ğ‚·‚é
+ * ãƒ“ãƒ¥ãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹ãŸã‚ã®ã‚³ãƒ³ãƒ†ãƒŠ
  */
 public interface ViewContainer {
 }

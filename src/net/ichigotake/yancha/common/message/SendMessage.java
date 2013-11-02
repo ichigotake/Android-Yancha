@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.common.message;
 
 /**
- * 送信メッセージのオブジェクト
+ * 騾∽ｿ｡縺吶ｋ繝｡繝�繧ｻ繝ｼ繧ｸ繧剃ｿ晄戟縺吶ｋ
  */
 public class SendMessage {
 

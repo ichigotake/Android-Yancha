@@ -4,12 +4,12 @@ import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.util.SparseArray;
 
 /**
- * ”­Œ¾‚ğŠÇ—‚·‚éƒŠƒXƒgƒNƒ‰ƒX
+ * ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä¸€è¦§
  */
 public class MessageList {
 	
 	/**
-	 * ˆêˆÓ‚ÈƒŠƒXƒg‚Ì‚½‚ß‚É”­Œ¾ID‚ğƒL[‚Æ‚µ‚½SparseArray‚ğ—˜—p
+     * TODO ä¸€æ„ãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ä¸€è¦§ã‚’ä¿æŒã™ã‚‹æ–¹æ³•ã‚’è€ƒãˆã‚‹
 	 */
 	private SparseArray<PostMessage> messageList;
 

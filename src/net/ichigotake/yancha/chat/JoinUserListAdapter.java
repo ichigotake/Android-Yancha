@@ -7,7 +7,7 @@ import android.content.Context;
 import android.widget.ArrayAdapter;
 
 /**
- * 参加ユーザー一覧のリストアダプター
+ * 繝ｭ繧ｰ繧､繝ｳ繝ｦ繝ｼ繧ｶ繝ｼ繧定｡ｨ遉ｺ縺吶ｋ縺溘ａ縺ｮ繧｢繝繝励ち
  */
 public class JoinUserListAdapter extends ArrayAdapter<String> {
 

@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
 /**
- * 自分自身の接続情報等を扱うデータクラス
+ * 繝√Ε繝�繝医↓繝ｭ繧ｰ繧､繝ｳ縺吶ｋ閾ｪ蛻�閾ｪ霄ｫ
  */
 public class User {
 

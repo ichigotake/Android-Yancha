@@ -5,7 +5,7 @@ import net.ichigotake.yancha.R;
 import com.google.common.base.Optional;
 
 /**
- * �`���b�g�̃X�e�[�^�X
+ * チャットの接続ステータス
  */
 public enum ChatStatus {
 	OFFLINE(R.string.yc_chat_status_offline),

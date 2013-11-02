@@ -39,11 +39,11 @@ class OnApiResponseListener implements HttpAccessEventListener {
 				}
 				mAdapter.notifyDataSetChanged();
 			} catch (JSONException e) {
-				// TODO ƒGƒ‰[ƒŒƒXƒ|ƒ“ƒX
+                // TODO ã‚¨ãƒ©ãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆã‚’æŠ•ã’ã‚‹
 				e.printStackTrace();
 			}
 		} else {
-			// TODO ƒGƒ‰[ƒŒƒXƒ|ƒ“ƒX
+            // TODO ã‚¨ãƒ©ãƒ¼ã‚¤ãƒ™ãƒ³ãƒˆã‚’æŠ•ã’ã‚‹
 		}
 	}
 }

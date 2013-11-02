@@ -19,7 +19,7 @@ import com.google.common.base.Optional;
 import com.google.common.eventbus.Subscribe;
 
 /**
- * ƒƒOƒCƒ“ˆ—‚ğÀs
+ * ã‚·ãƒ³ãƒ—ãƒ«ãƒ­ã‚°ã‚¤ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹
  */
 class SubmitSimpleLogin {
 
@@ -41,7 +41,7 @@ class SubmitSimpleLogin {
 		mUser.setNickname(nickname);
 		mUser.setConnectServerAuthority(authority);
 		
-		//TODO ƒƒOƒCƒ“¸”s‚Ì•ªŠò
+		//TODO ï¿½ï¿½ï¿½Oï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ì•ï¿½ï¿½ï¿½
 		YanchaApiLogin loginApi = new YanchaApiLogin(mUser);
 		loginApi.registerListener(new LoadingProgressDialogListener(mActivity));
 		loginApi.registerListener(new ShowConnectionErrorDialogListener(mActivity));
