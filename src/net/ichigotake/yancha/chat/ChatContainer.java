@@ -1,15 +1,16 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.common.ChatStatus;
-import net.ichigotake.yancha.common.api.YanchaEmitter;
+import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 
 /**
- * ƒ`ƒƒƒbƒg‰æ–Ê‚ð•\Ž¦‚·‚é
+ * ï¿½`ï¿½ï¿½ï¿½bï¿½gï¿½ï¿½Ê‚ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public class ChatContainer implements ViewContainer {
 
@@ -35,7 +36,7 @@ public class ChatContainer implements ViewContainer {
 		return mJoinTagContainer.getTagList();
 	}
 	
-	void addMessage(PostMessage message) {
+	public void addMessage(PostMessage message) {
 		mMessageContainer.addMessage(message);
 	}
 	

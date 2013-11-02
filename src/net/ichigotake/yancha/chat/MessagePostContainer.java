@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.api.YanchaEmitter;
+import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import android.view.View;
 import android.view.View.OnClickListener;

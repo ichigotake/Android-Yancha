@@ -3,7 +3,7 @@ package net.ichigotake.yancha.search;
 import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingListener;
-import net.ichigotake.yancha.common.api.SearchApiRequest;
+import net.ichigotake.yancha.common.api.rest.SearchApiRequest;
 import net.ichigotake.yancha.common.message.MessageListAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.common.user.User;

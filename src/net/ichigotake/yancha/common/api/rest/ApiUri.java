@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.api;
+package net.ichigotake.yancha.common.api.rest;
 
 import android.text.TextUtils;
 

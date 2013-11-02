@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.ichigotake.colorfulsweets.lib.ui.Display;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListPopupWindow;
 

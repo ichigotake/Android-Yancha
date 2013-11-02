@@ -3,8 +3,9 @@ package net.ichigotake.yancha.chat;
 import java.net.MalformedURLException;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.api.ApiUri;
-import net.ichigotake.yancha.common.api.Chat;
+import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
+import net.ichigotake.yancha.common.api.rest.ApiUri;
+import net.ichigotake.yancha.common.api.socketio.Chat;
 import net.ichigotake.yancha.common.user.User;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -40,8 +41,8 @@ public class ChatFragment extends Fragment {
             //TODO 何かしら対策を
 			e.printStackTrace();
 		}
-		
-		YanchaCallbackListener yanchaListener =
+
+        YanchaCallbackListener yanchaListener =
 				new YanchaCallbackListener(chat.getEmitter(), getActivity(), view);
 		chat.setCallbackListener(yanchaListener);
 		
