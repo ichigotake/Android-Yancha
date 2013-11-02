@@ -14,8 +14,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/yc_app_name"
         android:theme="@style/AppTheme" >
+
         <activity
-            android:name="net.ichigotake.yancha.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/yc_app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,7 +35,7 @@
         </activity>
         
         <activity
-            android:name="net.ichigotake.yancha.ChatActivity"
+            android:name=".ChatActivity"
             android:label="@string/yc_app_name"
             android:theme="@style/AppTheme"
             android:parentActivityName=".LoginActivity" />
