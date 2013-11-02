@@ -25,7 +25,11 @@ public class User {
 		this.pref = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
 		mContext = context;
 	}
-	
+
+    public boolean hasToken() {
+        return ! "".equals(getToken());
+    }
+
 	public String getToken() {
 		return pref.getString(KEY_TOKEN, "");
 	}

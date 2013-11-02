@@ -14,6 +14,9 @@ import net.ichigotake.yancha.common.user.User;
 public class ChatMediator {
 
     final private Handler mHandler = new Handler();
+
+    final private Activity mActivity;
+
     final private User mUser;
 
     final private ChatContainer mChatContainer;
@@ -21,9 +24,14 @@ public class ChatMediator {
     final private YanchaEmitter mEmitter;
 
     public ChatMediator(YanchaEmitter emitter, Activity activity, View view) {
+        mActivity = activity;
         mUser = new User(activity);
         mChatContainer = new ChatContainer(activity, emitter, view);
         mEmitter = emitter;
+    }
+
+    Activity getActivity() {
+       return mActivity;
     }
 
     YanchaEmitter getEmitter() {

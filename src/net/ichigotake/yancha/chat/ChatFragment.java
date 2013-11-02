@@ -2,16 +2,21 @@ package net.ichigotake.yancha.chat;
 
 import java.net.MalformedURLException;
 
+import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.socketio.Chat;
+import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yancha.login.LoginFragment;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * チャット画面
@@ -38,8 +43,14 @@ public class ChatFragment extends Fragment {
 		try {
 			chat = new Chat(uri.getAbsoluteUrl());
 		} catch (MalformedURLException e) {
-            //TODO 何かしら対策を
 			e.printStackTrace();
+            Toast.makeText(getActivity(),
+                    "無効なURLです",
+                    Toast.LENGTH_SHORT);
+            FragmentTransit.from(getActivity());
+            new FragmentTransit(getActivity())
+                    .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
+            return view;
 		}
 
         YanchaCallbackListener yanchaListener =
