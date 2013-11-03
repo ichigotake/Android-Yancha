@@ -1,18 +1,21 @@
 package net.ichigotake.yancha.common.message;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-
-import jp.sharakova.android.urlimageview.UrlImageView;
-import net.ichigotake.yancha.R;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
+import net.ichigotake.yancha.R;
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * メッセージ一覧を表示するアダプタ
@@ -57,12 +60,12 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 			TextView viewMessage = (TextView) contentView.findViewById(R.id.messageCellMessage);
 			viewMessage.setText(message.getMessage());
 			
-			UrlImageView viewProfileImageUrl = (UrlImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
+			ImageView viewProfileImageUrl = (ImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
 			String profileImageUrl = message.getProfileImageUrl();
 			if (!profileImageUrl.isEmpty()) {
-				viewProfileImageUrl.setImageUrl(profileImageUrl);
+                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, profileImageUrl);
 			} else {
-				viewProfileImageUrl.setImageUrl(message.getDefaultProfileImageUrl());
+                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, message.getDefaultProfileImageUrl());
 			}
 			
 			int plusplus = message.getPlusplus();
