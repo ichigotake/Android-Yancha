@@ -63,9 +63,9 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 			ImageView viewProfileImageUrl = (ImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
 			String profileImageUrl = message.getProfileImageUrl();
 			if (!profileImageUrl.isEmpty()) {
-                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, profileImageUrl);
+                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, message.getProfileImageUrl());
 			} else {
-                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, message.getDefaultProfileImageUrl());
+                viewProfileImageUrl.setBackgroundResource(android.R.drawable.sym_action_chat);
 			}
 			
 			int plusplus = message.getPlusplus();
