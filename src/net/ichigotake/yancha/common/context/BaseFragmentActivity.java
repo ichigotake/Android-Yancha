@@ -16,8 +16,8 @@ public class BaseFragmentActivity extends FragmentActivity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-		
+		getMenuInflater().inflate(R.menu.searchable, menu);
+
 		new ActionBarSearchable(this).setup(menu);
 		
 		return super.onCreateOptionsMenu(menu);

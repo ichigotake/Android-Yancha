@@ -26,6 +26,10 @@ public class User {
 		mContext = context;
 	}
 
+    public void resetToken() {
+        setToken("");
+    }
+
     public boolean hasToken() {
         return ! "".equals(getToken());
     }
