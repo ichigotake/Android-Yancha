@@ -5,15 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,45 +49,12 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 		
 		PostMessage message = getItem(position);
 		if (message != null) {
-			TextView viewNickname = (TextView) contentView.findViewById(R.id.messageCellNickname);
-			viewNickname.setText(message.getNickname());
-			
-			TextView viewMessage = (TextView) contentView.findViewById(R.id.messageCellMessage);
-			viewMessage.setText(message.getMessage());
-			
-			ImageView viewProfileImageUrl = (ImageView) contentView.findViewById(R.id.messageCellProfileImageUrl);
-			String profileImageUrl = message.getProfileImageUrl();
-			if (!profileImageUrl.isEmpty()) {
-                UrlImageViewHelper.setUrlDrawable(viewProfileImageUrl, message.getProfileImageUrl());
-			} else {
-                viewProfileImageUrl.setBackgroundResource(android.R.drawable.sym_action_chat);
-			}
-			
-			int plusplus = message.getPlusplus();
-			TextView viewPlusplus = (TextView) contentView.findViewById(R.id.messageCellPlusplus);
-			if (plusplus > 0) {
-				String plusplusText;
-				if (plusplus >= 50) {
-					plusplusText = "★ x " + plusplus;
-				} else {
-					StringBuilder builder = new StringBuilder();
-					for (int i=0; i<plusplus; i++) {
-						builder.append("★");
-					}
-					plusplusText = builder.toString();
-				}
-				viewPlusplus.setVisibility(View.VISIBLE);
-				viewPlusplus.setText(plusplusText);
-			} else {
-				viewPlusplus.setVisibility(View.GONE);
-			}
-			
-			TextView viewTimestamp = (TextView) contentView.findViewById(R.id.messageCellTimestamp);
-			viewTimestamp.setText(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message.getCreatedTime()/100));
+            PostMessageViewCell.initialize(contentView, message);
 		}
 		
 		
 		return contentView;
 	}
+
 
 }
