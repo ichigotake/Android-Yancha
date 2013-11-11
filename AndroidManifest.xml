@@ -44,7 +44,13 @@
             android:label="@string/yc_app_name"
             android:theme="@style/AppTheme"
             android:parentActivityName=".LoginActivity" />
-        
+
+        <activity
+            android:name=".SearchActivity"
+            android:label="@string/yc_app_name"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".ChatActivity" />
+
     </application>
 
 </manifest>
