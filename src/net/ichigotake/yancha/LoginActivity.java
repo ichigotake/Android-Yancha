@@ -30,9 +30,8 @@ public class LoginActivity extends BaseFragmentActivity {
             Optional<String> token = Optional.fromNullable(uri.getQueryParameter("token"));
             if (token.isPresent()) {
                 user.setToken(token.get());
-                new ActivityTransit(this)
-                        .clearTop()
-                        .toNext(ChatActivity.class);
+                new LoginExecuter(this)
+                    .login();
                 return ; // TODO メソッドの末尾以外でのeturnはやめよう
             }
         }

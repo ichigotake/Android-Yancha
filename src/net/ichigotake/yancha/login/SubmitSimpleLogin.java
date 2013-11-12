@@ -9,6 +9,7 @@ import net.ichigotake.colorfulsweets.lib.ui.dialog.ShowConnectionErrorDialogList
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.YanchaApiLogin;
+import net.ichigotake.yancha.common.context.LoginExecuter;
 import net.ichigotake.yancha.common.user.User;
 
 import org.apache.http.ParseException;
@@ -57,9 +58,8 @@ class SubmitSimpleLogin {
 				Optional<String> content = response.getContent();
 				if (content.isPresent()) {
 					mUser.setToken(content.get());
-					new ActivityTransit(mActivity)
-						.clearTop()
-						.toNext(ChatActivity.class);
+                    new LoginExecuter(mActivity)
+                            .login();
 				} else {
 					new MessageDialogBuilder(mActivity)
 						.setMessage(R.string.yc_connection_failed)

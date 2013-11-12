@@ -42,8 +42,7 @@
         <activity
             android:name=".ChatActivity"
             android:label="@string/yc_app_name"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".LoginActivity" />
+            android:theme="@style/AppTheme" />
 
         <activity
             android:name=".SearchActivity"
