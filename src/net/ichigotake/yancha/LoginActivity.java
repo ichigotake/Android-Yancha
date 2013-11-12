@@ -9,7 +9,7 @@ import com.google.common.base.Optional;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.colorfulsweets.lib.intent.UriScheme;
 import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.context.BaseFragmentActivity;
+import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.context.LoginSession;
 import net.ichigotake.yancha.common.user.User;
 import net.ichigotake.yancha.login.LoginFragment;
@@ -17,7 +17,7 @@ import net.ichigotake.yancha.login.LoginFragment;
 /**
  * ログイン画面のアクティビティ
  */
-public class LoginActivity extends BaseFragmentActivity {
+public class LoginActivity extends BaseActivity {
 		
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

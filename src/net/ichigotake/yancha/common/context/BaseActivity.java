@@ -3,13 +3,12 @@ package net.ichigotake.yancha.common.context;
 import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.SearchActivity;
-import net.ichigotake.yancha.common.ui.actionbar.ActionBarSearchable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class BaseFragmentActivity extends FragmentActivity {
+public class BaseActivity extends ActionBarActivity {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

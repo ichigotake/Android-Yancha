@@ -13,7 +13,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/yc_app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/YanchaAppTheme" >
 
         <activity
             android:name=".SplashActivity"
@@ -41,13 +41,11 @@
         
         <activity
             android:name=".ChatActivity"
-            android:label="@string/yc_app_name"
-            android:theme="@style/AppTheme" />
+            android:label="@string/yc_app_name" />
 
         <activity
             android:name=".SearchActivity"
             android:label="@string/yc_app_name"
-            android:theme="@style/AppTheme"
             android:parentActivityName=".ChatActivity" />
 
     </application>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
     <!-- Searchable -->
 
     <item
         android:id="@+id/menu_search_icon"
         android:icon="@drawable/ic_action_search"
         android:title="@string/yc_search_keyword"
-        android:showAsAction="always" />
+        app:showAsAction="always|collapseActionView" />
 
 </menu>

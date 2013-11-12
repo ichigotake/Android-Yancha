@@ -1,12 +1,10 @@
 package net.ichigotake.yancha;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.chat.ChatFragment;
 import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.context.BaseFragmentActivity;
+import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.context.LoginSession;
-import net.ichigotake.yancha.common.user.User;
 
 import android.os.Bundle;
 import android.view.Menu;
