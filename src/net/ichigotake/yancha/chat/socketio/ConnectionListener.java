@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.common.eventbus.Subscribe;
 
+import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
 import net.ichigotake.yancha.common.ChatStatus;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.api.socketio.listener.ConnectionEventListener;
@@ -40,6 +41,9 @@ public class ConnectionListener implements ConnectionEventListener {
 
             @Override
             public void run() {
+                ActionBarSetting.from(mParameter.getActivity())
+                        .setTitle(mParameter.getUser().getConnectServerAuthority());
+
                 mParameter.getContainer().updateStatus(ChatStatus.ONLINE);
             }
         });
