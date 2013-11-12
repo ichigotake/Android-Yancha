@@ -5,6 +5,7 @@ import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.chat.ChatFragment;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseFragmentActivity;
+import net.ichigotake.yancha.common.context.LoginSession;
 import net.ichigotake.yancha.common.user.User;
 
 import android.os.Bundle;
@@ -34,11 +35,9 @@ public class ChatActivity extends BaseFragmentActivity {
     public boolean onOptionsItemSelected(MenuItem menu) {
         switch (menu.getItemId()) {
             case R.id.menu_logout:
-                new User(this).resetToken();
-                new ActivityTransit(this)
-                        .clearTop()
-                        .toNext(LoginActivity.class);
-                break;
+                new LoginSession(this)
+                    .logout();
+                return true;
         }
 
         return super.onOptionsItemSelected(menu);

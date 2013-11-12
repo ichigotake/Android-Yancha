@@ -1,15 +1,13 @@
 package net.ichigotake.yancha.login;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.LoadingProgressDialogListener;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.MessageDialogBuilder;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.ShowConnectionErrorDialogListener;
-import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.YanchaApiLogin;
-import net.ichigotake.yancha.common.context.LoginExecuter;
+import net.ichigotake.yancha.common.context.LoginSession;
 import net.ichigotake.yancha.common.user.User;
 
 import org.apache.http.ParseException;
@@ -58,7 +56,7 @@ class SubmitSimpleLogin {
 				Optional<String> content = response.getContent();
 				if (content.isPresent()) {
 					mUser.setToken(content.get());
-                    new LoginExecuter(mActivity)
+                    new LoginSession(mActivity)
                             .login();
 				} else {
 					new MessageDialogBuilder(mActivity)
