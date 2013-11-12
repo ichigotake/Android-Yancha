@@ -8,11 +8,11 @@ import net.ichigotake.yancha.ChatActivity;
 /**
  * ログインを実行する
  */
-public class LoginExecuter {
+public class LoginSession {
 
     final private Activity mActivity;
 
-    public LoginExecuter(Activity activity) {
+    public LoginSession(Activity activity) {
         mActivity = activity;
     }
 
