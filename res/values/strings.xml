@@ -44,4 +44,8 @@
     
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
+
+    <!-- chat -->
+    <string name="yc_input_mode_multiple_line">Enterで改行</string>
+
 </resources>

@@ -62,6 +62,16 @@
             android:text="@string/yc_default_tag"
             android:textSize="20sp" />
         
+        <CheckBox
+            android:id="@+id/chatInputModeSwitcher"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="8dp"
+            android:background="@color/common_page_background"
+            android:text="@string/yc_input_mode_multiple_line"
+            android:textColor="@color/text_blight"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -85,14 +95,13 @@
             android:id="@+id/chatSendMessageText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/chatSendMessageSend"
             android:layout_centerVertical="true"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:hint=""
-            android:inputType="text"
-            android:imeOptions="actionSend"
-            android:layout_toLeftOf="@id/chatSendMessageSend"
-             />
+            android:inputType="textMultiLine"
+            android:imeOptions="actionSend" />
 
     </RelativeLayout>
         
