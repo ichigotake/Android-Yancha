@@ -62,15 +62,6 @@
             android:text="@string/yc_default_tag"
             android:textSize="20sp" />
         
-        <TextView 
-            android:id="@+id/chatStatus"
-            android:layout_height="50dp"
-            android:layout_width="wrap_content"
-            android:layout_toRightOf="@+id/chatSelectedTagSelected"
-            android:text="@string/yc_chat_status_offline"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:textColor="#ffffff"/>
     </RelativeLayout>
 
     <RelativeLayout

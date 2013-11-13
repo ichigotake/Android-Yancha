@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 
 import java.util.ArrayList;
@@ -17,9 +18,7 @@ import java.util.List;
  */
 public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 
-	private LayoutInflater inflater;
-	
-	private List<PostMessage> messageList;
+	private LayoutInflater mInflater;
 	
 	public MessageListAdapter(Context context) {
 		this(context, new ArrayList<PostMessage>());
@@ -27,15 +26,21 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 	
 	public MessageListAdapter(Context context, List<PostMessage> messageList) {
 		super(context, R.layout.yc_common_message_cell, messageList);
-		this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		this.messageList = messageList;
+		this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
-	
-	@Override
-	public PostMessage getItem(int position) {
-		return messageList.get(position);
-	}
-	
+
+    public void update(PostMessage message) {
+        int lastIndex = getCount()-1;
+        for (int i=lastIndex; i>=0; i--) {
+            PostMessage _message = getItem(i);
+            if (message.getId() == _message.getId()) {
+                remove(_message);
+                insert(message, i);
+                break;
+            }
+        }
+    }
+
 	@Override
 	public long getItemId(int position) {
 		return position;
@@ -44,7 +49,7 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 	@Override
 	public View getView(final int position, View contentView, ViewGroup parent) {
 		if (contentView == null) {
-			contentView = inflater.inflate(R.layout.yc_common_message_cell, null);
+			contentView = mInflater.inflate(R.layout.yc_common_message_cell, null);
 		}
 		
 		PostMessage message = getItem(position);

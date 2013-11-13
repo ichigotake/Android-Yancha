@@ -14,7 +14,6 @@
     <string name="yc_action_logout">ログアウト</string>
     <string name="yc_action_about">yanchaについて</string>
     <string name="yc_action_join_users">ログインユーザー一覧</string>
-    <string name="yc_hello_world">Hello world!</string>
 
     <string name="yc_login_twitter">Twitterでログイン</string>
     <string name="yc_nickname">ニックネーム</string>
@@ -45,20 +44,4 @@
     
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
-    <string name="yc_chat_status_offline">オフラインです</string>
-    <string name="yc_chat_status_online"></string>
-    
-    <!-- information -->
-    <string name="yc_about">yancha (旧名yairc) はログの保全、リアルタイム性、モバイル端末への対応を重視した、Perlで作成されたチャットシステムです。</string>
-    <!-- hints -->
-    <string name="yc_hints_quotation">&gt;&gt;
-引用テキスト
-&lt;&lt;</string>
-    <string name="yc_hints_javascript">&gt;|javascript|
-console.log("syntax hiright for javascript");
-||&lt;</string>
-    <string name="yc_hints_perl">&gt;|perl|
-print "syntax hiright for Perl";
-||&lt;</string>
-    
 </resources>

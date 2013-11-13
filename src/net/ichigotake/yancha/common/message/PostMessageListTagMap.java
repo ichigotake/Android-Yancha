@@ -24,6 +24,12 @@ public class PostMessageListTagMap {
     }
 
     public boolean exists(PostMessageBuilder.PostMessage message) {
+        for (SparseArray<PostMessageBuilder.PostMessage> tagedMessages : mAllMessages.values()) {
+            PostMessageBuilder.PostMessage containsMessage = tagedMessages.get(message.getId());
+            if (null != containsMessage) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -51,5 +57,15 @@ public class PostMessageListTagMap {
 
     public boolean containsTag(String tag) {
         return mJoinTagList.contains(tag);
+    }
+
+    public void update(PostMessageBuilder.PostMessage message) {
+        for (SparseArray<PostMessageBuilder.PostMessage> tagedMessages : mAllMessages.values()) {
+            PostMessageBuilder.PostMessage containsMessage = tagedMessages.get(message.getId());
+            if (null != containsMessage) {
+                tagedMessages.remove(message.getId());
+                tagedMessages.put(message.getId(), message);
+            }
+        }
     }
 }

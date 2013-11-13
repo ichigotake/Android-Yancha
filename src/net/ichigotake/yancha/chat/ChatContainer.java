@@ -1,12 +1,10 @@
 package net.ichigotake.yancha.chat;
 
-import net.ichigotake.yancha.common.ChatStatus;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 
 /**
@@ -22,14 +20,11 @@ public class ChatContainer implements ViewContainer {
 	
 	final private JoinUsersContainer mJoinUsersContainer;
 	
-	final private StatusContainer mStatusContainer;
-	
 	public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
 		mMessageContainer = new MessageContainer(activity, view);
 		mMessagePostContainer = new MessagePostContainer(view, emitter);
 		mJoinTagContainer = new JoinTagContainer(view, getDefaultTagList());
 		mJoinUsersContainer = new JoinUsersContainer(activity, view);
-		mStatusContainer = new StatusContainer(view);
 	}
 
 	public JoinTagList getTagList() {
@@ -40,14 +35,14 @@ public class ChatContainer implements ViewContainer {
 		mMessageContainer.addMessage(message);
 	}
 	
-	public void updateStatus(ChatStatus status) {
-		mStatusContainer.updateStatus(status);
-	}
-	
 	public void updateJoinUsers(String response) {
 		mJoinUsersContainer.update(response);
 	}
-	
+
+    /**
+     * とりあえずのデバッグ用
+     * @return
+     */
 	final private JoinTagList getDefaultTagList() {
 		JoinTagList tags = new JoinTagList();
 		tags.add("PUBLIC");

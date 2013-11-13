@@ -2,19 +2,15 @@ package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.MessageListAdapter;
-import net.ichigotake.yancha.common.message.PostMessageComparator;
 import net.ichigotake.yancha.common.message.PostMessageListTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
 import android.content.Context;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.ListView;
 
 import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * 発言一覧を表示する
@@ -24,8 +20,8 @@ class MessageContainer implements ViewContainer {
 	final private ListView mMessageListView;
 
     final private PostMessageListTagMap mMessages;
-	
-	final private MessageListAdapter mAdapter;
+
+    final private MessageListAdapter mAdapter;
 
 	MessageContainer(Context context, View view) {
 		mAdapter = new MessageListAdapter(context);
@@ -42,20 +38,37 @@ class MessageContainer implements ViewContainer {
 	
 	void addMessage(PostMessage message) {
         if (mMessages.exists(message)) {
-            return ;
+            mMessages.update(message);
+            mAdapter.update(message);
+        } else {
+
+            mMessages.add(message);
+
+            int count = mAdapter.getCount();
+            if (0 == count) {
+                mAdapter.add(message);
+            } else {
+                int lastIndex = count-1;
+                for (int i=lastIndex; i>=0; i--) {
+                    PostMessage _message = mAdapter.getItem(i);
+                    if (message.getId() >= _message.getId()) {
+                        if (lastIndex == i) {
+                            mAdapter.add(message);
+                        } else {
+                            mAdapter.insert(message, i+1);
+                        }
+                        break;
+                    }
+                }
+            }
+            while (mAdapter.getCount() > 100) {
+                mAdapter.remove(mAdapter.getItem(0));
+            }
+
         }
 
-		mMessages.add(message);
-		mAdapter.add(message);
-        mAdapter.sort(new PostMessageComparator());
-		
-		while (mAdapter.getCount() > 100) {
-			mAdapter.remove(mAdapter.getItem(0));
-		}
+        mAdapter.notifyDataSetChanged();
 
-		mAdapter.notifyDataSetChanged();
-		mMessageListView.invalidateViews();
-		
 		if (isLastPosition()) {
 			scrollBottom();
 		}
