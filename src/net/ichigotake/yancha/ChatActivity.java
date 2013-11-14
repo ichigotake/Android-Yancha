@@ -13,7 +13,7 @@ import android.view.MenuItem;
 /**
  * チャット画面のアクティビティ
  */
-public class ChatActivity extends BaseFragmentActivity {
+public class ChatActivity extends BaseActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
