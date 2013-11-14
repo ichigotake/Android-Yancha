@@ -60,7 +60,7 @@ public class EmitEventDispatcher {
                 mEventBus.post(new DisconnectResponse());
                 break;
             case DELETE_USER_MESSAGE:
-                mEventBus.post(new DeleteUserMessageResponse());
+                mEventBus.post(new DeleteUserMessageResponse(response));
                 break;
             case ERROR:
                 mEventBus.post(new ErrorResponse());

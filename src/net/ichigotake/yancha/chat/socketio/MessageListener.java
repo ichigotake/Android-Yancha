@@ -31,8 +31,27 @@ public class MessageListener implements MessageEventListener {
     }
 
     @Override @Subscribe
-    public void onDeleteUserMessage(DeleteUserMessageResponse response) {
+    public void onDeleteUserMessage(DeleteUserMessageResponse response)
+            throws EmptyResponseException {
 
+        Optional<String> body = response.getResponseBody();
+        if (! body.isPresent()) {
+            throw new EmptyResponseException();
+        }
+
+        try {
+            final JSONObject json = new JSONObject(body.get());
+            final PostMessageBuilder.PostMessage message = PostMessageFactory.create(json);
+
+            mParameter.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mParameter.getContainer().removeMessage(message);
+                }
+            });
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override @Subscribe
@@ -45,12 +64,7 @@ public class MessageListener implements MessageEventListener {
         try {
             final JSONObject json = new JSONObject(body.get());
             final PostMessageBuilder.PostMessage message;
-            try {
-                message = PostMessageFactory.create(json);
-            } catch (JSONException e) {
-                e.printStackTrace();
-                return ;
-            }
+            message = PostMessageFactory.create(json);
 
             mParameter.runOnUiThread(new Runnable() {
 

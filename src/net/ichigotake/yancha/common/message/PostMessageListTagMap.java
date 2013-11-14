@@ -68,4 +68,13 @@ public class PostMessageListTagMap {
             }
         }
     }
+
+    public void remove(PostMessageBuilder.PostMessage message) {
+        for (SparseArray<PostMessageBuilder.PostMessage> tagedMessages : mAllMessages.values()) {
+            PostMessageBuilder.PostMessage containsMessage = tagedMessages.get(message.getId());
+            if (null != containsMessage) {
+                tagedMessages.remove(message.getId());
+            }
+        }
+    }
 }

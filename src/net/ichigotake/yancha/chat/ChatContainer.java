@@ -34,6 +34,10 @@ public class ChatContainer implements ViewContainer {
 	public void addMessage(PostMessage message) {
 		mMessageContainer.addMessage(message);
 	}
+
+    public void removeMessage(PostMessage message) {
+        mMessageContainer.removeMessage(message);
+    }
 	
 	public void updateJoinUsers(String response) {
 		mJoinUsersContainer.update(response);

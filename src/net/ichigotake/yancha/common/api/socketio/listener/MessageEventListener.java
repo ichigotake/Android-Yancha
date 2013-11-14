@@ -12,7 +12,7 @@ public interface MessageEventListener extends EmitEventListener {
 
     public void onAnnouncement(AnnounsementResponse response);
 
-    public void onDeleteUserMessage(DeleteUserMessageResponse response);
+    public void onDeleteUserMessage(DeleteUserMessageResponse response) throws EmptyResponseException;
 
     public void onUserMessage(UserMessageResponse response) throws EmptyResponseException;
 

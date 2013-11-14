@@ -35,6 +35,17 @@ class MessageContainer implements ViewContainer {
 		animationAdapter.setAbsListView(mMessageListView);
 		mMessageListView.setAdapter(animationAdapter);
 	}
+
+    void removeMessage(PostMessage message) {
+        mMessages.remove(message);
+        for (int i=mAdapter.getCount()-1; i>=0; i--) {
+            PostMessage _message = mAdapter.getItem(i);
+            if (message.getId() == _message.getId()) {
+                mAdapter.remove(_message);
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+    }
 	
 	void addMessage(PostMessage message) {
         if (mMessages.exists(message)) {

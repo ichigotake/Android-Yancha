@@ -6,7 +6,7 @@ public enum EmitEvent {
     CONNECT("connect"),
     CONNECTIONG("connecting"),
     DISCONNECT("disconnect"),
-    DELETE_USER_MESSAGE("delete_user_message"),
+    DELETE_USER_MESSAGE("delete user message"),
     ERROR("error"),
     JOIN_TAG("join tag"),
     NICKNAMES("nicknames"),
