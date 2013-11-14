@@ -13,9 +13,9 @@
     <string name="yc_action_settings">設定</string>
     <string name="yc_action_logout">ログアウト</string>
     <string name="yc_action_about">yanchaについて</string>
-    <string name="yc_action_join_users">ログインユーザー一覧</string>
+    <string name="yc_action_join_users">ログインユーザー</string>
 
-    <string name="yc_login_twitter">Twitterでログイン</string>
+    <string name="yc_login_twitter">Twitterログイン</string>
     <string name="yc_nickname">ニックネーム</string>
     <string name="yc_login">ログイン</string>
     <string name="yc_login_or">または</string>
@@ -25,9 +25,9 @@
     
     <!-- misc -->
     <string name="yc_submit">送信</string>
-    <string name="yc_link_search"><u>過去ログ検索</u></string>
+    <string name="yc_link_search"><u>過去ログ</u></string>
     <string name="yc_search_option">検索オプション</string>
-    <string name="yc_search_keyword">検索キーワード</string>
+    <string name="yc_search_keyword">キーワード</string>
     <string name="yc_default_tag">#PUBLIC</string>
     
     <string name="yc_connection_failed">接続に失敗しました</string>
@@ -46,6 +46,6 @@
     <string name="join_users_image_content_description">you</string>
 
     <!-- chat -->
-    <string name="yc_input_mode_multiple_line">Enterで改行</string>
+    <string name="yc_input_mode_multiple_line">改行</string>
 
 </resources>
