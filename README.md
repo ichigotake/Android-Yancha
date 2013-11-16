@@ -2,11 +2,9 @@
 
 AndroidのYanchaクライアント
 
-## 開発状況
+## デバッグ協力者募集のお知らせ
 
-絶賛開発中です
-
-足りていない機能も多く、まだ実用できる状態ではありません
+[詳しくはこちらのIssueをご覧ください](https://github.com/ichigotake/Android-yancha/issues/36)
 
 ## 関連
 
