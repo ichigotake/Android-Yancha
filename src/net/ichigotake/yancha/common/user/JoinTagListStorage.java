@@ -21,7 +21,7 @@ public class JoinTagListStorage {
 	public void putAll(JoinTagList tags) {
 		Editor editor = mPref.edit();
 		Set<String> tagSet = new HashSet<String>();
-		for (String tag : tags.getAll().keySet()) {
+		for (String tag : tags.toMap().keySet()) {
 			tagSet.add(tag);
 		}
 		editor.putStringSet(KEY_TAG_LIST, tagSet);

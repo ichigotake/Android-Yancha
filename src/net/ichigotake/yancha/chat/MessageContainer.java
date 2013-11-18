@@ -4,7 +4,8 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.MessageListAdapter;
 import net.ichigotake.yancha.common.message.PostMessageListTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
+
 import android.content.Context;
 import android.view.View;
 import android.widget.ListView;

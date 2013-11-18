@@ -27,7 +27,7 @@ class SelectedTagOnClickListener implements OnClickListener {
 		mPopup = new PopupMenu(view.getContext(), view);
 		mPopup.setOnMenuItemClickListener(new PopupOnClickListener());
         List<String> tags = new ArrayList<String>();
-		for (String tag : mTags.getAll().keySet()) {
+		for (String tag : mTags.toMap().keySet()) {
             tags.add(tag);
 		}
         Collections.sort(tags, new CharcodeComparator());

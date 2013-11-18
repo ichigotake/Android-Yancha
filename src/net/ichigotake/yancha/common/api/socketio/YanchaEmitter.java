@@ -49,7 +49,7 @@ public class YanchaEmitter implements SendMessageListener {
 	public void emitJoinTag(JoinTagList tags) {
 		try {
 			JSONObject json = new JSONObject();
-			for (String tag : tags.getAll().keySet()) {
+			for (String tag : tags.toMap().keySet()) {
 				json.put(tag, tag);
 			}
 			chat.emit(EmitEvent.JOIN_TAG.getName(), json);

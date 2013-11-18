@@ -7,8 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 import java.util.ArrayList;
 import java.util.List;

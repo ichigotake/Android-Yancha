@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
 
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 import java.text.SimpleDateFormat;
 
@@ -22,13 +22,13 @@ class PostMessageViewCell {
         mHolder = holder;
     }
 
-    static void initialize(View view, PostMessageBuilder.PostMessage message) {
+    static void initialize(View view, PostMessage message, int position) {
         PostMessageViewHolder holder = new PostMessageViewHolder(view);
         PostMessageViewCell cell = new PostMessageViewCell(holder);
         cell.initialize(message);
     }
 
-    private void initialize(PostMessageBuilder.PostMessage message) {
+    private void initialize(PostMessage message) {
         setNickname(message.getNickname());
         setMesage(message.getMessage());
         setProfileImage(message.getProfileImageUrl());
