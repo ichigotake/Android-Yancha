@@ -1,11 +1,13 @@
 package net.ichigotake.yancha.chat;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import net.ichigotake.colorfulsweets.lib.ui.Display;
+import net.ichigotake.yancha.chat.socketio.CharcodeComparator;
+
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ListPopupWindow;
 
@@ -26,6 +28,7 @@ class JoinUsersPopupListener {
 	}
 	
 	void setUsers(List<String> users) {
+        Collections.sort(users, new CharcodeComparator());
 		mAdapter.clear();
 		mAdapter.addAll(users);
 		mAdapter.notifyDataSetChanged();

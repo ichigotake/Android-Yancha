@@ -1,11 +1,16 @@
 package net.ichigotake.yancha.chat;
 
+import net.ichigotake.yancha.chat.socketio.CharcodeComparator;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.ArrayList;
 
 class SelectedTagOnClickListener implements OnClickListener {
 
@@ -21,10 +26,16 @@ class SelectedTagOnClickListener implements OnClickListener {
 	public void onClick(View view) {
 		mPopup = new PopupMenu(view.getContext(), view);
 		mPopup.setOnMenuItemClickListener(new PopupOnClickListener());
+        List<String> tags = new ArrayList<String>();
 		for (String tag : mTags.getAll().keySet()) {
-			mPopup.getMenu().add(tag);
+            tags.add(tag);
 		}
-		mPopup.show();
+        Collections.sort(tags, new CharcodeComparator());
+        for (String tag : tags) {
+            mPopup.getMenu().add(tag);
+        }
+
+        mPopup.show();
 	}
 	
 	private class PopupOnClickListener implements OnMenuItemClickListener {
