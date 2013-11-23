@@ -8,6 +8,8 @@ import android.widget.TextView;
 import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * メッセージを送信する
  */
@@ -27,7 +29,7 @@ class MessagePost implements View.OnClickListener {
 
     void submit() {
         String message = mMessageView.getText().toString();
-        if (! message.isEmpty()) {
+        if (! StringUtils.isBlank(message)) {
             mEmitter.emitUserMessage(message);
             //TODO 投稿失敗時のテキストを履歴として取っておきたい
             mMessageView.setText("");
