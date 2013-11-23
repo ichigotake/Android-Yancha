@@ -2,7 +2,7 @@ package net.ichigotake.yancha.search;
 
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessEventListener;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessResponse;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
 import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
 
 import org.json.JSONArray;

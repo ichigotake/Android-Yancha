@@ -1,6 +1,6 @@
 package net.ichigotake.yancha.chat;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ichigotake.yancha.R;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.ArrayAdapter;
  */
 public class JoinUserListAdapter extends ArrayAdapter<String> {
 
-	public JoinUserListAdapter(Context context, ArrayList<String> users) {
+	public JoinUserListAdapter(Context context, List<String> users) {
 		super(context, R.layout.yc_join_users_cell, users);
 	}
 

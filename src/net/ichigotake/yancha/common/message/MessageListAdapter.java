@@ -53,9 +53,8 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 		
 		PostMessage message = getItem(position);
 		if (message != null) {
-            PostMessageViewCell.initialize(contentView, message);
+            PostMessageViewCell.initialize(contentView, message, position);
 		}
-		
 		
 		return contentView;
 	}

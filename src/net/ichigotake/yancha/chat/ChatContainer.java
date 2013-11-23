@@ -3,7 +3,8 @@ package net.ichigotake.yancha.chat;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
+
 import android.app.Activity;
 import android.view.View;
 

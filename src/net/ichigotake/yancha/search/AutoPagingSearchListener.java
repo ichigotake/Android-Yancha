@@ -7,7 +7,8 @@ import net.ichigotake.yancha.common.api.rest.SearchApiRequest;
 import net.ichigotake.yancha.common.message.MessageListAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.common.user.User;
-import net.ichigotake.yanchasdk.lib.model.PostMessageBuilder.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.PostMessage;
+
 import android.content.Context;
 import android.widget.ArrayAdapter;
 
