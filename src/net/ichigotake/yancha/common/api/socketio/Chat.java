@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.common.api.socketio;
 
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
-import net.ichigotake.yancha.common.api.socketio.listener.EmitEventListener;
 
 import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
@@ -18,7 +17,7 @@ import org.json.JSONObject;
  * サーバーへ接続するチャットクライアント
  */
 public class Chat extends Thread implements IOCallback {
-	
+
 	final private String mServerUrl;
 	
 	final private EmitEventDispatcher mDispatcher;
@@ -30,12 +29,12 @@ public class Chat extends Thread implements IOCallback {
     public Chat(String serverUrl) throws MalformedURLException {
 		mServerUrl = serverUrl;
 		mDispatcher = new EmitEventDispatcher();
-		mSocket = new SocketIO(mServerUrl);
+		mSocket = createSocketIO(mServerUrl);
 		mEmitter = new YanchaEmitter(mSocket);
 	}
 
-    public void registerListener(EmitEventListener listener) {
-        mDispatcher.registerListener(listener);
+    private SocketIO createSocketIO(String serverUrl) throws MalformedURLException {
+        return new SocketIO(serverUrl);
     }
 
 	@Override
@@ -56,8 +55,9 @@ public class Chat extends Thread implements IOCallback {
 	
 	public void disconnect() {
 		if (mSocket.isConnected()) {
+            mEmitter.emitDisconnect();
 			mSocket.disconnect();
-			mEmitter.emitDisconnect();
+            mSocket = null;
 		}
 	}
 	
@@ -97,4 +97,14 @@ public class Chat extends Thread implements IOCallback {
         mDispatcher.registerListener(listener.createLoginListener());
         mDispatcher.registerListener(listener.createMessageListener());
     }
+
+    public void reconnect() throws MalformedURLException {
+        if (null != mSocket) {
+            mSocket = null;
+        }
+
+        mSocket = createSocketIO(mServerUrl);
+        connect();
+    }
+
 }
