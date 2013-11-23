@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 
 /**
@@ -30,6 +31,8 @@ class MessagePost implements View.OnClickListener {
             mEmitter.emitUserMessage(message);
             //TODO 投稿失敗時のテキストを履歴として取っておきたい
             mMessageView.setText("");
+            SoftInput.hide(mMessageView);
+
         }
 
     }
