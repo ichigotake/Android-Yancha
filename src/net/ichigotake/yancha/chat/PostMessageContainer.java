@@ -17,7 +17,7 @@ import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationA
 /**
  * 発言一覧を表示する
  */
-class MessageContainer implements ViewContainer {
+class PostMessageContainer implements ViewContainer {
 
     final private long ANIMATION_DURATION = 70;
 
@@ -27,7 +27,7 @@ class MessageContainer implements ViewContainer {
 
     final private PostMessageAdapter mAdapter;
 
-    MessageContainer(Context context, View view, YanchaEmitter emitter) {
+    PostMessageContainer(Context context, View view, YanchaEmitter emitter) {
         mAdapter = new PostMessageAdapter(context, new ChatPostMessageViewConnector(emitter));
         mMessages = new PostMessageListTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);

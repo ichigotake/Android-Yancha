@@ -1,6 +1,6 @@
 package net.ichigotake.yancha.chat;
 
-import net.ichigotake.yancha.chat.socketio.CharcodeComparator;
+import net.ichigotake.yancha.common.user.JoinTagComparator;
 import net.ichigotake.yanchasdk.lib.model.JoinTagList;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +30,7 @@ class SelectedTagOnClickListener implements OnClickListener {
         for (String tag : mTags.toMap().keySet()) {
             tags.add(tag);
         }
-        Collections.sort(tags, new CharcodeComparator());
+        Collections.sort(tags, new JoinTagComparator());
         for (String tag : tags) {
             mPopup.getMenu().add(tag);
         }

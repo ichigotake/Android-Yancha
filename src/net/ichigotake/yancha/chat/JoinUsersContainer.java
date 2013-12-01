@@ -7,11 +7,9 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yanchasdk.lib.model.JoinUserFactory;
+import net.ichigotake.yanchasdk.lib.model.JoinUsers;
 
 import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * ログインユーザーを表示する
@@ -19,29 +17,29 @@ import java.util.List;
 class JoinUsersContainer {
 
     final private TextView mJoinUsersCountView;
-    
     final private JoinUsersPopupListener mPopup;
-    
     final private View mUsersIcon;
+    final private JoinUserFactory mUserFactory;
     
     JoinUsersContainer(Activity activity, View view) {
         mJoinUsersCountView = (TextView) view.findViewById(R.id.chatJoinUsersCount);
         mUsersIcon = view.findViewById(R.id.chatJoinUsersIcon);
         mUsersIcon.setOnClickListener(new IconClickListener());
         mPopup = new JoinUsersPopupListener(activity, mUsersIcon);
+        mUserFactory = new JoinUserFactory();
     }
     
-    void setUsers(List<String> users) {
+    void setUsers(JoinUsers users) {
         mPopup.setUsers(users);
-        mJoinUsersCountView.setText(users.size() + "人");
+        mJoinUsersCountView.setText(users.count() + "人");
     }
     
     void update(String response) {
-        List<String> users;
+        JoinUsers users;
         try {
-            users = JoinUserFactory.createNicknameList(response);
+            users = mUserFactory.fromNicknameEvent(response);
         } catch (JSONException e) {
-            users = new ArrayList<String>();
+            users = new JoinUsers();
         }
         
         setUsers(users);

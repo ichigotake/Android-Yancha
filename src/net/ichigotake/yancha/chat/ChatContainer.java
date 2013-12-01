@@ -13,7 +13,7 @@ import android.view.View;
  */
 public class ChatContainer implements ViewContainer {
 
-	final private MessageContainer mMessageContainer;
+	final private PostMessageContainer mPostMessageContainer;
 	
 	final private MessagePostContainer mMessagePostContainer;
 	
@@ -22,7 +22,7 @@ public class ChatContainer implements ViewContainer {
 	final private JoinUsersContainer mJoinUsersContainer;
 	
 	public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
-		mMessageContainer = new MessageContainer(activity, view, emitter);
+		mPostMessageContainer = new PostMessageContainer(activity, view, emitter);
 		mMessagePostContainer = new MessagePostContainer(view, emitter);
 		mJoinTagContainer = new JoinTagContainer(view, getDefaultTagList());
 		mJoinUsersContainer = new JoinUsersContainer(activity, view);
@@ -33,11 +33,11 @@ public class ChatContainer implements ViewContainer {
 	}
 	
 	public void addMessage(PostMessage message) {
-		mMessageContainer.addMessage(message);
+		mPostMessageContainer.addMessage(message);
 	}
 
     public void removeMessage(PostMessage message) {
-        mMessageContainer.removeMessage(message);
+        mPostMessageContainer.removeMessage(message);
     }
 	
 	public void updateJoinUsers(String response) {

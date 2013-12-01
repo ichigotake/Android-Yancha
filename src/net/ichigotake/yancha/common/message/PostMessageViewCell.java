@@ -3,8 +3,7 @@ package net.ichigotake.yancha.common.message;
 import android.view.View;
 import android.widget.TextView;
 
-import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
-
+import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 import java.text.SimpleDateFormat;
@@ -44,11 +43,8 @@ public class PostMessageViewCell {
     }
 
     private void setProfileImage(String profileImageUrl) {
-        if (!profileImageUrl.isEmpty()) {
-            UrlImageViewHelper.setUrlDrawable(mHolder.getProfileImageView(), profileImageUrl);
-        } else {
-            mHolder.getProfileImageView().setImageResource(android.R.drawable.sym_action_chat);
-        }
+        new ProfileImageViewHelper()
+            .setDrawable(mHolder.getProfileImageView(), profileImageUrl);
     }
 
     private void setPlusplus(int plusplus) {

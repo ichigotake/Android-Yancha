@@ -1,11 +1,7 @@
 package net.ichigotake.yancha.chat;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import net.ichigotake.colorfulsweets.lib.ui.Display;
-import net.ichigotake.yancha.chat.socketio.CharcodeComparator;
+import net.ichigotake.yanchasdk.lib.model.JoinUsers;
 
 import android.app.Activity;
 import android.view.View;
@@ -15,20 +11,20 @@ class JoinUsersPopupListener {
 
     final private ListPopupWindow mPopup;
     
-    final private JoinUserListAdapter mAdapter;
+    final private JoinUserAdapter mAdapter;
     
     final private Activity mActivity;
     
     JoinUsersPopupListener(Activity activity, View anchor) {
         mActivity = activity;
-        mAdapter = new JoinUserListAdapter(anchor.getContext(), new ArrayList<String>());
+        mAdapter = new JoinUserAdapter(anchor.getContext());
         mPopup = new ListPopupWindow(anchor.getContext());
         mPopup.setAnchorView(anchor);
         mPopup.setAdapter(mAdapter);
     }
     
-    void setUsers(List<String> users) {
-        Collections.sort(users, new CharcodeComparator());
+    void setUsers(JoinUsers users) {
+        users.sort();
         mAdapter.clear();
         mAdapter.addAll(users);
         mAdapter.notifyDataSetChanged();
