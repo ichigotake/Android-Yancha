@@ -20,5 +20,9 @@ local.properties
 .project
 .settings/
 
+# Intellij
+.idea
+*.iml
+
 # API keys
 res/values/keys.xml
