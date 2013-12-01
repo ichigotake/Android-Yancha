@@ -5,11 +5,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.model.ViewHolder;
 
 /**
  * 発言のビューホルダー
  */
-class PostMessageViewHolder {
+public class PostMessageViewHolder implements ViewHolder {
 
     final private TextView mNickname;
 

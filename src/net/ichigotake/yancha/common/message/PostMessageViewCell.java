@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
  *
  * TODO いい感じの名前を考える
  */
-class PostMessageViewCell {
+public class PostMessageViewCell {
 
     PostMessageViewHolder mHolder;
 
@@ -22,8 +22,7 @@ class PostMessageViewCell {
         mHolder = holder;
     }
 
-    static void initialize(View view, PostMessage message, int position) {
-        PostMessageViewHolder holder = new PostMessageViewHolder(view);
+    public static void initialize(PostMessageViewHolder holder, PostMessage message) {
         PostMessageViewCell cell = new PostMessageViewCell(holder);
         cell.initialize(message);
     }
@@ -78,4 +77,5 @@ class PostMessageViewCell {
                 .format(createdTime/100);
         mHolder.getTimestampView().setText(timestamp);
     }
- }
+
+}

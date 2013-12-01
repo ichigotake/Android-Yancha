@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.message.MessageListAdapter;
+import net.ichigotake.yancha.common.message.PostMessageAdapter;
 import net.ichigotake.yancha.common.message.PostMessageListTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
@@ -22,10 +22,10 @@ class MessageContainer implements ViewContainer {
 
     final private PostMessageListTagMap mMessages;
 
-    final private MessageListAdapter mAdapter;
+    final private PostMessageAdapter mAdapter;
 
     MessageContainer(Context context, View view) {
-        mAdapter = new MessageListAdapter(context);
+        mAdapter = new PostMessageAdapter(context);
         mMessages = new PostMessageListTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
         initialize();

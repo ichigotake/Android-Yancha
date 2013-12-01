@@ -4,7 +4,7 @@ import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingListener;
 import net.ichigotake.yancha.common.api.rest.SearchApiRequest;
-import net.ichigotake.yancha.common.message.MessageListAdapter;
+import net.ichigotake.yancha.common.message.PostMessageAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.common.user.User;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
@@ -29,7 +29,7 @@ class AutoPagingSearchListener extends AutoPagingListener<PostMessage> {
 
     @Override
     protected ArrayAdapter<PostMessage> createArrayAdapter(Context context) {
-        return new MessageListAdapter(context);
+        return new PostMessageAdapter(context);
     }
 
     @Override
