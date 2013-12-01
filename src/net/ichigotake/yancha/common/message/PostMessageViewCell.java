@@ -47,7 +47,7 @@ public class PostMessageViewCell {
         if (!profileImageUrl.isEmpty()) {
             UrlImageViewHelper.setUrlDrawable(mHolder.getProfileImageView(), profileImageUrl);
         } else {
-            mHolder.getProfileImageView().setBackgroundResource(android.R.drawable.sym_action_chat);
+            mHolder.getProfileImageView().setImageResource(android.R.drawable.sym_action_chat);
         }
     }
 

@@ -1,6 +1,7 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.PostMessageAdapter;
 import net.ichigotake.yancha.common.message.PostMessageListTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
@@ -26,8 +27,8 @@ class MessageContainer implements ViewContainer {
 
     final private PostMessageAdapter mAdapter;
 
-    MessageContainer(Context context, View view) {
-        mAdapter = new PostMessageAdapter(context);
+    MessageContainer(Context context, View view, YanchaEmitter emitter) {
+        mAdapter = new PostMessageAdapter(context, new ChatPostMessageViewConnector(emitter));
         mMessages = new PostMessageListTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
         initialize();

@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.chat.MessageViewConnector;
+import net.ichigotake.yancha.chat.PostMessageViewConnector;
+import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 /**
@@ -23,7 +24,13 @@ public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
     public PostMessageAdapter(Context context) {
         super(context, R.layout.yc_common_message_cell);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mConnector = new MessageViewConnector();
+        mConnector = new PostMessageViewConnector();
+    }
+
+    public PostMessageAdapter(Context context, MessageViewConnector connector) {
+        super(context, R.layout.yc_common_message_cell);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mConnector = connector;
     }
 
     public void update(PostMessage message) {

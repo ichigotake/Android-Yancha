@@ -5,12 +5,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.model.ViewHolder;
+import net.ichigotake.yancha.common.ui.ViewHolder;
 
 /**
  * 発言のビューホルダー
  */
 public class PostMessageViewHolder implements ViewHolder {
+
+    final private View mContentView;
 
     final private TextView mNickname;
 
@@ -26,12 +28,17 @@ public class PostMessageViewHolder implements ViewHolder {
     //final private ImageView mPreviewView;
 
     PostMessageViewHolder(View view) {
+        mContentView = view;
         mNickname = (TextView) view.findViewById(R.id.messageCellNickname);
         mProfileImage = (ImageView) view.findViewById(R.id.messageCellProfileImageUrl);;
         mMessage = (TextView) view.findViewById(R.id.messageCellMessage);
         mPlusplus = (TextView) view.findViewById(R.id.messageCellPlusplus);
         mTimestamp = (TextView) view.findViewById(R.id.messageCellTimestamp);
         //mPreviewView = (ImageView) view.findViewById(R.id.messageCellPreview);
+    }
+
+    public View getContentView() {
+        return mContentView;
     }
 
     TextView getNicknameView() {

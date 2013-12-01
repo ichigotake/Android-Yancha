@@ -11,6 +11,7 @@ public enum EmitEvent {
     JOIN_TAG("join tag"),
     NICKNAMES("nicknames"),
     NO_SESSION("no session"),
+    PLUSPLUS("plusplus"),
     RECONNECT("reconnect"),
     RECONNECTING("reconnecting"),
     TOKEN_LOGIN("token login"),

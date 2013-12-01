@@ -6,13 +6,13 @@ import android.view.View;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.PostMessageViewCell;
 import net.ichigotake.yancha.common.message.PostMessageViewHolder;
-import net.ichigotake.yancha.common.model.ViewConnector;
+import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 /**
  * 発言とビューを繫ぐ
  */
-public class MessageViewConnector implements ViewConnector<PostMessageViewHolder, PostMessage> {
+public class PostMessageViewConnector implements MessageViewConnector {
 
     @Override
     public View generatView(LayoutInflater inflater) {

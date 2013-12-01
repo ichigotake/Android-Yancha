@@ -22,7 +22,7 @@ public class ChatContainer implements ViewContainer {
 	final private JoinUsersContainer mJoinUsersContainer;
 	
 	public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
-		mMessageContainer = new MessageContainer(activity, view);
+		mMessageContainer = new MessageContainer(activity, view, emitter);
 		mMessagePostContainer = new MessagePostContainer(view, emitter);
 		mJoinTagContainer = new JoinTagContainer(view, getDefaultTagList());
 		mJoinUsersContainer = new JoinUsersContainer(activity, view);

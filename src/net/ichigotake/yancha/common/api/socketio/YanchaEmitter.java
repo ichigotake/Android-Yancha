@@ -82,4 +82,8 @@ public class YanchaEmitter implements SendMessageListener {
     public void sendMessage(SendMessage message) {
         emitUserMessage(message.getMessage());
     }
+
+    public void emitPlusplus(int messageId) {
+        chat.emit(EmitEvent.PLUSPLUS.getName(), String.valueOf(messageId));
+    }
 }

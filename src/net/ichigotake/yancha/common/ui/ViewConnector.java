@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.model;
+package net.ichigotake.yancha.common.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
