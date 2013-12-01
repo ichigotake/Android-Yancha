@@ -17,6 +17,8 @@ import android.widget.SearchView.OnQueryTextListener;
 
 /**
  * アクションバーの検索UI
+ *
+ * TODO 12/21までに実装する
  */
 public class ActionBarSearchable {
 
@@ -31,8 +33,8 @@ public class ActionBarSearchable {
 	
 	public void setup(Menu menu) {
 		//SearchManager searchManager = (SearchManager) fragmentActivity.getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
-		searchView.setOnSearchClickListener(new SearchIconOnClickListener());
+		//SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
+		//searchView.setOnSearchClickListener(new SearchIconOnClickListener());
 		//SearchableInfo searchable = searchManager.getSearchableInfo(fragmentActivity.getComponentName());
 		//searchView.setSearchableInfo(searchable);
 		//searchView.setIconifiedByDefault(false);

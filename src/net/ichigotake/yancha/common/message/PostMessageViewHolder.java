@@ -21,7 +21,8 @@ class PostMessageViewHolder {
 
     final private TextView mTimestamp;
 
-    final private ImageView mPreviewView;
+    // TODO 12/21までに実装する
+    //final private ImageView mPreviewView;
 
     PostMessageViewHolder(View view) {
         mNickname = (TextView) view.findViewById(R.id.messageCellNickname);
@@ -29,7 +30,7 @@ class PostMessageViewHolder {
         mMessage = (TextView) view.findViewById(R.id.messageCellMessage);
         mPlusplus = (TextView) view.findViewById(R.id.messageCellPlusplus);
         mTimestamp = (TextView) view.findViewById(R.id.messageCellTimestamp);
-        mPreviewView = (ImageView) view.findViewById(R.id.messageCellPreview);
+        //mPreviewView = (ImageView) view.findViewById(R.id.messageCellPreview);
     }
 
     TextView getNicknameView() {
@@ -52,7 +53,7 @@ class PostMessageViewHolder {
         return mTimestamp;
     }
 
-    ImageView getPreviewView() {
-        return mPreviewView;
-    }
+    //ImageView getPreviewView() {
+    //    return mPreviewView;
+    //}
 }
