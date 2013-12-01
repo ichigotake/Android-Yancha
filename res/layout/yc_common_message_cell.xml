@@ -2,12 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/common_message_cell"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:background="@drawable/abc_list_selector_holo_light">
         
     <ImageView
         android:id="@+id/messageCellProfileImageUrl"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:adjustViewBounds="true"
         android:layout_gravity="center" />
     
@@ -24,6 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/yc_dummy_nickname"
+            android:textSize="12sp"
             android:textColor="#666666"
             />
 
@@ -33,7 +35,8 @@
             android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:text="@string/yc_dummy_timestamp"
-            android:textColor="#333333"
+            android:textSize="12sp"
+            android:textColor="#666666"
             />
            
     </RelativeLayout>
@@ -43,8 +46,10 @@
         android:layout_toRightOf="@+id/messageCellProfileImageUrl"
         android:layout_below="@+id/messageCellHeader"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:layout_width="match_parent"
         android:text="@string/yc_dummy_message"
+        android:textSize="14sp"
         android:textColor="#333333"
         android:autoLink="web"
          />
@@ -54,10 +59,9 @@
         android:layout_below="@+id/messageCellMessage"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:minHeight="10sp"
         android:visibility="gone"
-        android:textColor="@color/yc_message_plusplus_text"
-        />
-    
+        android:textSize="8sp"
+        android:textColor="@color/yc_message_plusplus_text" />
+
 </RelativeLayout>
