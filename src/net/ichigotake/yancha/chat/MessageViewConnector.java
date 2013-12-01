@@ -7,7 +7,6 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.PostMessageViewCell;
 import net.ichigotake.yancha.common.message.PostMessageViewHolder;
 import net.ichigotake.yancha.common.model.ViewConnector;
-import net.ichigotake.yancha.common.model.ViewHolder;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 /**

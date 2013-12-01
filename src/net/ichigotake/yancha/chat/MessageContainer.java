@@ -17,7 +17,9 @@ import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationA
  * 発言一覧を表示する
  */
 class MessageContainer implements ViewContainer {
-    
+
+    final private long ANIMATION_DURATION = 70;
+
     final private ListView mMessageListView;
 
     final private PostMessageListTagMap mMessages;
@@ -33,6 +35,7 @@ class MessageContainer implements ViewContainer {
     
     void initialize() {
         ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(mAdapter);
+        animationAdapter.setAnimationDurationMillis(ANIMATION_DURATION);
         animationAdapter.setAbsListView(mMessageListView);
         mMessageListView.setAdapter(animationAdapter);
     }
