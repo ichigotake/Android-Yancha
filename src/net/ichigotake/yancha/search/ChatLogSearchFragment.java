@@ -12,20 +12,20 @@ import android.view.ViewGroup;
  */
 public class ChatLogSearchFragment extends Fragment {
 
-	public ChatLogSearchFragment() {
-	}
-	
-	public static ChatLogSearchFragment createInstance() {
-		return new ChatLogSearchFragment();
-	}
+    public ChatLogSearchFragment() {
+    }
+    
+    public static ChatLogSearchFragment createInstance() {
+        return new ChatLogSearchFragment();
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.yc_chat_search, container, false);
-		
-		new SearchContainer(view).initialize();
-		
-		return view;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.yc_chat_search, container, false);
+        
+        new SearchContainer(view).initialize();
+        
+        return view;
+    }
 
 }

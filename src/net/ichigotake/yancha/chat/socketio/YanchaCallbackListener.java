@@ -15,10 +15,10 @@ import android.view.View;
 public class YanchaCallbackListener implements ChatCallbackListener {
 
     final private ChatMediator mParameter;
-	
-	public YanchaCallbackListener(YanchaEmitter emitter, Activity activity, View view) {
+    
+    public YanchaCallbackListener(YanchaEmitter emitter, Activity activity, View view) {
         mParameter = new ChatMediator(emitter, activity, view);
-	}
+    }
 
 
     @Override

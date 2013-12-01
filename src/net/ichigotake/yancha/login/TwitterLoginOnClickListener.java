@@ -9,23 +9,23 @@ import android.widget.TextView;
 
 class TwitterLoginOnClickListener implements OnClickListener {
 
-	final private Activity mActivity;
-	
-	final private User mUser;
-	
-	final private TextView mServerHostView;
-	
-	TwitterLoginOnClickListener(FragmentActivity activity, TextView serverHostView) {
-		mActivity = activity;
-		mUser = new User(activity);
-		mServerHostView = serverHostView;
-	}
-	
-	@Override
-	public void onClick(View v) {
-		String host = mServerHostView.getText().toString();
-		mUser.setConnectServerAuthority(host);
-		new TwitterLogin(mActivity).start(mUser.getConnectServerAuthority());
-	}
+    final private Activity mActivity;
+    
+    final private User mUser;
+    
+    final private TextView mServerHostView;
+    
+    TwitterLoginOnClickListener(FragmentActivity activity, TextView serverHostView) {
+        mActivity = activity;
+        mUser = new User(activity);
+        mServerHostView = serverHostView;
+    }
+    
+    @Override
+    public void onClick(View v) {
+        String host = mServerHostView.getText().toString();
+        mUser.setConnectServerAuthority(host);
+        new TwitterLogin(mActivity).start(mUser.getConnectServerAuthority());
+    }
 
 }

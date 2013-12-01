@@ -16,34 +16,34 @@ import com.google.common.eventbus.Subscribe;
 
 class OnApiResponseListener implements HttpAccessEventListener {
 
-	final private ArrayAdapter<PostMessage> mAdapter;
-	
-	OnApiResponseListener(ArrayAdapter<PostMessage> adapter) {
-		mAdapter = adapter;
-	}
-	
-	@Subscribe
-	public void onSuccess(HttpAccessResponse response) {
-		Optional<String> json = response.getContent();
-		if (json.isPresent()) {
-			try {
-				JSONArray jsonArray = new JSONArray(json.get());
-				int length = jsonArray.length();
-				if (0 == length) {
-					return ;
-				}
-				for (int i=0; i<length; i++) {
-					String string = jsonArray.get(i).toString();
-					Log.d(getClass().getSimpleName(), "res: " + string);
-					mAdapter.add(PostMessageFactory.create(string));
-				}
-				mAdapter.notifyDataSetChanged();
-			} catch (JSONException e) {
+    final private ArrayAdapter<PostMessage> mAdapter;
+    
+    OnApiResponseListener(ArrayAdapter<PostMessage> adapter) {
+        mAdapter = adapter;
+    }
+    
+    @Subscribe
+    public void onSuccess(HttpAccessResponse response) {
+        Optional<String> json = response.getContent();
+        if (json.isPresent()) {
+            try {
+                JSONArray jsonArray = new JSONArray(json.get());
+                int length = jsonArray.length();
+                if (0 == length) {
+                    return ;
+                }
+                for (int i=0; i<length; i++) {
+                    String string = jsonArray.get(i).toString();
+                    Log.d(getClass().getSimpleName(), "res: " + string);
+                    mAdapter.add(PostMessageFactory.create(string));
+                }
+                mAdapter.notifyDataSetChanged();
+            } catch (JSONException e) {
                 // TODO エラーイベントを投げる
-				e.printStackTrace();
-			}
-		} else {
+                e.printStackTrace();
+            }
+        } else {
             // TODO エラーイベントを投げる
-		}
-	}
+        }
+    }
 }

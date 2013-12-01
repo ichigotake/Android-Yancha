@@ -17,16 +17,16 @@ import java.util.List;
  */
 public class MessageListAdapter extends ArrayAdapter<PostMessage> {
 
-	private LayoutInflater mInflater;
-	
-	public MessageListAdapter(Context context) {
-		this(context, new ArrayList<PostMessage>());
-	}
-	
-	public MessageListAdapter(Context context, List<PostMessage> messageList) {
-		super(context, R.layout.yc_common_message_cell, messageList);
-		this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
+    private LayoutInflater mInflater;
+    
+    public MessageListAdapter(Context context) {
+        this(context, new ArrayList<PostMessage>());
+    }
+    
+    public MessageListAdapter(Context context, List<PostMessage> messageList) {
+        super(context, R.layout.yc_common_message_cell, messageList);
+        this.mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    }
 
     public void update(PostMessage message) {
         int lastIndex = getCount()-1;
@@ -40,24 +40,24 @@ public class MessageListAdapter extends ArrayAdapter<PostMessage> {
         }
     }
 
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-	
-	@Override
-	public View getView(final int position, View contentView, ViewGroup parent) {
-		if (contentView == null) {
-			contentView = mInflater.inflate(R.layout.yc_common_message_cell, null);
-		}
-		
-		PostMessage message = getItem(position);
-		if (message != null) {
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+    
+    @Override
+    public View getView(final int position, View contentView, ViewGroup parent) {
+        if (contentView == null) {
+            contentView = mInflater.inflate(R.layout.yc_common_message_cell, null);
+        }
+        
+        PostMessage message = getItem(position);
+        if (message != null) {
             PostMessageViewCell.initialize(contentView, message, position);
-		}
-		
-		return contentView;
-	}
+        }
+        
+        return contentView;
+    }
 
 
 }

@@ -10,18 +10,18 @@ import android.view.MenuItem;
 
 public class BaseActivity extends ActionBarActivity {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.yc_main);
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.searchable, menu);
+     @Override
+     public void onCreate(Bundle savedInstanceState) {
+          super.onCreate(savedInstanceState);
+          setContentView(R.layout.yc_main);
+     }
+     
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+          getMenuInflater().inflate(R.menu.searchable, menu);
 
-		return super.onCreateOptionsMenu(menu);
-	}
+          return super.onCreateOptionsMenu(menu);
+     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){

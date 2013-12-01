@@ -16,47 +16,47 @@ import android.widget.TextView;
  */
 class LoginContainer implements ViewContainer {
 
-	final private FragmentActivity mActivity;
-	
-	final private User user;
-	
-	private LoginContainer(FragmentActivity activity) {
-		this.mActivity = activity;
-		this.user = new User(activity);
-	}
-	
-	static LoginContainer initialize(FragmentActivity activity, View view) {
-		LoginContainer container = new LoginContainer(activity);
-		container.initializeView(view);
-		return container;
-	}
-	
-	public void initializeView(View view) {
-		LoginViewHolder holder = new LoginViewHolder(view);
-		
-		EditText serverHost = holder.getLoginServer();
-		ApiUri uri = user.getApiUri();
-		if (uri.isHostnameEmpty()) {
-			serverHost.setText(R.string.yc_login_server_default);
-		} else {
-			serverHost.setText(uri.getHostname());
-		}
-		
-		holder.getLoginSimpleSubmit().setOnClickListener(
-				new SimpleLoginOnClickListener(mActivity, holder));
-		
-		EditText loginSimple = holder.getLoginSimple();
-		loginSimple.setText(user.getNickname());
-		loginSimple.setSelection(user.getNickname().length());
-		loginSimple.setOnEditorActionListener(
-				new SimpleLoginOnEditorActionListener(mActivity, holder));
-		
-		Button loginTwitter = holder.getLoginTwitter();
-		loginTwitter.setOnClickListener(
-				new TwitterLoginOnClickListener(mActivity, serverHost));
-		
-		TextView versionView = holder.getVersionName();
-		String versionName = new AppContext(mActivity).getFullVersionName();
-		versionView.setText(versionName);
-	}
+    final private FragmentActivity mActivity;
+    
+    final private User user;
+    
+    private LoginContainer(FragmentActivity activity) {
+        this.mActivity = activity;
+        this.user = new User(activity);
+    }
+    
+    static LoginContainer initialize(FragmentActivity activity, View view) {
+        LoginContainer container = new LoginContainer(activity);
+        container.initializeView(view);
+        return container;
+    }
+    
+    public void initializeView(View view) {
+        LoginViewHolder holder = new LoginViewHolder(view);
+        
+        EditText serverHost = holder.getLoginServer();
+        ApiUri uri = user.getApiUri();
+        if (uri.isHostnameEmpty()) {
+            serverHost.setText(R.string.yc_login_server_default);
+        } else {
+            serverHost.setText(uri.getHostname());
+        }
+        
+        holder.getLoginSimpleSubmit().setOnClickListener(
+                new SimpleLoginOnClickListener(mActivity, holder));
+        
+        EditText loginSimple = holder.getLoginSimple();
+        loginSimple.setText(user.getNickname());
+        loginSimple.setSelection(user.getNickname().length());
+        loginSimple.setOnEditorActionListener(
+                new SimpleLoginOnEditorActionListener(mActivity, holder));
+        
+        Button loginTwitter = holder.getLoginTwitter();
+        loginTwitter.setOnClickListener(
+                new TwitterLoginOnClickListener(mActivity, serverHost));
+        
+        TextView versionView = holder.getVersionName();
+        String versionName = new AppContext(mActivity).getFullVersionName();
+        versionView.setText(versionName);
+    }
 }

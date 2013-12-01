@@ -18,10 +18,10 @@ import net.ichigotake.yancha.login.LoginFragment;
  * ログイン画面のアクティビティ
  */
 public class LoginActivity extends BaseActivity {
-		
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         final User user = new User(this);
         Intent intent = getIntent();
@@ -40,6 +40,6 @@ public class LoginActivity extends BaseActivity {
                 .setAddBackStack(false)
                 .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
 
-	}
-	
+    }
+    
 }

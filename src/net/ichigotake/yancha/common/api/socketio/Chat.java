@@ -18,79 +18,79 @@ import org.json.JSONObject;
  */
 public class Chat extends Thread implements IOCallback {
 
-	final private String mServerUrl;
-	
-	final private EmitEventDispatcher mDispatcher;
-	
-	private YanchaEmitter mEmitter;
-	
-	private SocketIO mSocket;
+    final private String mServerUrl;
+    
+    final private EmitEventDispatcher mDispatcher;
+    
+    private YanchaEmitter mEmitter;
+    
+    private SocketIO mSocket;
 
     public Chat(String serverUrl) throws MalformedURLException {
-		mServerUrl = serverUrl;
-		mDispatcher = new EmitEventDispatcher();
-		mSocket = createSocketIO(mServerUrl);
-		mEmitter = new YanchaEmitter(mSocket);
-	}
+        mServerUrl = serverUrl;
+        mDispatcher = new EmitEventDispatcher();
+        mSocket = createSocketIO(mServerUrl);
+        mEmitter = new YanchaEmitter(mSocket);
+    }
 
     private SocketIO createSocketIO(String serverUrl) throws MalformedURLException {
         return new SocketIO(serverUrl);
     }
 
-	@Override
-	public void run() {
-		connect();
-	}
-	
-	public YanchaEmitter getEmitter() {
-		return mEmitter;
-	}
+    @Override
+    public void run() {
+        connect();
+    }
+    
+    public YanchaEmitter getEmitter() {
+        return mEmitter;
+    }
 
-	public void connect() {
-		if (! mSocket.isConnected()) {
-			mSocket.connect(this);
-			mEmitter.emitConnect();
-		}
-	}
-	
-	public void disconnect() {
-		if (mSocket.isConnected()) {
+    public void connect() {
+        if (! mSocket.isConnected()) {
+            mSocket.connect(this);
+            mEmitter.emitConnect();
+        }
+    }
+    
+    public void disconnect() {
+        if (mSocket.isConnected()) {
             mEmitter.emitDisconnect();
-			mSocket.disconnect();
+            mSocket.disconnect();
             mSocket = null;
-		}
-	}
-	
-	@Override
-	public void onDisconnect() {
-		mDispatcher.dispatch(EmitEvent.DISCONNECT);
-	}
+        }
+    }
+    
+    @Override
+    public void onDisconnect() {
+        mDispatcher.dispatch(EmitEvent.DISCONNECT);
+    }
 
-	@Override
-	public void onConnect() {
+    @Override
+    public void onConnect() {
         mDispatcher.dispatch(EmitEvent.CONNECT);
-	}
+    }
 
-	@Override
-	public void onMessage(String data, IOAcknowledge ack) {
-		// no event
-	}
+    @Override
+    public void onMessage(String data, IOAcknowledge ack) {
+        // no event
+    }
 
-	@Override
-	public void onMessage(JSONObject json, IOAcknowledge ack) {
-		// no event
-	}
+    @Override
+    public void onMessage(JSONObject json, IOAcknowledge ack) {
+        // no event
+    }
 
-	@Override
-	public void on(String event, IOAcknowledge ack, Object... args) {
-		// TODO ArrayIndexOutOfBoundsException対策
-		mDispatcher.dispatch(event, args[0].toString());
-	}
+    @Override
+    public void on(String event, IOAcknowledge ack, Object... args) {
+        // TODO ArrayIndexOutOfBoundsException対策
+        mDispatcher.dispatch(event, args[0].toString());
+    }
 
-	@Override
-	public void onError(SocketIOException socketIOException) {
+    @Override
+    public void onError(SocketIOException socketIOException) {
         mDispatcher.dispatch(EmitEvent.ERROR);
-	}
+    }
 
     public void setCallbackListener(YanchaCallbackListener listener) {
         mDispatcher.registerListener(listener.createConnectionListener());

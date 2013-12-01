@@ -15,13 +15,13 @@ import android.view.MenuItem;
  */
 public class ChatActivity extends BaseActivity {
 
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		new FragmentTransit(this)
-			.setAddBackStack(false)
-			.toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatFragment.newInstance());
-	}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        new FragmentTransit(this)
+            .setAddBackStack(false)
+            .toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatFragment.newInstance());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

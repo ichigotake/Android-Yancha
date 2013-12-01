@@ -8,15 +8,15 @@ import org.apache.http.client.methods.HttpRequestBase;
 
 public class SearchApiRequest extends AsyncHttpAccessor {
 
-	final private SearchOption mSearchOption;
-	
-	public SearchApiRequest(SearchOption option) {
-		mSearchOption = option;
-	}
-	
-	@Override
-	public HttpRequestBase createRequest() {
-		return new HttpAccessRequest().createGetRequest(mSearchOption.toUri());
-	}
+    final private SearchOption mSearchOption;
+    
+    public SearchApiRequest(SearchOption option) {
+        mSearchOption = option;
+    }
+    
+    @Override
+    public HttpRequestBase createRequest() {
+        return new HttpAccessRequest().createGetRequest(mSearchOption.toUri());
+    }
 
 }

@@ -13,17 +13,17 @@ import android.view.ViewGroup;
  */
 public class LoginFragment extends Fragment {
 
-	public static LoginFragment newInstance() {
-		return new LoginFragment();
-	}
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.yc_login, container, false);
-		
-		LoginContainer.initialize(getActivity(), view);
-		
-		return view;
-	}
-	
+    public static LoginFragment newInstance() {
+        return new LoginFragment();
+    }
+    
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.yc_login, container, false);
+        
+        LoginContainer.initialize(getActivity(), view);
+        
+        return view;
+    }
+    
 }

@@ -7,15 +7,15 @@ import android.widget.TextView.OnEditorActionListener;
 
 class SimpleLoginOnEditorActionListener implements OnEditorActionListener {
 
-	final private SubmitSimpleLogin mLogin;
-	
-	SimpleLoginOnEditorActionListener(FragmentActivity activity, LoginViewHolder holder) {
-		mLogin = new SubmitSimpleLogin(activity, holder);
-	}
-	
-	@Override
-	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-		mLogin.send();
-		return false;
-	}
+    final private SubmitSimpleLogin mLogin;
+    
+    SimpleLoginOnEditorActionListener(FragmentActivity activity, LoginViewHolder holder) {
+        mLogin = new SubmitSimpleLogin(activity, holder);
+    }
+    
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        mLogin.send();
+        return false;
+    }
 }

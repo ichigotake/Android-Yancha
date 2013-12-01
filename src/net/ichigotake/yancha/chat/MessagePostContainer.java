@@ -13,18 +13,18 @@ import android.widget.EditText;
  */
 class MessagePostContainer implements ViewContainer {
 
-	final private EditText mMessageView;
-	
+    final private EditText mMessageView;
+    
     final private CheckBox mInputModeSwitcher;
-	
-	MessagePostContainer(View view, YanchaEmitter emitter) {
-		mMessageView = (EditText) view.findViewById(R.id.chatSendMessageText);
+    
+    MessagePostContainer(View view, YanchaEmitter emitter) {
+        mMessageView = (EditText) view.findViewById(R.id.chatSendMessageText);
 
         MessagePost post = new MessagePost(emitter, mMessageView);
         mInputModeSwitcher = (CheckBox) view.findViewById(R.id.chatInputModeSwitcher);
         mInputModeSwitcher.setOnClickListener(new OnInputModeClickListener(post));
-		Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
-		viewSubmit.setOnClickListener(new OnSubmitButtonClickListener(post));
-	}
+        Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
+        viewSubmit.setOnClickListener(new OnSubmitButtonClickListener(post));
+    }
 
 }
