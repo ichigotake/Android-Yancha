@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.chat.PostMessageViewConnector;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
@@ -21,16 +20,20 @@ public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
     final private MessageViewConnector mConnector;
     final private LayoutInflater mInflater;
     
-    public PostMessageAdapter(Context context) {
-        super(context, R.layout.yc_common_message_cell);
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mConnector = new PostMessageViewConnector();
-    }
-
     public PostMessageAdapter(Context context, MessageViewConnector connector) {
         super(context, R.layout.yc_common_message_cell);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mConnector = connector;
+    }
+
+    @Override
+    public PostMessage getItem(int position) {
+        return super.getItem(mConnector.getItemPosition(position));
+    }
+
+    @Override
+    public boolean isEnabled(int position) {
+        return mConnector.isEnabled(position, getItem(position));
     }
 
     public void update(PostMessage message) {
@@ -56,7 +59,7 @@ public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
         final PostMessage message = getItem(position);
 
         if (contentView == null) {
-            contentView = mConnector.generatView(mInflater);
+            contentView = mConnector.generatView(mInflater, position, message);
             holder = new PostMessageViewHolder(contentView);
             contentView.setTag(holder);
         } else {

@@ -31,7 +31,9 @@ class AutoPagingSearchListener extends AutoPagingListener<PostMessage, JSONArray
         super(context);
         mBuilder = new SearchOptionBuilder(uri.getAuthority())
             .setLimit(getPerPage());
-        mAdapter = new PostMessageAdapter(context);
+
+        SearchMessageViewConnector connector = new SearchMessageViewConnector(context);
+        mAdapter = new PostMessageAdapter(context, connector);
     }
 
     @Override

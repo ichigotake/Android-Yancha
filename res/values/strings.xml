@@ -28,6 +28,7 @@
     <string name="yc_link_search"><u>過去ログ</u></string>
     <string name="yc_search_option">検索オプション</string>
     <string name="yc_search_keyword">キーワード</string>
+    <string name="yc_count_separator">---- %s ----</string>
     <string name="yc_default_tag">#PUBLIC</string>
     
     <string name="yc_connection_failed">接続に失敗しました</string>

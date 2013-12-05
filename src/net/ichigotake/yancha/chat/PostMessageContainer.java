@@ -1,17 +1,17 @@
 package net.ichigotake.yancha.chat;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.ListView;
+
+import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
+
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.PostMessageAdapter;
 import net.ichigotake.yancha.common.message.PostMessageListTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
-
-import android.content.Context;
-import android.view.View;
-import android.widget.ListView;
-
-import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
 
 /**
@@ -28,7 +28,8 @@ class PostMessageContainer implements ViewContainer {
     final private PostMessageAdapter mAdapter;
 
     PostMessageContainer(Context context, View view, YanchaEmitter emitter) {
-        mAdapter = new PostMessageAdapter(context, new ChatPostMessageViewConnector(emitter));
+        mAdapter = new PostMessageAdapter(
+                context, new ChatPostMessageViewConnector(context, emitter));
         mMessages = new PostMessageListTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
         initialize();

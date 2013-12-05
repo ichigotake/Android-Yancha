@@ -8,7 +8,11 @@ import android.view.View;
  */
 public interface ViewConnector<T extends ViewHolder, E> {
 
-    public View generatView(LayoutInflater inflater);
+    public boolean isEnabled(int position, E item);
+
+    public int getItemPosition(int position);
+
+    public View generatView(LayoutInflater inflater, int position, E item);
 
     public void connectView(int position, T holder, E item);
 }

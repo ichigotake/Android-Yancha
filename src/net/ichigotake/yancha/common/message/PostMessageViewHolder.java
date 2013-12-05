@@ -1,6 +1,7 @@
 package net.ichigotake.yancha.common.message;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,7 +13,9 @@ import net.ichigotake.yancha.common.ui.ViewHolder;
  */
 public class PostMessageViewHolder implements ViewHolder {
 
-    final private View mContentView;
+    final private TextView mSeparatorView;
+
+    final private ViewGroup mContentView;
 
     final private TextView mNickname;
 
@@ -28,7 +31,8 @@ public class PostMessageViewHolder implements ViewHolder {
     //final private ImageView mPreviewView;
 
     PostMessageViewHolder(View view) {
-        mContentView = view;
+        mSeparatorView = (TextView) view.findViewById(R.id.messageCellCountSeparator);
+        mContentView = (ViewGroup) view.findViewById(R.id.common_message_cell);
         mNickname = (TextView) view.findViewById(R.id.messageCellNickname);
         mProfileImage = (ImageView) view.findViewById(R.id.messageCellProfileImageUrl);;
         mMessage = (TextView) view.findViewById(R.id.messageCellMessage);
@@ -37,27 +41,31 @@ public class PostMessageViewHolder implements ViewHolder {
         //mPreviewView = (ImageView) view.findViewById(R.id.messageCellPreview);
     }
 
-    public View getContentView() {
+    public TextView getSeparatorView() {
+        return mSeparatorView;
+    }
+
+    public ViewGroup getContentView() {
         return mContentView;
     }
 
-    TextView getNicknameView() {
+    public TextView getNicknameView() {
         return mNickname;
     }
 
-    ImageView getProfileImageView() {
+    public ImageView getProfileImageView() {
         return mProfileImage;
     }
 
-    TextView getMessageView() {
+    public TextView getMessageView() {
         return mMessage;
     }
 
-    TextView getPlusplusView() {
+    public TextView getPlusplusView() {
         return mPlusplus;
     }
 
-    TextView getTimestampView() {
+    public TextView getTimestampView() {
         return mTimestamp;
     }
 

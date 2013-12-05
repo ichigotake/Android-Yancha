@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.chat;
+package net.ichigotake.yancha.search;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,24 +11,24 @@ import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yanchasdk.lib.model.PostMessage;
 
 /**
- * 発言とビューを繫ぐ
+ * Created by ichigotake on 2013/12/05.
  */
-public class PostMessageViewConnector implements MessageViewConnector {
+class SearchMessageViewConnector implements MessageViewConnector {
 
     final private PostMessageViewCell mCell;
 
-    public PostMessageViewConnector(Context context) {
+    SearchMessageViewConnector(Context context) {
         mCell = new PostMessageViewCell(context);
     }
 
     @Override
     public boolean isEnabled(int position, PostMessage item) {
-        return true;
+        return (position == 0) || (position%50 != 0);
     }
 
     @Override
     public int getItemPosition(int position) {
-        return position;
+        return position - (position/50);
     }
 
     @Override
@@ -38,7 +38,11 @@ public class PostMessageViewConnector implements MessageViewConnector {
 
     @Override
     public void connectView(int position, PostMessageViewHolder holder, PostMessage item) {
-        mCell.initializeMessage(holder, item);
+        if (isEnabled(position, item)) {
+            mCell.initializeMessage(holder, item);
+        } else {
+            mCell.initializeSeparator(holder, position);
+        }
     }
 
 }
