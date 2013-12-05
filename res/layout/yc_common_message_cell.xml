@@ -59,9 +59,8 @@
         android:layout_below="@+id/messageCellMessage"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:minHeight="10sp"
         android:visibility="gone"
-        android:textSize="8sp"
+        android:textSize="14sp"
         android:textColor="@color/yc_message_plusplus_text" />
 
 </RelativeLayout>
