@@ -75,7 +75,7 @@ class AutoPagingSearchListener extends AutoPagingListener<ChatMessage, JSONArray
         protected ResponseErrorListener createErrorResponse() {
             return new ResponseErrorListener() {
                 @Override
-                public void onError(VolleyError error) {
+                public void onResponse(VolleyError error) {
                     // TODO 何か、エラーイベントを
                 }
             };
