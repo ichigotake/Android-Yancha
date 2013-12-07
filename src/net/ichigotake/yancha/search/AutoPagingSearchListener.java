@@ -15,7 +15,7 @@ import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 import org.json.JSONArray;
 

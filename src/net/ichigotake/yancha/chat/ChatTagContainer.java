@@ -6,7 +6,7 @@ import android.widget.TextView;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.JoinTagListStorage;
-import net.ichigotake.yanchasdk.lib.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
 
 class ChatTagContainer implements ViewContainer {
 

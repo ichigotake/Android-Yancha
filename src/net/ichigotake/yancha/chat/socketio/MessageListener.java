@@ -8,8 +8,8 @@ import net.ichigotake.yancha.common.api.socketio.listener.MessageEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.AnnounsementResponse;
 import net.ichigotake.yancha.common.api.socketio.response.DeleteUserMessageResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UserMessageResponse;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
-import net.ichigotake.yanchasdk.lib.model.ChatMessageFactory;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;

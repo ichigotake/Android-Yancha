@@ -6,7 +6,7 @@ import android.content.SharedPreferences.Editor;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
-import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUser;
 
 /**
  * チャットにログインする自分自身

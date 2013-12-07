@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.common.ui;
 
 import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 /**
  * 発言とビューを繫ぐ

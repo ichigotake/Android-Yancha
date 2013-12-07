@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 /**
  * 発言のアダプタ

@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.common.user.JoinTagComparator;
-import net.ichigotake.yanchasdk.lib.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
 
 import android.view.MenuItem;
 import android.view.View;

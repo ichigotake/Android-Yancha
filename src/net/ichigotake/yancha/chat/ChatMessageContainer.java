@@ -11,7 +11,7 @@ import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.message.ChatMessageTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 
 /**

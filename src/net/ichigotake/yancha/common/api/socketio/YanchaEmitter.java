@@ -6,7 +6,7 @@ import java.util.Map;
 
 import net.ichigotake.yancha.common.message.SendMessage;
 import net.ichigotake.yancha.common.message.SendMessageListener;
-import net.ichigotake.yanchasdk.lib.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -6,7 +6,7 @@ import android.widget.ListPopupWindow;
 
 import net.ichigotake.colorfulsweets.lib.ui.Display;
 import net.ichigotake.yancha.common.user.AppUser;
-import net.ichigotake.yanchasdk.lib.model.ChatUsers;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
 
 class ChatUsersPopupListener {
 

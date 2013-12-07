@@ -6,10 +6,10 @@ import android.view.View;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.AppUser;
-import net.ichigotake.yanchasdk.lib.model.ChatUsers;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
-import net.ichigotake.yanchasdk.lib.model.ChatTagList;
-import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatUser;
 
 /**
  * �`���b�g��ʂ�\������

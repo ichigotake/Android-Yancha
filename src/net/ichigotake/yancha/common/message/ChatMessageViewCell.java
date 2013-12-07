@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.common.ui.MessageSeparator;
 import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 import java.text.SimpleDateFormat;
 

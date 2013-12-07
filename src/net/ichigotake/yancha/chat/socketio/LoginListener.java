@@ -9,9 +9,9 @@ import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NicknamesResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NoSessionResponse;
 import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
-import net.ichigotake.yanchasdk.lib.model.ChatUserFactory;
-import net.ichigotake.yanchasdk.lib.model.ChatUsers;
-import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUserFactory;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
+import net.ichigotake.yancha.sdk.model.ChatUser;
 
 import org.json.JSONException;
 

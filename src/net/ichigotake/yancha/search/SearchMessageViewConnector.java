@@ -8,7 +8,7 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.ChatMessageViewCell;
 import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 /**
  * Created by ichigotake on 2013/12/05.

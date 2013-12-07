@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
-import net.ichigotake.yanchasdk.lib.model.ChatUsers;
-import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
+import net.ichigotake.yancha.sdk.model.ChatUser;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package net.ichigotake.yancha.common.message;
 
 import android.util.SparseArray;
 
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;

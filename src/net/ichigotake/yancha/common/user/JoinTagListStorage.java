@@ -3,7 +3,7 @@ package net.ichigotake.yancha.common.user;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.ichigotake.yanchasdk.lib.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -4,8 +4,8 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
-import net.ichigotake.yanchasdk.lib.model.ChatMessage;
-import net.ichigotake.yanchasdk.lib.model.ChatMessageFactory;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
+import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;

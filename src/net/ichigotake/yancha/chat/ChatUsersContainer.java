@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yanchasdk.lib.model.ChatUsers;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
 
 /**
  * ログインユーザーを表示する
