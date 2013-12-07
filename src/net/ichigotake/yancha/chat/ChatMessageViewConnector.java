@@ -5,22 +5,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.ChatMessageViewCell;
 import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 /**
- * チャットの発言とビューを繫ぐ
+ * 発言とビューを繫ぐ
  */
-public class ChatPostMessageViewConnector implements MessageViewConnector {
+public class ChatMessageViewConnector implements MessageViewConnector {
 
-    final private YanchaEmitter mEmitter;
     final private ChatMessageViewCell mCell;
 
-    public ChatPostMessageViewConnector(Context context, YanchaEmitter emitter) {
-        mEmitter = emitter;
+    public ChatMessageViewConnector(Context context) {
         mCell = new ChatMessageViewCell(context);
     }
 
@@ -42,7 +39,6 @@ public class ChatPostMessageViewConnector implements MessageViewConnector {
     @Override
     public void connectView(int position, ChatMessageViewHolder holder, ChatMessage item) {
         mCell.initializeMessage(holder, item);
-        holder.getContentView().setOnClickListener(new OnPlusplusClickListener(mEmitter, item));
     }
 
 }

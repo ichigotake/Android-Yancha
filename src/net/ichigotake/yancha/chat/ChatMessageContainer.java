@@ -8,29 +8,29 @@ import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationA
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-import net.ichigotake.yancha.common.message.PostMessageAdapter;
-import net.ichigotake.yancha.common.message.PostMessageListTagMap;
+import net.ichigotake.yancha.common.message.ChatMessageAdapter;
+import net.ichigotake.yancha.common.message.ChatMessageTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 
 /**
  * 発言一覧を表示する
  */
-class PostMessageContainer implements ViewContainer {
+class ChatMessageContainer implements ViewContainer {
 
     final private long ANIMATION_DURATION = 70;
 
     final private ListView mMessageListView;
 
-    final private PostMessageListTagMap mMessages;
+    final private ChatMessageTagMap mMessages;
 
-    final private PostMessageAdapter mAdapter;
+    final private ChatMessageAdapter mAdapter;
 
-    PostMessageContainer(Context context, View view, YanchaEmitter emitter) {
-        mAdapter = new PostMessageAdapter(
+    ChatMessageContainer(Context context, View view, YanchaEmitter emitter) {
+        mAdapter = new ChatMessageAdapter(
                 context, new ChatPostMessageViewConnector(context, emitter));
-        mMessages = new PostMessageListTagMap();
+        mMessages = new ChatMessageTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
         initialize();
     }
@@ -42,10 +42,10 @@ class PostMessageContainer implements ViewContainer {
         mMessageListView.setAdapter(animationAdapter);
     }
 
-    void removeMessage(PostMessage message) {
+    void removeMessage(ChatMessage message) {
         mMessages.remove(message);
         for (int i=mAdapter.getCount()-1; i>=0; i--) {
-            PostMessage _message = mAdapter.getItem(i);
+            ChatMessage _message = mAdapter.getItem(i);
             if (message.getId() == _message.getId()) {
                 mAdapter.remove(_message);
             }
@@ -53,7 +53,7 @@ class PostMessageContainer implements ViewContainer {
         mAdapter.notifyDataSetChanged();
     }
     
-    void addMessage(PostMessage message) {
+    void addMessage(ChatMessage message) {
         if (mMessages.exists(message)) {
             mMessages.update(message);
             mAdapter.update(message);
@@ -67,7 +67,7 @@ class PostMessageContainer implements ViewContainer {
             } else {
                 int lastIndex = count-1;
                 for (int i=lastIndex; i>=0; i--) {
-                    PostMessage _message = mAdapter.getItem(i);
+                    ChatMessage _message = mAdapter.getItem(i);
                     if (message.getId() >= _message.getId()) {
                         if (lastIndex == i) {
                             mAdapter.add(message);

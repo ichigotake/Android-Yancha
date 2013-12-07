@@ -4,17 +4,17 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
-import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessageFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 class OnApiResponseListener implements ResponseListener<JSONArray> {
 
-    final private ArrayAdapter<PostMessage> mAdapter;
+    final private ArrayAdapter<ChatMessage> mAdapter;
     
-    OnApiResponseListener(ArrayAdapter<PostMessage> adapter) {
+    OnApiResponseListener(ArrayAdapter<ChatMessage> adapter) {
         mAdapter = adapter;
     }
     
@@ -28,7 +28,7 @@ class OnApiResponseListener implements ResponseListener<JSONArray> {
             for (int i=0; i<length; i++) {
                 String string = response.get(i).toString();
                 Log.d(getClass().getSimpleName(), "res: " + string);
-                mAdapter.add(PostMessageFactory.create(string));
+                mAdapter.add(ChatMessageFactory.create(string));
             }
             mAdapter.notifyDataSetChanged();
         } catch (JSONException e) {

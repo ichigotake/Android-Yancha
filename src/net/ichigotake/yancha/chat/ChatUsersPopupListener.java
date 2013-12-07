@@ -6,27 +6,27 @@ import android.widget.ListPopupWindow;
 
 import net.ichigotake.colorfulsweets.lib.ui.Display;
 import net.ichigotake.yancha.common.user.AppUser;
-import net.ichigotake.yanchasdk.lib.model.JoinUsers;
+import net.ichigotake.yanchasdk.lib.model.ChatUsers;
 
-class JoinUsersPopupListener {
+class ChatUsersPopupListener {
 
     final private ListPopupWindow mPopup;
     
-    final private JoinUserAdapter mAdapter;
+    final private ChatUserAdapter mAdapter;
     
     final private Activity mActivity;
     
-    JoinUsersPopupListener(Activity activity, View anchor) {
+    ChatUsersPopupListener(Activity activity, View anchor) {
         mActivity = activity;
-        mAdapter = new JoinUserAdapter(anchor.getContext());
+        mAdapter = new ChatUserAdapter(anchor.getContext());
         mPopup = new ListPopupWindow(anchor.getContext());
         mPopup.setAnchorView(anchor);
         mPopup.setAdapter(mAdapter);
     }
     
-    void setUsers(JoinUsers users) {
+    void setUsers(ChatUsers users) {
         AppUser own = new AppUser(mActivity);
-        JoinUsers excludeMySelfUsers = users.excludeMyself(own);
+        ChatUsers excludeMySelfUsers = users.excludeMyself(own);
         excludeMySelfUsers.sort();
 
         mAdapter.clear();

@@ -6,7 +6,7 @@ import java.util.Map;
 
 import net.ichigotake.yancha.common.message.SendMessage;
 import net.ichigotake.yancha.common.message.SendMessageListener;
-import net.ichigotake.yanchasdk.lib.model.JoinTagList;
+import net.ichigotake.yanchasdk.lib.model.ChatTagList;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +46,7 @@ public class YanchaEmitter implements SendMessageListener {
      * 
      * @param tags
      */
-    public void emitJoinTag(JoinTagList tags) {
+    public void emitJoinTag(ChatTagList tags) {
         try {
             JSONObject json = new JSONObject();
             for (String tag : tags.toMap().keySet()) {

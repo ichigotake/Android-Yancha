@@ -8,26 +8,26 @@ import android.widget.ArrayAdapter;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 /**
  * 発言のアダプタ
  *
  * TODO 発言の削除があること、順番がID順である事を考えると {@link java.util.LinkedList} がいいのかもしれない
  */
-public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
+public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
 
     final private MessageViewConnector mConnector;
     final private LayoutInflater mInflater;
     
-    public PostMessageAdapter(Context context, MessageViewConnector connector) {
+    public ChatMessageAdapter(Context context, MessageViewConnector connector) {
         super(context, R.layout.yc_common_message_cell);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mConnector = connector;
     }
 
     @Override
-    public PostMessage getItem(int position) {
+    public ChatMessage getItem(int position) {
         return super.getItem(mConnector.getItemPosition(position));
     }
 
@@ -36,10 +36,10 @@ public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
         return mConnector.isEnabled(position, getItem(position));
     }
 
-    public void update(PostMessage message) {
+    public void update(ChatMessage message) {
         int lastIndex = getCount()-1;
         for (int i=lastIndex; i>=0; i--) {
-            PostMessage _message = getItem(i);
+            ChatMessage _message = getItem(i);
             if (message.getId() == _message.getId()) {
                 remove(_message);
                 insert(message, i);
@@ -55,15 +55,15 @@ public class PostMessageAdapter extends ArrayAdapter<PostMessage> {
     
     @Override
     public View getView(final int position, View contentView, ViewGroup parent) {
-        final PostMessageViewHolder holder;
-        final PostMessage message = getItem(position);
+        final ChatMessageViewHolder holder;
+        final ChatMessage message = getItem(position);
 
         if (contentView == null) {
             contentView = mConnector.generatView(mInflater, position, message);
-            holder = new PostMessageViewHolder(contentView);
+            holder = new ChatMessageViewHolder(contentView);
             contentView.setTag(holder);
         } else {
-            holder = (PostMessageViewHolder)contentView.getTag();
+            holder = (ChatMessageViewHolder)contentView.getTag();
         }
 
         mConnector.connectView(position, holder, message);

@@ -11,7 +11,7 @@ import net.ichigotake.yancha.common.ui.ViewHolder;
 /**
  * 発言のビューホルダー
  */
-public class PostMessageViewHolder implements ViewHolder {
+public class ChatMessageViewHolder implements ViewHolder {
 
     final private TextView mSeparatorView;
 
@@ -30,7 +30,7 @@ public class PostMessageViewHolder implements ViewHolder {
     // TODO 12/21までに実装する
     //final private ImageView mPreviewView;
 
-    PostMessageViewHolder(View view) {
+    ChatMessageViewHolder(View view) {
         mSeparatorView = (TextView) view.findViewById(R.id.messageCellCountSeparator);
         mContentView = (ViewGroup) view.findViewById(R.id.common_message_cell);
         mNickname = (TextView) view.findViewById(R.id.messageCellNickname);

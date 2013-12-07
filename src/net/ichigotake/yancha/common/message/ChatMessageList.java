@@ -2,23 +2,23 @@ package net.ichigotake.yancha.common.message;
 
 import android.util.SparseArray;
 
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 /**
  * メッセージ一覧
  */
-public class MessageList {
+public class ChatMessageList {
     
     /**
      * TODO 一意なメッセージ一覧を保持する方法を考える
      */
-    private SparseArray<PostMessage> messageList;
+    private SparseArray<ChatMessage> messageList;
 
-    public SparseArray<PostMessage> getMessageList() {
+    public SparseArray<ChatMessage> getMessageList() {
         return messageList;
     }
 
-    public void setMessageList(SparseArray<PostMessage> messageList) {
+    public void setMessageList(SparseArray<ChatMessage> messageList) {
         this.messageList = messageList;
     }
 

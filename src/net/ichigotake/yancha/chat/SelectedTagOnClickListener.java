@@ -1,7 +1,8 @@
 package net.ichigotake.yancha.chat;
 
 import net.ichigotake.yancha.common.user.JoinTagComparator;
-import net.ichigotake.yanchasdk.lib.model.JoinTagList;
+import net.ichigotake.yanchasdk.lib.model.ChatTagList;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,11 +15,11 @@ import java.util.ArrayList;
 
 class SelectedTagOnClickListener implements OnClickListener {
 
-    final private JoinTagList mTags;
+    final private ChatTagList mTags;
     
     private PopupMenu mPopup;
     
-    public SelectedTagOnClickListener(JoinTagList tags) {
+    public SelectedTagOnClickListener(ChatTagList tags) {
         mTags = tags;
     }
     

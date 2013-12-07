@@ -9,9 +9,9 @@ import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NicknamesResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NoSessionResponse;
 import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
+import net.ichigotake.yanchasdk.lib.model.ChatUserFactory;
+import net.ichigotake.yanchasdk.lib.model.ChatUsers;
 import net.ichigotake.yanchasdk.lib.model.ChatUser;
-import net.ichigotake.yanchasdk.lib.model.JoinUserFactory;
-import net.ichigotake.yanchasdk.lib.model.JoinUsers;
 
 import org.json.JSONException;
 
@@ -21,11 +21,11 @@ import org.json.JSONException;
 public class LoginListener implements LoginEventListener {
 
     final private ChatMediator mParameter;
-    final private JoinUserFactory mUserFactory;
+    final private ChatUserFactory mUserFactory;
 
     public LoginListener(ChatMediator parameter) {
         mParameter = parameter;
-        mUserFactory = new JoinUserFactory();
+        mUserFactory = new ChatUserFactory();
     }
 
     @Override @Subscribe
@@ -37,15 +37,15 @@ public class LoginListener implements LoginEventListener {
     public void onNicknames(final NicknamesResponse response) {
         try {
             String rawJson = response.getResponseBody().or("{}");
-            JoinUsers users = mUserFactory.fromNicknameEvent(rawJson);
+            ChatUsers users = mUserFactory.fromNicknameEvent(rawJson);
             updateJoinUsers(users);
         } catch (JSONException e) {
             e.printStackTrace();
-            updateJoinUsers(new JoinUsers());
+            updateJoinUsers(new ChatUsers());
         }
     }
 
-    private void updateJoinUsers(final JoinUsers users) {
+    private void updateJoinUsers(final ChatUsers users) {
         mParameter.runOnUiThread(new Runnable() {
 
             @Override

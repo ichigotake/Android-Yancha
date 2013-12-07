@@ -6,30 +6,30 @@ import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yanchasdk.lib.model.JoinUsers;
+import net.ichigotake.yanchasdk.lib.model.ChatUsers;
 
 /**
  * ログインユーザーを表示する
  */
-class JoinUsersContainer {
+class ChatUsersContainer {
 
     final private TextView mJoinUsersCountView;
-    final private JoinUsersPopupListener mPopup;
+    final private ChatUsersPopupListener mPopup;
     final private View mUsersIcon;
 
-    JoinUsersContainer(Activity activity, View view) {
+    ChatUsersContainer(Activity activity, View view) {
         mJoinUsersCountView = (TextView) view.findViewById(R.id.chatJoinUsersCount);
         mUsersIcon = view.findViewById(R.id.chatJoinUsersIcon);
         mUsersIcon.setOnClickListener(new IconClickListener());
-        mPopup = new JoinUsersPopupListener(activity, mUsersIcon);
+        mPopup = new ChatUsersPopupListener(activity, mUsersIcon);
     }
     
-    void setUsers(JoinUsers users) {
+    void setUsers(ChatUsers users) {
         mPopup.setUsers(users);
         mJoinUsersCountView.setText(users.count() + "人");
     }
     
-    void update(JoinUsers users) {
+    void update(ChatUsers users) {
         setUsers(users);
     }
     

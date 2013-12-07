@@ -5,24 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.message.PostMessageViewCell;
-import net.ichigotake.yancha.common.message.PostMessageViewHolder;
+import net.ichigotake.yancha.common.message.ChatMessageViewCell;
+import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 /**
  * Created by ichigotake on 2013/12/05.
  */
 class SearchMessageViewConnector implements MessageViewConnector {
 
-    final private PostMessageViewCell mCell;
+    final private ChatMessageViewCell mCell;
 
     SearchMessageViewConnector(Context context) {
-        mCell = new PostMessageViewCell(context);
+        mCell = new ChatMessageViewCell(context);
     }
 
     @Override
-    public boolean isEnabled(int position, PostMessage item) {
+    public boolean isEnabled(int position, ChatMessage item) {
         return (position == 0) || (position%50 != 0);
     }
 
@@ -32,12 +32,12 @@ class SearchMessageViewConnector implements MessageViewConnector {
     }
 
     @Override
-    public View generatView(LayoutInflater inflater, int position, PostMessage message) {
+    public View generatView(LayoutInflater inflater, int position, ChatMessage message) {
         return inflater.inflate(R.layout.yc_common_message_cell, null);
     }
 
     @Override
-    public void connectView(int position, PostMessageViewHolder holder, PostMessage item) {
+    public void connectView(int position, ChatMessageViewHolder holder, ChatMessage item) {
         if (isEnabled(position, item)) {
             mCell.initializeMessage(holder, item);
         } else {

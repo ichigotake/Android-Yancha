@@ -8,8 +8,8 @@ import net.ichigotake.yancha.common.api.socketio.listener.MessageEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.AnnounsementResponse;
 import net.ichigotake.yancha.common.api.socketio.response.DeleteUserMessageResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UserMessageResponse;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
-import net.ichigotake.yanchasdk.lib.model.PostMessageFactory;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessageFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +41,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final PostMessage message = PostMessageFactory.create(json);
+            final ChatMessage message = ChatMessageFactory.create(json);
 
             mParameter.runOnUiThread(new Runnable() {
                 @Override
@@ -63,7 +63,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final PostMessage message = PostMessageFactory.create(json);
+            final ChatMessage message = ChatMessageFactory.create(json);
 
             mParameter.runOnUiThread(new Runnable() {
 

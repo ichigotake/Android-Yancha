@@ -2,7 +2,7 @@ package net.ichigotake.yancha.common.message;
 
 import android.util.SparseArray;
 
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,20 +12,20 @@ import java.util.Map;
 /**
  * 発言一覧をタグ毎にプールしておくもの
  */
-public class PostMessageListTagMap {
+public class ChatMessageTagMap {
 
     final private List<String> mJoinTagList;
 
-    final private Map<String, SparseArray<PostMessage>> mAllMessages;
+    final private Map<String, SparseArray<ChatMessage>> mAllMessages;
 
-    public PostMessageListTagMap() {
+    public ChatMessageTagMap() {
         mJoinTagList = new ArrayList<String>();
-        mAllMessages = new HashMap<String, SparseArray<PostMessage>>();
+        mAllMessages = new HashMap<String, SparseArray<ChatMessage>>();
     }
 
-    public boolean exists(PostMessage message) {
-        for (SparseArray<PostMessage> tagedMessages : mAllMessages.values()) {
-            PostMessage containsMessage = tagedMessages.get(message.getId());
+    public boolean exists(ChatMessage message) {
+        for (SparseArray<ChatMessage> tagedMessages : mAllMessages.values()) {
+            ChatMessage containsMessage = tagedMessages.get(message.getId());
             if (null != containsMessage) {
                 return true;
             }
@@ -33,12 +33,12 @@ public class PostMessageListTagMap {
         return false;
     }
 
-    public void add(PostMessage message) {
+    public void add(ChatMessage message) {
         for (String tag : message.getTags()) {
             if (! mAllMessages.containsKey(tag)) {
-                mAllMessages.put(tag, new SparseArray<PostMessage>());
+                mAllMessages.put(tag, new SparseArray<ChatMessage>());
             }
-            SparseArray<PostMessage> messages = mAllMessages.get(tag);
+            SparseArray<ChatMessage> messages = mAllMessages.get(tag);
             messages.put(message.getId(), message);
             if (containsTag(tag)) {
                 messages.put(message.getId(), message);
@@ -59,9 +59,9 @@ public class PostMessageListTagMap {
         return mJoinTagList.contains(tag);
     }
 
-    public void update(PostMessage message) {
-        for (SparseArray<PostMessage> tagedMessages : mAllMessages.values()) {
-            PostMessage containsMessage = tagedMessages.get(message.getId());
+    public void update(ChatMessage message) {
+        for (SparseArray<ChatMessage> tagedMessages : mAllMessages.values()) {
+            ChatMessage containsMessage = tagedMessages.get(message.getId());
             if (null != containsMessage) {
                 tagedMessages.remove(message.getId());
                 tagedMessages.put(message.getId(), message);
@@ -69,9 +69,9 @@ public class PostMessageListTagMap {
         }
     }
 
-    public void remove(PostMessage message) {
-        for (SparseArray<PostMessage> tagedMessages : mAllMessages.values()) {
-            PostMessage containsMessage = tagedMessages.get(message.getId());
+    public void remove(ChatMessage message) {
+        for (SparseArray<ChatMessage> tagedMessages : mAllMessages.values()) {
+            ChatMessage containsMessage = tagedMessages.get(message.getId());
             if (null != containsMessage) {
                 tagedMessages.remove(message.getId());
             }

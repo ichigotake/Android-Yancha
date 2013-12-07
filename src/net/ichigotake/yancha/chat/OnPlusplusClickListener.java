@@ -4,7 +4,7 @@ import android.view.View;
 
 import net.ichigotake.colorfulsweets.lib.ui.AsyncRunnableTask;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 /**
  * ++をするためのクリックリスナ
@@ -14,7 +14,7 @@ class OnPlusplusClickListener implements View.OnClickListener {
     final private int mMessageId;
     final private YanchaEmitter mEmitter;
 
-    OnPlusplusClickListener(YanchaEmitter emitter, PostMessage item) {
+    OnPlusplusClickListener(YanchaEmitter emitter, ChatMessage item) {
         mEmitter = emitter;
         mMessageId = item.getId();
     }

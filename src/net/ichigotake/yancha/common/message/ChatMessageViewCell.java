@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.common.ui.MessageSeparator;
 import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 import java.text.SimpleDateFormat;
 
@@ -15,27 +15,27 @@ import java.text.SimpleDateFormat;
  *
  * TODO いい感じの名前を考える
  */
-public class PostMessageViewCell {
+public class ChatMessageViewCell {
 
     final private MessageSeparator mSeparator;
 
-    public PostMessageViewCell(Context context) {
+    public ChatMessageViewCell(Context context) {
         mSeparator = new MessageSeparator(context);
     }
 
-    public void initializeSeparator(PostMessageViewHolder holder, int position) {
+    public void initializeSeparator(ChatMessageViewHolder holder, int position) {
         holder.getContentView().setVisibility(View.GONE);
         holder.getSeparatorView().setVisibility(View.VISIBLE);
         mSeparator.update(holder.getSeparatorView(), position);
     }
 
-    public void initializeMessage(PostMessageViewHolder holder, PostMessage message) {
+    public void initializeMessage(ChatMessageViewHolder holder, ChatMessage message) {
         holder.getContentView().setVisibility(View.VISIBLE);
         holder.getSeparatorView().setVisibility(View.GONE);
         initialize(holder, message);
     }
 
-    private void initialize(PostMessageViewHolder holder, PostMessage message) {
+    private void initialize(ChatMessageViewHolder holder, ChatMessage message) {
         setNickname(holder, message.getNickname());
         setMesage(holder, message.getMessage());
         setProfileImage(holder, message.getProfileImageUrl());
@@ -43,20 +43,20 @@ public class PostMessageViewCell {
         setTimestamp(holder, message.getCreatedTime());
     }
 
-    private void setNickname(PostMessageViewHolder holder, String nickname) {
+    private void setNickname(ChatMessageViewHolder holder, String nickname) {
         holder.getNicknameView().setText(nickname);
     }
 
-    private void setMesage(PostMessageViewHolder holder, String message) {
+    private void setMesage(ChatMessageViewHolder holder, String message) {
         holder.getMessageView().setText(message);
     }
 
-    private void setProfileImage(PostMessageViewHolder holder, String profileImageUrl) {
+    private void setProfileImage(ChatMessageViewHolder holder, String profileImageUrl) {
         new ProfileImageViewHelper()
             .setDrawable(holder.getProfileImageView(), profileImageUrl);
     }
 
-    private void setPlusplus(PostMessageViewHolder holder, int plusplus) {
+    private void setPlusplus(ChatMessageViewHolder holder, int plusplus) {
         TextView plusplusView = holder.getPlusplusView();
         if (plusplus > 0) {
             String plusplusText;
@@ -78,7 +78,7 @@ public class PostMessageViewCell {
 
     }
 
-    private void setTimestamp(PostMessageViewHolder holder, long createdTime) {
+    private void setTimestamp(ChatMessageViewHolder holder, long createdTime) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
                 .format(createdTime/100);
         holder.getTimestampView().setText(timestamp);

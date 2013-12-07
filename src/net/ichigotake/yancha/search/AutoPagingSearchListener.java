@@ -13,19 +13,19 @@ import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
-import net.ichigotake.yancha.common.message.PostMessageAdapter;
+import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
-import net.ichigotake.yanchasdk.lib.model.PostMessage;
+import net.ichigotake.yanchasdk.lib.model.ChatMessage;
 
 import org.json.JSONArray;
 
 /**
  * オートページングで検索する
  */
-class AutoPagingSearchListener extends AutoPagingListener<PostMessage, JSONArray> {
+class AutoPagingSearchListener extends AutoPagingListener<ChatMessage, JSONArray> {
 
     final private SearchOptionBuilder mBuilder;
-    final private PostMessageAdapter mAdapter;
+    final private ChatMessageAdapter mAdapter;
     
     public AutoPagingSearchListener(Context context, ApiUri uri) {
         super(context);
@@ -33,7 +33,7 @@ class AutoPagingSearchListener extends AutoPagingListener<PostMessage, JSONArray
             .setLimit(getPerPage());
 
         SearchMessageViewConnector connector = new SearchMessageViewConnector(context);
-        mAdapter = new PostMessageAdapter(context, connector);
+        mAdapter = new ChatMessageAdapter(context, connector);
     }
 
     @Override
@@ -42,7 +42,7 @@ class AutoPagingSearchListener extends AutoPagingListener<PostMessage, JSONArray
     }
 
     @Override
-    protected ArrayAdapter<PostMessage> getAdapter() {
+    protected ArrayAdapter<ChatMessage> getAdapter() {
         return mAdapter;
     }
 
