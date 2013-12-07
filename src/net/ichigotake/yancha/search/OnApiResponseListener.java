@@ -1,6 +1,5 @@
 package net.ichigotake.yancha.search;
 
-import android.util.Log;
 import android.widget.ArrayAdapter;
 
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
@@ -27,7 +26,6 @@ class OnApiResponseListener implements ResponseListener<JSONArray> {
             }
             for (int i=0; i<length; i++) {
                 String string = response.get(i).toString();
-                Log.d(getClass().getSimpleName(), "res: " + string);
                 mAdapter.add(ChatMessageFactory.create(string));
             }
             mAdapter.notifyDataSetChanged();
