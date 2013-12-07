@@ -8,7 +8,7 @@ import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationA
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yancha.common.user.AppUser;
 
 class SearchContainer implements ViewContainer {
 
@@ -19,7 +19,7 @@ class SearchContainer implements ViewContainer {
     SearchContainer(View view) {
         Context context = view.getContext();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
-        mPagingListener = new AutoPagingSearchListener(context, new User(context).getApiUri());
+        mPagingListener = new AutoPagingSearchListener(context, new AppUser(context).getApiUri());
     }
     
     void initialize() {

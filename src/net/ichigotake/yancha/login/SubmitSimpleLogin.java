@@ -8,7 +8,7 @@ import net.ichigotake.colorfulsweets.lib.ui.dialog.ShowConnectionErrorDialogList
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.YanchaApiLogin;
 import net.ichigotake.yancha.common.context.LoginSession;
-import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yancha.common.user.AppUser;
 
 import org.apache.http.ParseException;
 
@@ -25,23 +25,23 @@ class SubmitSimpleLogin {
     final private FragmentActivity mActivity;
     
     final private LoginViewHolder mHolder;
-    final private User mUser;
+    final private AppUser mAppUser;
     
     SubmitSimpleLogin(FragmentActivity activity, LoginViewHolder holder) {
         mActivity = activity;
         mHolder = holder;
-        mUser = new User(activity);
+        mAppUser = new AppUser(activity);
     }
     
     void send() {
         String nickname = mHolder.getLoginSimple().getText().toString();
         String authority = mHolder.getLoginServer().getText().toString();
         
-        mUser.setNickname(nickname);
-        mUser.setConnectServerAuthority(authority);
+        mAppUser.setNickname(nickname);
+        mAppUser.setConnectServer(authority);
         
         //TODO ���O�C�����s���̕���
-        YanchaApiLogin loginApi = new YanchaApiLogin(mUser);
+        YanchaApiLogin loginApi = new YanchaApiLogin(mAppUser);
         loginApi.registerListener(new LoadingProgressDialogListener(mActivity));
         loginApi.registerListener(new ShowConnectionErrorDialogListener(mActivity));
         loginApi.registerListener(new SimpleaApiEventListener());
@@ -55,7 +55,7 @@ class SubmitSimpleLogin {
             try {
                 Optional<String> content = response.getContent();
                 if (content.isPresent()) {
-                    mUser.setToken(content.get());
+                    mAppUser.setToken(content.get());
                     new LoginSession(mActivity)
                             .login();
                 } else {

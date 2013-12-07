@@ -9,16 +9,23 @@ import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NicknamesResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NoSessionResponse;
 import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
+import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yanchasdk.lib.model.JoinUserFactory;
+import net.ichigotake.yanchasdk.lib.model.JoinUsers;
+
+import org.json.JSONException;
 
 /**
- * Created by ichigotake on 2013/11/02.
+ * ログイン関連のイベントリスナ
  */
 public class LoginListener implements LoginEventListener {
 
     final private ChatMediator mParameter;
+    final private JoinUserFactory mUserFactory;
 
     public LoginListener(ChatMediator parameter) {
         mParameter = parameter;
+        mUserFactory = new JoinUserFactory();
     }
 
     @Override @Subscribe
@@ -28,17 +35,25 @@ public class LoginListener implements LoginEventListener {
 
     @Override @Subscribe
     public void onNicknames(final NicknamesResponse response) {
-        if (response.getResponseBody().isPresent()) {
-            mParameter.runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-                    mParameter.getContainer().updateJoinUsers(response.getResponseBody().get());
-                }
-            });
-        } else {
-            // TODO デバッグ用に例外を用意しよう
+        try {
+            String rawJson = response.getResponseBody().or("{}");
+            JoinUsers users = mUserFactory.fromNicknameEvent(rawJson);
+            updateJoinUsers(users);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            updateJoinUsers(new JoinUsers());
         }
+    }
+
+    private void updateJoinUsers(final JoinUsers users) {
+        mParameter.runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+                mParameter.getContainer().updateJoinUsers(users);
+            }
+        });
+        mParameter.getContainer().updateMyself(users);
     }
 
     @Override @Subscribe
@@ -50,6 +65,12 @@ public class LoginListener implements LoginEventListener {
 
     @Override @Subscribe
     public void onTokenLogin(TokenLoginResponse response) {
-
+        try {
+            ChatUser myself = mUserFactory.fromTokenLoginEvent(response.getResponseBody().get());
+            mParameter.getContainer().updateMyself(myself);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            // TODO エラーイベント
+        }
     }
 }

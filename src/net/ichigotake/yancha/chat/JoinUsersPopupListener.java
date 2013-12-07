@@ -1,11 +1,12 @@
 package net.ichigotake.yancha.chat;
 
-import net.ichigotake.colorfulsweets.lib.ui.Display;
-import net.ichigotake.yanchasdk.lib.model.JoinUsers;
-
 import android.app.Activity;
 import android.view.View;
 import android.widget.ListPopupWindow;
+
+import net.ichigotake.colorfulsweets.lib.ui.Display;
+import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yanchasdk.lib.model.JoinUsers;
 
 class JoinUsersPopupListener {
 
@@ -24,19 +25,20 @@ class JoinUsersPopupListener {
     }
     
     void setUsers(JoinUsers users) {
-        users.sort();
+        AppUser own = new AppUser(mActivity);
+        JoinUsers excludeMySelfUsers = users.excludeMyself(own);
+        excludeMySelfUsers.sort();
+
         mAdapter.clear();
-        mAdapter.addAll(users);
+        mAdapter.add(own);
+        mAdapter.addAll(excludeMySelfUsers);
         mAdapter.notifyDataSetChanged();
-        mPopup.setWidth((int)Display.calcDensity(mActivity, 240));
+        mPopup.setModal(true);
+        mPopup.setWidth((int) Display.calcDensity(mActivity, 240));
     }
-    
+
     void show() {
         mPopup.show();
-    }
-    
-    void dismiss() {
-        mPopup.dismiss();
     }
 
 }

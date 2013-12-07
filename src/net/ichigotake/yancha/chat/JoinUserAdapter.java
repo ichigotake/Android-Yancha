@@ -1,12 +1,5 @@
 package net.ichigotake.yancha.chat;
 
-import java.util.List;
-
-import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
-import net.ichigotake.yanchasdk.lib.model.JoinUser;
-import net.ichigotake.yanchasdk.lib.model.JoinUsers;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
+import net.ichigotake.yanchasdk.lib.model.ChatUser;
+import net.ichigotake.yanchasdk.lib.model.JoinUsers;
+
+import java.util.List;
+
 /**
  * ログインユーザーのアダプタ
  */
-public class JoinUserAdapter extends ArrayAdapter<JoinUser> {
+public class JoinUserAdapter extends ArrayAdapter<ChatUser> {
 
     final private LayoutInflater mInflater;
     final private ProfileImageViewHelper mImageHelper;
@@ -27,7 +27,7 @@ public class JoinUserAdapter extends ArrayAdapter<JoinUser> {
         this(context, new JoinUsers().toList());
     }
 
-    public JoinUserAdapter(Context context, List<JoinUser> users) {
+    public JoinUserAdapter(Context context, List<ChatUser> users) {
         super(context, R.layout.yc_join_users_cell, users);
         mInflater = LayoutInflater.from(context);
         mImageHelper = new ProfileImageViewHelper();
@@ -43,7 +43,7 @@ public class JoinUserAdapter extends ArrayAdapter<JoinUser> {
             convertView = mInflater.inflate(R.layout.yc_join_users_cell, null);
         }
 
-        JoinUser user = getItem(position);
+        ChatUser user = getItem(position);
 
         ImageView iconView = (ImageView) convertView.findViewById(R.id.profileImage);
         TextView nicknameView = (TextView) convertView.findViewById(R.id.nickname);

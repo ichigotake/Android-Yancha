@@ -8,7 +8,7 @@ import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.socketio.Chat;
 import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yancha.common.user.AppUser;
 import net.ichigotake.yancha.login.LoginFragment;
 
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class ChatFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 
-        ApiUri uri = new User(getActivity()).getApiUri();
+        ApiUri uri = new AppUser(getActivity()).getApiUri();
         try {
             chat = new Chat(uri.getAbsoluteUrl());
         } catch (MalformedURLException e) {

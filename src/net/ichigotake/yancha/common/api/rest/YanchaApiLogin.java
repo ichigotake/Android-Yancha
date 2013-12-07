@@ -3,7 +3,7 @@ package net.ichigotake.yancha.common.api.rest;
 import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncHttpAccessor;
 import net.ichigotake.colorfulsweets.lib.net.http.HttpAccessRequest;
-import net.ichigotake.yancha.common.user.User;
+import net.ichigotake.yancha.common.user.AppUser;
 
 import org.apache.http.client.methods.HttpRequestBase;
 
@@ -14,19 +14,19 @@ public class YanchaApiLogin extends AsyncHttpAccessor {
 
     final private UriBuilder mBuilder = new UriBuilder();
     
-    final private User mUser;
+    final private AppUser mAppUser;
     
-    public YanchaApiLogin(User user) {
-        mUser = user;
+    public YanchaApiLogin(AppUser appUser) {
+        mAppUser = appUser;
     }
     
     @Override
     public HttpRequestBase createRequest() {
-        ApiUri uri = mUser.getApiUri();
+        ApiUri uri = mAppUser.getApiUri();
         mBuilder.setPath(uri.getSimpleLoginPath())
-            .setAuthrity(mUser.getConnectServerAuthority())
+            .setAuthrity(mAppUser.getConnectServerAuthority())
             .setScheme(uri.getScheme())
-            .appendQueryParameter(YanchaApiField.NICK, mUser.getNickname())
+            .appendQueryParameter(YanchaApiField.NICK, mAppUser.getNickname())
             .appendQueryParameter(YanchaApiField.TOKEN_ONLY, "1")
             ;
         return new HttpAccessRequest().createGetRequest(mBuilder.build());

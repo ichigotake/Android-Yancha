@@ -1,7 +1,5 @@
 package net.ichigotake.yancha.common.api.socketio;
 
-import android.util.Log;
-
 import com.google.common.base.Optional;
 import com.google.common.eventbus.EventBus;
 
@@ -81,7 +79,7 @@ public class EmitEventDispatcher {
                 mEventBus.post(new ReconnectingResponse());
                 break;
             case TOKEN_LOGIN:
-                mEventBus.post(new TokenLoginResponse());
+                mEventBus.post(new TokenLoginResponse(response));
                 break;
             case USER_MESSAGE:
                 mEventBus.post(new UserMessageResponse(response));
