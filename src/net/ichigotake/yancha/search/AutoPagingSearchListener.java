@@ -9,7 +9,7 @@ import com.android.volley.VolleyError;
 import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
-import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingListener;
+import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingRequestListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
@@ -22,7 +22,7 @@ import org.json.JSONArray;
 /**
  * オートページングで検索する
  */
-class AutoPagingSearchListener extends AutoPagingListener<ChatMessage, JSONArray> {
+class AutoPagingSearchListener extends AutoPagingRequestListener<ChatMessage, JSONArray> {
 
     final private SearchOptionBuilder mBuilder;
     final private ChatMessageAdapter mAdapter;
