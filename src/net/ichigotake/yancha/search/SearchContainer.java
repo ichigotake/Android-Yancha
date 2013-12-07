@@ -27,6 +27,8 @@ class SearchContainer implements ViewContainer {
                 new ScaleInAnimationAdapter(mPagingListener.getAdapter());
         animationAdapter.setAbsListView(mMessageListView);
         mMessageListView.setAdapter(animationAdapter);
+
+        mPagingListener.onFirstLoading();
         
         mMessageListView.setOnScrollListener(mPagingListener);
     }
