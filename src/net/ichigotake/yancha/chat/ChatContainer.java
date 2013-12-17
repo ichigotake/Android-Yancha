@@ -28,8 +28,8 @@ public class ChatContainer implements ViewContainer {
 	
 	public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
 		mChatMessageContainer = new ChatMessageContainer(activity, view, emitter);
-		mMessagePostContainer = new MessagePostContainer(view, emitter);
-		mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
+        mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
+		mMessagePostContainer = new MessagePostContainer(view, emitter, mChatTagContainer);
 		mChatUsersContainer = new ChatUsersContainer(activity, view);
         mMyself = new AppUser(activity);
 	}
@@ -69,11 +69,8 @@ public class ChatContainer implements ViewContainer {
      */
 	final private ChatTagList getDefaultTagList() {
 		ChatTagList tags = new ChatTagList();
-		tags.add("PUBLIC");
-		tags.add("FROMLINGR");
-		tags.add("PRECUDA");
-		tags.add("KANKORE");
-		tags.add("GITHUB");
+		tags.add("#PUBLIC");
+		tags.add("#FROMLINGR");
 		return tags;
 	}
 

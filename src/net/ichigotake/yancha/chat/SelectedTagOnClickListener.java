@@ -1,25 +1,27 @@
 package net.ichigotake.yancha.chat;
 
-import net.ichigotake.yancha.common.user.JoinTagComparator;
-import net.ichigotake.yancha.sdk.model.ChatTagList;
-
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
+import android.widget.TextView;
 
+import net.ichigotake.yancha.common.user.JoinTagComparator;
+import net.ichigotake.yancha.sdk.model.ChatTagList;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.ArrayList;
 
 class SelectedTagOnClickListener implements OnClickListener {
 
     final private ChatTagList mTags;
-    
+    final private TextView mSelectedTagView;
     private PopupMenu mPopup;
     
-    public SelectedTagOnClickListener(ChatTagList tags) {
+    SelectedTagOnClickListener(TextView selectedTagView, ChatTagList tags) {
+        mSelectedTagView = selectedTagView;
         mTags = tags;
     }
     
@@ -43,6 +45,7 @@ class SelectedTagOnClickListener implements OnClickListener {
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
+            mSelectedTagView.setText(item.getTitle());
             mPopup.dismiss();
             return false;
         }

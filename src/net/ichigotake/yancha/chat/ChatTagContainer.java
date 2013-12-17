@@ -18,11 +18,15 @@ class ChatTagContainer implements ViewContainer {
 	
 	ChatTagContainer(View view, ChatTagList tags) {
 		mSelectedTagView = (TextView) view.findViewById(R.id.chatSelectedTagSelected);
-		mSelectedTagView.setOnClickListener(new SelectedTagOnClickListener(tags));
+		mSelectedTagView.setOnClickListener(new SelectedTagOnClickListener(mSelectedTagView, tags));
 		mTagStorage = new JoinTagListStorage(view.getContext());
 		mTagStorage.putAll(tags);
 		mTags = tags;
 	}
+
+    String getText() {
+        return mSelectedTagView.getText().toString();
+    }
 	
 	ChatTagList getTagList() {
 		return mTags;

@@ -16,21 +16,26 @@ import org.apache.commons.lang3.StringUtils;
 class MessagePost implements View.OnClickListener {
 
     final private YanchaEmitter mEmitter;
-
     final private EditText mMessageView;
-
+    final private ChatTagContainer mTagContainer;
     private boolean mIsSingleLine = true;
 
-    MessagePost(YanchaEmitter emitter, EditText messageView) {
+    MessagePost(YanchaEmitter emitter, EditText messageView, ChatTagContainer tagContainer) {
         mEmitter = emitter;
         mMessageView = messageView;
         mMessageView.setOnEditorActionListener(new OnSubmitActionListener());
+        mTagContainer = tagContainer;
     }
 
     void submit() {
         String message = mMessageView.getText().toString();
         if (! StringUtils.isBlank(message)) {
-            mEmitter.emitUserMessage(message);
+            String sendMessage = new StringBuilder()
+                    .append(message)
+                    .append(" ")
+                    .append(mTagContainer.getText())
+                    .toString();
+            mEmitter.emitUserMessage(sendMessage);
             //TODO 投稿失敗時のテキストを履歴として取っておきたい
             mMessageView.setText("");
             SoftInput.hide(mMessageView);
