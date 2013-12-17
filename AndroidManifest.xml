@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".common.context.BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/yc_app_name"

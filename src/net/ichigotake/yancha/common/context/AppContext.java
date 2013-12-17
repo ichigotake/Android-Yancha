@@ -1,10 +1,11 @@
 package net.ichigotake.yancha.common.context;
 
-import net.ichigotake.yancha.R;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+
+import net.ichigotake.yancha.R;
 
 public class AppContext {
 
@@ -16,6 +17,14 @@ public class AppContext {
     
     public AppContext(Context context) {
         mContext = context;
+    }
+
+    public String getUserAgent() {
+        return new StringBuilder()
+                .append("yancha for Android")
+                .append(" / ")
+                .append(getVersionName())
+                .toString();
     }
     
     /**
