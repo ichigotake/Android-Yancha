@@ -30,8 +30,8 @@ public class BaseActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()) {
             case R.id.menu_search_icon:
-                new ActivityTransit(this)
-                    .toNext(SearchActivity.class);
+                new ActivityTransit(this, SearchActivity.class)
+                    .toNext();
                 return true;
         }
         return super.onOptionsItemSelected(item);

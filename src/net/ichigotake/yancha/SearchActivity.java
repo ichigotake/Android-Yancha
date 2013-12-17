@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseActivity;

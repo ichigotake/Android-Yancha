@@ -11,7 +11,6 @@ import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncStringRequest;
-import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.LoadingProgressDialogListener;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.MessageDialogBuilder;
@@ -70,6 +69,11 @@ class SubmitSimpleLogin {
                         .show();
             }
         }
+
+        @Override
+        public void onError(VolleyError error) {
+            // TODO エラーハンドリング
+        }
     }
 
     private class SimpleLoginApiRequest extends AsyncStringRequest {
@@ -102,15 +106,6 @@ class SubmitSimpleLogin {
             return new SimpleaApiEventListener();
         }
 
-        @Override
-        protected ResponseErrorListener createErrorResponse() {
-            return new ResponseErrorListener() {
-                @Override
-                public void onResponse(VolleyError response) {
-
-                }
-            };
-        }
     }
 
 }

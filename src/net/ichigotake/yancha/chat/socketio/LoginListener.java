@@ -58,9 +58,9 @@ public class LoginListener implements LoginEventListener {
 
     @Override @Subscribe
     public void onNoSession(NoSessionResponse response) {
-        new ActivityTransit(mParameter.getActivity())
+        new ActivityTransit(mParameter.getActivity(), ChatActivity.class)
                 .clearTop()
-                .toNext(ChatActivity.class);
+                .toNext();
     }
 
     @Override @Subscribe

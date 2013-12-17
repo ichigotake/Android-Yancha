@@ -17,13 +17,13 @@ public class SplashActivity extends BaseActivity {
 
         AppUser appUser = new AppUser(this);
         if (appUser.hasToken()) {
-            new ActivityTransit(this)
+            new ActivityTransit(this, ChatActivity.class)
                     .clearTop()
-                    .toNext(ChatActivity.class);
+                    .toNext();
         } else {
-            new ActivityTransit(this)
+            new ActivityTransit(this, LoginActivity.class)
                     .clearTop()
-                    .toNext(LoginActivity.class);
+                    .toNext();
         }
     }
 }

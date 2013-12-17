@@ -19,15 +19,15 @@ public class LoginSession {
     }
 
     public void login() {
-        new ActivityTransit(mActivity)
+        new ActivityTransit(mActivity, ChatActivity.class)
                 .clearTop()
-                .toNext(ChatActivity.class);
+                .toNext();
     }
 
     public void logout() {
         new AppUser(mActivity).resetToken();
-        new ActivityTransit(mActivity)
+        new ActivityTransit(mActivity, LoginActivity.class)
                 .clearTop()
-                .toNext(LoginActivity.class);
+                .toNext();
     }
 }

@@ -2,6 +2,8 @@ package net.ichigotake.yancha.search;
 
 import android.widget.ArrayAdapter;
 
+import com.android.volley.VolleyError;
+
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
@@ -33,6 +35,11 @@ class OnApiResponseListener implements ResponseListener<JSONArray> {
             // TODO エラーイベントを投げる
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onError(VolleyError error) {
+        // TODO エラーハンドリング
     }
 
 

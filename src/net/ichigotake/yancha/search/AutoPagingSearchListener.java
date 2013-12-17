@@ -4,13 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ArrayAdapter;
 
-import com.android.volley.VolleyError;
-
-import net.ichigotake.colorfulsweets.lib.model.PagingParameter;
+import net.ichigotake.colorfulsweets.lib.model.PagingState;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingRequestListener;
-import net.ichigotake.colorfulsweets.lib.net.http.ResponseErrorListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
@@ -47,7 +44,7 @@ class AutoPagingSearchListener extends AutoPagingRequestListener<ChatMessage, JS
     }
 
     @Override
-    protected AsyncRequest<JSONArray> createRequest(PagingParameter parameter) {
+    protected AsyncRequest<JSONArray> createRequest(PagingState parameter) {
         return new SearchApiRequest(parameter);
     }
 
@@ -56,12 +53,12 @@ class AutoPagingSearchListener extends AutoPagingRequestListener<ChatMessage, JS
      */
     private class SearchApiRequest extends AutoPagingJsonArrayRequest {
 
-        public SearchApiRequest(PagingParameter parameter) {
+        public SearchApiRequest(PagingState parameter) {
             super(parameter);
         }
 
         @Override
-        protected Uri getRequestUri(PagingParameter parameter) {
+        protected Uri getRequestUri(PagingState parameter) {
             mBuilder.setOffset(parameter.getOffset());
             return mBuilder.build().toUri();
         }
@@ -71,15 +68,6 @@ class AutoPagingSearchListener extends AutoPagingRequestListener<ChatMessage, JS
             return new OnApiResponseListener(getAdapter());
         }
 
-        @Override
-        protected ResponseErrorListener createErrorResponse() {
-            return new ResponseErrorListener() {
-                @Override
-                public void onResponse(VolleyError error) {
-                    // TODO 何か、エラーイベントを
-                }
-            };
-        }
     }
 
 }
