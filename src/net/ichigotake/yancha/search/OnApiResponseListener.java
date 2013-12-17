@@ -4,6 +4,7 @@ import android.widget.ArrayAdapter;
 
 import com.android.volley.VolleyError;
 
+import net.ichigotake.colorfulsweets.lib.net.http.AfterResponse;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
@@ -40,6 +41,11 @@ class OnApiResponseListener implements ResponseListener<JSONArray> {
     @Override
     public void onError(VolleyError error) {
         // TODO エラーハンドリング
+    }
+
+    @Override
+    public void afterResponse(AfterResponse response) {
+        // do nothing
     }
 
 

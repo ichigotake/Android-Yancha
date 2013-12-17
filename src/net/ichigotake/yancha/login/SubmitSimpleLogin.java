@@ -10,6 +10,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
+import net.ichigotake.colorfulsweets.lib.net.http.AfterResponse;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncStringRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.colorfulsweets.lib.ui.dialog.LoadingProgressDialogListener;
@@ -72,6 +73,11 @@ class SubmitSimpleLogin {
         @Override
         public void onError(VolleyError error) {
             // TODO エラーハンドリング
+        }
+
+        @Override
+        public void afterResponse(AfterResponse response) {
+            // do nothing
         }
     }
 
