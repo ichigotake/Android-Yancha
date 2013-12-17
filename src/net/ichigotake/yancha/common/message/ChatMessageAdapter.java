@@ -59,7 +59,7 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
         final ChatMessage message = getItem(position);
 
         if (contentView == null) {
-            contentView = mConnector.generatView(mInflater, position, message);
+            contentView = mConnector.generateView(mInflater, position, message);
             holder = new ChatMessageViewHolder(contentView);
             contentView.setTag(holder);
         } else {

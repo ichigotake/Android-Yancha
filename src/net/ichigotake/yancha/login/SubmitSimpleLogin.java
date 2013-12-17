@@ -46,7 +46,6 @@ class SubmitSimpleLogin {
         mAppUser.setNickname(nickname);
         mAppUser.setConnectServer(authority);
         
-        //TODO ���O�C�����s���̕���
         SimpleLoginApiRequest api = new SimpleLoginApiRequest(mAppUser);
         api.registerListener(new LoadingProgressDialogListener(mActivity));
         api.registerListener(new ShowConnectionErrorDialogListener(mActivity));

@@ -14,9 +14,6 @@ import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by ichigotake on 2013/11/02.
- */
 public class MessageListener implements MessageEventListener {
 
     final private ChatMediator mParameter;

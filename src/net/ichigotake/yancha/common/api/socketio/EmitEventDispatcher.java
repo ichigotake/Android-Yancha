@@ -19,9 +19,6 @@ import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UnknownResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UserMessageResponse;
 
-/**
- * Created by ichigotake on 2013/11/02.
- */
 public class EmitEventDispatcher {
 
     final private EventBus mEventBus = new EventBus();

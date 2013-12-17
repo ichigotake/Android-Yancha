@@ -6,9 +6,6 @@ import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
 import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.user.AppUser;
 
-/**
- * Created by ichigotake on 2013/11/02.
- */
 public class SplashActivity extends BaseActivity {
 
     @Override

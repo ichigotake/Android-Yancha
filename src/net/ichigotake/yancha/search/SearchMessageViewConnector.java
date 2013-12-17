@@ -10,9 +10,6 @@ import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 
-/**
- * Created by ichigotake on 2013/12/05.
- */
 class SearchMessageViewConnector implements MessageViewConnector {
 
     final private ChatMessageViewCell mCell;
@@ -32,7 +29,7 @@ class SearchMessageViewConnector implements MessageViewConnector {
     }
 
     @Override
-    public View generatView(LayoutInflater inflater, int position, ChatMessage message) {
+    public View generateView(LayoutInflater inflater, int position, ChatMessage message) {
         return inflater.inflate(R.layout.yc_common_message_cell, null);
     }
 

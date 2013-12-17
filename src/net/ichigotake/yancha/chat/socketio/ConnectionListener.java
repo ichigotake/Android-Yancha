@@ -1,7 +1,5 @@
 package net.ichigotake.yancha.chat.socketio;
 
-import android.util.Log;
-
 import com.google.common.eventbus.Subscribe;
 
 import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
@@ -14,9 +12,6 @@ import net.ichigotake.yancha.common.api.socketio.response.ErrorResponse;
 import net.ichigotake.yancha.common.api.socketio.response.ReconnectResponse;
 import net.ichigotake.yancha.common.api.socketio.response.ReconnectingResponse;
 
-/**
- * Created by ichigotake on 2013/11/02.
- */
 public class ConnectionListener implements ConnectionEventListener {
 
     final private String TAG = ConnectionListener.class.getClass().getSimpleName();
@@ -29,8 +24,6 @@ public class ConnectionListener implements ConnectionEventListener {
 
     @Override @Subscribe
     public void onConnect(ConnectResponse response) {
-        Log.d(TAG, "onConnect");
-
         YanchaEmitter emitter = mParameter.getEmitter();
         emitter.emitTokenLogin(mParameter.getUser().getToken());
 

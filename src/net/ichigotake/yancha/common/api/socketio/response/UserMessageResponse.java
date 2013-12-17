@@ -2,9 +2,6 @@ package net.ichigotake.yancha.common.api.socketio.response;
 
 import com.google.common.base.Optional;
 
-/**
- * Created by ichigotake on 2013/11/02.
- */
 public class UserMessageResponse implements EmitEventResponse {
 
     final private Optional<String> mResponseBody;

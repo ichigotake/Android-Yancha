@@ -12,44 +12,44 @@ import net.ichigotake.yancha.sdk.model.ChatTagList;
 import net.ichigotake.yancha.sdk.model.ChatUser;
 
 /**
- * �`���b�g��ʂ�\������
+ * チャット画面を表示
  */
 public class ChatContainer implements ViewContainer {
 
-	final private ChatMessageContainer mChatMessageContainer;
-	
-	final private MessagePostContainer mMessagePostContainer;
-	
-	final private ChatTagContainer mChatTagContainer;
-	
-	final private ChatUsersContainer mChatUsersContainer;
+    final private ChatMessageContainer mChatMessageContainer;
+    
+    final private MessagePostContainer mMessagePostContainer;
+    
+    final private ChatTagContainer mChatTagContainer;
+    
+    final private ChatUsersContainer mChatUsersContainer;
 
     final private AppUser mMyself;
-	
-	public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
-		mChatMessageContainer = new ChatMessageContainer(activity, view, emitter);
+    
+    public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
+        mChatMessageContainer = new ChatMessageContainer(activity, view, emitter);
         mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
-		mMessagePostContainer = new MessagePostContainer(view, emitter, mChatTagContainer);
-		mChatUsersContainer = new ChatUsersContainer(activity, view);
+        mMessagePostContainer = new MessagePostContainer(view, emitter, mChatTagContainer);
+        mChatUsersContainer = new ChatUsersContainer(activity, view);
         mMyself = new AppUser(activity);
-	}
+    }
 
-	public ChatTagList getTagList() {
-		return mChatTagContainer.getTagList();
-	}
-	
-	public void addMessage(ChatMessage message) {
-		mChatMessageContainer.addMessage(message);
-	}
+    public ChatTagList getTagList() {
+        return mChatTagContainer.getTagList();
+    }
+    
+    public void addMessage(ChatMessage message) {
+        mChatMessageContainer.addMessage(message);
+    }
 
     public void removeMessage(ChatMessage message) {
         mChatMessageContainer.removeMessage(message);
     }
-	
-	public void updateJoinUsers(ChatUsers users) {
+    
+    public void updateJoinUsers(ChatUsers users) {
         updateMyself(users);
-		mChatUsersContainer.update(users);
-	}
+        mChatUsersContainer.update(users);
+    }
 
     public void updateMyself(ChatUsers users) {
         for (ChatUser user : users.toList()) {
@@ -63,15 +63,11 @@ public class ChatContainer implements ViewContainer {
         mMyself.update(user);
     }
 
-    /**
-     * とりあえずのデバッグ用
-     * @return
-     */
-	final private ChatTagList getDefaultTagList() {
-		ChatTagList tags = new ChatTagList();
-		tags.add("#PUBLIC");
-		tags.add("#FROMLINGR");
-		return tags;
-	}
+    final private ChatTagList getDefaultTagList() {
+        ChatTagList tags = new ChatTagList();
+        tags.add("#PUBLIC");
+        tags.add("#FROMLINGR");
+        return tags;
+    }
 
 }

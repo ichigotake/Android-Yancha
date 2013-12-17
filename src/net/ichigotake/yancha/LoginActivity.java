@@ -32,7 +32,7 @@ public class LoginActivity extends BaseActivity {
                 appUser.setToken(token.get());
                 new LoginSession(this)
                     .login();
-                return ; // TODO メソッドの末尾以外でのeturnはやめよう
+                return ; // TODO メソッドの末尾以外でのreturnはやめよう
             }
         }
 

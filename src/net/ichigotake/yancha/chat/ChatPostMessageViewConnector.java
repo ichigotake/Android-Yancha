@@ -35,7 +35,7 @@ public class ChatPostMessageViewConnector implements MessageViewConnector {
     }
 
     @Override
-    public View generatView(LayoutInflater inflater, int position, ChatMessage message) {
+    public View generateView(LayoutInflater inflater, int position, ChatMessage message) {
         return inflater.inflate(R.layout.yc_common_message_cell, null);
     }
 

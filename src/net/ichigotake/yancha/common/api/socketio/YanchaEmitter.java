@@ -1,8 +1,6 @@
 package net.ichigotake.yancha.common.api.socketio;
 
-import io.socket.SocketIO;
-
-import java.util.Map;
+import com.google.common.eventbus.Subscribe;
 
 import net.ichigotake.yancha.common.message.SendMessage;
 import net.ichigotake.yancha.common.message.SendMessageListener;
@@ -11,9 +9,9 @@ import net.ichigotake.yancha.sdk.model.ChatTagList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
+import java.util.Map;
 
-import com.google.common.eventbus.Subscribe;
+import io.socket.SocketIO;
 
 
 /**
@@ -37,7 +35,6 @@ public class YanchaEmitter implements SendMessageListener {
      * @param token
      */
     public void emitTokenLogin(String token) {
-        Log.d(getClass().getSimpleName(), "token:: " + token);
         chat.emit(EmitEvent.TOKEN_LOGIN.getName(), token);
     }
     
