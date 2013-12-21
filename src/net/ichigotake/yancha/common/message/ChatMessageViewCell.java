@@ -80,7 +80,7 @@ public class ChatMessageViewCell {
 
     private void setTimestamp(ChatMessageViewHolder holder, long createdTime) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
-                .format(createdTime/100);
+                .format(createdTime);
         holder.getTimestampView().setText(timestamp);
     }
 
