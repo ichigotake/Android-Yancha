@@ -65,8 +65,8 @@ public class ChatContainer implements ViewContainer {
 
     final private ChatTagList getDefaultTagList() {
         ChatTagList tags = new ChatTagList();
-        tags.add("#PUBLIC");
-        tags.add("#FROMLINGR");
+        tags.add("PUBLIC");
+        tags.add("FROMLINGR");
         return tags;
     }
 
