@@ -9,8 +9,6 @@ import net.ichigotake.yancha.sdk.model.ChatTagList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Map;
-
 import io.socket.SocketIO;
 
 
@@ -50,18 +48,6 @@ public class YanchaEmitter implements SendMessageListener {
                 json.put(tag, tag);
             }
             chat.emit(EmitEvent.JOIN_TAG.getName(), json);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void emitJoinTag(Map<String, Integer> tags) {
-        try {
-            JSONObject postTags = new JSONObject();
-            for (String tag : tags.keySet()) {
-                postTags.put(tag, tag);
-            }
-            chat.emit(EmitEvent.JOIN_TAG.getName(), postTags);
         } catch (JSONException e) {
             e.printStackTrace();
         }
