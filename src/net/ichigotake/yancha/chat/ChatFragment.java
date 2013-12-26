@@ -1,6 +1,11 @@
 package net.ichigotake.yancha.chat;
 
-import java.net.MalformedURLException;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.R;
@@ -11,55 +16,38 @@ import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.user.AppUser;
 import net.ichigotake.yancha.login.LoginFragment;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+import java.net.MalformedURLException;
 
 /**
  * チャット画面
  */
 public class ChatFragment extends Fragment {
 
-	private Chat chat;
+    private Chat chat;
 
-	public static ChatFragment newInstance() {
-		return new ChatFragment();
-	}
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setHasOptionsMenu(true);
+    public static ChatFragment newInstance() {
+        return new ChatFragment();
+    }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.yc_chat_main, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
         ApiUri uri = new AppUser(getActivity()).getApiUri();
         try {
             chat = new Chat(uri.getAbsoluteUrl());
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            Toast.makeText(getActivity(),
-                    "無効なURLです",
-                    Toast.LENGTH_SHORT).show();
-            FragmentTransit.from(getActivity());
-            new FragmentTransit(getActivity())
-                    .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
+            onConnectionError();
         }
 
-    }
-	
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.yc_chat_main, container, false);
-		
         YanchaCallbackListener yanchaListener =
-				new YanchaCallbackListener(chat.getEmitter(), getActivity(), view);
-		chat.setCallbackListener(yanchaListener);
-        chat.connect();
-
-		return view;
-	}
+                new YanchaCallbackListener(chat.getEmitter(), getActivity(), getView());
+        chat.setCallbackListener(yanchaListener);
+    }
 
     @Override
     public void onResume() {
@@ -68,14 +56,23 @@ public class ChatFragment extends Fragment {
             chat.reconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            //TODO 接続出来ない時のフィードバック
+            onConnectionError();
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        chat.disconnect();
+        if (chat != null) {
+            chat.disconnect();
+        }
     }
 
+    private void onConnectionError() {
+        Toast.makeText(getActivity(),
+                "無効なURLです",
+                Toast.LENGTH_SHORT).show();
+        new FragmentTransit(getActivity())
+                .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
+    }
 }
