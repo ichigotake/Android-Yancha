@@ -2,10 +2,12 @@ package net.ichigotake.yancha.common.api.rest;
 
 import android.text.TextUtils;
 
+import java.io.Serializable;
+
 /**
  * APIのURI
  */
-public class ApiUri {
+public class ApiUri implements Serializable {
 
     final private String mHostname;
     

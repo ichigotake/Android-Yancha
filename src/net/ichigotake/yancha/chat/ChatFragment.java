@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.lib.os.BundleSimple;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.socketio.Chat;
 import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.user.AppUser;
 import net.ichigotake.yancha.login.LoginFragment;
 
 import java.net.MalformedURLException;
@@ -23,10 +23,15 @@ import java.net.MalformedURLException;
  */
 public class ChatFragment extends Fragment {
 
+    final static private String KEY_CONNECT_URI = "key_connect_uri";
     private Chat chat;
 
-    public static ChatFragment newInstance() {
-        return new ChatFragment();
+    public static Fragment newInstance(ApiUri connectUri) {
+        Fragment fragment = new ChatFragment();
+        BundleSimple store = new BundleSimple();
+        store.put(KEY_CONNECT_URI, connectUri);
+        fragment.setArguments(store.toBundle());
+        return fragment;
     }
 
     @Override
@@ -36,7 +41,8 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        ApiUri uri = new AppUser(getActivity()).getApiUri();
+        BundleSimple store = new BundleSimple(getArguments());
+        ApiUri uri = (ApiUri)store.getSerializable(KEY_CONNECT_URI);
         try {
             chat = new Chat(uri.getAbsoluteUrl());
         } catch (MalformedURLException e) {
