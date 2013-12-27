@@ -27,7 +27,7 @@ public class ConnectionListener implements ConnectionEventListener {
         YanchaEmitter emitter = mParameter.getEmitter();
         emitter.emitTokenLogin(mParameter.getUser().getToken());
 
-        emitter.emitJoinTag(mParameter.getContainer().getTagList());
+        emitter.emitJoinTag(mParameter.getContainer().getTags());
 
         mParameter.runOnUiThread(new Runnable() {
 

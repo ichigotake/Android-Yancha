@@ -1,20 +1,23 @@
-package net.ichigotake.yancha.search;
+package net.ichigotake.yancha.common.message;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import net.ichigotake.colorfulsweets.lib.widget.ViewConnector;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.message.ChatMessageViewCell;
 import net.ichigotake.yancha.common.message.ChatMessageViewHolder;
 import net.ichigotake.yancha.common.ui.MessageViewConnector;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 
-class SearchMessageViewConnector implements MessageViewConnector {
+public class SearchMessageViewConnector
+        implements MessageViewConnector,
+        ViewConnector<ChatMessageViewHolder,ChatMessage> {
 
     final private ChatMessageViewCell mCell;
 
-    SearchMessageViewConnector(Context context) {
+    public SearchMessageViewConnector(Context context) {
         mCell = new ChatMessageViewCell(context);
     }
 

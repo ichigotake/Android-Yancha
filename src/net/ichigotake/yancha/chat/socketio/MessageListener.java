@@ -38,7 +38,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = ChatMessageFactory.create(json);
+            final ChatMessage message = new ChatMessageFactory().create(json);
 
             mParameter.runOnUiThread(new Runnable() {
                 @Override
@@ -60,7 +60,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = ChatMessageFactory.create(json);
+            final ChatMessage message = new ChatMessageFactory().create(json);
 
             mParameter.runOnUiThread(new Runnable() {
 

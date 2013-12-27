@@ -6,10 +6,10 @@ import android.view.View;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.AppUser;
-import net.ichigotake.yancha.sdk.model.ChatUsers;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
-import net.ichigotake.yancha.sdk.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTags;
 import net.ichigotake.yancha.sdk.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
 
 /**
  * チャット画面を表示
@@ -28,14 +28,14 @@ public class ChatContainer implements ViewContainer {
     
     public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
         mChatMessageContainer = new ChatMessageContainer(activity, view, emitter);
-        mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
+        mChatTagContainer = new ChatTagContainer(view, getDefaultTags());
         mMessagePostContainer = new MessagePostContainer(view, emitter, mChatTagContainer);
         mChatUsersContainer = new ChatUsersContainer(activity, view);
         mMyself = new AppUser(activity);
     }
 
-    public ChatTagList getTagList() {
-        return mChatTagContainer.getTagList();
+    public ChatTags getTags() {
+        return mChatTagContainer.getTags();
     }
     
     public void addMessage(ChatMessage message) {
@@ -63,8 +63,8 @@ public class ChatContainer implements ViewContainer {
         mMyself.update(user);
     }
 
-    final private ChatTagList getDefaultTagList() {
-        ChatTagList tags = new ChatTagList();
+    final private ChatTags getDefaultTags() {
+        ChatTags tags = new ChatTags();
         tags.add("PUBLIC");
         tags.add("FROMLINGR");
         return tags;

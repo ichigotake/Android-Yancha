@@ -1,36 +1,30 @@
 package net.ichigotake.yancha.search;
 
-import android.widget.ArrayAdapter;
-
 import com.android.volley.VolleyError;
 
-import net.ichigotake.colorfulsweets.lib.net.http.AfterResponse;
+import net.ichigotake.colorfulsweets.lib.net.http.AfterResponseEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.AsyncResponseEvent;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
-import net.ichigotake.yancha.sdk.model.ChatMessage;
+import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
+import net.ichigotake.yancha.sdk.model.ChatMessages;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 class OnApiResponseListener implements ResponseListener<JSONArray> {
 
-    final private ArrayAdapter<ChatMessage> mAdapter;
+    final private ChatMessageAdapter mAdapter;
     
-    OnApiResponseListener(ArrayAdapter<ChatMessage> adapter) {
+    OnApiResponseListener(ChatMessageAdapter adapter) {
         mAdapter = adapter;
     }
     
     @Override
-    public void onResponse(JSONArray response) {
+    public void onResponse(AsyncResponseEvent<JSONArray> event) {
         try {
-            int length = response.length();
-            if (0 == length) {
-                return ;
-            }
-            for (int i=0; i<length; i++) {
-                String string = response.get(i).toString();
-                mAdapter.add(ChatMessageFactory.create(string));
-            }
+            ChatMessages messages = new ChatMessageFactory().createList(event.getResponse());
+            mAdapter.addAll(messages.toList());
             mAdapter.notifyDataSetChanged();
         } catch (JSONException e) {
             // TODO エラーイベントを投げる
@@ -44,7 +38,7 @@ class OnApiResponseListener implements ResponseListener<JSONArray> {
     }
 
     @Override
-    public void afterResponse(AfterResponse response) {
+    public void afterResponse(AfterResponseEvent response) {
         // do nothing
     }
 

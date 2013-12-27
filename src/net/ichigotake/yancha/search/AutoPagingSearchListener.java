@@ -11,6 +11,7 @@ import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingRequestListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
+import net.ichigotake.yancha.common.message.SearchMessageViewConnector;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 
@@ -65,7 +66,7 @@ class AutoPagingSearchListener extends AutoPagingRequestListener<ChatMessage, JS
 
         @Override
         protected ResponseListener<JSONArray> createResponse() {
-            return new OnApiResponseListener(getAdapter());
+            return new OnApiResponseListener((ChatMessageAdapter)getAdapter());
         }
 
     }
