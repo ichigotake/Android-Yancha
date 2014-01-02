@@ -9,18 +9,12 @@
     ### 例
     $ mkdir -p ~/Development/android && cd $_
     $ git clone https://github.com/ichigotake/Android-yancha yancha
-    $ git clone https://github.com/ichigotake/ColorfulSweets
 
 3, ダウンロードしたソースをIDEのプロジェクトへインポートする
 
-4, android.support.v7.appcompatのプロジェクトをSDKからインポートする
-
-5, 依存の設定
-
-    Android-yancha: ColorfulSweets,appcompatへ依存
-    ColorfulSweets: appcompatへ依存
+4, 起動してセットアップ完了
 
 ## TODO
 
-手順をシンプルにしたい
+トラブルシューティングを...
 
