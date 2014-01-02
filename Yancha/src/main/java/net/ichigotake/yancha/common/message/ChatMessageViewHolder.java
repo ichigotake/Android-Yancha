@@ -5,8 +5,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import net.ichigotake.colorfulsweets.lib.widget.ViewHolder;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.ui.ViewHolder;
 
 /**
  * 発言のビューホルダー

@@ -8,7 +8,7 @@ import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.AppUser;
 import net.ichigotake.yancha.sdk.model.ChatUsers;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
-import net.ichigotake.yancha.sdk.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTags;
 import net.ichigotake.yancha.sdk.model.ChatUser;
 
 /**
@@ -34,8 +34,8 @@ public class ChatContainer implements ViewContainer {
         mMyself = new AppUser(activity);
     }
 
-    public ChatTagList getTagList() {
-        return mChatTagContainer.getTagList();
+    public ChatTags getTagList() {
+        return mChatTagContainer.getTags();
     }
     
     public void addMessage(ChatMessage message) {
@@ -63,8 +63,8 @@ public class ChatContainer implements ViewContainer {
         mMyself.update(user);
     }
 
-    final private ChatTagList getDefaultTagList() {
-        ChatTagList tags = new ChatTagList();
+    final private ChatTags getDefaultTagList() {
+        ChatTags tags = new ChatTags();
         tags.add("PUBLIC");
         tags.add("FROMLINGR");
         return tags;

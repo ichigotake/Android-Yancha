@@ -41,6 +41,7 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
         BundleSimple store = new BundleSimple(getArguments());
         ApiUri uri = (ApiUri)store.getSerializable(KEY_CONNECT_URI);
         try {
@@ -48,11 +49,13 @@ public class ChatFragment extends Fragment {
         } catch (MalformedURLException e) {
             e.printStackTrace();
             onConnectionError();
+            return ;
         }
 
         YanchaCallbackListener yanchaListener =
                 new YanchaCallbackListener(chat.getEmitter(), getActivity(), getView());
         chat.setCallbackListener(yanchaListener);
+        chat.connect();
     }
 
     @Override

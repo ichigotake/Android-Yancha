@@ -3,7 +3,7 @@ package net.ichigotake.yancha.common.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 
-public interface SectionedViewConnector<T extends ViewHolder, E> {
+public interface SectionedViewConnector<T, E> {
 
     public boolean isEnabled(int position, E item);
 

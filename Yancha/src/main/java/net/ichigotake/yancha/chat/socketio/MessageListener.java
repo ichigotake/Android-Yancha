@@ -17,9 +17,11 @@ import org.json.JSONObject;
 public class MessageListener implements MessageEventListener {
 
     final private ChatMediator mParameter;
+    final private ChatMessageFactory mFactory;
 
     MessageListener(ChatMediator parameter) {
         mParameter = parameter;
+        mFactory = new ChatMessageFactory();
     }
 
     @Override @Subscribe
@@ -38,7 +40,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = ChatMessageFactory.create(json);
+            final ChatMessage message = mFactory.create(json);
 
             mParameter.runOnUiThread(new Runnable() {
                 @Override
@@ -60,7 +62,7 @@ public class MessageListener implements MessageEventListener {
 
         try {
             final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = ChatMessageFactory.create(json);
+            final ChatMessage message = mFactory.create(json);
 
             mParameter.runOnUiThread(new Runnable() {
 

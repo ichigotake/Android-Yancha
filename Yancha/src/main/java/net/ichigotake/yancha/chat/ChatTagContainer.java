@@ -6,7 +6,7 @@ import android.widget.TextView;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.JoinTagListStorage;
-import net.ichigotake.yancha.sdk.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTags;
 
 class ChatTagContainer implements ViewContainer {
 
@@ -14,9 +14,9 @@ class ChatTagContainer implements ViewContainer {
     
     final private JoinTagListStorage mTagStorage;
     
-    final private ChatTagList mTags;
+    final private ChatTags mTags;
     
-    ChatTagContainer(View view, ChatTagList tags) {
+    ChatTagContainer(View view, ChatTags tags) {
         mSelectedTagView = (TextView) view.findViewById(R.id.chatSelectedTagSelected);
         mSelectedTagView.setOnClickListener(new SelectedTagOnClickListener(mSelectedTagView, tags));
         mTagStorage = new JoinTagListStorage(view.getContext());
@@ -27,8 +27,8 @@ class ChatTagContainer implements ViewContainer {
     String getText() {
         return mSelectedTagView.getText().toString();
     }
-    
-    ChatTagList getTagList() {
+
+    ChatTags getTags() {
         return mTags;
     }
 }

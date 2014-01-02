@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.common.user.JoinTagComparator;
 import net.ichigotake.yancha.sdk.model.ChatTag;
-import net.ichigotake.yancha.sdk.model.ChatTagList;
+import net.ichigotake.yancha.sdk.model.ChatTags;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,11 +18,11 @@ import java.util.Map;
 
 class SelectedTagOnClickListener implements OnClickListener {
 
-    final private ChatTagList mTags;
+    final private ChatTags mTags;
     final private TextView mSelectedTagView;
     private PopupMenu mPopup;
     
-    SelectedTagOnClickListener(TextView selectedTagView, ChatTagList tags) {
+    SelectedTagOnClickListener(TextView selectedTagView, ChatTags tags) {
         mSelectedTagView = selectedTagView;
         mTags = tags;
     }

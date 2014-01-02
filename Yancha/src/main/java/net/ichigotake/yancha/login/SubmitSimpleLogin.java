@@ -10,7 +10,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
-import net.ichigotake.colorfulsweets.lib.net.http.AfterResponse;
+import net.ichigotake.colorfulsweets.lib.net.http.AfterResponseEvent;
+import net.ichigotake.colorfulsweets.lib.net.http.AsyncResponseEvent;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncStringRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.colorfulsweets.lib.widget.dialog.LoadingProgressDialogListener;
@@ -57,9 +58,9 @@ class SubmitSimpleLogin {
     private class SimpleaApiEventListener implements ResponseListener<String> {
 
         @Override
-        public void onResponse(String response) {
-            if (! TextUtils.isEmpty(response)) {
-                mAppUser.setToken(response);
+        public void onResponse(AsyncResponseEvent<String> event) {
+            if (! TextUtils.isEmpty(event.getResponse())) {
+                mAppUser.setToken(event.getResponse());
                 new LoginSession(mActivity)
                         .login();
             } else {
@@ -76,7 +77,7 @@ class SubmitSimpleLogin {
         }
 
         @Override
-        public void afterResponse(AfterResponse response) {
+        public void afterResponse(AfterResponseEvent response) {
             // do nothing
         }
     }
