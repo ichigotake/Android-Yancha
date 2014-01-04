@@ -2,9 +2,9 @@
 
 AndroidのYanchaクライアント
 
-## デバッグ協力者募集のお知らせ
+## インストール
 
-[詳しくはこちらのIssueをご覧ください](https://github.com/ichigotake/Android-yancha/issues/36)
+[テスター登録はこちら](https://groups.google.com/forum/#!topic/yancha-chat/h46HVP3sv1M)
 
 ## 関連
 
