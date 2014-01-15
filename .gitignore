@@ -84,6 +84,7 @@ bin-release/
 .flexProperties
 .settings/
 .project
+Yancha/src/main/res/values/_app.xml
 
 ###OSX###
    

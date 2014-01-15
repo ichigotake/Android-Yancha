@@ -43,14 +43,28 @@ android {
     }
 
     buildTypes {
-        debug {
-            debuggable true
-            runProguard false
-        }
+
+        // 本番(Playストア)
         release {
             debuggable false
             runProguard false
             signingConfig signingConfigs.release
+        }
+
+        // ステージング(Playストア アルファ版)
+        alpha.initWith(buildTypes.release)
+        alpha {
+            debuggable true
+            packageNameSuffix ".alpha"
+            versionNameSuffix "-alpha"
+        }
+
+        // デバッグ(開発環境)
+        debug {
+            debuggable true
+            runProguard false
+            packageNameSuffix ".debug"
+            versionNameSuffix "-debug"
         }
     }
 
@@ -75,4 +89,22 @@ dependencies {
     compile 'org.twitter4j:twitter4j-core:3.0.4'
     compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.6'
     compile 'net.ichigotake.yancha:YanchaSDK:0.0.1'
+}
+
+
+android.applicationVariants.all { variant ->
+    variant.mergeResources.dependsOn {
+        def resourceFile = file("src/main/res/values/_app.xml")
+        switch (variant.buildType.name) {
+            case "release":
+                writeResources(resourceFile, ["yc_app_name": appName])
+                break
+            case "alpha":
+                writeResources(resourceFile, ["yc_app_name": appName + "alpha"])
+                break
+            case "debug":
+                writeResources(resourceFile, ["yc_app_name": appName + " dev"])
+                break
+        }
+    }
 }

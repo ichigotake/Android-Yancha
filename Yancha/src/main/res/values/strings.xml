@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="yc_app_name">yancha</string>
-
     <string name="yc_title_search">過去ログ</string>
 
     <string name="yc_common_ok">OK</string>
