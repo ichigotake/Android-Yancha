@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.ichigotake.colorfulsweets.lib.widget.ViewHolder;
+import net.ichigotake.colorfulsweets.lib.view.ViewHolder;
 import net.ichigotake.yancha.R;
 
 /**

@@ -63,7 +63,7 @@ public class ChatContainer implements ViewContainer {
         mMyself.update(user);
     }
 
-    final private ChatTags getDefaultTagList() {
+    private ChatTags getDefaultTagList() {
         ChatTags tags = new ChatTags();
         tags.add("PUBLIC");
         tags.add("FROMLINGR");

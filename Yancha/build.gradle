@@ -73,6 +73,6 @@ dependencies {
     compile 'com.nhaarman.listviewanimations:library:2.5.2'
     compile 'com.google.guava:guava:14.0-rc1'
     compile 'org.twitter4j:twitter4j-core:3.0.4'
-    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.2'
+    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.6'
     compile 'net.ichigotake.yancha:YanchaSDK:0.0.1'
 }

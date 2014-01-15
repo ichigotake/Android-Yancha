@@ -5,12 +5,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.SearchActivity;
 
-public class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends ActionBarActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

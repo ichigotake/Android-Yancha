@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.ListPopupWindow;
 
-import net.ichigotake.colorfulsweets.lib.ui.Display;
+import net.ichigotake.colorfulsweets.lib.view.display.Display;
 import net.ichigotake.yancha.common.user.AppUser;
 import net.ichigotake.yancha.sdk.model.ChatUsers;
 

@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import net.ichigotake.colorfulsweets.lib.ui.SoftInput;
+import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 
 import org.apache.commons.lang3.StringUtils;

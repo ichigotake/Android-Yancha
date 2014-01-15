@@ -2,7 +2,7 @@ package net.ichigotake.yancha;
 
 import android.os.Bundle;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.user.AppUser;
 

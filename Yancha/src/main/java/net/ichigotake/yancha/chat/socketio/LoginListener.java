@@ -2,16 +2,16 @@ package net.ichigotake.yancha.chat.socketio;
 
 import com.google.common.eventbus.Subscribe;
 
-import net.ichigotake.colorfulsweets.lib.context.ActivityTransit;
+import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.common.api.socketio.listener.LoginEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NicknamesResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NoSessionResponse;
 import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
+import net.ichigotake.yancha.sdk.model.ChatUser;
 import net.ichigotake.yancha.sdk.model.ChatUserFactory;
 import net.ichigotake.yancha.sdk.model.ChatUsers;
-import net.ichigotake.yancha.sdk.model.ChatUser;
 
 import org.json.JSONException;
 

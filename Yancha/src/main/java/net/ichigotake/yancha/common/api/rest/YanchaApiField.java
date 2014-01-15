@@ -1,8 +1,8 @@
 package net.ichigotake.yancha.common.api.rest;
 
-import net.ichigotake.colorfulsweets.lib.net.QueryParameterKey;
+import net.ichigotake.colorfulsweets.lib.os.Key;
 
-public enum YanchaApiField implements QueryParameterKey {
+public enum YanchaApiField implements Key {
     NICK("nick"),
     TOKEN_ONLY("token_only"),
     CALBACK_URL("callback_url"),
@@ -14,6 +14,7 @@ public enum YanchaApiField implements QueryParameterKey {
         mKey = key;
     }
 
+    @Override
     public String getKey() {
         return mKey;
     }

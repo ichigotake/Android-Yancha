@@ -9,14 +9,14 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
+import net.ichigotake.colorfulsweets.lib.app.dialog.LoadingProgressDialogListener;
+import net.ichigotake.colorfulsweets.lib.app.dialog.MessageDialogBuilder;
+import net.ichigotake.colorfulsweets.lib.app.dialog.ShowConnectionErrorDialogListener;
 import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
 import net.ichigotake.colorfulsweets.lib.net.http.AfterResponseEvent;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncResponseEvent;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncStringRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
-import net.ichigotake.colorfulsweets.lib.widget.dialog.LoadingProgressDialogListener;
-import net.ichigotake.colorfulsweets.lib.widget.dialog.MessageDialogBuilder;
-import net.ichigotake.colorfulsweets.lib.widget.dialog.ShowConnectionErrorDialogListener;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.rest.YanchaApiField;

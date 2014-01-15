@@ -2,7 +2,7 @@ package net.ichigotake.yancha.chat.socketio;
 
 import com.google.common.eventbus.Subscribe;
 
-import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.api.socketio.listener.ConnectionEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.ConnectResponse;

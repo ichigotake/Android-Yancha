@@ -3,7 +3,7 @@ package net.ichigotake.yancha;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import net.ichigotake.colorfulsweets.lib.actionbar.ActionBarSetting;
+import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseActivity;

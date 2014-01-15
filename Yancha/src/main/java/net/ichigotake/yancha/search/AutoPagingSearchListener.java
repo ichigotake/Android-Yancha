@@ -4,11 +4,11 @@ import android.content.Context;
 import android.net.Uri;
 import android.widget.ArrayAdapter;
 
-import net.ichigotake.colorfulsweets.lib.model.PagingState;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingRequestListener;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
+import net.ichigotake.colorfulsweets.lib.widget.paging.PagingState;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
