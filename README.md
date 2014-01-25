@@ -14,9 +14,3 @@ AndroidのYanchaクライアント
 
 足りない機能や課題等を[GithubのIssues](https://github.com/ichigotake/Android-yancha/issues) で管理しています
 
-## そのた
-
-GithubのIssueよりも粒度の細かい進捗をPivotal Trackerで管理しています
-
-https://www.pivotaltracker.com/s/projects/933124
-
