@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ListView;
 
-import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
-
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
@@ -18,8 +16,6 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
  * 発言一覧を表示する
  */
 class ChatMessageContainer implements ViewContainer {
-
-    final private long ANIMATION_DURATION = 70;
 
     final private ListView mMessageListView;
 
@@ -36,10 +32,7 @@ class ChatMessageContainer implements ViewContainer {
     }
     
     void initialize() {
-        ScaleInAnimationAdapter animationAdapter = new ScaleInAnimationAdapter(mAdapter);
-        animationAdapter.setAnimationDurationMillis(ANIMATION_DURATION);
-        animationAdapter.setAbsListView(mMessageListView);
-        mMessageListView.setAdapter(animationAdapter);
+        mMessageListView.setAdapter(mAdapter);
     }
 
     void removeMessage(ChatMessage message) {

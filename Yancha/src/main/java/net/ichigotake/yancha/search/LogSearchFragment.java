@@ -11,11 +11,9 @@ import android.widget.ListView;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.haarman.listviewanimations.swinginadapters.prepared.ScaleInAnimationAdapter;
 
 import net.ichigotake.colorfulsweets.lib.fragment.AutoPagingFragment;
 import net.ichigotake.colorfulsweets.lib.net.http.AfterResponseEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.AsyncRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.AsyncResponseEvent;
 import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
@@ -67,9 +65,7 @@ public class LogSearchFragment extends AutoPagingFragment {
     @Override
     protected BaseAdapter createAdapter() {
         SearchMessageViewConnector connector = new SearchMessageViewConnector(getActivity());
-        ChatMessageAdapter adapter = new ChatMessageAdapter(getActivity(), connector);
-        getListView(getView()).setAdapter(new ScaleInAnimationAdapter(adapter));
-        return adapter;
+        return new ChatMessageAdapter(getActivity(), connector);
     }
 
     @Override
