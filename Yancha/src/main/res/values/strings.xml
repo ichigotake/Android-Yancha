@@ -20,7 +20,10 @@
     <string name="yc_login_server">接続先</string>
     <string name="yc_login_server_default">yancha.hachiojipm.org</string>
     <string name="yc_login_login_twitter_start">http://%s/login/twitter/start?token_only=1&amp;callback_url=yancha://login/twitter/callback</string>
-    
+
+    <!-- chat -->
+    <string name="yc_chat_message_header">一番下へスクロールする</string>
+
     <!-- misc -->
     <string name="yc_submit">送信</string>
     <string name="yc_link_search"><u>過去ログ</u></string>

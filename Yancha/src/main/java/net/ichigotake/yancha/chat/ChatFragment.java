@@ -54,6 +54,7 @@ public class ChatFragment extends Fragment {
 
         YanchaCallbackListener yanchaListener =
                 new YanchaCallbackListener(chat.getEmitter(), getActivity(), getView());
+        yanchaListener.initialize();
         chat.setCallbackListener(yanchaListener);
         chat.connect();
     }

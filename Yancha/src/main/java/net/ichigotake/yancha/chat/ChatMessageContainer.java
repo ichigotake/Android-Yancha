@@ -1,6 +1,7 @@
 package net.ichigotake.yancha.chat;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
@@ -9,6 +10,7 @@ import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.message.ChatMessageTagMap;
 import net.ichigotake.yancha.common.ui.ViewContainer;
+import net.ichigotake.yancha.common.view.OnClickToScrollBottomListener;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 
@@ -17,21 +19,23 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
  */
 class ChatMessageContainer implements ViewContainer {
 
+    final private View mHeaderView;
     final private ListView mMessageListView;
-
     final private ChatMessageTagMap mMessages;
-
     final private ChatMessageAdapter mAdapter;
 
     ChatMessageContainer(Context context, View view, YanchaEmitter emitter) {
+        mHeaderView = LayoutInflater.from(context).inflate(R.layout.yc_message_header, null);
         mAdapter = new ChatMessageAdapter(
                 context, new ChatPostMessageViewConnector(context, emitter));
         mMessages = new ChatMessageTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
-        initialize();
     }
     
     void initialize() {
+        mHeaderView.setVisibility(View.GONE);
+        mHeaderView.setOnClickListener(new OnClickToScrollBottomListener(mMessageListView));
+        mMessageListView.addHeaderView(mHeaderView);
         mMessageListView.setAdapter(mAdapter);
     }
 
@@ -76,6 +80,9 @@ class ChatMessageContainer implements ViewContainer {
             }
 
         }
+
+        mHeaderView.setVisibility((mAdapter.getCount() > 20)
+                ? View.VISIBLE : View.GONE);
 
         mAdapter.notifyDataSetChanged();
 

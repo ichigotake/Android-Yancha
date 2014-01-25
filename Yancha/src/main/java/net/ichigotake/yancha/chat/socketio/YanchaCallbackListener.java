@@ -1,13 +1,13 @@
 package net.ichigotake.yancha.chat.socketio;
 
+import android.app.Activity;
+import android.view.View;
+
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.api.socketio.listener.ChatCallbackListener;
 import net.ichigotake.yancha.common.api.socketio.listener.ConnectionEventListener;
 import net.ichigotake.yancha.common.api.socketio.listener.LoginEventListener;
 import net.ichigotake.yancha.common.api.socketio.listener.MessageEventListener;
-
-import android.app.Activity;
-import android.view.View;
 
 /**
  * yanchaからのSocketIOのコールバックリスナ
@@ -20,6 +20,9 @@ public class YanchaCallbackListener implements ChatCallbackListener {
         mParameter = new ChatMediator(emitter, activity, view);
     }
 
+    public void initialize() {
+        mParameter.initialize();
+    }
 
     @Override
     public ConnectionEventListener createConnectionListener() {

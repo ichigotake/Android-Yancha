@@ -34,6 +34,10 @@ public class ChatContainer implements ViewContainer {
         mMyself = new AppUser(activity);
     }
 
+    public void initialize() {
+        mChatMessageContainer.initialize();
+    }
+
     public ChatTags getTagList() {
         return mChatTagContainer.getTags();
     }

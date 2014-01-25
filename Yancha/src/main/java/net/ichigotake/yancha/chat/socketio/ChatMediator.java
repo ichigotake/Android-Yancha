@@ -32,6 +32,10 @@ public class ChatMediator {
         mEmitter = emitter;
     }
 
+    void initialize() {
+        mChatContainer.initialize();
+    }
+
     Activity getActivity() {
        return mActivity;
     }
