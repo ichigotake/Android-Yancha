@@ -7,7 +7,7 @@ import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseActivity;
-import net.ichigotake.yancha.search.ChatLogSearchFragment;
+import net.ichigotake.yancha.search.LogSearchFragment;
 
 /**
  * 過去ログ
@@ -22,7 +22,7 @@ public class SearchActivity extends BaseActivity {
 
         new FragmentTransit(this)
                 .setAddBackStack(false)
-                .toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatLogSearchFragment.createInstance());
+                .toReplace(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance());
     }
 
     @Override
@@ -31,7 +31,7 @@ public class SearchActivity extends BaseActivity {
             case R.id.menu_search_icon:
                 new FragmentTransit(this)
                         .setAddBackStack(false)
-                        .toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatLogSearchFragment.createInstance());
+                        .toReplace(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance());
                 return true;
         }
         return super.onOptionsItemSelected(item);

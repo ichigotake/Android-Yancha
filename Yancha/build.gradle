@@ -77,7 +77,7 @@ android {
 
 repositories {
     maven { url 'https://raw.github.com/ichigotake/ColorfulSweets/develop/repository' }
-    maven { url 'https://raw.github.com/ichigotake/Android-YanchaSDK/add-maven-repository/repository' }
+    maven { url 'https://raw.github.com/ichigotake/Android-YanchaSDK/develop/repository' }
 }
 
 dependencies {
@@ -87,7 +87,7 @@ dependencies {
     compile 'com.nhaarman.listviewanimations:library:2.5.2'
     compile 'com.google.guava:guava:14.0-rc1'
     compile 'org.twitter4j:twitter4j-core:3.0.4'
-    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.6'
+    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.9'
     compile 'net.ichigotake.yancha:YanchaSDK:0.0.1'
 }
 
