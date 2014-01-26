@@ -22,7 +22,7 @@
     <string name="yc_login_login_twitter_start">http://%s/login/twitter/start?token_only=1&amp;callback_url=yancha://login/twitter/callback</string>
 
     <!-- chat -->
-    <string name="yc_chat_message_header">一番下へスクロールする</string>
+    <string name="yc_chat_message_header">一番下へ</string>
 
     <!-- misc -->
     <string name="yc_submit">送信</string>
