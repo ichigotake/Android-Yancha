@@ -14,23 +14,4 @@
         app:showAsAction="never"
         android:title="@string/yc_action_logout"/>
 
-    <!-- OptionMenu -->
-    <!-- 機能実装し次第開放
-    <item
-        android:id="@+id/action_hints"
-        android:orderInCategory="20"
-        android:showAsAction="never"
-        android:title="@string/yc_action_hints"/>
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="40"
-        android:showAsAction="never"
-        android:title="@string/yc_action_settings"/>
-    <item
-        android:id="@+id/action_about"
-        android:orderInCategory="50"
-        android:showAsAction="never"
-        android:title="@string/yc_action_about"/>
-     -->
-    
 </menu>

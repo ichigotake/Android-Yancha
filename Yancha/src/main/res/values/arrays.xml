@@ -1,25 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<array name="listview_items">
-		<item>Message 1</item>
-		<item>Message 2</item>
-		<item>Message 3</item>
-		<item>Message 4</item>
-		<item>Message 5</item>
-		<item>Message 6</item>
-		<item>Message 7</item>
-		<item>Message 8</item>
-		<item>Message 9</item>
-		<item>Message 10</item>
-		<item>Message 11</item>
-		<item>Message 12</item>
-		<item>Message 13</item>
-		<item>Message 14</item>
-		<item>Message 15</item>
-		<item>Message 16</item>
-		<item>Message 17</item>
-		<item>Message 18</item>
-		<item>Message 19</item>
-		<item>Message 20</item>
-	</array>
 </resources>

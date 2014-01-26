@@ -10,7 +10,6 @@
         android:layout_height="match_parent"
         android:divider="@android:drawable/divider_horizontal_textfield"
         android:dividerHeight="1dp"
-        android:listSelector="@android:color/transparent"
-        android:entries="@array/listview_items" />
-    
+        android:listSelector="@android:color/transparent" />
+
 </LinearLayout>
