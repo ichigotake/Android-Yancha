@@ -18,4 +18,25 @@ allprojects {
     }
 }
 
+# `local.proeprties`が存在しない且つ環境変数の`ANDROID_HOME`, `ANDROID_SDK`が存在すると`local.properties`を生成してくれる
+initSdkDir()
+
+def writeDummyGradleProperties() {
+    def gradlePropsFile = file("gradle.properties")
+
+    if (! gradlePropsFile.exists()) {
+        def content = file("gradle.properties.example").readBytes()
+        gradlePropsFile.write(new String(content))
+
+
+        def props = new Properties()
+        props.load(new ByteArrayInputStream(content))
+        props.each { key, value ->
+            print "$key $value\n"
+            project.ext.set(key, value)
+        }
+    }
+}
+
+writeDummyGradleProperties()
 
