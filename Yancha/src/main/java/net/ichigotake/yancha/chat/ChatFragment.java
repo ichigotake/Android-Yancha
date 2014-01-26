@@ -60,22 +60,11 @@ public class ChatFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        try {
-            chat.reconnect();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            onConnectionError();
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onDestroy() {
         if (chat != null) {
             chat.disconnect();
         }
+        super.onDestroy();
     }
 
     private void onConnectionError() {
