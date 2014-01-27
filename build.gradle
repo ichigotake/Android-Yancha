@@ -18,7 +18,7 @@ allprojects {
     }
 }
 
-# `local.proeprties`が存在しない且つ環境変数の`ANDROID_HOME`, `ANDROID_SDK`が存在すると`local.properties`を生成してくれる
+// `local.proeprties`が存在しない且つ環境変数の`ANDROID_HOME`, `ANDROID_SDK`が存在すると`local.properties`を生成してくれる
 initSdkDir()
 
 def writeDummyGradleProperties() {
