@@ -1,79 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:orientation="vertical">
+    android:layout_width="match_parent">
 
-    <TextView
-        android:id="@+id/messageCellCountSeparator"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        style="@style/YanchaMessageCellSeparator"/>
+    <ImageView
+        android:id="@+id/messageCellProfileImageUrl"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center" />
+
 
     <RelativeLayout
-        android:id="@+id/common_message_cell"
-        android:layout_width="match_parent"
+        android:id="@+id/messageCellHeader"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/messageCellProfileImageUrl"
         android:layout_height="wrap_content"
-        android:background="@drawable/abc_list_selector_holo_light">
-
-        <ImageView
-            android:id="@+id/messageCellProfileImageUrl"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center" />
-
-
-        <RelativeLayout
-            android:id="@+id/messageCellHeader"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/messageCellProfileImageUrl"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent" >
-
-            <TextView
-                android:id="@+id/messageCellNickname"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/yc_dummy_nickname"
-                android:textSize="12sp"
-                android:textColor="#666666"
-                />
-
-               <TextView
-                android:id="@+id/messageCellTimestamp"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_alignParentRight="true"
-                android:text="@string/yc_dummy_timestamp"
-                android:textSize="12sp"
-                android:textColor="#666666"
-                />
-
-        </RelativeLayout>
+        android:layout_width="match_parent" >
 
         <TextView
-            android:id="@+id/messageCellMessage"
-            android:layout_toRightOf="@+id/messageCellProfileImageUrl"
-            android:layout_below="@+id/messageCellHeader"
+            android:id="@+id/messageCellNickname"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_width="match_parent"
-            android:text="@string/yc_dummy_message"
-            android:textSize="14sp"
-            android:textColor="#333333"
-            android:autoLink="web"
-             />
+            android:layout_width="wrap_content"
+            android:text="@string/yc_dummy_nickname"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            />
 
-        <TextView
-            android:id="@+id/messageCellPlusplus"
-            android:layout_below="@+id/messageCellMessage"
+           <TextView
+            android:id="@+id/messageCellTimestamp"
             android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:visibility="gone"
-            android:textSize="14sp"
-            android:textColor="@color/yc_message_plusplus_text" />
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/yc_dummy_timestamp"
+            android:textSize="12sp"
+            android:textColor="#666666"
+            />
 
     </RelativeLayout>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/messageCellMessage"
+        android:layout_toRightOf="@+id/messageCellProfileImageUrl"
+        android:layout_below="@+id/messageCellHeader"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_width="match_parent"
+        android:text="@string/yc_dummy_message"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:autoLink="web"
+         />
+
+    <TextView
+        android:id="@+id/messageCellPlusplus"
+        android:layout_below="@+id/messageCellMessage"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:textSize="14sp"
+        android:textColor="@color/yc_message_plusplus_text" />
+
+</RelativeLayout>

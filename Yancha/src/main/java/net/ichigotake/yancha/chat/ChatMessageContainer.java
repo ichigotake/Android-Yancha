@@ -26,8 +26,7 @@ class ChatMessageContainer implements ViewContainer {
 
     ChatMessageContainer(Context context, View view, YanchaEmitter emitter) {
         mHeaderView = LayoutInflater.from(context).inflate(R.layout.yc_message_header, null);
-        mAdapter = new ChatMessageAdapter(
-                context, new ChatPostMessageViewConnector(context, emitter));
+        mAdapter = new ChatMessageAdapter(context, emitter);
         mMessages = new ChatMessageTagMap();
         mMessageListView = (ListView) view.findViewById(R.id.messageList);
     }

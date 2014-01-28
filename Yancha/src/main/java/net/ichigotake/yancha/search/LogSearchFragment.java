@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
@@ -19,9 +20,9 @@ import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
 import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
 import net.ichigotake.colorfulsweets.lib.widget.paging.PagingState;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.message.ChatMessageAdapter;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 
 import org.json.JSONArray;
@@ -64,8 +65,7 @@ public class LogSearchFragment extends AutoPagingFragment {
 
     @Override
     protected BaseAdapter createAdapter() {
-        SearchMessageViewConnector connector = new SearchMessageViewConnector(getActivity());
-        return new ChatMessageAdapter(getActivity(), connector);
+        return new LogSearchAdapter(getActivity());
     }
 
     @Override
@@ -96,7 +96,7 @@ public class LogSearchFragment extends AutoPagingFragment {
                 @Override
                 public void onResponse(AsyncResponseEvent<JSONArray> event) {
                     try {
-                        final ChatMessageAdapter adapter = (ChatMessageAdapter)getAdapter();
+                        final ArrayAdapter<ChatMessage> adapter = (ArrayAdapter<ChatMessage>)getAdapter();
                         int length = event.getResponse().length();
                         if (0 == length) {
                             return ;

@@ -1,13 +1,14 @@
 package net.ichigotake.yancha.common.message;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import net.ichigotake.colorfulsweets.lib.os.AsyncRunnableTask;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.ui.MessageViewConnector;
+import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
+import net.ichigotake.yancha.common.view.ChatMessageView;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 
 /**
@@ -17,23 +18,11 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
  */
 public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
 
-    final private MessageViewConnector mConnector;
-    final private LayoutInflater mInflater;
-    
-    public ChatMessageAdapter(Context context, MessageViewConnector connector) {
+    final private YanchaEmitter mEmitter;
+
+    public ChatMessageAdapter(Context context, YanchaEmitter emitter) {
         super(context, R.layout.yc_common_message_cell);
-        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mConnector = connector;
-    }
-
-    @Override
-    public ChatMessage getItem(int position) {
-        return super.getItem(mConnector.getItemPosition(position));
-    }
-
-    @Override
-    public boolean isEnabled(int position) {
-        return mConnector.isEnabled(position, getItem(position));
+        mEmitter = emitter;
     }
 
     public void update(ChatMessage message) {
@@ -55,21 +44,48 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
     
     @Override
     public View getView(final int position, View contentView, ViewGroup parent) {
-        final ChatMessageViewHolder holder;
         final ChatMessage message = getItem(position);
 
         if (contentView == null) {
-            contentView = mConnector.generateView(mInflater, position, message);
-            holder = new ChatMessageViewHolder(contentView);
-            contentView.setTag(holder);
-        } else {
-            holder = (ChatMessageViewHolder)contentView.getTag();
+            contentView = new ChatMessageView(getContext());
         }
+        ChatMessageView messageView = (ChatMessageView)contentView;
 
-        mConnector.connectView(position, holder, message);
+        messageView.setNickname(message.getNickname());
+        messageView.setMessage(message.getMessage());
+        messageView.setPlusplus(message.getPlusplus());
+        messageView.setTimestamp(message.getCreatedTime());
+        messageView.setProfileImageUrl(message.getProfileImageUrl());
+        messageView.setOnClickListener(new OnPlusplusClickListener(mEmitter, message));
 
         return contentView;
     }
 
+    /**
+     * ++をするためのクリックリスナ
+     */
+    private static class OnPlusplusClickListener implements View.OnClickListener {
 
+        final private int mMessageId;
+        final private YanchaEmitter mEmitter;
+
+        OnPlusplusClickListener(YanchaEmitter emitter, ChatMessage item) {
+            mEmitter = emitter;
+            mMessageId = item.getId();
+        }
+
+        @Override
+        public void onClick(View view) {
+            new AsyncRunnableTask().execute(sendPlusplus());
+        }
+
+        private Runnable sendPlusplus() {
+            return new Runnable() {
+                @Override
+                public void run() {
+                    mEmitter.emitPlusplus(mMessageId);
+                }
+            };
+        }
+    }
 }
