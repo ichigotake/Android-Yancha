@@ -6,9 +6,9 @@
 
 2, ソースのダウンロード
 
-    ### 例
     $ mkdir -p ~/Development/android && cd $_
     $ git clone https://github.com/ichigotake/Android-yancha yancha
+    $ git submodule init && git submodule update
 
 3, ダウンロードしたソースをIDEのプロジェクトへインポートする
 
