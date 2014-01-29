@@ -14,3 +14,7 @@ AndroidのYanchaクライアント
 
 足りない機能や課題等を[GithubのIssues](https://github.com/ichigotake/Android-yancha/issues) で管理しています
 
+## ライセンス
+
+MITライセンスで開発しています
+
