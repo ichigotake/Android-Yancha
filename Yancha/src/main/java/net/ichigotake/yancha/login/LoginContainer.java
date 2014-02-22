@@ -1,32 +1,32 @@
 package net.ichigotake.yancha.login;
 
+import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.ui.ViewContainer;
 import net.ichigotake.yancha.common.user.AppUser;
 
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
 /**
  * ログイン画面を表示
  */
 class LoginContainer implements ViewContainer {
 
-    final private FragmentActivity mActivity;
+    final private Activity mActivity;
     
     final private AppUser appUser;
     
-    private LoginContainer(FragmentActivity activity) {
+    private LoginContainer(Activity activity) {
         this.mActivity = activity;
         this.appUser = new AppUser(activity);
     }
     
-    static LoginContainer initialize(FragmentActivity activity, View view) {
+    static LoginContainer initialize(Activity activity, View view) {
         LoginContainer container = new LoginContainer(activity);
         container.initializeView(view);
         return container;

@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.chat.ChatFragment;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.context.AppContext;
@@ -21,9 +21,10 @@ public class ChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         ApiUri uri = new AppUser(this).getApiUri();
-        new FragmentTransit(this)
-            .setAddBackStack(false)
-            .toReplace(AppContext.FRAGMENT_ID_CONTENT, ChatFragment.newInstance(uri));
+        new FragmentTransit(getFragmentManager())
+                .setAddBackStack(false)
+                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, ChatFragment.newInstance(uri))
+                .transition();
     }
 
     @Override

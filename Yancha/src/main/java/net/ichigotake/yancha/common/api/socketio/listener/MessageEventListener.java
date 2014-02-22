@@ -7,10 +7,10 @@ import net.ichigotake.yancha.common.api.socketio.response.UserMessageResponse;
 
 public interface MessageEventListener extends EmitEventListener {
 
-    public void onAnnouncement(AnnounsementResponse response);
+    public void onEvent(AnnounsementResponse response);
 
-    public void onDeleteUserMessage(DeleteUserMessageResponse response) throws EmptyResponseException;
+    public void onEvent(DeleteUserMessageResponse response) throws EmptyResponseException;
 
-    public void onUserMessage(UserMessageResponse response) throws EmptyResponseException;
+    public void onEvent(UserMessageResponse response) throws EmptyResponseException;
 
 }

@@ -2,19 +2,19 @@ package net.ichigotake.yancha.common.api.socketio;
 
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 
+import org.json.JSONObject;
+
+import java.net.MalformedURLException;
+
 import io.socket.IOAcknowledge;
 import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
-import java.net.MalformedURLException;
-
-
-import org.json.JSONObject;
-
 
 /**
  * サーバーへ接続するチャットクライアント
+ * @todo {@link Thread} の利用をやめる
  */
 public class Chat extends Thread implements IOCallback {
 
@@ -83,7 +83,6 @@ public class Chat extends Thread implements IOCallback {
 
     @Override
     public void on(String event, IOAcknowledge ack, Object... args) {
-        // TODO ArrayIndexOutOfBoundsException対策
         mDispatcher.dispatch(event, args[0].toString());
     }
 

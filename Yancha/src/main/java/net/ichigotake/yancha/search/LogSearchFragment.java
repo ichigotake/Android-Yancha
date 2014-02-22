@@ -9,16 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
-import net.ichigotake.colorfulsweets.lib.fragment.AutoPagingFragment;
-import net.ichigotake.colorfulsweets.lib.net.http.AfterResponseEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.AsyncResponseEvent;
-import net.ichigotake.colorfulsweets.lib.net.http.AutoPagingJsonArrayRequest;
-import net.ichigotake.colorfulsweets.lib.net.http.ResponseListener;
-import net.ichigotake.colorfulsweets.lib.widget.paging.PagingState;
+import net.ichigotake.colorfulsweets.common.widget.paging.PagingState;
+import net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.model.SearchOptionBuilder;
 import net.ichigotake.yancha.common.user.AppUser;
@@ -50,7 +49,7 @@ public class LogSearchFragment extends AutoPagingFragment {
     @Override
     protected void onPaging() {
         RequestQueue queue = Volley.newRequestQueue(getActivity());
-        queue.add(new SearchApiRequest(getPagingState()).createRequest());
+        queue.add(createRequest(getPagingState()));
     }
 
     @Override
@@ -76,55 +75,40 @@ public class LogSearchFragment extends AutoPagingFragment {
     /**
      * 検索APIを叩く
      */
-    private class SearchApiRequest extends AutoPagingJsonArrayRequest {
-
-        public SearchApiRequest(PagingState parameter) {
-            super(parameter);
-        }
-
-        @Override
-        protected Uri getRequestUri(PagingState parameter) {
-            SearchOptionBuilder.SearchOption option = getSearchOptionBuilder()
-                    .setOffset(parameter.getOffset())
-                    .build();
-            return option.toUri();
-        }
-
-        @Override
-        protected ResponseListener<JSONArray> createResponse() {
-            return new ResponseListener<JSONArray>() {
-                @Override
-                public void onResponse(AsyncResponseEvent<JSONArray> event) {
-                    try {
-                        final ArrayAdapter<ChatMessage> adapter = (ArrayAdapter<ChatMessage>)getAdapter();
-                        int length = event.getResponse().length();
-                        if (0 == length) {
-                            return ;
+    private Request createRequest(final PagingState state) {
+        SearchOptionBuilder.SearchOption option = getSearchOptionBuilder()
+                .setOffset(state.getOffset())
+                .build();
+        return new JsonArrayRequest(option.toUri().toString(),
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            final ArrayAdapter<ChatMessage> adapter = (ArrayAdapter<ChatMessage>)getAdapter();
+                            int length = response.length();
+                            if (0 == length) {
+                                return ;
+                            }
+                            for (int i=0; i<length; i++) {
+                                String string = response.get(i).toString();
+                                adapter.add(new ChatMessageFactory().create(string));
+                            }
+                            adapter.notifyDataSetChanged();
+                        } catch (JSONException e) {
+                            // TODO エラーイベントを投げる
+                            e.printStackTrace();
                         }
-                        for (int i=0; i<length; i++) {
-                            String string = event.getResponse().get(i).toString();
-                            adapter.add(new ChatMessageFactory().create(string));
-                        }
-                        adapter.notifyDataSetChanged();
-                    } catch (JSONException e) {
-                        // TODO エラーイベントを投げる
-                        e.printStackTrace();
+
+                        finish();
                     }
+                },
+                new Response.ErrorListener() {
 
-                    finish();
-                }
-
-                @Override
-                public void onError(VolleyError volleyError) {
-                    finish();
-                }
-
-                @Override
-                public void afterResponse(AfterResponseEvent afterResponseEvent) {
-                    finish();
-                }
-            };
-        }
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        finish();
+                    }
+                });
 
     }
 

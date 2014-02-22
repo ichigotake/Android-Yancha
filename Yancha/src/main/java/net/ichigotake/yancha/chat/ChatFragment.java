@@ -1,14 +1,14 @@
 package net.ichigotake.yancha.chat;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.lib.os.BundleSimple;
+import net.ichigotake.colorfulsweets.common.os.BundleSimple;
+import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
@@ -54,7 +54,6 @@ public class ChatFragment extends Fragment {
 
         YanchaCallbackListener yanchaListener =
                 new YanchaCallbackListener(chat.getEmitter(), getActivity(), getView());
-        yanchaListener.initialize();
         chat.setCallbackListener(yanchaListener);
         chat.connect();
     }
@@ -71,7 +70,8 @@ public class ChatFragment extends Fragment {
         Toast.makeText(getActivity(),
                 "無効なURLです",
                 Toast.LENGTH_SHORT).show();
-        new FragmentTransit(getActivity())
-                .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
+        new FragmentTransit(getActivity().getFragmentManager())
+                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance())
+                .transition();
     }
 }

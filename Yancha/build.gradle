@@ -11,6 +11,7 @@ buildscript {
 apply plugin: 'android'
 
 def version = readVersion(file("VERSION"))
+println(version.toVersionCode())
 
 android {
     compileSdkVersion 17
@@ -47,7 +48,8 @@ android {
         // 本番(Playストア)
         release {
             debuggable false
-            runProguard false
+            runProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
             signingConfig signingConfigs.release
         }
 
@@ -78,17 +80,16 @@ android {
 repositories {
     maven { url 'https://raw.github.com/ichigotake/ColorfulSweets/develop/repository' }
     maven { url 'https://raw.github.com/ichigotake/Android-YanchaSDK/develop/repository' }
+    maven { url 'https://raw.github.com/ichigotake/guava-libraries-optional/master/repository' }
 }
 
 dependencies {
     compile fileTree(dir: 'src/main/libs', include: '*.jar')
-    compile 'com.android.support:appcompat-v7:+'
-    compile 'org.apache.commons:commons-lang3:3.1'
-    compile 'com.nhaarman.listviewanimations:library:2.5.2'
-    compile 'com.google.guava:guava:14.0-rc1'
-    compile 'org.twitter4j:twitter4j-core:3.0.4'
-    compile 'net.ichigotake.colorfulsweets:ColorfulSweets:0.0.9'
+    compile 'com.google.guava:guava-optional:16.0.1'
+    compile 'net.ichigotake.colorfulsweets:ics:0.0.4'
     compile 'net.ichigotake.yancha:YanchaSDK:0.0.1'
+    compile 'de.greenrobot:eventbus:2.2.0'
+    compile 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
 }
 
 

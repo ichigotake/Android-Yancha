@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.login;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -16,7 +15,7 @@ class TwitterLoginOnClickListener implements OnClickListener {
     
     final private TextView mServerHostView;
     
-    TwitterLoginOnClickListener(FragmentActivity activity, TextView serverHostView) {
+    TwitterLoginOnClickListener(Activity activity, TextView serverHostView) {
         mActivity = activity;
         mAppUser = new AppUser(activity);
         mServerHostView = serverHostView;

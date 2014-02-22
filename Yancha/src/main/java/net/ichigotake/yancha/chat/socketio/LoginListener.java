@@ -1,8 +1,6 @@
 package net.ichigotake.yancha.chat.socketio;
 
-import com.google.common.eventbus.Subscribe;
-
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.common.api.socketio.listener.LoginEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
@@ -28,13 +26,13 @@ public class LoginListener implements LoginEventListener {
         mUserFactory = new ChatUserFactory();
     }
 
-    @Override @Subscribe
-    public void onJoinTag(JoinTagResponse response) {
+    @Override
+    public void onEvent(JoinTagResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onNicknames(final NicknamesResponse response) {
+    @Override
+    public void onEvent(final NicknamesResponse response) {
         try {
             String rawJson = response.getResponseBody().or("{}");
             ChatUsers users = mUserFactory.fromNicknameEvent(rawJson);
@@ -56,15 +54,15 @@ public class LoginListener implements LoginEventListener {
         mParameter.getContainer().updateMyself(users);
     }
 
-    @Override @Subscribe
-    public void onNoSession(NoSessionResponse response) {
+    @Override
+    public void onEvent(NoSessionResponse response) {
         new ActivityTransit(mParameter.getActivity(), ChatActivity.class)
                 .clearTop()
-                .toNext();
+                .transition();
     }
 
-    @Override @Subscribe
-    public void onTokenLogin(TokenLoginResponse response) {
+    @Override
+    public void onEvent(TokenLoginResponse response) {
         try {
             ChatUser myself = mUserFactory.fromTokenLoginEvent(response.getResponseBody().get());
             mParameter.getContainer().updateMyself(myself);

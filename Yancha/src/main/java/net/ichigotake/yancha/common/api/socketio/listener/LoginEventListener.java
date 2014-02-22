@@ -7,12 +7,12 @@ import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
 
 public interface LoginEventListener extends EmitEventListener {
 
-    public void onJoinTag(JoinTagResponse response);
+    public void onEvent(JoinTagResponse response);
 
-    public void onNicknames(NicknamesResponse response);
+    public void onEvent(NicknamesResponse response);
 
-    public void onNoSession(NoSessionResponse response);
+    public void onEvent(NoSessionResponse response);
 
-    public void onTokenLogin(TokenLoginResponse response);
+    public void onEvent(TokenLoginResponse response);
 
 }

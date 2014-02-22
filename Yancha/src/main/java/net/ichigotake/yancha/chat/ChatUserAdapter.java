@@ -5,13 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
+
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
-import net.ichigotake.yancha.sdk.model.ChatUsers;
+import net.ichigotake.yancha.common.api.LruImageCache;
 import net.ichigotake.yancha.sdk.model.ChatUser;
+import net.ichigotake.yancha.sdk.model.ChatUsers;
 
 import java.util.List;
 
@@ -21,7 +24,7 @@ import java.util.List;
 public class ChatUserAdapter extends ArrayAdapter<ChatUser> {
 
     final private LayoutInflater mInflater;
-    final private ProfileImageViewHelper mImageHelper;
+    final private ImageLoader mImageLoader;
 
     public ChatUserAdapter(Context context) {
         this(context, new ChatUsers().toList());
@@ -30,7 +33,7 @@ public class ChatUserAdapter extends ArrayAdapter<ChatUser> {
     public ChatUserAdapter(Context context, List<ChatUser> users) {
         super(context, R.layout.yc_join_users_cell, users);
         mInflater = LayoutInflater.from(context);
-        mImageHelper = new ProfileImageViewHelper();
+        mImageLoader = new ImageLoader(Volley.newRequestQueue(context), new LruImageCache());
     }
 
     public void addAll(ChatUsers users) {
@@ -45,10 +48,10 @@ public class ChatUserAdapter extends ArrayAdapter<ChatUser> {
 
         ChatUser user = getItem(position);
 
-        ImageView iconView = (ImageView) convertView.findViewById(R.id.profileImage);
+        NetworkImageView iconView = (NetworkImageView) convertView.findViewById(R.id.profileImage);
         TextView nicknameView = (TextView) convertView.findViewById(R.id.nickname);
 
-        mImageHelper.setDrawable(iconView, user.getProfileImageUrl());
+        iconView.setImageUrl(user.getProfileImageUrl(), mImageLoader);
         nicknameView.setText(user.getNickname());
 
         return convertView;

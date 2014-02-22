@@ -2,7 +2,7 @@ package net.ichigotake.yancha;
 
 import android.os.Bundle;
 
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.user.AppUser;
 
@@ -16,11 +16,13 @@ public class SplashActivity extends BaseActivity {
         if (appUser.hasToken()) {
             new ActivityTransit(this, ChatActivity.class)
                     .clearTop()
-                    .toNextWithFinish();
+                    .setWithFinish()
+                    .transition();
         } else {
             new ActivityTransit(this, LoginActivity.class)
                     .clearTop()
-                    .toNextWithFinish();
+                    .setWithFinish()
+                    .transition();
         }
     }
 }

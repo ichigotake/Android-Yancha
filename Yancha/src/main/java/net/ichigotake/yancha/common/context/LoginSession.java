@@ -2,7 +2,7 @@ package net.ichigotake.yancha.common.context;
 
 import android.app.Activity;
 
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
+import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.ChatActivity;
 import net.ichigotake.yancha.LoginActivity;
 import net.ichigotake.yancha.common.user.AppUser;
@@ -21,13 +21,13 @@ public class LoginSession {
     public void login() {
         new ActivityTransit(mActivity, ChatActivity.class)
                 .clearTop()
-                .toNext();
+                .transition();
     }
 
     public void logout() {
         new AppUser(mActivity).resetToken();
         new ActivityTransit(mActivity, LoginActivity.class)
                 .clearTop()
-                .toNext();
+                .transition();
     }
 }

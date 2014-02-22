@@ -5,10 +5,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
+import net.ichigotake.colorfulsweets.common.view.inputmethod.SoftInput;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * メッセージを送信する
@@ -29,7 +27,7 @@ class MessagePost implements View.OnClickListener {
 
     void submit() {
         String message = mMessageView.getText().toString();
-        if (! StringUtils.isBlank(message)) {
+        if (message.trim().length() > 0) {
             String sendMessage = new StringBuilder()
                     .append(message)
                     .append(" ")

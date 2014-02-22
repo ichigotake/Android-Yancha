@@ -1,7 +1,5 @@
 package net.ichigotake.yancha.common.api.socketio.listener;
 
-import com.google.common.eventbus.Subscribe;
-
 import net.ichigotake.yancha.common.api.socketio.response.ConnectResponse;
 import net.ichigotake.yancha.common.api.socketio.response.ConnectingResponse;
 import net.ichigotake.yancha.common.api.socketio.response.DisconnectResponse;
@@ -14,22 +12,16 @@ import net.ichigotake.yancha.common.api.socketio.response.ReconnectingResponse;
  */
 public interface ConnectionEventListener extends EmitEventListener {
 
-    @Subscribe
-    public void onConnect(ConnectResponse response);
+    public void onEvent(ConnectResponse response);
 
-    @Subscribe
-    public void onConnecting(ConnectingResponse response);
+    public void onEvent(ConnectingResponse response);
 
-    @Subscribe
-    public void onDisconnect(DisconnectResponse response);
+    public void onEvent(DisconnectResponse response);
 
-    @Subscribe
-    public void onError(ErrorResponse response);
+    public void onEvent(ErrorResponse response);
 
-    @Subscribe
-    public void onReconnect(ReconnectResponse response);
+    public void onEvent(ReconnectResponse response);
 
-    @Subscribe
-    public void onReconnecting(ReconnectingResponse response);
+    public void onEvent(ReconnectingResponse response);
 
 }

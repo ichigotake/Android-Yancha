@@ -18,9 +18,6 @@ public class YanchaCallbackListener implements ChatCallbackListener {
     
     public YanchaCallbackListener(YanchaEmitter emitter, Activity activity, View view) {
         mParameter = new ChatMediator(emitter, activity, view);
-    }
-
-    public void initialize() {
         mParameter.initialize();
     }
 

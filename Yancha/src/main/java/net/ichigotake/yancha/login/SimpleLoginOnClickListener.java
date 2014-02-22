@@ -1,6 +1,6 @@
 package net.ichigotake.yancha.login;
 
-import android.support.v4.app.FragmentActivity;
+import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -8,7 +8,7 @@ class SimpleLoginOnClickListener implements OnClickListener {
 
     final private SubmitSimpleLogin mLogin;
     
-    SimpleLoginOnClickListener(FragmentActivity activity, LoginViewHolder holder) {
+    SimpleLoginOnClickListener(Activity activity, LoginViewHolder holder) {
         mLogin = new SubmitSimpleLogin(activity, holder);
     }
     

@@ -1,6 +1,7 @@
 package net.ichigotake.yancha.common.api.rest;
 
-import net.ichigotake.colorfulsweets.lib.os.Key;
+
+import net.ichigotake.colorfulsweets.common.os.Key;
 
 public enum YanchaApiField implements Key {
     NICK("nick"),

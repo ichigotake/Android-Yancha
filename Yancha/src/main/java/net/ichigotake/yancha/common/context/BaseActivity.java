@@ -1,21 +1,21 @@
 package net.ichigotake.yancha.common.context;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
-import net.ichigotake.colorfulsweets.lib.activity.ActivityTransit;
-import net.ichigotake.colorfulsweets.lib.view.inputmethod.SoftInput;
+import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.SearchActivity;
 
-public abstract class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoftInput.alwaysHidden(this);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.yc_main);
     }
      
@@ -31,7 +31,7 @@ public abstract class BaseActivity extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.menu_search_icon:
                 new ActivityTransit(this, SearchActivity.class)
-                    .toNext();
+                    .transition();
                 return true;
         }
         return super.onOptionsItemSelected(item);

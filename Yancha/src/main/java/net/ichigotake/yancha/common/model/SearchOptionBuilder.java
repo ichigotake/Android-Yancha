@@ -1,7 +1,8 @@
 package net.ichigotake.yancha.common.model;
 
-import net.ichigotake.colorfulsweets.lib.net.UriBuilder;
 import android.net.Uri;
+
+import net.ichigotake.colorfulsweets.common.net.UriBuilder;
 
 
 public class SearchOptionBuilder {

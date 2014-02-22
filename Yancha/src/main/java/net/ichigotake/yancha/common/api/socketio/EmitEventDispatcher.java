@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.common.api.socketio;
 
 import com.google.common.base.Optional;
-import com.google.common.eventbus.EventBus;
 
 import net.ichigotake.yancha.common.api.socketio.listener.EmitEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.AnnounsementResponse;
@@ -19,16 +18,14 @@ import net.ichigotake.yancha.common.api.socketio.response.TokenLoginResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UnknownResponse;
 import net.ichigotake.yancha.common.api.socketio.response.UserMessageResponse;
 
+import de.greenrobot.event.EventBus;
+
 public class EmitEventDispatcher {
 
     final private EventBus mEventBus = new EventBus();
 
     public void registerListener(EmitEventListener listener) {
         mEventBus.register(listener);
-    }
-
-    public void dispatch(String eventName) {
-        dispatch(eventName, null);
     }
 
     public void dispatch(String eventName, String response) {

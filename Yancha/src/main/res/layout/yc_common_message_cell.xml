@@ -3,7 +3,7 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
 
-    <ImageView
+    <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/messageCellProfileImageUrl"
         android:layout_width="40dp"
         android:layout_height="40dp"

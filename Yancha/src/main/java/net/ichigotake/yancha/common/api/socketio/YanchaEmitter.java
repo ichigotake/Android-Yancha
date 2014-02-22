@@ -1,7 +1,5 @@
 package net.ichigotake.yancha.common.api.socketio;
 
-import com.google.common.eventbus.Subscribe;
-
 import net.ichigotake.yancha.common.message.SendMessage;
 import net.ichigotake.yancha.common.message.SendMessageListener;
 import net.ichigotake.yancha.sdk.model.ChatTags;
@@ -60,13 +58,15 @@ public class YanchaEmitter implements SendMessageListener {
     public void emitDisconnect() {
         chat.emit(EmitEvent.DISCONNECT.getName(), "bye");
     }
-    
-    @Subscribe
-    public void sendMessage(SendMessage message) {
-        emitUserMessage(message.getMessage());
-    }
 
     public void emitPlusplus(int messageId) {
         chat.emit(EmitEvent.PLUSPLUS.getName(), String.valueOf(messageId));
+    }
+
+    private class OnSendMessageListener {
+
+        public void onEventSendMessage(SendMessage event) {
+            emitUserMessage(event.getMessage());
+        }
     }
 }

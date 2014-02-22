@@ -1,16 +1,16 @@
 package net.ichigotake.yancha.common.ui.actionbar;
 
+import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.SearchManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.SearchView.OnQueryTextListener;
 
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
+import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.search.LogSearchFragment;
 
@@ -23,18 +23,18 @@ public class ActionBarSearchable {
 
     final private FragmentManager fragmentManager;
     
-    final private FragmentActivity fragmentActivity;
+    final private Activity activity;
     
-    public ActionBarSearchable(FragmentActivity fragmentActivity) {
-        this.fragmentActivity = fragmentActivity;
-        fragmentManager = fragmentActivity.getSupportFragmentManager();
+    public ActionBarSearchable(Activity activity) {
+        this.activity = activity;
+        fragmentManager = activity.getFragmentManager();
     }
     
     public void setup(Menu menu) {
-        //SearchManager searchManager = (SearchManager) fragmentActivity.getSystemService(Context.SEARCH_SERVICE);
+        //SearchManager searchManager = (SearchManager) activity.getSystemService(Context.SEARCH_SERVICE);
         //SearchView searchView = (SearchView) menu.findItem(R.id.menu_search).getActionView();
         //searchView.setOnSearchClickListener(new SearchIconOnClickListener());
-        //SearchableInfo searchable = searchManager.getSearchableInfo(fragmentActivity.getComponentName());
+        //SearchableInfo searchable = searchManager.getSearchableInfo(activity.getComponentName());
         //searchView.setSearchableInfo(searchable);
         //searchView.setIconifiedByDefault(false);
         //searchView.setOnQueryTextListener(new SearchableOnQueryTextListener());        
@@ -44,8 +44,9 @@ public class ActionBarSearchable {
 
         @Override
         public void onClick(View arg0) {
-            new FragmentTransit(fragmentActivity)
-                .toReplace(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance());
+            new FragmentTransit(fragmentManager)
+                    .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
+                    .transition();
         }
         
     }
@@ -76,7 +77,8 @@ public class ActionBarSearchable {
             nextFragment.setArguments(args);
             
             new FragmentTransit(fragmentManager)
-                .toReplace(AppContext.FRAGMENT_ID_CONTENT, nextFragment);
+                    .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, nextFragment)
+                    .transition();
         }
 
     }

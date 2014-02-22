@@ -1,8 +1,5 @@
 package net.ichigotake.yancha.chat.socketio;
 
-import com.google.common.eventbus.Subscribe;
-
-import net.ichigotake.colorfulsweets.lib.compat.actionbar.ActionBarSetting;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.api.socketio.listener.ConnectionEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.ConnectResponse;
@@ -22,8 +19,8 @@ public class ConnectionListener implements ConnectionEventListener {
         mParameter = parameter;
     }
 
-    @Override @Subscribe
-    public void onConnect(ConnectResponse response) {
+    @Override
+    public void onEvent(ConnectResponse response) {
         YanchaEmitter emitter = mParameter.getEmitter();
         emitter.emitTokenLogin(mParameter.getUser().getToken());
 
@@ -33,34 +30,34 @@ public class ConnectionListener implements ConnectionEventListener {
 
             @Override
             public void run() {
-                ActionBarSetting.from(mParameter.getActivity())
+                mParameter.getActivity().getActionBar()
                         .setTitle(mParameter.getUser().getConnectServerAuthority());
             }
         });
     }
 
-    @Override @Subscribe
-    public void onConnecting(ConnectingResponse response) {
+    @Override
+    public void onEvent(ConnectingResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onDisconnect(DisconnectResponse response) {
+    @Override
+    public void onEvent(DisconnectResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onError(ErrorResponse response) {
+    @Override
+    public void onEvent(ErrorResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onReconnect(ReconnectResponse response) {
+    @Override
+    public void onEvent(ReconnectResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onReconnecting(ReconnectingResponse response) {
+    @Override
+    public void onEvent(ReconnectingResponse response) {
 
     }
 }

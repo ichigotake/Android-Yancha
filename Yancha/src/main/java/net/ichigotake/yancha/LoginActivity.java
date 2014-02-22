@@ -6,8 +6,8 @@ import android.os.Bundle;
 
 import com.google.common.base.Optional;
 
-import net.ichigotake.colorfulsweets.lib.fragment.FragmentTransit;
-import net.ichigotake.colorfulsweets.lib.intent.UriScheme;
+import net.ichigotake.colorfulsweets.common.intent.UriScheme;
+import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.common.context.BaseActivity;
 import net.ichigotake.yancha.common.context.LoginSession;
@@ -36,9 +36,10 @@ public class LoginActivity extends BaseActivity {
             }
         }
 
-        new FragmentTransit(this)
+        new FragmentTransit(getFragmentManager())
                 .setAddBackStack(false)
-                .toReplace(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance());
+                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance())
+                .transition();
 
     }
     

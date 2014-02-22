@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import net.ichigotake.colorfulsweets.lib.os.AsyncRunnableTask;
+import net.ichigotake.colorfulsweets.common.os.AsyncRunnableTask;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.view.ChatMessageView;

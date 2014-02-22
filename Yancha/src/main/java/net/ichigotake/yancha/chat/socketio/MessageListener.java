@@ -1,7 +1,6 @@
 package net.ichigotake.yancha.chat.socketio;
 
 import com.google.common.base.Optional;
-import com.google.common.eventbus.Subscribe;
 
 import net.ichigotake.yancha.common.api.EmptyResponseException;
 import net.ichigotake.yancha.common.api.socketio.listener.MessageEventListener;
@@ -24,13 +23,13 @@ public class MessageListener implements MessageEventListener {
         mFactory = new ChatMessageFactory();
     }
 
-    @Override @Subscribe
-    public void onAnnouncement(AnnounsementResponse response) {
+    @Override
+    public void onEvent(AnnounsementResponse response) {
 
     }
 
-    @Override @Subscribe
-    public void onDeleteUserMessage(DeleteUserMessageResponse response)
+    @Override
+    public void onEvent(DeleteUserMessageResponse response)
             throws EmptyResponseException {
 
         Optional<String> body = response.getResponseBody();
@@ -53,8 +52,8 @@ public class MessageListener implements MessageEventListener {
         }
     }
 
-    @Override @Subscribe
-    public void onUserMessage(UserMessageResponse response) throws EmptyResponseException {
+    @Override
+    public void onEvent(UserMessageResponse response) throws EmptyResponseException {
         final Optional<String> body = response.getResponseBody();
         if (! body.isPresent()) {
             throw new EmptyResponseException();

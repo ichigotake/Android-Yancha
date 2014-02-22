@@ -3,34 +3,37 @@ package net.ichigotake.yancha.common.view;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import net.ichigotake.colorfulsweets.lib.view.ViewHolder;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.Volley;
+
+import net.ichigotake.colorfulsweets.common.view.ViewHolder;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.user.ProfileImageViewHelper;
+import net.ichigotake.yancha.common.api.LruImageCache;
 
 import java.text.SimpleDateFormat;
 
 public class ChatMessageView extends RelativeLayout implements ViewHolder {
 
     final private TextView mNickname;
-    final private ImageView mProfileImage;
+    final private NetworkImageView mProfileImage;
     final private TextView mMessage;
     final private TextView mPlusplus;
     final private TextView mTimestamp;
-    final private ProfileImageViewHelper mImageHelper;
+    final private ImageLoader mImageLoader;
 
     public ChatMessageView(Context context) {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.yc_common_message_cell, this);
         mNickname = (TextView) findViewById(R.id.messageCellNickname);
-        mProfileImage = (ImageView) findViewById(R.id.messageCellProfileImageUrl);
+        mProfileImage = (NetworkImageView) findViewById(R.id.messageCellProfileImageUrl);
         mMessage = (TextView) findViewById(R.id.messageCellMessage);
         mPlusplus = (TextView) findViewById(R.id.messageCellPlusplus);
         mTimestamp = (TextView) findViewById(R.id.messageCellTimestamp);
-        mImageHelper = new ProfileImageViewHelper();
+        mImageLoader = new ImageLoader(Volley.newRequestQueue(context), new LruImageCache());
     }
 
     public void setMessage(CharSequence message) {
@@ -71,6 +74,6 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
     }
 
     public void setProfileImageUrl(String url) {
-        mImageHelper.setDrawable(mProfileImage, url);
+        mProfileImage.setImageUrl(url, mImageLoader);
     }
 }
