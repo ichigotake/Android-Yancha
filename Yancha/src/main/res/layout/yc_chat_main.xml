@@ -2,9 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#ffffff" 
-    >
+    android:layout_height="match_parent">
     
        <include
             android:id="@+id/chatIncludeMessageList"
@@ -58,7 +56,7 @@
             android:paddingRight="6dp"
             android:paddingLeft="6dp"
             android:gravity="center"
-            android:background="#ffffff"
+            android:background="@color/yc_background"
             android:text="@string/yc_default_tag"
             android:textSize="20sp" />
         
@@ -69,7 +67,7 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:paddingRight="8dp"
-            android:background="@color/yc_background_color"
+            android:background="@color/yc_background"
             android:text="@string/yc_input_mode_multiple_line"
             android:textColor="@color/yc_text_bright"/>
     </RelativeLayout>

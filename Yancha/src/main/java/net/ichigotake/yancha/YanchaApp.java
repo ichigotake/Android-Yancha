@@ -1,10 +1,18 @@
 package net.ichigotake.yancha;
 
+import com.android.volley.toolbox.ImageLoader;
+
+import net.ichigotake.yancha.common.api.LruImageCache;
+import net.ichigotake.yancha.common.api.RequestManager;
+
+import java.util.Locale;
+
 public class YanchaApp {
 
     final public static int FRAGMENT_ID_CONTENT = R.id.wrap_fragment;
 
     final public static String LOG_TAG = "Yancha";
+    final public static java.util.Locale LOCALE = Locale.JAPAN;
 
     public static String getUserAgent() {
         return "yancha for Android / " + getVersionName();

@@ -9,7 +9,8 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/yc_app_name"
-        android:theme="@style/YanchaAppTheme" >
+        android:theme="@style/YanchaAppTheme"
+        android:supportsRtl="true">
 
         <activity
             android:name="net.ichigotake.yancha.MainActivity"

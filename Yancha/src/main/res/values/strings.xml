@@ -3,15 +3,8 @@
 
     <string name="yc_title_search">過去ログ</string>
 
-    <string name="yc_common_ok">OK</string>
-    
     <!-- action menu -->
-    <string name="yc_action_hints">HINTS</string>
-    <string name="yc_action_info">INFO</string>
-    <string name="yc_action_settings">設定</string>
     <string name="yc_action_logout">ログアウト</string>
-    <string name="yc_action_about">yanchaについて</string>
-    <string name="yc_action_join_users">ログインユーザー</string>
 
     <string name="yc_login_twitter">Twitterログイン</string>
     <string name="yc_nickname">ニックネーム</string>
@@ -27,24 +20,18 @@
 
     <!-- misc -->
     <string name="yc_submit">送信</string>
-    <string name="yc_link_search"><u>過去ログ</u></string>
-    <string name="yc_search_option">検索オプション</string>
     <string name="yc_search_keyword">キーワード</string>
     <string name="yc_count_separator">---- %s ----</string>
     <string name="yc_default_tag">#PUBLIC</string>
     
     <string name="yc_connection_failed">接続に失敗しました</string>
     
-    <!--  join users -->
-    <string name="yc_join_users_unit">人</string>
-    
     <!-- dummy -->
     <string name="yc_dummy_join_users_count">0人</string>
     <string name="yc_dummy_message">おはようございます、いい天気ですね¥nおはようございます、いい天気ですね￥のはようございます、いい天気ですね #PUBLIC</string>
     <string name="yc_dummy_timestamp">0分前</string>
     <string name="yc_dummy_nickname">名無しさん</string>
-    <string name="yc_dummy_profile_image_url">/static/img/nobody.png</string>
-    
+
     <!-- net status -->
     <string name="join_users_image_content_description">you</string>
 

@@ -1,6 +1,8 @@
 package net.ichigotake.yancha.common.view;
 
 import android.content.Context;
+import android.text.format.DateFormat;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -13,18 +15,32 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.YanchaApp;
 import net.ichigotake.yancha.common.api.RequestManager;
 
-import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ChatMessageView extends RelativeLayout implements ViewHolder {
 
-    final private TextView mNickname;
-    final private NetworkImageView mProfileImage;
-    final private TextView mMessage;
-    final private TextView mPlusplus;
-    final private TextView mTimestamp;
+    private TextView mNickname;
+    private NetworkImageView mProfileImage;
+    private TextView mMessage;
+    private TextView mPlusplus;
+    private TextView mTimestamp;
 
     public ChatMessageView(Context context) {
         super(context);
+        init(context);
+    }
+
+    public ChatMessageView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public ChatMessageView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        init(context);
+    }
+
+    public void init(Context context) {
         LayoutInflater.from(context).inflate(R.layout.yc_common_message_cell, this);
         mNickname = (TextView) findViewById(R.id.messageCellNickname);
         mProfileImage = (NetworkImageView) findViewById(R.id.messageCellProfileImageUrl);
@@ -42,7 +58,9 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
     }
 
     public void setTimestamp(long timestamp) {
-        setTimestamp(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(timestamp));
+        final Calendar calendar = Calendar.getInstance(YanchaApp.LOCALE);
+        calendar.setTimeInMillis(timestamp);
+        setTimestamp(DateFormat.format("yyyy-MM-dd kk:mm:ss", calendar));
     }
 
     public void setTimestamp(CharSequence timestamp) {

@@ -50,7 +50,7 @@
         android:textSize="14sp"
         android:textColor="#333333"
         android:autoLink="web"
-         />
+        android:textIsSelectable="true" />
 
     <TextView
         android:id="@+id/messageCellPlusplus"
