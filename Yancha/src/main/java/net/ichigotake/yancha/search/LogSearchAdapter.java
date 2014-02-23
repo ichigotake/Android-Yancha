@@ -6,7 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.Volley;
+
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.common.api.LruImageCache;
 import net.ichigotake.yancha.common.view.ChatMessageView;
 import net.ichigotake.yancha.common.widget.SectionListAdapter;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
@@ -14,10 +18,12 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
 class LogSearchAdapter extends SectionListAdapter<ChatMessage> {
 
     final private LayoutInflater mInflater;
+    final private ImageLoader mImageLoader;
 
     LogSearchAdapter(Context context) {
         super(context, R.layout.yc_common_message_cell);
         mInflater = LayoutInflater.from(context);
+        mImageLoader = new ImageLoader(Volley.newRequestQueue(context), new LruImageCache());
     }
 
     @Override
@@ -32,7 +38,7 @@ class LogSearchAdapter extends SectionListAdapter<ChatMessage> {
 
     @Override
     protected View createItemView(int position, ViewGroup parent) {
-        return new ChatMessageView(getContext());
+        return new ChatMessageView(getContext(), mImageLoader);
     }
 
     @Override

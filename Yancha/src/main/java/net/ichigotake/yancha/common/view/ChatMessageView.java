@@ -8,11 +8,9 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.common.view.ViewHolder;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.api.LruImageCache;
 
 import java.text.SimpleDateFormat;
 
@@ -25,7 +23,7 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
     final private TextView mTimestamp;
     final private ImageLoader mImageLoader;
 
-    public ChatMessageView(Context context) {
+    public ChatMessageView(Context context, ImageLoader imageLoader) {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.yc_common_message_cell, this);
         mNickname = (TextView) findViewById(R.id.messageCellNickname);
@@ -33,7 +31,7 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
         mMessage = (TextView) findViewById(R.id.messageCellMessage);
         mPlusplus = (TextView) findViewById(R.id.messageCellPlusplus);
         mTimestamp = (TextView) findViewById(R.id.messageCellTimestamp);
-        mImageLoader = new ImageLoader(Volley.newRequestQueue(context), new LruImageCache());
+        mImageLoader = imageLoader;
     }
 
     public void setMessage(CharSequence message) {
