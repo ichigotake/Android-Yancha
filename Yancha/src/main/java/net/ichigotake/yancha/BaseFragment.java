@@ -24,7 +24,13 @@ public class BaseFragment extends net.ichigotake.colorfulsweets.ics.fragment.Bas
         RequestManager.cancelAll(new RequestQueue.RequestFilter() {
             @Override
             public boolean apply(Request<?> request) {
-                return request != null && request.getTag().toString().equals(getRequestTag());
+                if (request != null) {
+                    final Object tag = request.getTag();
+                    if (tag != null) {
+                        return tag.toString().equals(getRequestTag());
+                    }
+                }
+                return false;
             }
         });
         super.onDestroy();

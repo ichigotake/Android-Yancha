@@ -25,7 +25,13 @@ public abstract class BaseAutoPagingFragment extends AutoPagingFragment {
         RequestManager.cancelAll(new RequestQueue.RequestFilter() {
             @Override
             public boolean apply(Request<?> request) {
-                return request != null && request.getTag().toString().equals(getRequestTag());
+                if (request != null) {
+                    final Object tag = request.getTag();
+                    if (tag != null) {
+                        return tag.toString().equals(getRequestTag());
+                    }
+                }
+                return false;
             }
         });
         super.onDestroy();

@@ -7,6 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.common.api.RequestManager;
 
@@ -43,8 +46,19 @@ public abstract class BaseActivity extends Activity {
     }
 
     @Override
-    public void onDestroy() {
+    public void onStop() {
+        super.onStop();
         RequestManager.stop();
+    }
+
+    @Override
+    public void onDestroy() {
+        RequestManager.cancelAll(new RequestQueue.RequestFilter() {
+            @Override
+            public boolean apply(Request<?> request) {
+                return true;
+            }
+        });
         super.onDestroy();
     }
 
