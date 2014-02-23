@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.context;
+package net.ichigotake.yancha;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,8 +7,6 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
-import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.SearchActivity;
 
 public abstract class BaseActivity extends Activity {
 

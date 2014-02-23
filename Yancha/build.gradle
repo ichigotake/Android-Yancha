@@ -13,8 +13,8 @@ apply plugin: 'crashlytics'
 def version = readVersion(file("VERSION"))
 
 android {
-    compileSdkVersion 17
-    buildToolsVersion "17.0.0"
+    compileSdkVersion 19
+    buildToolsVersion "19.0.2"
 
     defaultConfig {
         minSdkVersion 14
@@ -44,7 +44,6 @@ android {
 
     buildTypes {
 
-        // 本番(Playストア)
         release {
             debuggable false
             runProguard true
@@ -52,15 +51,6 @@ android {
             signingConfig signingConfigs.release
         }
 
-        // ステージング(Playストア アルファ版)
-        alpha.initWith(buildTypes.release)
-        alpha {
-            debuggable true
-            packageNameSuffix ".alpha"
-            versionNameSuffix "-alpha"
-        }
-
-        // デバッグ(開発環境)
         debug {
             debuggable true
             runProguard false
