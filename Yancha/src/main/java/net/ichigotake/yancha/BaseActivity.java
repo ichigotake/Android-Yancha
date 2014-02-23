@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
+import net.ichigotake.yancha.common.api.RequestManager;
 
 public abstract class BaseActivity extends Activity {
 
@@ -20,6 +21,7 @@ public abstract class BaseActivity extends Activity {
         setContentView(R.layout.yc_main);
 
         sApplicationContext = getApplicationContext();
+        RequestManager.start();
     }
      
      @Override
@@ -40,7 +42,14 @@ public abstract class BaseActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onDestroy() {
+        RequestManager.stop();
+        super.onDestroy();
+    }
+
     public static Context getContext() {
         return sApplicationContext;
     }
+
 }

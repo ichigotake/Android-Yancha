@@ -1,6 +1,5 @@
 package net.ichigotake.yancha.chat;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,7 @@ import android.widget.Toast;
 
 import net.ichigotake.colorfulsweets.common.os.BundleSimple;
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
+import net.ichigotake.yancha.BaseFragment;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.YanchaApp;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
@@ -21,13 +21,13 @@ import java.net.MalformedURLException;
 /**
  * チャット画面
  */
-public class ChatFragment extends Fragment {
+public class ChatFragment extends BaseFragment {
 
     final static private String KEY_CONNECT_URI = "key_connect_uri";
     private Chat chat;
 
-    public static Fragment newInstance(ApiUri connectUri) {
-        Fragment fragment = new ChatFragment();
+    public static ChatFragment newInstance(ApiUri connectUri) {
+        ChatFragment fragment = new ChatFragment();
         BundleSimple store = new BundleSimple();
         store.put(KEY_CONNECT_URI, connectUri);
         fragment.setArguments(store.toBundle());

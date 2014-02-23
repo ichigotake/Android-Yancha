@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.LruImageCache;
+import net.ichigotake.yancha.common.api.RequestManager;
 import net.ichigotake.yancha.sdk.model.ChatUser;
 import net.ichigotake.yancha.sdk.model.ChatUsers;
 
@@ -33,7 +33,7 @@ public class ChatUserAdapter extends ArrayAdapter<ChatUser> {
     public ChatUserAdapter(Context context, List<ChatUser> users) {
         super(context, R.layout.yc_join_users_cell, users);
         mInflater = LayoutInflater.from(context);
-        mImageLoader = new ImageLoader(Volley.newRequestQueue(context), new LruImageCache());
+        mImageLoader = new ImageLoader(RequestManager.get(), new LruImageCache());
     }
 
     public void addAll(ChatUsers users) {

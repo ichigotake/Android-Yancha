@@ -1,18 +1,18 @@
 package net.ichigotake.yancha.login;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import net.ichigotake.yancha.BaseFragment;
 import net.ichigotake.yancha.R;
 
 
 /**
  * ログイン画面
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends BaseFragment {
 
     public static LoginFragment newInstance() {
         return new LoginFragment();

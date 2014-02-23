@@ -9,17 +9,16 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 
 import net.ichigotake.colorfulsweets.common.widget.paging.PagingState;
-import net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment;
+import net.ichigotake.yancha.BaseAutoPagingFragment;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.chat.SearchOptionBuilder;
+import net.ichigotake.yancha.common.api.RequestManager;
 import net.ichigotake.yancha.common.chat.AppUser;
+import net.ichigotake.yancha.common.chat.SearchOptionBuilder;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 
@@ -29,7 +28,7 @@ import org.json.JSONException;
 /**
  * 過去ログ検索
  */
-public class LogSearchFragment extends AutoPagingFragment {
+public class LogSearchFragment extends BaseAutoPagingFragment {
 
     private static SearchOptionBuilder sBuilder;
 
@@ -47,8 +46,7 @@ public class LogSearchFragment extends AutoPagingFragment {
 
     @Override
     protected void onPaging() {
-        RequestQueue queue = Volley.newRequestQueue(getActivity());
-        queue.add(createRequest(getPagingState()));
+        RequestManager.get().add(createRequest(getPagingState()));
     }
 
     @Override
