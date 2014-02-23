@@ -11,7 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.SearchView.OnQueryTextListener;
 
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
-import net.ichigotake.yancha.AppContext;
+import net.ichigotake.yancha.YanchaApp;
 import net.ichigotake.yancha.search.LogSearchFragment;
 
 /**
@@ -43,7 +43,7 @@ public class ActionBarSearchable {
         @Override
         public void onClick(View arg0) {
             new FragmentTransit(fragmentManager)
-                    .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
+                    .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
                     .transition();
         }
         
@@ -75,7 +75,7 @@ public class ActionBarSearchable {
             nextFragment.setArguments(args);
             
             new FragmentTransit(fragmentManager)
-                    .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, nextFragment)
+                    .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, nextFragment)
                     .transition();
         }
 

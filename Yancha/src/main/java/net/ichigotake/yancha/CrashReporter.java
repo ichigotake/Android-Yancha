@@ -28,7 +28,7 @@ class CrashReporter {
                 hasValidKey = apiKey != null && !apiKey.equals("0000000000000000000000000000000000000000");
             }
         } catch (Exception e) {
-            Log.e(BaseApplication.LOG_TAG, "Unexpected crash report key not found.", e);
+            Log.e(YanchaApp.LOG_TAG, "Unexpected crash report key not found.", e);
         }
         return hasValidKey;
     }

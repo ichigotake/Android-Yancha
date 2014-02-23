@@ -1,11 +1,11 @@
 package net.ichigotake.yancha;
 
-public class AppContext {
+public class YanchaApp {
 
-    final public static String URI_SCHEME_LOGIN_CALLBACK = "yancha://login/twitter/callback";
-    
     final public static int FRAGMENT_ID_CONTENT = R.id.wrap_fragment;
-    
+
+    final public static String LOG_TAG = "Yancha";
+
     public static String getUserAgent() {
         return "yancha for Android / " + getVersionName();
     }

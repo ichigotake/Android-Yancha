@@ -7,8 +7,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.YanchaApp;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
-import net.ichigotake.yancha.AppContext;
 import net.ichigotake.yancha.common.widget.ViewContainer;
 import net.ichigotake.yancha.common.chat.AppUser;
 
@@ -57,6 +57,6 @@ class LoginContainer implements ViewContainer {
                 new TwitterLoginOnClickListener(mActivity, serverHost));
         
         final TextView versionView = holder.getVersionName();
-        versionView.setText(AppContext.getFullVersionName());
+        versionView.setText(YanchaApp.getFullVersionName());
     }
 }

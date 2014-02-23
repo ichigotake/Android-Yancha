@@ -10,10 +10,10 @@ import android.widget.Toast;
 import net.ichigotake.colorfulsweets.common.os.BundleSimple;
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.YanchaApp;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.socketio.Chat;
-import net.ichigotake.yancha.AppContext;
 import net.ichigotake.yancha.login.LoginFragment;
 
 import java.net.MalformedURLException;
@@ -77,7 +77,7 @@ public class ChatFragment extends Fragment {
                 "無効なURLです",
                 Toast.LENGTH_SHORT).show();
         new FragmentTransit(getActivity().getFragmentManager())
-                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LoginFragment.newInstance())
+                .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LoginFragment.newInstance())
                 .transition();
     }
 }

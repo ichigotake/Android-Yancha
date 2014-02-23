@@ -19,7 +19,7 @@ public class SearchActivity extends BaseActivity {
 
         new FragmentTransit(getFragmentManager())
                 .setAddBackStack(false)
-                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
+                .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
                 .transition();
     }
 
@@ -29,7 +29,7 @@ public class SearchActivity extends BaseActivity {
             case R.id.menu_search_icon:
                 new FragmentTransit(getFragmentManager())
                         .setAddBackStack(false)
-                        .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
+                        .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
                         .transition();
                 return true;
         }

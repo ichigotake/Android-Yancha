@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity {
     private void transition(Fragment nextFragment) {
         new FragmentTransit(getFragmentManager())
                 .setAddBackStack(false)
-                .setNextFragment(AppContext.FRAGMENT_ID_CONTENT, nextFragment)
+                .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, nextFragment)
                 .transition();
     }
 
