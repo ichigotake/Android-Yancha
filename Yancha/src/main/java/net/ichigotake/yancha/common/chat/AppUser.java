@@ -24,7 +24,11 @@ public class AppUser implements ChatUser {
     final private SharedPreferences pref;
 
     public AppUser() {
-        this.pref = BaseActivity.getContext().getSharedPreferences("myself", Context.MODE_PRIVATE);
+        this(BaseActivity.getContext());
+    }
+
+    public AppUser(Context context) {
+        this.pref = context.getSharedPreferences("myself", Context.MODE_PRIVATE);
     }
 
     public void resetToken() {

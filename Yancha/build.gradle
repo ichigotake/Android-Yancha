@@ -1,14 +1,4 @@
-buildscript {
-    repositories {
-        maven { url 'http://download.crashlytics.com/maven' }
-    }
-    dependencies {
-        classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
-    }
-}
-
 apply plugin: 'android'
-apply plugin: 'crashlytics'
 
 def version = readVersion(file("VERSION"))
 
@@ -21,6 +11,8 @@ android {
         targetSdkVersion 19
         versionCode version.toVersionCode()
         versionName version.toVersionName()
+
+        buildConfigField "String", "CRASH_REPORTER_KEY", "\"${project.properties.crashReporterKey}\""
     }
 
 
@@ -80,7 +72,6 @@ dependencies {
     compile 'net.ichigotake.yancha:yancha-sdk:0.0.5'
     compile 'de.greenrobot:eventbus:2.2.0'
     compile 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
-    compile 'com.crashlytics.android:crashlytics:1.+'
 }
 
 
@@ -90,7 +81,6 @@ android.applicationVariants.all { variant ->
         def resourceFile = file("${resourceDir}/_app.xml")
         def resources = [
                 "yc_app_name": project.properties.appName,
-                "crashlytics_api_key": project.properties.debugCrashlyticsApiKey,
         ]
 
         resourceDir.mkdirs()
