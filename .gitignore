@@ -1,5 +1,8 @@
 ###Android###
 
+/Yancha/src/main/res/values/com_crashlytics_export_strings.xml
+/*/src/*/res/values/_*.xml
+
 # built application files
 *.apk
 *.ap_
