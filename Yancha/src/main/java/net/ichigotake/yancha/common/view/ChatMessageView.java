@@ -6,11 +6,12 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 
 import net.ichigotake.colorfulsweets.common.view.ViewHolder;
 import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.YanchaApp;
+import net.ichigotake.yancha.common.api.RequestManager;
 
 import java.text.SimpleDateFormat;
 
@@ -21,9 +22,8 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
     final private TextView mMessage;
     final private TextView mPlusplus;
     final private TextView mTimestamp;
-    final private ImageLoader mImageLoader;
 
-    public ChatMessageView(Context context, ImageLoader imageLoader) {
+    public ChatMessageView(Context context) {
         super(context);
         LayoutInflater.from(context).inflate(R.layout.yc_common_message_cell, this);
         mNickname = (TextView) findViewById(R.id.messageCellNickname);
@@ -31,7 +31,6 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
         mMessage = (TextView) findViewById(R.id.messageCellMessage);
         mPlusplus = (TextView) findViewById(R.id.messageCellPlusplus);
         mTimestamp = (TextView) findViewById(R.id.messageCellTimestamp);
-        mImageLoader = imageLoader;
     }
 
     public void setMessage(CharSequence message) {
@@ -72,6 +71,6 @@ public class ChatMessageView extends RelativeLayout implements ViewHolder {
     }
 
     public void setProfileImageUrl(String url) {
-        mProfileImage.setImageUrl(url, mImageLoader);
+        mProfileImage.setImageUrl(url, RequestManager.getImageLoader());
     }
 }

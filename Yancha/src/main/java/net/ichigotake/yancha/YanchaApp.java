@@ -25,5 +25,8 @@ public class YanchaApp {
     public static String getFullVersionName() {
         return "v " + getVersionName();
     }
-    
+
+    public static ImageLoader getImageLoader() {
+        return new ImageLoader(RequestManager.get(), new LruImageCache());
+    }
 }

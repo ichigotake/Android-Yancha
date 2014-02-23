@@ -5,12 +5,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.android.volley.toolbox.ImageLoader;
-
 import net.ichigotake.colorfulsweets.common.os.AsyncRunnableTask;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.api.LruImageCache;
-import net.ichigotake.yancha.common.api.RequestManager;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.view.ChatMessageView;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
@@ -23,12 +19,10 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
 public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
 
     final private YanchaEmitter mEmitter;
-    final private ImageLoader mImageLoader;
 
     public ChatMessageAdapter(Context context, YanchaEmitter emitter) {
         super(context, R.layout.yc_common_message_cell);
         mEmitter = emitter;
-        mImageLoader = new ImageLoader(RequestManager.get(), new LruImageCache());
     }
 
     public void update(ChatMessage message) {
@@ -53,7 +47,7 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
         final ChatMessage message = getItem(position);
 
         if (contentView == null) {
-            contentView = new ChatMessageView(getContext(), mImageLoader);
+            contentView = new ChatMessageView(getContext());
         }
         ChatMessageView messageView = (ChatMessageView)contentView;
 
