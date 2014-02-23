@@ -2,7 +2,8 @@ package net.ichigotake.yancha.common.chat;
 
 import android.net.Uri;
 
-import net.ichigotake.colorfulsweets.common.net.UriBuilder;
+import net.ichigotake.yancha.sdk.api.BasicEndpoint;
+import net.ichigotake.yancha.sdk.api.SearchApiBuilder;
 
 
 public class SearchOptionBuilder {
@@ -17,34 +18,18 @@ public class SearchOptionBuilder {
         mAuthority = authority;
     }
     
-    public SearchOption build() {
-        return new SearchOption();
-    }
-    
-    public class SearchOption {
-        
-        SearchOption() {
-        }
-        
-        public int getOffset() {
-            return mOffset;
-        }
-        
-        public int getLimit() {
-            return mLimit;
-        }
-        
-        public Uri toUri() {
-            return new UriBuilder()
-                .setScheme("http")
-                .setAuthrity(mAuthority)
-                .setPath("/api/search")
-                .appendQueryParameter("limit", mLimit + "," + mOffset)
-                .appendQueryParameter("order", "-created_at_ms")
+    public Uri build() {
+        return new SearchApiBuilder()
+                .setFormat(SearchApiBuilder.Format.JSON)
+                .setOrder("-created_at_ms")
+                .setLimit(mLimit, mOffset)
+                .get()
+                .scheme("http")
+                .authority(mAuthority)
+                .path(BasicEndpoint.SEARCH.getPath())
                 .build();
-        }
     }
-    
+
     public SearchOptionBuilder setOffset(int offset) {
         mOffset = offset;
         return this;

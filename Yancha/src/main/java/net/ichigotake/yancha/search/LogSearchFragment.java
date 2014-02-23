@@ -1,5 +1,6 @@
 package net.ichigotake.yancha.search;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,10 +74,10 @@ public class LogSearchFragment extends BaseAutoPagingFragment {
      * 検索APIを叩く
      */
     private Request createRequest(final PagingState state) {
-        SearchOptionBuilder.SearchOption option = getSearchOptionBuilder()
+        final Uri uri = getSearchOptionBuilder()
                 .setOffset(state.getOffset())
                 .build();
-        return new JsonArrayRequest(option.toUri().toString(),
+        return new JsonArrayRequest(uri.toString(),
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
