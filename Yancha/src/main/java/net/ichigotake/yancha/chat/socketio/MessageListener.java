@@ -11,16 +11,13 @@ import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 public class MessageListener implements MessageEventListener {
 
     final private ChatMediator mParameter;
-    final private ChatMessageFactory mFactory;
 
     MessageListener(ChatMediator parameter) {
         mParameter = parameter;
-        mFactory = new ChatMessageFactory();
     }
 
     @Override
@@ -38,8 +35,7 @@ public class MessageListener implements MessageEventListener {
         }
 
         try {
-            final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = mFactory.create(json);
+            final ChatMessage message = ChatMessageFactory.create(body.get());
 
             mParameter.runOnUiThread(new Runnable() {
                 @Override
@@ -60,8 +56,7 @@ public class MessageListener implements MessageEventListener {
         }
 
         try {
-            final JSONObject json = new JSONObject(body.get());
-            final ChatMessage message = mFactory.create(json);
+            final ChatMessage message = ChatMessageFactory.create(body.get());
 
             mParameter.runOnUiThread(new Runnable() {
 

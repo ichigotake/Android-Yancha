@@ -19,11 +19,9 @@ import org.json.JSONException;
 public class LoginListener implements LoginEventListener {
 
     final private ChatMediator mParameter;
-    final private ChatUserFactory mUserFactory;
 
     public LoginListener(ChatMediator parameter) {
         mParameter = parameter;
-        mUserFactory = new ChatUserFactory();
     }
 
     @Override
@@ -35,7 +33,7 @@ public class LoginListener implements LoginEventListener {
     public void onEvent(final NicknamesResponse response) {
         try {
             String rawJson = response.getResponseBody().or("{}");
-            ChatUsers users = mUserFactory.fromNicknameEvent(rawJson);
+            ChatUsers users = ChatUserFactory.fromNicknameEvent(rawJson);
             updateJoinUsers(users);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -64,7 +62,7 @@ public class LoginListener implements LoginEventListener {
     @Override
     public void onEvent(TokenLoginResponse response) {
         try {
-            ChatUser myself = mUserFactory.fromTokenLoginEvent(response.getResponseBody().get());
+            ChatUser myself = ChatUserFactory.fromTokenLoginEvent(response.getResponseBody().get());
             mParameter.getContainer().updateMyself(myself);
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,6 +1,5 @@
 package net.ichigotake.yancha.search;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,7 +90,7 @@ public class LogSearchFragment extends AutoPagingFragment {
                             }
                             for (int i=0; i<length; i++) {
                                 String string = response.get(i).toString();
-                                adapter.add(new ChatMessageFactory().create(string));
+                                adapter.add(ChatMessageFactory.create(string));
                             }
                             adapter.notifyDataSetChanged();
                         } catch (JSONException e) {
