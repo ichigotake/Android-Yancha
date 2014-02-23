@@ -18,8 +18,8 @@ import com.android.volley.toolbox.Volley;
 import net.ichigotake.colorfulsweets.common.widget.paging.PagingState;
 import net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment;
 import net.ichigotake.yancha.R;
-import net.ichigotake.yancha.common.model.SearchOptionBuilder;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.SearchOptionBuilder;
+import net.ichigotake.yancha.common.chat.AppUser;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 import net.ichigotake.yancha.sdk.model.ChatMessageFactory;
 

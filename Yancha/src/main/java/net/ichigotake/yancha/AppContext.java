@@ -1,7 +1,4 @@
-package net.ichigotake.yancha.common.context;
-
-import net.ichigotake.yancha.BuildConfig;
-import net.ichigotake.yancha.R;
+package net.ichigotake.yancha;
 
 public class AppContext {
 

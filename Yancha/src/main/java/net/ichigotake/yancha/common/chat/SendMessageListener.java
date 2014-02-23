@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.message;
+package net.ichigotake.yancha.common.chat;
 
 /**
  * メッセージ送信時のイベントリスナ

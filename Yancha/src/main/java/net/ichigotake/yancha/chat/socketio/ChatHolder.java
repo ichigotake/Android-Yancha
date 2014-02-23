@@ -6,7 +6,7 @@ import android.view.View;
 
 import net.ichigotake.yancha.chat.ChatContainer;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.AppUser;
 
 /**
  * チャットイベントとSocketIOクライアントに必要なパラメータを保持

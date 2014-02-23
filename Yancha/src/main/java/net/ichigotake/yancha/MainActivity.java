@@ -12,9 +12,8 @@ import com.google.common.base.Optional;
 import net.ichigotake.colorfulsweets.common.intent.UriScheme;
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
 import net.ichigotake.yancha.chat.ChatFragment;
-import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.context.LoginSession;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.LoginSession;
+import net.ichigotake.yancha.common.chat.AppUser;
 import net.ichigotake.yancha.login.LoginFragment;
 
 public class MainActivity extends BaseActivity {

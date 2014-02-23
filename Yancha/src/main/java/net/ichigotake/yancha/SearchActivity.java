@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
-import net.ichigotake.yancha.common.context.AppContext;
 import net.ichigotake.yancha.search.LogSearchFragment;
 
 /**

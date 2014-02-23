@@ -2,8 +2,6 @@ package net.ichigotake.yancha;
 
 import android.app.Application;
 
-import net.ichigotake.yancha.common.context.AppContext;
-
 public class BaseApplication extends Application {
 
     final public static String LOG_TAG = "Yancha";

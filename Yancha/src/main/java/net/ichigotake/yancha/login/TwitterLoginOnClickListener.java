@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.AppUser;
 
 class TwitterLoginOnClickListener implements OnClickListener {
 

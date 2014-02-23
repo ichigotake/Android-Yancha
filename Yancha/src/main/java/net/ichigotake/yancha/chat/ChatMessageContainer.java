@@ -7,9 +7,9 @@ import android.widget.ListView;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-import net.ichigotake.yancha.common.message.ChatMessageAdapter;
-import net.ichigotake.yancha.common.message.ChatMessageTagMap;
-import net.ichigotake.yancha.common.ui.ViewContainer;
+import net.ichigotake.yancha.common.chat.ChatMessageAdapter;
+import net.ichigotake.yancha.common.chat.ChatMessageTagMap;
+import net.ichigotake.yancha.common.widget.ViewContainer;
 import net.ichigotake.yancha.common.view.OnClickToScrollBottomListener;
 import net.ichigotake.yancha.sdk.model.ChatMessage;
 

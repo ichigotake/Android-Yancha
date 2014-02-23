@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.model;
+package net.ichigotake.yancha.common.chat;
 
 import android.net.Uri;
 

@@ -7,7 +7,7 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.TextView;
 
-import net.ichigotake.yancha.common.user.JoinTagComparator;
+import net.ichigotake.yancha.common.chat.JoinTagComparator;
 import net.ichigotake.yancha.sdk.model.ChatTag;
 import net.ichigotake.yancha.sdk.model.ChatTags;
 

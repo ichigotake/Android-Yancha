@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.ui;
+package net.ichigotake.yancha.common.widget;
 
 /**
  * ビューを表示するためのコンテナ

@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.user;
+package net.ichigotake.yancha.common.chat;
 
 import java.util.Comparator;
 

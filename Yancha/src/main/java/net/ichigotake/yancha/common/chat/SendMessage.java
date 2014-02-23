@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.message;
+package net.ichigotake.yancha.common.chat;
 
 /**
  * 送信するメッセージを保持する

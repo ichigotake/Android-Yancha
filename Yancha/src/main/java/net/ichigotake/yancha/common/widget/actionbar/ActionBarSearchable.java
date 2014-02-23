@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.ui.actionbar;
+package net.ichigotake.yancha.common.widget.actionbar;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -11,13 +11,11 @@ import android.view.View.OnClickListener;
 import android.widget.SearchView.OnQueryTextListener;
 
 import net.ichigotake.colorfulsweets.ics.fragment.FragmentTransit;
-import net.ichigotake.yancha.common.context.AppContext;
+import net.ichigotake.yancha.AppContext;
 import net.ichigotake.yancha.search.LogSearchFragment;
 
 /**
  * アクションバーの検索UI
- *
- * TODO 12/21までに実装する
  */
 public class ActionBarSearchable {
 

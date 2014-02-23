@@ -8,9 +8,9 @@ import android.widget.TextView;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
-import net.ichigotake.yancha.common.context.AppContext;
-import net.ichigotake.yancha.common.ui.ViewContainer;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.AppContext;
+import net.ichigotake.yancha.common.widget.ViewContainer;
+import net.ichigotake.yancha.common.chat.AppUser;
 
 /**
  * ログイン画面を表示

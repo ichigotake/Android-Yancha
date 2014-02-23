@@ -15,8 +15,8 @@ import net.ichigotake.colorfulsweets.common.net.UriBuilder;
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.rest.YanchaApiField;
-import net.ichigotake.yancha.common.context.LoginSession;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.LoginSession;
+import net.ichigotake.yancha.common.chat.AppUser;
 
 /**
  * シンプルログインを実行する

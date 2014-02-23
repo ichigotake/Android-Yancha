@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.ui;
+package net.ichigotake.yancha.common.widget;
 
 public interface SectionIndexerCreator<T> {
 

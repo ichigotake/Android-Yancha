@@ -1,10 +1,10 @@
-package net.ichigotake.yancha.common.context;
+package net.ichigotake.yancha.common.chat;
 
 import android.app.Activity;
 
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.MainActivity;
-import net.ichigotake.yancha.common.user.AppUser;
+import net.ichigotake.yancha.common.chat.AppUser;
 
 /**
  * ログインを実行する

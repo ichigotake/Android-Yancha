@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.common.api.socketio;
 
-import net.ichigotake.yancha.common.message.SendMessage;
-import net.ichigotake.yancha.common.message.SendMessageListener;
+import net.ichigotake.yancha.common.chat.SendMessage;
+import net.ichigotake.yancha.common.chat.SendMessageListener;
 import net.ichigotake.yancha.sdk.model.ChatTags;
 
 import org.json.JSONException;

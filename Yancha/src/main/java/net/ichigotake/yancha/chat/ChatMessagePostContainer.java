@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
-import net.ichigotake.yancha.common.ui.ViewContainer;
+import net.ichigotake.yancha.common.widget.ViewContainer;
 
 /**
  * メッセージをポストする

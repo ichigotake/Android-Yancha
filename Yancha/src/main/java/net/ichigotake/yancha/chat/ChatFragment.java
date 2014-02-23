@@ -13,7 +13,7 @@ import net.ichigotake.yancha.R;
 import net.ichigotake.yancha.chat.socketio.YanchaCallbackListener;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.common.api.socketio.Chat;
-import net.ichigotake.yancha.common.context.AppContext;
+import net.ichigotake.yancha.AppContext;
 import net.ichigotake.yancha.login.LoginFragment;
 
 import java.net.MalformedURLException;

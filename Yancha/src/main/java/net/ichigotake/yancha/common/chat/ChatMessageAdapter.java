@@ -1,4 +1,4 @@
-package net.ichigotake.yancha.common.message;
+package net.ichigotake.yancha.common.chat;
 
 import android.content.Context;
 import android.view.View;
