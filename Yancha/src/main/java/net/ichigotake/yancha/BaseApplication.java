@@ -14,7 +14,7 @@ public class BaseApplication extends Application {
         if (BuildConfig.DEBUG && CrashReporter.hasReportKey(this)) {
             CrashReporter.start(this);
         }
-        System.setProperty("http.agent", new AppContext(this).getUserAgent());
+        System.setProperty("http.agent", AppContext.getUserAgent());
     }
 
 
