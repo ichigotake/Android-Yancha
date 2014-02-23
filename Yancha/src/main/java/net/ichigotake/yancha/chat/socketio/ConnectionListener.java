@@ -13,9 +13,9 @@ public class ConnectionListener implements ConnectionEventListener {
 
     final private String TAG = ConnectionListener.class.getClass().getSimpleName();
 
-    final private ChatMediator mParameter;
+    final private ChatHolder mParameter;
 
-    public ConnectionListener(ChatMediator parameter) {
+    public ConnectionListener(ChatHolder parameter) {
         mParameter = parameter;
     }
 

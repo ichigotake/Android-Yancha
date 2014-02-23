@@ -11,14 +11,14 @@ import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 /**
  * メッセージを送信する
  */
-class MessagePost implements View.OnClickListener {
+class ChatMessagePost implements View.OnClickListener {
 
     final private YanchaEmitter mEmitter;
     final private EditText mMessageView;
     final private ChatTagContainer mTagContainer;
     private boolean mIsSingleLine = true;
 
-    MessagePost(YanchaEmitter emitter, EditText messageView, ChatTagContainer tagContainer) {
+    ChatMessagePost(YanchaEmitter emitter, EditText messageView, ChatTagContainer tagContainer) {
         mEmitter = emitter;
         mMessageView = messageView;
         mMessageView.setOnEditorActionListener(new OnSubmitActionListener());

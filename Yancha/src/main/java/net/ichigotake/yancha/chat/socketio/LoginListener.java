@@ -18,9 +18,9 @@ import org.json.JSONException;
  */
 public class LoginListener implements LoginEventListener {
 
-    final private ChatMediator mParameter;
+    final private ChatHolder mParameter;
 
-    public LoginListener(ChatMediator parameter) {
+    public LoginListener(ChatHolder parameter) {
         mParameter = parameter;
     }
 

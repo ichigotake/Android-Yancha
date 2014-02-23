@@ -9,11 +9,9 @@ import net.ichigotake.yancha.common.api.socketio.YanchaEmitter;
 import net.ichigotake.yancha.common.user.AppUser;
 
 /**
- * チャットイベントとSocketIOクライアントを繋ぐ仲介役
- *
- * TODO デザインパターンそのままの名前やめたい
+ * チャットイベントとSocketIOクライアントに必要なパラメータを保持
  */
-public class ChatMediator {
+public class ChatHolder {
 
     final private Handler mHandler = new Handler();
 
@@ -25,7 +23,7 @@ public class ChatMediator {
 
     final private YanchaEmitter mEmitter;
 
-    public ChatMediator(YanchaEmitter emitter, Activity activity, View view) {
+    public ChatHolder(YanchaEmitter emitter, Activity activity, View view) {
         mActivity = activity;
         mAppUser = new AppUser(activity);
         mChatContainer = new ChatContainer(activity, emitter, view);

@@ -14,10 +14,10 @@ import net.ichigotake.yancha.common.api.socketio.listener.MessageEventListener;
  */
 public class YanchaCallbackListener implements ChatCallbackListener {
 
-    final private ChatMediator mParameter;
+    final private ChatHolder mParameter;
     
     public YanchaCallbackListener(YanchaEmitter emitter, Activity activity, View view) {
-        mParameter = new ChatMediator(emitter, activity, view);
+        mParameter = new ChatHolder(emitter, activity, view);
         mParameter.initialize();
     }
 

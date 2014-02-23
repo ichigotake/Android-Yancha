@@ -18,7 +18,7 @@ public class ChatContainer implements ViewContainer {
 
     final private ChatMessageContainer mChatMessageContainer;
     
-    final private MessagePostContainer mMessagePostContainer;
+    final private ChatMessagePostContainer mChatMessagePostContainer;
     
     final private ChatTagContainer mChatTagContainer;
     
@@ -29,7 +29,7 @@ public class ChatContainer implements ViewContainer {
     public ChatContainer(Activity activity, YanchaEmitter emitter, View view) {
         mChatMessageContainer = new ChatMessageContainer(activity, view, emitter);
         mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
-        mMessagePostContainer = new MessagePostContainer(view, emitter, mChatTagContainer);
+        mChatMessagePostContainer = new ChatMessagePostContainer(view, emitter, mChatTagContainer);
         mChatUsersContainer = new ChatUsersContainer(activity, view);
         mMyself = new AppUser(activity);
     }

@@ -14,9 +14,9 @@ import org.json.JSONException;
 
 public class MessageListener implements MessageEventListener {
 
-    final private ChatMediator mParameter;
+    final private ChatHolder mParameter;
 
-    MessageListener(ChatMediator parameter) {
+    MessageListener(ChatHolder parameter) {
         mParameter = parameter;
     }
 

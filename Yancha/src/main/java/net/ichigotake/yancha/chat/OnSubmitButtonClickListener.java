@@ -7,9 +7,9 @@ import android.view.View;
  */
 class OnSubmitButtonClickListener implements View.OnClickListener {
 
-    final private MessagePost mPost;
+    final private ChatMessagePost mPost;
 
-    OnSubmitButtonClickListener(MessagePost post) {
+    OnSubmitButtonClickListener(ChatMessagePost post) {
         mPost = post;
     }
 

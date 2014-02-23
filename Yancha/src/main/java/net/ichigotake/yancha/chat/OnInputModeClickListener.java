@@ -8,19 +8,19 @@ import android.widget.CheckBox;
  */
 class OnInputModeClickListener implements View.OnClickListener {
 
-    final private MessagePost mMessagePost;
+    final private ChatMessagePost mChatMessagePost;
 
-    public OnInputModeClickListener(MessagePost messagePost) {
-        mMessagePost = messagePost;
+    public OnInputModeClickListener(ChatMessagePost messagePost) {
+        mChatMessagePost = messagePost;
     }
 
     @Override
     public void onClick(View view) {
         CheckBox checkBox = (CheckBox) view;
         if (checkBox.isChecked()) {
-            mMessagePost.setMultipleLineInputMode();
+            mChatMessagePost.setMultipleLineInputMode();
         } else {
-            mMessagePost.setSingleLineInputMode();
+            mChatMessagePost.setSingleLineInputMode();
         }
     }
 

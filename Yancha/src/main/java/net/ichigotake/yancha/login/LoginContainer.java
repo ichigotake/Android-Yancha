@@ -27,16 +27,16 @@ class LoginContainer implements ViewContainer {
     }
     
     static LoginContainer initialize(Activity activity, View view) {
-        LoginContainer container = new LoginContainer(activity);
+        final LoginContainer container = new LoginContainer(activity);
         container.initializeView(view);
         return container;
     }
     
-    public void initializeView(View view) {
-        LoginViewHolder holder = new LoginViewHolder(view);
+    public void initializeView(final View view) {
+        final LoginViewHolder holder = new LoginViewHolder(view);
         
-        EditText serverHost = holder.getLoginServer();
-        ApiUri uri = appUser.getApiUri();
+        final EditText serverHost = holder.getLoginServer();
+        final ApiUri uri = appUser.getApiUri();
         if (uri.isHostnameEmpty()) {
             serverHost.setText(R.string.yc_login_server_default);
         } else {
@@ -46,17 +46,17 @@ class LoginContainer implements ViewContainer {
         holder.getLoginSimpleSubmit().setOnClickListener(
                 new SimpleLoginOnClickListener(mActivity, holder));
         
-        EditText loginSimple = holder.getLoginSimple();
+        final EditText loginSimple = holder.getLoginSimple();
         loginSimple.setText(appUser.getNickname());
         loginSimple.setSelection(appUser.getNickname().length());
         loginSimple.setOnEditorActionListener(
                 new SimpleLoginOnEditorActionListener(mActivity, holder));
         
-        Button loginTwitter = holder.getLoginTwitter();
+        final Button loginTwitter = holder.getLoginTwitter();
         loginTwitter.setOnClickListener(
                 new TwitterLoginOnClickListener(mActivity, serverHost));
         
-        TextView versionView = holder.getVersionName();
+        final TextView versionView = holder.getVersionName();
         versionView.setText(AppContext.getFullVersionName());
     }
 }

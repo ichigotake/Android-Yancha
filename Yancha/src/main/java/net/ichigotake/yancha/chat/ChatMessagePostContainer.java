@@ -12,17 +12,17 @@ import net.ichigotake.yancha.common.ui.ViewContainer;
 /**
  * メッセージをポストする
  */
-class MessagePostContainer implements ViewContainer {
+class ChatMessagePostContainer implements ViewContainer {
 
     final private EditText mMessageView;
     final private ChatTagContainer mTagContainer;
     final private CheckBox mInputModeSwitcher;
     
-    MessagePostContainer(View view, YanchaEmitter emitter, ChatTagContainer tagContainer) {
+    ChatMessagePostContainer(View view, YanchaEmitter emitter, ChatTagContainer tagContainer) {
         mMessageView = (EditText) view.findViewById(R.id.chatSendMessageText);
 
         mTagContainer = tagContainer;
-        MessagePost post = new MessagePost(emitter, mMessageView, mTagContainer);
+        ChatMessagePost post = new ChatMessagePost(emitter, mMessageView, mTagContainer);
         mInputModeSwitcher = (CheckBox) view.findViewById(R.id.chatInputModeSwitcher);
         mInputModeSwitcher.setOnClickListener(new OnInputModeClickListener(post));
         Button viewSubmit = (Button) view.findViewById(R.id.chatSendMessageSend);
