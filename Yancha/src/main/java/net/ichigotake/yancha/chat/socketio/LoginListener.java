@@ -1,7 +1,7 @@
 package net.ichigotake.yancha.chat.socketio;
 
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
-import net.ichigotake.yancha.ChatActivity;
+import net.ichigotake.yancha.MainActivity;
 import net.ichigotake.yancha.common.api.socketio.listener.LoginEventListener;
 import net.ichigotake.yancha.common.api.socketio.response.JoinTagResponse;
 import net.ichigotake.yancha.common.api.socketio.response.NicknamesResponse;
@@ -56,7 +56,7 @@ public class LoginListener implements LoginEventListener {
 
     @Override
     public void onEvent(NoSessionResponse response) {
-        new ActivityTransit(mParameter.getActivity(), ChatActivity.class)
+        new ActivityTransit(mParameter.getActivity(), MainActivity.class)
                 .clearTop()
                 .transition();
     }

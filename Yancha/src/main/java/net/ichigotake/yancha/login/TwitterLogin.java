@@ -14,8 +14,10 @@ public class TwitterLogin {
     }
     
     public void start(String host) {
+        final String scheme = mActivity.getString(
+                R.string.yc_login_server_callback, mActivity.getString(R.string.yc_app_name));
         new ActionViewStarter(mActivity)
-            .start(mActivity.getString(R.string.yc_login_login_twitter_start, host));
+                .start(mActivity.getString(R.string.yc_login_login_twitter_start, host, scheme));
     }
     
 }

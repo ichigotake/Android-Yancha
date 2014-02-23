@@ -5,44 +5,35 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="net.ichigotake.yancha.common.context.BaseApplication"
+        android:name=".BaseApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/yc_app_name"
         android:theme="@style/YanchaAppTheme" >
 
         <activity
-            android:name="net.ichigotake.yancha.SplashActivity"
+            android:name="net.ichigotake.yancha.MainActivity"
             android:label="@string/yc_app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name="net.ichigotake.yancha.LoginActivity"
-            android:label="@string/yc_app_name" >
             <intent-filter >
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
-                    android:scheme="yancha"
+                    android:scheme="@string/yc_app_name"
                     android:host="login"
                     android:path="/twitter/callback" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name="net.ichigotake.yancha.ChatActivity"
-            android:label="@string/yc_app_name" />
-
-        <activity
             android:name="net.ichigotake.yancha.SearchActivity"
             android:label="@string/yc_app_name"
-            android:parentActivityName=".ChatActivity" />
+            android:parentActivityName="net.ichigotake.yancha.MainActivity"/>
 
     </application>
 

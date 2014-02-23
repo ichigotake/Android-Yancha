@@ -19,7 +19,8 @@
     <string name="yc_login_or">または</string>
     <string name="yc_login_server">接続先</string>
     <string name="yc_login_server_default">yancha.hachiojipm.org</string>
-    <string name="yc_login_login_twitter_start">http://%s/login/twitter/start?token_only=1&amp;callback_url=yancha://login/twitter/callback</string>
+    <string name="yc_login_server_callback">%s://login/twitter/callback</string>
+    <string name="yc_login_login_twitter_start">http://%1$s/login/twitter/start?token_only=1&amp;callback_url=%2$s</string>
 
     <!-- chat -->
     <string name="yc_chat_message_header">一番下へ</string>
