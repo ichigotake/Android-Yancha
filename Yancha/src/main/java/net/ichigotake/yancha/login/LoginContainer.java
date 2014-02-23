@@ -23,7 +23,7 @@ class LoginContainer implements ViewContainer {
     
     private LoginContainer(Activity activity) {
         this.mActivity = activity;
-        this.appUser = new AppUser(activity);
+        this.appUser = new AppUser();
     }
     
     static LoginContainer initialize(Activity activity, View view) {

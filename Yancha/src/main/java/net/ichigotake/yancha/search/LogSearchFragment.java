@@ -39,7 +39,7 @@ public class LogSearchFragment extends AutoPagingFragment {
 
     private SearchOptionBuilder getSearchOptionBuilder() {
         if (sBuilder == null) {
-            sBuilder = new SearchOptionBuilder(new AppUser(getActivity()).getConnectServerAuthority())
+            sBuilder = new SearchOptionBuilder(new AppUser().getConnectServerAuthority())
                     .setLimit(getPerPage());
         }
         return sBuilder;

@@ -25,7 +25,7 @@ public class ChatHolder {
 
     public ChatHolder(YanchaEmitter emitter, Activity activity, View view) {
         mActivity = activity;
-        mAppUser = new AppUser(activity);
+        mAppUser = new AppUser();
         mChatContainer = new ChatContainer(activity, emitter, view);
         mEmitter = emitter;
     }

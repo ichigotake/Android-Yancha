@@ -17,7 +17,7 @@ class TwitterLoginOnClickListener implements OnClickListener {
     
     TwitterLoginOnClickListener(Activity activity, TextView serverHostView) {
         mActivity = activity;
-        mAppUser = new AppUser(activity);
+        mAppUser = new AppUser();
         mServerHostView = serverHostView;
     }
     

@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final AppUser appUser = new AppUser(this);
+        final AppUser appUser = new AppUser();
         final Intent intent = getIntent();
         if (UriScheme.isCallback(intent)) {
             final Optional<Uri> uri = Optional.fromNullable(intent.getData());

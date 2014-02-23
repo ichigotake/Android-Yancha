@@ -25,7 +25,7 @@ class ChatUsersPopupListener {
     }
     
     void setUsers(ChatUsers users) {
-        AppUser own = new AppUser(mActivity);
+        AppUser own = new AppUser();
         ChatUsers excludeMySelfUsers = users.excludeMyself(own);
         excludeMySelfUsers.sort();
 

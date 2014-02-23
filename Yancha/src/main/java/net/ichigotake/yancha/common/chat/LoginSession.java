@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 import net.ichigotake.yancha.MainActivity;
-import net.ichigotake.yancha.common.chat.AppUser;
 
 /**
  * ログインを実行する
@@ -24,7 +23,7 @@ public class LoginSession {
     }
 
     public void logout() {
-        new AppUser(mActivity).resetToken();
+        new AppUser().resetToken();
         new ActivityTransit(mActivity, MainActivity.class)
                 .clearTop()
                 .transition();

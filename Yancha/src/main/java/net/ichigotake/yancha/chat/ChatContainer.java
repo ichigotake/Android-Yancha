@@ -31,7 +31,7 @@ public class ChatContainer implements ViewContainer {
         mChatTagContainer = new ChatTagContainer(view, getDefaultTagList());
         mChatMessagePostContainer = new ChatMessagePostContainer(view, emitter, mChatTagContainer);
         mChatUsersContainer = new ChatUsersContainer(activity, view);
-        mMyself = new AppUser(activity);
+        mMyself = new AppUser();
     }
 
     public void initialize() {

@@ -32,7 +32,7 @@ class SubmitSimpleLogin {
     SubmitSimpleLogin(Activity activity, LoginViewHolder holder) {
         mActivity = activity;
         mHolder = holder;
-        mAppUser = new AppUser(activity);
+        mAppUser = new AppUser();
         mQueue = Volley.newRequestQueue(activity);
     }
     

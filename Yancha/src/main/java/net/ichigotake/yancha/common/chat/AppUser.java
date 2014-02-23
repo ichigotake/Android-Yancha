@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-import net.ichigotake.yancha.R;
+import net.ichigotake.yancha.BaseActivity;
+import net.ichigotake.yancha.common.api.ChatServer;
 import net.ichigotake.yancha.common.api.rest.ApiUri;
 import net.ichigotake.yancha.sdk.model.ChatUser;
 
@@ -13,17 +14,17 @@ import net.ichigotake.yancha.sdk.model.ChatUser;
  */
 public class AppUser implements ChatUser {
 
+
+
     final private String KEY_CONNECT_SERVER_AUTHORITY = "connect_server_authority";
     final private String KEY_TOKEN = "token";
     final private String KEY_NICKNAME = "nickname";
     final private String KEY_PROFILE_URL = "profile_url";
     final private String KEY_PROFILE_IMAGE_URL = "profile_image_url";
     final private SharedPreferences pref;
-    final private Context mContext;
-    
-    public AppUser(Context context) {
-        this.pref = context.getSharedPreferences("myself", Context.MODE_PRIVATE);
-        mContext = context;
+
+    public AppUser() {
+        this.pref = BaseActivity.getContext().getSharedPreferences("myself", Context.MODE_PRIVATE);
     }
 
     public void resetToken() {
@@ -84,7 +85,7 @@ public class AppUser implements ChatUser {
     public String getConnectServerAuthority() {
         return pref.getString(
                 KEY_CONNECT_SERVER_AUTHORITY,
-                mContext.getString(R.string.yc_login_server_default));
+                ChatServer.getDefaultServerHost());
     }
     
     public void setConnectServer(String authority) {

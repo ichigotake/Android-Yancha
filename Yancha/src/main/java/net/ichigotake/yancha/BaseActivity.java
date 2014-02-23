@@ -1,6 +1,7 @@
 package net.ichigotake.yancha;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,11 +11,15 @@ import net.ichigotake.colorfulsweets.common.activity.ActivityTransit;
 
 public abstract class BaseActivity extends Activity {
 
+    private static Context sApplicationContext;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setContentView(R.layout.yc_main);
+
+        sApplicationContext = getApplicationContext();
     }
      
      @Override
@@ -33,5 +38,9 @@ public abstract class BaseActivity extends Activity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static Context getContext() {
+        return sApplicationContext;
     }
 }
