@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="125.25" y="315.0">net.ichigotake.yancha.common.api.socketio.Chat</node>
+    <node x="108.5" y="0.0">net.ichigotake.yancha.common.api.socketio.response</node>
+    <node x="537.25" y="459.0">net.ichigotake.yancha.common.api.socketio.YanchaEmitter.OnSendMessageListener</node>
+    <node x="0.0" y="700.0">net.ichigotake.yancha.common.api.socketio.EmitEvent</node>
+    <node x="416.0833333333333" y="80.0">net.ichigotake.yancha.common.api.socketio.YanchaEmitter</node>
+    <node x="0.0" y="113.5">net.ichigotake.yancha.common.api.socketio.EmitEventDispatcher</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="net.ichigotake.yancha.common.api.socketio.Chat" target="net.ichigotake.yancha.common.api.socketio.YanchaEmitter">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.common.api.socketio.EmitEventDispatcher" target="net.ichigotake.yancha.common.api.socketio.response">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.common.api.socketio.YanchaEmitter.OnSendMessageListener" target="net.ichigotake.yancha.common.api.socketio.YanchaEmitter">
+      <point x="0.0" y="-26.0" />
+      <point x="110.66666666666669" y="92.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.common.api.socketio.Chat" target="net.ichigotake.yancha.common.api.socketio.EmitEventDispatcher">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7322738386308069" x="614.2404006677796" y="480.25375626043405" />
+  <SelectedNodes>
+    <node>net.ichigotake.yancha.common.api.socketio.Chat</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

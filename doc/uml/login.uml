@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="937.0" y="348.0">net.ichigotake.yancha.login.TwitterLoginOnClickListener</node>
+    <node x="0.0" y="615.0">net.ichigotake.yancha.login.LoginFragment</node>
+    <node x="0.0" y="348.0">net.ichigotake.yancha.login.SimpleLoginOnClickListener</node>
+    <node x="1019.5" y="213.0">net.ichigotake.yancha.login.TwitterLogin</node>
+    <node x="445.0" y="348.0">net.ichigotake.yancha.login.SimpleLoginOnEditorActionListener</node>
+    <node x="466.9583333333333" y="0.0">net.ichigotake.yancha.login.LoginViewHolder</node>
+    <node x="438.75" y="248.5">net.ichigotake.yancha.login.SubmitSimpleLogin</node>
+    <node x="674.0555555555555" y="473.0">net.ichigotake.yancha.login.LoginContainer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="net.ichigotake.yancha.login.LoginContainer" target="net.ichigotake.yancha.login.TwitterLoginOnClickListener">
+      <point x="93.75" y="-48.5" />
+      <point x="892.8055555555555" y="453.0" />
+      <point x="1126.0" y="453.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.TwitterLoginOnClickListener" target="net.ichigotake.yancha.login.TwitterLogin">
+      <point x="0.0" y="-37.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.LoginContainer" target="net.ichigotake.yancha.login.SimpleLoginOnClickListener">
+      <point x="-93.75" y="-48.5" />
+      <point x="705.3055555555555" y="453.0" />
+      <point x="212.5" y="453.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.SimpleLoginOnClickListener" target="net.ichigotake.yancha.login.SubmitSimpleLogin">
+      <point x="-106.25" y="-37.5" />
+      <point x="106.25" y="318.0" />
+      <point x="439.25" y="318.0" />
+      <point x="-1.5" y="2.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.SimpleLoginOnEditorActionListener" target="net.ichigotake.yancha.login.SubmitSimpleLogin">
+      <point x="117.75" y="-37.5" />
+      <point x="798.25" y="308.0" />
+      <point x="442.25" y="308.0" />
+      <point x="1.5" y="2.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.SubmitSimpleLogin" target="net.ichigotake.yancha.login.LoginViewHolder">
+      <point x="0.0" y="-2.0" />
+      <point x="440.75" y="188.0" />
+      <point x="542.2083333333333" y="188.0" />
+      <point x="-75.25" y="81.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.LoginContainer" target="net.ichigotake.yancha.login.SimpleLoginOnEditorActionListener">
+      <point x="-31.25" y="-48.5" />
+      <point x="767.8055555555555" y="443.0" />
+      <point x="680.5" y="443.0" />
+      <point x="0.0" y="37.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.login.LoginContainer" target="net.ichigotake.yancha.login.LoginViewHolder">
+      <point x="31.25" y="-48.5" />
+      <point x="830.3055555555555" y="443.0" />
+      <point x="926.5" y="443.0" />
+      <point x="926.5" y="188.0" />
+      <point x="692.7083333333333" y="188.0" />
+      <point x="75.25" y="81.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7692883895131086" x="657.5" y="355.5" />
+  <SelectedNodes>
+    <node>net.ichigotake.yancha.login.LoginFragment</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

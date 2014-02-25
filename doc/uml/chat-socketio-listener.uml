@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="442.0" y="246.0">net.ichigotake.yancha.chat.socketio.LoginListener</node>
+    <node x="" y="">net.ichigotake.yancha.chat.socketio.YanchaCallbackListener</node>
+    <node x="1183.0" y="268.0">net.ichigotake.yancha.chat.socketio.MessageListener</node>
+    <node x="784.0" y="235.0">net.ichigotake.yancha.chat.socketio.ConnectionListener</node>
+    <node x="1057.90625" y="0.0">net.ichigotake.yancha.chat.socketio.ChatHolder</node>
+    <node x="0.0" y="279.5">net.ichigotake.yancha.common.api.socketio.listener.ChatCallbackListener</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="net.ichigotake.yancha.chat.socketio.LoginListener" target="net.ichigotake.yancha.chat.socketio.ChatHolder">
+      <point x="0.0" y="-81.5" />
+      <point x="603.0" y="205.0" />
+      <point x="1101.90625" y="205.0" />
+      <point x="-176.0" y="92.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.MessageListener" target="net.ichigotake.yancha.chat.socketio.ChatHolder">
+      <point x="0.0" y="-59.5" />
+      <point x="1333.5" y="215.0" />
+      <point x="1277.90625" y="215.0" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.YanchaCallbackListener" target="net.ichigotake.yancha.chat.socketio.ConnectionListener">
+      <point x="-38.166666666666686" y="-59.5" />
+      <point x="1115.3333333333333" y="440.0" />
+      <point x="973.5" y="440.0" />
+      <point x="0.0" y="92.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.ConnectionListener" target="net.ichigotake.yancha.chat.socketio.ChatHolder">
+      <point x="0.0" y="-92.5" />
+      <point x="973.5" y="215.0" />
+      <point x="1189.90625" y="215.0" />
+      <point x="-88.0" y="92.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.YanchaCallbackListener" target="net.ichigotake.yancha.chat.socketio.LoginListener">
+      <point x="-114.5" y="-59.5" />
+      <point x="1039.0" y="450.0" />
+      <point x="603.0" y="450.0" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.YanchaCallbackListener" target="net.ichigotake.yancha.chat.socketio.MessageListener">
+      <point x="38.16666666666663" y="-59.5" />
+      <point x="1191.6666666666667" y="440.0" />
+      <point x="1333.5" y="440.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.YanchaCallbackListener" target="net.ichigotake.yancha.common.api.socketio.listener.ChatCallbackListener">
+      <point x="-190.83333333333331" y="-59.5" />
+      <point x="962.6666666666667" y="460.0" />
+      <point x="211.0" y="460.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.chat.socketio.YanchaCallbackListener" target="net.ichigotake.yancha.chat.socketio.ChatHolder">
+      <point x="114.5" y="-59.5" />
+      <point x="1268.0" y="450.0" />
+      <point x="1494.5" y="450.0" />
+      <point x="1494.5" y="215.0" />
+      <point x="1365.90625" y="215.0" />
+      <point x="88.0" y="92.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6664503569110967" x="760.5" y="299.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

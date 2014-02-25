@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="659.0" y="0.0">net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment</node>
+    <node x="0.0" y="142.5">net.ichigotake.yancha.common.chat.SearchOptionBuilder</node>
+    <node x="310.0" y="121.0">net.ichigotake.yancha.search.LogSearchAdapter</node>
+    <node x="906.25" y="509.5">net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment.AutoPagingOnScrollListener</node>
+    <node x="142.5" y="455.0">net.ichigotake.yancha.search.LogSearchFragment</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="net.ichigotake.yancha.search.LogSearchFragment" target="net.ichigotake.yancha.search.LogSearchAdapter">
+      <point x="50.875" y="-103.0" />
+      <point x="396.875" y="430.0" />
+      <point x="474.5" y="430.0" />
+      <point x="0.0" y="81.5" />
+    </edge>
+    <edge source="net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment.AutoPagingOnScrollListener" target="net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment">
+      <point x="0.0" y="-48.5" />
+      <point x="129.25" y="202.5" />
+    </edge>
+    <edge source="net.ichigotake.yancha.search.LogSearchFragment" target="net.ichigotake.yancha.common.chat.SearchOptionBuilder">
+      <point x="-50.875" y="-103.0" />
+      <point x="295.125" y="430.0" />
+      <point x="217.5" y="430.0" />
+      <point x="72.5" y="60.0" />
+    </edge>
+    <edge source="net.ichigotake.yancha.search.LogSearchFragment" target="net.ichigotake.colorfulsweets.ics.fragment.AutoPagingFragment">
+      <point x="152.625" y="-103.0" />
+      <point x="498.625" y="430.0" />
+      <point x="788.25" y="430.0" />
+      <point x="-129.25" y="202.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8458149779735683" x="610.1067708333334" y="330.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
