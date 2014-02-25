@@ -47,6 +47,7 @@ public class LogSearchFragment extends BaseAutoPagingFragment {
 
     @Override
     protected void onPaging() {
+        super.cancelRequest();
         RequestManager.get().add(createRequest(getPagingState()));
     }
 

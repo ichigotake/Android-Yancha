@@ -68,7 +68,7 @@ repositories {
 dependencies {
     compile fileTree(dir: 'src/main/libs', include: '*.jar')
     compile 'com.google.guava:guava-optional:16.0.1'
-    compile 'net.ichigotake.colorfulsweets:ics:0.0.4'
+    compile 'net.ichigotake.colorfulsweets:ics:0.0.5'
     compile 'net.ichigotake.yancha:yancha-sdk:0.0.5'
     compile 'de.greenrobot:eventbus:2.2.0'
     compile 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'

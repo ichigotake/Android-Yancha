@@ -22,6 +22,11 @@ public abstract class BaseAutoPagingFragment extends AutoPagingFragment {
 
     @Override
     public void onDestroy() {
+        cancelRequest();
+        super.onDestroy();
+    }
+
+    protected void cancelRequest() {
         RequestManager.cancelAll(new RequestQueue.RequestFilter() {
             @Override
             public boolean apply(Request<?> request) {
@@ -34,7 +39,6 @@ public abstract class BaseAutoPagingFragment extends AutoPagingFragment {
                 return false;
             }
         });
-        super.onDestroy();
     }
 
     protected String getRequestTag() {
