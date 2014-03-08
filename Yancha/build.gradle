@@ -71,7 +71,7 @@ dependencies {
     compile 'net.ichigotake.colorfulsweets:ics:0.0.5'
     compile 'net.ichigotake.yancha:yancha-sdk:0.0.5'
     compile 'de.greenrobot:eventbus:2.2.0'
-    compile 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
+    provided 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
 }
 
 
