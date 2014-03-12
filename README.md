@@ -2,10 +2,6 @@
 
 AndroidのYanchaクライアント
 
-## インストール
-
-[テスター登録はこちら](https://groups.google.com/forum/#!topic/yancha-chat/h46HVP3sv1M)
-
 ## 関連
 
 [yancha](https://github.com/uzulla/yancha)
