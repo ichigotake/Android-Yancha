@@ -61,11 +61,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menu) {
-        switch (menu.getItemId()) {
-            case R.id.menu_logout:
-                new LoginSession(this)
-                        .logout();
-                return true;
+        int i = menu.getItemId();
+        if (i == R.id.menu_logout) {
+            new LoginSession(this)
+                    .logout();
+            return true;
         }
 
         return super.onOptionsItemSelected(menu);

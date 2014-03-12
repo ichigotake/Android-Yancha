@@ -1,4 +1,5 @@
 include ':Yancha'
+include ':Stock'
 
 def setupDefaultProperties = { project ->
     String dir = project.projectDir.absolutePath
@@ -12,3 +13,4 @@ def setupDefaultProperties = { project ->
 [':'].each{
     setupDefaultProperties project(it)
 }
+

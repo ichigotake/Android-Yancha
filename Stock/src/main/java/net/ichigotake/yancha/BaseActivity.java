@@ -36,11 +36,11 @@ public abstract class BaseActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.menu_search_icon:
-                new ActivityTransit(this, SearchActivity.class)
+        int i = item.getItemId();
+        if (i == R.id.menu_search_icon) {
+            new ActivityTransit(this, SearchActivity.class)
                     .transition();
-                return true;
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

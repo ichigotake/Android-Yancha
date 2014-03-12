@@ -1,4 +1,4 @@
-package net.ichigotake.yancha;
+package net.ichigotake.yancha.app;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import com.crittercism.app.CrittercismConfig;
 
 import net.ichigotake.yancha.common.chat.AppUser;
 
-class CrashReporter {
+public class CrashReporter {
 
     public static void start(Context context) {
         final CrittercismConfig config = new CrittercismConfig();

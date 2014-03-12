@@ -1,11 +1,13 @@
 package net.ichigotake.yancha;
 
+import android.app.Fragment;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 
 import net.ichigotake.yancha.common.api.RequestManager;
 
-public class BaseFragment extends net.ichigotake.colorfulsweets.ics.fragment.BaseFragment {
+public class BaseFragment extends Fragment {
 
     @Override
     public void onResume() {

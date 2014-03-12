@@ -4,7 +4,7 @@ def version = readVersion(file("VERSION"))
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "19.0.2"
+    buildToolsVersion "19.0.3"
 
     defaultConfig {
         minSdkVersion 14
@@ -15,15 +15,6 @@ android {
         buildConfigField "String", "CRASH_REPORTER_KEY", "\"${project.properties.crashReporterKey}\""
     }
 
-
-    packagingOptions {
-        exclude 'META-INF/DEPENDENCIES'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/LICENSE.txt'
-        exclude 'META-INF/NOTICE.txt'
-        exclude 'META-INF/MANIFEST.MF'
-    }
 
     signingConfigs {
         release {
@@ -58,22 +49,25 @@ android {
 
 }
 
+def repositoryDir = new File(rootDir, 'repository')
 repositories {
-    maven { url 'http://download.crashlytics.com/maven' }
     maven { url 'https://raw.github.com/ichigotake/ColorfulSweets/develop/repository' }
     maven { url 'https://raw.github.com/ichigotake/Android-YanchaSDK/develop/repository' }
     maven { url 'https://raw.github.com/ichigotake/guava-libraries-optional/master/repository' }
+    mavenLocal()
+    maven { url "file://${repositoryDir}" }
 }
 
 dependencies {
     compile fileTree(dir: 'src/main/libs', include: '*.jar')
+    compile 'net.ichigotake.yancha:app-stock:0.0.3'
     compile 'com.google.guava:guava-optional:16.0.1'
+    compile 'net.ichigotake.colorfulsweets:common:0.0.5'
     compile 'net.ichigotake.colorfulsweets:ics:0.0.5'
     compile 'net.ichigotake.yancha:yancha-sdk:0.0.5'
     compile 'de.greenrobot:eventbus:2.2.0'
-    provided 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
+    compile 'com.google.android:support-v4:r7' // for 'de.greenrobot:eventbus'
 }
-
 
 android.applicationVariants.all { variant ->
     variant.mergeResources.dependsOn {

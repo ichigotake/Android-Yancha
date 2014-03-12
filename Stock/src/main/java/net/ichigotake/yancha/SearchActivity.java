@@ -25,13 +25,13 @@ public class SearchActivity extends BaseActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.menu_search_icon:
-                new FragmentTransit(getFragmentManager())
-                        .setAddBackStack(false)
-                        .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
-                        .transition();
-                return true;
+        int i = item.getItemId();
+        if (i == R.id.menu_search_icon) {
+            new FragmentTransit(getFragmentManager())
+                    .setAddBackStack(false)
+                    .setNextFragment(YanchaApp.FRAGMENT_ID_CONTENT, LogSearchFragment.newInstance())
+                    .transition();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

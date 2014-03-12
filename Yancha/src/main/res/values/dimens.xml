@@ -1,15 +1,6 @@
 <resources>
-
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- ログイン画面 -->
-    <dimen name="yc_login_simple_margin_horizntal">20dp</dimen>
-    <dimen name="yc_login_common_margin_vertical">40dp</dimen>
-    <dimen name="yc_login_version_name_margin_top">40dp</dimen>
-
-    <!-- チャット画面 -->
-    <dimen name="yc_chat_message_header_padding">16dp</dimen>
-    <dimen name="yc_chat_message_header_text_size">18sp</dimen>
-</resources>
+    </resources>

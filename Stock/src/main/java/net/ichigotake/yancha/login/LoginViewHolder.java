@@ -1,10 +1,11 @@
 package net.ichigotake.yancha.login;
 
-import net.ichigotake.yancha.R;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import net.ichigotake.yancha.R;
 
 /**
  * ログイン画面で利用するビューホルダ

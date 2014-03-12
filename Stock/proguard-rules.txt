@@ -1,0 +1,12 @@
+# For Otto
+-keepclassmembers class ** {
+    public void onEvent*(**);
+}
+-dontwarn android.support.v4.**
+-keep class android.support.** { *; }
+
+# For guava-optional
+-keepclassmembers class ** {
+    @com.google.common.** public *;
+}
+-keepattributes Signature
