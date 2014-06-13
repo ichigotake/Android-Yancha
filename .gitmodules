@@ -1,6 +1,0 @@
-[submodule "gradle/gradle-android-utils"]
-	path = gradle/gradle-android-utils
-	url = https://github.com/gfx/gradle-android-utils
-[submodule "gradle/gradle-maven-local-deployer"]
-	path = gradle/gradle-maven-local-deployer
-	url = https://github.com/ichigotake/gradle-maven-local-deployer
