@@ -1,11 +1,24 @@
+buildscript {
+    ext.kotlin_version = '0.7.1090'
+    repositories {
+        mavenCentral()
+        maven { url 'http://oss.sonatype.org/content/repositories/snapshots' }
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.1-SNAPSHOT'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 apply plugin: 'android'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 19
     buildToolsVersion "19.1.0"
 
     defaultConfig {
-        applicationId "ichigotake.androidyancha"
+        packageName "net.ichigotake.android.yancha.app"
         minSdkVersion 15
         targetSdkVersion 19
         versionCode 1
@@ -17,9 +30,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+repositories {
+    mavenCentral()
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.1.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
