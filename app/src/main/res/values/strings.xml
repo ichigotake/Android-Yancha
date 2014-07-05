@@ -2,7 +2,9 @@
 <resources>
 
     <string name="app_name">AndroidYancha</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="account_setting">アカウント設定</string>
+    <string name="api_endpoint_login_twitter">/login</string>
+    <string name="demo_site_domain">http://yancha.hachiojipm.org</string>
     <string name="action_settings">Settings</string>
 
 </resources>

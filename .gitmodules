@@ -1,0 +1,3 @@
+[submodule "vendor/YanchaSDK"]
+	path = vendor/YanchaSDK
+	url = git@github.com:ichigotake/Android-YanchaSDK.git
