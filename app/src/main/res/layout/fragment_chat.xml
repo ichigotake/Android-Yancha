@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- チャット画面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.ichigotake.android.yancha.app.chat.ChatFragment"
+    >
+
+    <ListView
+        style="@style/AppChatMessages"
+        android:id="@+id/fragmet_chat_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="?android:attr/actionBarSize"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
+        tools:listitem="@layout/chat_message_item"
+        />
+
+    <View
+        style="@style/AppDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/fragment_chat_input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        >
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/app_chat_message_input_hint"
+            />
+
+        <ImageView
+            style="@style/AppIcon"
+            android:id="@+id/fragment_chat_input_container_add_attachment"
+            android:layout_width="@dimen/chat_message_icon_size"
+            android:layout_height="@dimen/chat_message_icon_size"
+            android:src="@drawable/ic_action_light_new_attachment"
+            android:contentDescription="@string/app_chat_message_attachment"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

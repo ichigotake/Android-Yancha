@@ -1,8 +1,66 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:actionBarStyle">@style/AppActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@color/theme_background</item>
+    </style>
+
+    <style name="AppActionBarStyle" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/action_bar_background_overlay</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+    </style>
+
+    <style name="AppDivider">
+        <item name="android:background">@color/divider</item>
+    </style>
+
+    <style name="AppIcon">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:layout_gravity">center_horizontal|center_vertical</item>
+    </style>
+
+    <style name="AppChatMessages">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:background">@color/theme_background</item>
+        <item name="android:divider">@color/theme_background</item>
+        <item name="android:dividerHeight">4dp</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <style name="AppChatMessageContainer" parent="@style/AppChatMessageContainerBase">
+    </style>
+
+    <style name="AppChatMessageContainerBase">
+        <item name="android:background">@drawable/chat_message_rectangle</item>
+    </style>
+
+    <style name="AppChatMessageIcon">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:src">@drawable/ic_launcher</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+    </style>
+
+    <style name="AppChatMessageNickname">
+        <item name="android:textColor">@color/text_bright</item>
+        <item name="android:textSize">@dimen/font_x_small</item>
+    </style>
+
+    <style name="AppChatMessageTimestamp">
+        <item name="android:textColor">@color/text_bright</item>
+    </style>
+
+    <style name="AppChatMessagePlusPlus">
+        <item name="android:textColor">@color/chat_message_plus_plus</item>
+        <item name="android:textSize">@dimen/font_x_small</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:padding">4dp</item>
     </style>
 
 </resources>
