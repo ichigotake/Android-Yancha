@@ -11,8 +11,9 @@
     <string name="app_chat_message_icon_label">発言者</string>
     <string name="app_chat_message_input_hint">メッセージを送信</string>
     <string name="app_chat_message_attachment">画像を添付する</string>
+    <string name="app_chat_message_tags">タグを編集する</string>
 
-    <string name="app_dummy_chat_message_body">おはよう</string>
+    <string name="app_dummy_chat_message_body">おはよう #PUBLIC 世界</string>
     <string name="app_dummy_chat_message_nickname">\@myname</string>
     <string name="app_dummy_chat_message_timestamp">2014&#8211;07&#8211;04 21:47</string>
     <string name="app_dummy_chat_message_plus_plus">★★★★★★★★</string>

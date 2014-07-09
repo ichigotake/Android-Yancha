@@ -30,6 +30,7 @@
             android:id="@+id/chat_message_item_nickname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:layout_toRightOf="@+id/chat_message_item_user_icon"
             android:layout_toLeftOf="@+id/chat_message_item_timestamp"
             android:text="@string/app_dummy_chat_message_nickname"
@@ -41,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginRight="8dp"
             android:layout_alignParentRight="true"
             android:text="@string/app_dummy_chat_message_timestamp"
@@ -52,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/chat_message_item_nickname"
             android:layout_toRightOf="@+id/chat_message_item_user_icon"
-            android:layout_marginTop="4dp"
             android:text="@string/app_dummy_chat_message_body"
             />
 

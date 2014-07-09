@@ -47,6 +47,22 @@
         <item name="android:gravity">center_horizontal|center_vertical</item>
     </style>
 
+    <style name="AppChatMessageTagActive" parent="@style/AppChatMessageTagBase">
+        <item name="android:background">#bbbbbb</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="AppChatMessageTagInActive" parent="@style/AppChatMessageTagBase">
+        <item name="android:textColor">#666666</item>
+    </style>
+
+    <style name="AppChatMessageTagBase">
+        <item name="android:paddingLeft">4dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
     <style name="AppChatMessageNickname">
         <item name="android:textColor">@color/text_bright</item>
         <item name="android:textSize">@dimen/font_x_small</item>
