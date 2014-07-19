@@ -13,7 +13,7 @@ import com.koushikdutta.async.http.AsyncHttpGet;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
 
-import net.ichigotake.android.common.os.RestoredBundle;
+import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.api.ApiEndpoint;
@@ -42,7 +42,7 @@ public final class ChatFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        token = new RestoredBundle(savedInstanceState).getString(KEY_CHAT_TOKEN, null);
+        token = BundleMerger.merge(savedInstanceState).getString(KEY_CHAT_TOKEN, null);
         View view = inflater.inflate(R.layout.fragment_chat, parent, false);
         ListView messagesView = (ListView) view.findViewById(R.id.fragmet_chat_message_list);
         adapter = new ChatMessageAdapter(getActivity(), messages);
