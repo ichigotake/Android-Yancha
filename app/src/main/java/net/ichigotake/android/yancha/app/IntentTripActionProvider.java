@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.view.ActionProvider;
 import android.view.View;
 
-import org.jetbrains.annotations.NotNull;
-
 public final class IntentTripActionProvider extends ActionProvider {
 
     private final Context context;
@@ -18,7 +16,6 @@ public final class IntentTripActionProvider extends ActionProvider {
         this.intent = intent;
     }
 
-    @NotNull
     @Override
     public View onCreateActionView() {
         return null;

@@ -21,8 +21,9 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="8dp"
-            android:src="@drawable/ic_launcher"
+            android:layout_marginBottom="4dp"
             android:contentDescription="@string/app_chat_message_icon_label"
+            tools:src="@drawable/ic_launcher"
             />
 
         <TextView
@@ -33,7 +34,7 @@
             android:layout_marginTop="4dp"
             android:layout_toRightOf="@+id/chat_message_item_user_icon"
             android:layout_toLeftOf="@+id/chat_message_item_timestamp"
-            android:text="@string/app_dummy_chat_message_nickname"
+            tools:text="@string/app_dummy_chat_message_nickname"
             />
 
         <TextView
@@ -45,7 +46,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginRight="8dp"
             android:layout_alignParentRight="true"
-            android:text="@string/app_dummy_chat_message_timestamp"
+            tools:text="@string/app_dummy_chat_message_timestamp"
             />
 
         <TextView
@@ -54,16 +55,18 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/chat_message_item_nickname"
             android:layout_toRightOf="@+id/chat_message_item_user_icon"
-            android:text="@string/app_dummy_chat_message_body"
+            android:layout_marginBottom="4dp"
+            tools:text="@string/app_dummy_chat_message_body"
             />
 
     </RelativeLayout>
 
     <TextView
         style="@style/AppChatMessagePlusPlus"
+        android:id="@+id/chat_message_item_plus_plus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/app_dummy_chat_message_plus_plus"
+        tools:text="@string/app_dummy_chat_message_plus_plus"
         />
 
 </LinearLayout>

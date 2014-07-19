@@ -13,7 +13,7 @@
         android:layout_above="@+id/fragment_chat_input_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="?android:attr/actionBarSize"
+        android:paddingTop="56dp"
         android:stackFromBottom="true"
         android:transcriptMode="normal"
         tools:listitem="@layout/chat_message_item"
@@ -28,6 +28,7 @@
         android:padding="4dp"
         android:text="未読100件"
         android:background="@drawable/chat_message_unread_label_rectangle"
+        android:visibility="gone"
         />
 
     <LinearLayout
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@color/item_background"
         android:layout_alignParentBottom="true"
         >
 
@@ -51,6 +53,7 @@
             android:orientation="horizontal"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
+            android:visibility="gone"
             >
 
             <TextView
@@ -91,6 +94,7 @@
                 android:layout_height="@dimen/chat_message_icon_size"
                 android:src="@drawable/ic_action_light_labels"
                 android:contentDescription="@string/app_chat_message_tags"
+                android:visibility="gone"
                 />
 
             <EditText
@@ -107,6 +111,7 @@
                 android:layout_height="@dimen/chat_message_icon_size"
                 android:src="@drawable/ic_action_light_new_attachment"
                 android:contentDescription="@string/app_chat_message_attachment"
+                android:visibility="gone"
                 />
 
             </LinearLayout>

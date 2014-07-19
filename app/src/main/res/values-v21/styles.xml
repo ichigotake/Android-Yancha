@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!--
     <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/AppActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -9,5 +10,6 @@
     <style name="AppChatMessageContainer" parent="@style/AppChatMessageContainerBase">
         <item name="android:elevation">2dp</item>
     </style>
+    -->
 
 </resources>

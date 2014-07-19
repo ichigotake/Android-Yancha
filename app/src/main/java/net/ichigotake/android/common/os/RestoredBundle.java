@@ -39,14 +39,12 @@ public final class RestoredBundle {
         return mergedBundle;
     }
 
-    public Integer getInteger(String key) {
-        int restoreObject;
-        if (bundle.containsKey(key)) {
-            restoreObject = bundle.getInt(key);
-        } else {
-            restoreObject = 0;
-        }
-        return restoreObject;
+    public String getString(String key, String defaultValue) {
+        return bundle.getString(key, defaultValue);
+    }
+
+    public int getInt(String key, int defaultValue) {
+        return bundle.getInt(key, defaultValue);
     }
 
 }
