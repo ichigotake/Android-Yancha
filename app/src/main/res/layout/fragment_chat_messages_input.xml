@@ -58,9 +58,13 @@
             />
 
         <EditText
+            android:id="@+id/fragment_chat_messages_input_text_area"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:maxLines="1"
+            android:inputType="textAutoComplete"
+            android:imeOptions="actionSend"
             android:hint="@string/app_chat_message_input_hint"
             />
 
