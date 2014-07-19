@@ -41,6 +41,9 @@ repositories {
 }
 
 dependencies {
+    //yanchaのSocket.IOと互換性のあるSocket.IOクライアントがAndroid向けのライブラリとして提供されているものが少ない
+    //現在依存しているSocket.IOライブラリは、更新が1年以上止まっているが、今は動作優先でこれを利用する
+    //リニューアルに関して一通りの実装が落ち着いた頃にSocket.IOクライアントに関して再考する
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':vendor:YanchaSDK:sdk')
     compile 'com.nhaarman.listviewanimations:library:2.6.0'
