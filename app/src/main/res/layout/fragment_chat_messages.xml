@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- チャット画面 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.ichigotake.android.yancha.app.chat.ChatMessagesFragment"
+    >
+
+    <ListView
+        style="@style/AppChatMessages"
+        android:id="@+id/fragment_chat_message_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="56dp"
+        android:stackFromBottom="true"
+        android:transcriptMode="normal"
+        tools:listitem="@layout/chat_message_item"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="4dp"
+        android:padding="4dp"
+        android:text="未読100件"
+        android:background="@drawable/chat_message_unread_label_rectangle"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>

@@ -16,7 +16,7 @@ public class SearchChatLogActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_chat);
         getFragmentManager().beginTransaction()
                 .replace(android.R.id.content, SearchChatLogFragment.newInstance())
                 .commit();

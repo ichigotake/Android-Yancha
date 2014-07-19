@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/item_background"
+    tools:context="net.ichigotake.android.yancha.app.chat.ChatMessageInputFragment"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:visibility="gone"
+        >
+
+        <TextView
+            style="@style/AppChatMessageTagActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#PUBLIC"
+            />
+
+        <TextView
+            style="@style/AppChatMessageTagInActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="#KANKORE"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="8dp"
+        android:background="#dddddd"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            style="@style/AppIcon"
+            android:id="@+id/fragment_chat_input_container_tags"
+            android:layout_width="@dimen/chat_message_icon_size"
+            android:layout_height="@dimen/chat_message_icon_size"
+            android:src="@drawable/ic_action_light_labels"
+            android:contentDescription="@string/app_chat_message_tags"
+            android:visibility="gone"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/app_chat_message_input_hint"
+            />
+
+        <ImageView
+            style="@style/AppIcon"
+            android:id="@+id/fragment_chat_input_container_add_attachment"
+            android:layout_width="@dimen/chat_message_icon_size"
+            android:layout_height="@dimen/chat_message_icon_size"
+            android:src="@drawable/ic_action_light_new_attachment"
+            android:contentDescription="@string/app_chat_message_attachment"
+            android:visibility="gone"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
