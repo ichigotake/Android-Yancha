@@ -2,6 +2,7 @@ package net.ichigotake.android.yancha.app.chat;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,17 +17,10 @@ import net.ichigotake.yancha.sdk.chat.ChatMessageFactory;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public final class ChatMessagesFragment extends Fragment implements SocketIoClientFragment {
 
-    private List<ChatMessage> messages = new ArrayList<ChatMessage>();
+    private SparseArray<ChatMessage> messages = new SparseArray<ChatMessage>(100);
     private ChatMessageAdapter adapter;
-
-    public static ChatMessagesFragment newInstance() {
-        return new ChatMessagesFragment();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -44,7 +38,8 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
         try {
             switch (event) {
                 case USER_MESSAGE:
-                    messages.add(ChatMessageFactory.create(new JSONObject(response)));
+                    ChatMessage message = ChatMessageFactory.create(new JSONObject(response));
+                    messages.put(message.getId(), message);
                     adapter.notifyDataSetChanged();
                     break;
             }

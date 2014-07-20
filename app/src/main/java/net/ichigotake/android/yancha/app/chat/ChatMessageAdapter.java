@@ -2,31 +2,34 @@ package net.ichigotake.android.yancha.app.chat;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import net.ichigotake.android.common.widget.SparseArrayAdapter;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
 import net.ichigotake.yancha.sdk.chat.ChatUser;
 
-import java.util.List;
+import java.util.Collection;
 
-public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
+public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
 
+    private final Context context;
     private final String serverHost;
     private final LayoutInflater inflate;
 
-    public ChatMessageAdapter(Context context, List<ChatMessage> messages) {
-        super(context, -1, messages);
+    public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages) {
+        this.context = context;
         this.inflate = LayoutInflater.from(context);
         this.serverHost = ChatServer.getServerHost();
+        this.objects = messages;
     }
 
     @Override
@@ -42,7 +45,7 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
         }
         String profileImageUrl = TextUtils.isEmpty(item.getProfileImageUrl())
                 ? serverHost + ChatUser.DEFAULT_PROFILE_IMAGE_PATH : item.getProfileImageUrl();
-        Picasso.with(getContext()).load(profileImageUrl).into(holder.userIcon);
+        Picasso.with(context).load(profileImageUrl).into(holder.userIcon);
         holder.nickname.setText(item.getNickname());
         holder.message.setText(item.getMessage());
         holder.timestamp.setText(item.getCreatedTime() + "");
@@ -57,6 +60,13 @@ public class ChatMessageAdapter extends ArrayAdapter<ChatMessage> {
             holder.plusPlus.setText(plusPlus);
         }
         return convertView;
+    }
+
+    @Override
+    public void addAll(Collection<ChatMessage> collection) {
+        for (ChatMessage item : collection) {
+            objects.put(item.getId(), item);
+        }
     }
 
 
