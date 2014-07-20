@@ -2,6 +2,7 @@ package net.ichigotake.android.yancha.app.chat;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,7 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         Picasso.with(context).load(profileImageUrl).into(holder.userIcon);
         holder.nickname.setText(item.getNickname());
         holder.message.setText(item.getMessage());
-        holder.timestamp.setText(item.getCreatedTime() + "");
+        holder.timestamp.setText(DateFormat.format("yyyy-M-d HH:mm", item.getCreatedTime()));
         String plusPlus = "";
         for (int i=0; i<item.getPlusplus(); i++) {
             plusPlus += "★";
