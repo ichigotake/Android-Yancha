@@ -1,4 +1,4 @@
-package net.ichigotake.android.yancha.app.terminal.phone;
+package net.ichigotake.android.yancha.app.activity.phone;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -13,7 +13,6 @@ import com.koushikdutta.async.http.AsyncHttpResponse;
 
 import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.ChatServer;
-import net.ichigotake.android.yancha.app.chat.ChatMessagesFragment;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.android.yancha.app.chat.SocketIoClient;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
@@ -129,7 +128,7 @@ public final class ChatActivity extends Activity implements SocketIoClientActivi
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ((SocketIoClientFragment)fragment).onSocketIoEvent(event, response);
+                        ((SocketIoClientFragment) fragment).onSocketIoEvent(event, response);
                     }
                 });
             }
