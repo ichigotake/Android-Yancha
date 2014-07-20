@@ -25,18 +25,12 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
     private final Context context;
     private final String serverHost;
     private final LayoutInflater inflate;
-    private final OnMessageItemClickListener listener;
 
     public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages) {
-        this(context, messages, null);
-    }
-
-    public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages, OnMessageItemClickListener listener) {
         this.context = context;
         this.inflate = LayoutInflater.from(context);
         this.serverHost = ChatServer.getServerHost();
         this.objects = messages;
-        this.listener = listener;
     }
 
     @Override
@@ -69,9 +63,6 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             holder.plusPlus.setText(plusPlus);
             holder.plusPlus.setVisibility(View.VISIBLE);
         }
-        if (listener != null) {
-            convertView.setOnClickListener(new OnItemClickListener(item, listener));
-        }
         return convertView;
     }
 
@@ -98,19 +89,4 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         }
     }
 
-    private static class OnItemClickListener implements View.OnClickListener {
-
-        private final ChatMessage item;
-        private final OnMessageItemClickListener listener;
-
-        private OnItemClickListener(ChatMessage item, OnMessageItemClickListener listener) {
-            this.item = item;
-            this.listener = listener;
-        }
-
-        @Override
-        public void onClick(View v) {
-            listener.onPlusPlusClick(item);
-        }
-    }
 }
