@@ -29,6 +29,8 @@
         android:id="@+id/fragment_login_with_nickname_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:inputType="text"
         android:hint="@string/login_with_nickname_input_hint"
         />
 

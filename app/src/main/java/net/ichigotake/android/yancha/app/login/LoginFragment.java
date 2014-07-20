@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,10 @@ public final class LoginFragment extends DialogFragment {
         view.findViewById(R.id.fragment_login_with_nickname).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nickname = nicknameView.getText().toString();
+                String nickname = nicknameView.getText().toString().trim();
+                if (TextUtils.isEmpty(nickname)) {
+                    return ;
+                }
                 String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_SIMPLE
                         + "?token_only=1&nick=" + Uri.encode(nickname);
                 AsyncHttpClient.getDefaultInstance().executeString(
