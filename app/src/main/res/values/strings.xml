@@ -8,6 +8,11 @@
     <string name="action_search">過去ログを検索する</string>
     <string name="action_settings">チャットの設定</string>
 
+    <string name="login_with_twitter">TwitterIDを利用してログイン</string>
+    <string name="login_with_twitter_or">または</string>
+    <string name="login_with_nickname_input_hint">ニックネームを入力</string>
+    <string name="login_with_nickname">ログインする</string>
+
     <string name="app_chat_message_icon_label">発言者</string>
     <string name="app_chat_message_input_hint">メッセージを送信</string>
     <string name="app_chat_message_attachment">画像を添付する</string>
