@@ -25,12 +25,18 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
     private final Context context;
     private final String serverHost;
     private final LayoutInflater inflate;
+    private final OnMessageItemClickListener listener;
 
     public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages) {
+        this(context, messages, null);
+    }
+
+    public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages, OnMessageItemClickListener listener) {
         this.context = context;
         this.inflate = LayoutInflater.from(context);
         this.serverHost = ChatServer.getServerHost();
         this.objects = messages;
+        this.listener = listener;
     }
 
     @Override
@@ -50,15 +56,21 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         holder.nickname.setText(item.getNickname());
         holder.message.setText(item.getMessage());
         holder.timestamp.setText(DateFormat.format("yyyy-M-d HH:mm", item.getCreatedTime()));
-        String plusPlus = "";
-        for (int i=0; i<item.getPlusplus(); i++) {
-            plusPlus += "★";
-        }
-        if (TextUtils.isEmpty(plusPlus)) {
+        if (item.getPlusplus() == 0) {
             holder.plusPlus.setVisibility(View.GONE);
-        } else {
+        } else if (item.getPlusplus() >= 50) {
+            holder.plusPlus.setText("★ x " + item.getPlusplus());
             holder.plusPlus.setVisibility(View.VISIBLE);
+        } else {
+            String plusPlus = "";
+            for (int i=0; i<item.getPlusplus(); i++) {
+                plusPlus += "★";
+            }
             holder.plusPlus.setText(plusPlus);
+            holder.plusPlus.setVisibility(View.VISIBLE);
+        }
+        if (listener != null) {
+            convertView.setOnClickListener(new OnItemClickListener(item, listener));
         }
         return convertView;
     }
@@ -69,7 +81,6 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             objects.put(item.getId(), item);
         }
     }
-
 
     private static class ViewHolder {
         private final ImageView userIcon;
@@ -84,6 +95,22 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             this.timestamp = (TextView) view.findViewById(R.id.chat_message_item_timestamp);
             this.message = (TextView) view.findViewById(R.id.chat_message_item_message);
             this.plusPlus = (TextView) view.findViewById(R.id.chat_message_item_plus_plus);
+        }
+    }
+
+    private static class OnItemClickListener implements View.OnClickListener {
+
+        private final ChatMessage item;
+        private final OnMessageItemClickListener listener;
+
+        private OnItemClickListener(ChatMessage item, OnMessageItemClickListener listener) {
+            this.item = item;
+            this.listener = listener;
+        }
+
+        @Override
+        public void onClick(View v) {
+            listener.onPlusPlusClick(item);
         }
     }
 }

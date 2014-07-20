@@ -12,6 +12,7 @@ public enum SocketIoEvent {
     DELETE_USER_MESSAGE("delete user message"),
     JOIN_TAG("join tag"),
     NICKNAMES("nicknames"),
+    PLUS_PLUS("plusplus"),
     TOKEN_LOGIN("token login"),
     USER_MESSAGE("user message"),
 

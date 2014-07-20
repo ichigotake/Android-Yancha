@@ -15,6 +15,7 @@
         android:paddingTop="56dp"
         android:stackFromBottom="true"
         android:transcriptMode="normal"
+        android:drawSelectorOnTop="true"
         tools:listitem="@layout/chat_message_item"
         />
 
