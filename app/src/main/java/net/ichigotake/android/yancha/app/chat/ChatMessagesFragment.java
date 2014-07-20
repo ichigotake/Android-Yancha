@@ -6,8 +6,11 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ListView;
 
+import com.nhaarman.listviewanimations.itemmanipulation.AnimateDismissAdapter;
+import com.nhaarman.listviewanimations.itemmanipulation.OnDismissCallback;
 import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
 
 import net.ichigotake.android.yancha.app.R;
@@ -21,6 +24,7 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
 
     private SparseArray<ChatMessage> messages = new SparseArray<ChatMessage>(100);
     private ChatMessageAdapter adapter;
+    private AnimateDismissAdapter dismissAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -29,7 +33,17 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
         adapter = new ChatMessageAdapter(getActivity(), messages);
         SwingBottomInAnimationAdapter swingAdapter = new SwingBottomInAnimationAdapter(adapter);
         swingAdapter.setAbsListView(messagesView);
-        messagesView.setAdapter(swingAdapter);
+        dismissAdapter = new AnimateDismissAdapter(swingAdapter, new OnDismissCallback() {
+            @Override
+            public void onDismiss(AbsListView absListView, int[] ints) {
+                for (int position : ints) {
+                    messages.removeAt(position);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+        dismissAdapter.setAbsListView(messagesView);
+        messagesView.setAdapter(dismissAdapter);
         return view;
     }
 
@@ -38,9 +52,13 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
         try {
             switch (event) {
                 case USER_MESSAGE:
-                    ChatMessage message = ChatMessageFactory.create(new JSONObject(response));
-                    messages.put(message.getId(), message);
+                    ChatMessage receivedMessage = ChatMessageFactory.create(new JSONObject(response));
+                    messages.put(receivedMessage.getId(), receivedMessage);
                     adapter.notifyDataSetChanged();
+                    break;
+                case DELETE_USER_MESSAGE:
+                    ChatMessage deletedMessage = ChatMessageFactory.create(new JSONObject(response));
+                    dismissAdapter.animateDismiss(messages.indexOfKey(deletedMessage.getId()));
                     break;
             }
         } catch (JSONException e) {

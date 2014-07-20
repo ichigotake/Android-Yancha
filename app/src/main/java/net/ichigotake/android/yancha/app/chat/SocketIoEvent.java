@@ -9,6 +9,7 @@ public enum SocketIoEvent {
     DISCONNECT("disconnect"),
     NO_SESSION("no session"),
 
+    DELETE_USER_MESSAGE("delete user message"),
     JOIN_TAG("join tag"),
     NICKNAMES("nicknames"),
     TOKEN_LOGIN("token login"),
