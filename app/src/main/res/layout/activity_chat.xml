@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="net.ichigotake.android.yancha.app.activity.phone.ChatActivity">
+
+    <fragment
+        android:id="@+id/activity_chat_messages"
+        android:name="net.ichigotake.android.yancha.app.chat.ChatMessagesFragment"
+        android:layout_above="@+id/activity_chat_messages_divider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_chat_messages"
+        />
+
+    <View
+        style="@style/AppDivider"
+        android:id="@+id/activity_chat_messages_divider"
+        android:layout_above="@+id/activity_chat_input"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        />
+
+    <fragment
+        android:id="@+id/activity_chat_input"
+        android:name="net.ichigotake.android.yancha.app.chat.ChatMessageInputFragment"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_chat_messages_input"
+        />
+
+</RelativeLayout>

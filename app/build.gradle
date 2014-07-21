@@ -1,29 +1,33 @@
-buildscript {
-    ext.kotlin_version = '0.8.11'
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
 
 android {
+    //TODO: android-L対応
+    //compileSdkVersion "android-L"
     compileSdkVersion 19
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '20.0.0'
 
     defaultConfig {
         applicationId "net.ichigotake.android.yancha.app"
         minSdkVersion 16
         targetSdkVersion 19
+        //TODO: android-L対応
+        //targetSdkVersion "android-L"
         versionCode 1
         versionName "0.1"
     }
+
+    signingConfigs {
+        release {
+            storeFile file(project.properties.storeFile)
+            storePassword project.properties.storePassword
+            keyAlias project.properties.storeAlias
+            keyPassword project.properties.keyPassword
+        }
+    }
+
     buildTypes {
         release {
-            runProguard false
+            runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,7 +41,12 @@ repositories {
 }
 
 dependencies {
+    //yanchaのSocket.IOと互換性のあるSocket.IOクライアントがAndroid向けのライブラリとして提供されているものが少ない
+    //現在依存しているSocket.IOライブラリは、更新が1年以上止まっているが、今は動作優先でこれを利用する
+    //リニューアルに関して一通りの実装が落ち着いた頃にSocket.IOクライアントに関して再考する
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':vendor:YanchaSDK:sdk')
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile 'com.nhaarman.listviewanimations:library:2.6.0'
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.koushikdutta.async:androidasync:1.3.7'
 }
