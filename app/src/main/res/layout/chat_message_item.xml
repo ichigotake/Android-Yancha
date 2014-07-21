@@ -13,18 +13,34 @@
         android:layout_height="wrap_content"
         >
 
-        <ImageView
-            style="@style/AppChatMessageIcon"
-            android:id="@+id/chat_message_item_user_icon"
-            android:layout_width="@dimen/chat_message_icon_size"
-            android:layout_height="@dimen/chat_message_icon_size"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="4dp"
-            android:contentDescription="@string/app_chat_message_icon_label"
-            tools:src="@drawable/ic_launcher"
-            />
+        <FrameLayout
+            android:id="@+id/chat_message_item_user_icon_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                style="@style/AppChatMessageIcon"
+                android:id="@+id/chat_message_item_user_icon"
+                android:layout_width="@dimen/chat_message_icon_size"
+                android:layout_height="@dimen/chat_message_icon_size"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="4dp"
+                android:contentDescription="@string/app_chat_message_icon_label"
+                tools:src="@drawable/ic_launcher"
+                />
+
+            <ImageView
+                android:id="@+id/chat_message_item_icon_for_editable"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_action_light_edit"
+                android:background="#ffffff"
+                />
+
+        </FrameLayout>
 
         <TextView
             style="@style/AppChatMessageNickname"
@@ -32,8 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_toRightOf="@+id/chat_message_item_user_icon"
-            android:layout_toLeftOf="@+id/chat_message_item_timestamp"
+            android:layout_toRightOf="@+id/chat_message_item_user_icon_container"
             tools:text="@string/app_dummy_chat_message_nickname"
             />
 
@@ -54,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/chat_message_item_nickname"
-            android:layout_toRightOf="@+id/chat_message_item_user_icon"
+            android:layout_toRightOf="@+id/chat_message_item_user_icon_container"
             android:layout_marginBottom="4dp"
             tools:text="@string/app_dummy_chat_message_body"
             />

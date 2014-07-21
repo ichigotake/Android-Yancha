@@ -17,6 +17,7 @@ import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAni
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
 import net.ichigotake.yancha.sdk.chat.ChatMessageFactory;
+import net.ichigotake.yancha.sdk.chat.ChatUserFactory;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,6 +69,9 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
                 case DELETE_USER_MESSAGE:
                     ChatMessage deletedMessage = ChatMessageFactory.create(new JSONObject(response));
                     dismissAdapter.animateDismiss(messages.indexOfKey(deletedMessage.getId()));
+                    break;
+                case TOKEN_LOGIN:
+                    adapter.setMyData(ChatUserFactory.fromTokenLoginEvent(response));
                     break;
             }
         } catch (JSONException e) {

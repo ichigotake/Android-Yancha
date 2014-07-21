@@ -1,6 +1,6 @@
 package net.ichigotake.android.yancha.app.chat;
 
-import android.content.Context;
+import android.app.Activity;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.SparseArray;
@@ -22,20 +22,23 @@ import java.util.Collection;
 
 public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
 
-    private final Context context;
+    private final Activity activity;
     private final String serverHost;
     private final LayoutInflater inflate;
+    private final boolean hasSocketIoClient;
+    private ChatUser myData;
 
-    public ChatMessageAdapter(Context context, SparseArray<ChatMessage> messages) {
-        this.context = context;
-        this.inflate = LayoutInflater.from(context);
+    public ChatMessageAdapter(Activity activity, SparseArray<ChatMessage> messages) {
+        this.activity = activity;
+        this.inflate = activity.getLayoutInflater();
         this.serverHost = ChatServer.getServerHost();
         this.objects = messages;
+        this.hasSocketIoClient = true;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ChatMessage item = getItem(position);
+        final ChatMessage item = getItem(position);
         ViewHolder holder;
         if (convertView == null) {
             convertView = inflate.inflate(R.layout.chat_message_item, parent, false);
@@ -46,7 +49,7 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         }
         String profileImageUrl = TextUtils.isEmpty(item.getProfileImageUrl())
                 ? serverHost + ChatUser.DEFAULT_PROFILE_IMAGE_PATH : item.getProfileImageUrl();
-        Picasso.with(context).load(profileImageUrl).into(holder.userIcon);
+        Picasso.with(activity).load(profileImageUrl).into(holder.userIcon);
         holder.nickname.setText(item.getNickname());
         holder.message.setText(item.getMessage());
         holder.timestamp.setText(DateFormat.format("yyyy-M-d HH:mm", item.getCreatedTime()));
@@ -63,6 +66,17 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             holder.plusPlus.setText(plusPlus);
             holder.plusPlus.setVisibility(View.VISIBLE);
         }
+
+        if (hasSocketIoClient && myData != null
+                && TextUtils.equals(item.getUserKey(), myData.getUserKey())) {
+            holder.userIconContainer.setOnClickListener(
+                    new OpenDeleteMessageDialogClickListener(activity.getFragmentManager(), item)
+            );
+            holder.iconForEditable.setVisibility(View.VISIBLE);
+        } else {
+            holder.iconForEditable.setVisibility(View.GONE);
+            holder.userIconContainer.setOnClickListener(new DummyOnClickListener());
+        }
         return convertView;
     }
 
@@ -73,12 +87,18 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         }
     }
 
+    public void setMyData(ChatUser myData) {
+        this.myData = myData;
+    }
+
     private static class ViewHolder {
         private final ImageView userIcon;
         private final TextView nickname;
         private final TextView timestamp;
         private final TextView message;
         private final TextView plusPlus;
+        private final View userIconContainer;
+        private final View iconForEditable;
 
         private ViewHolder(View view) {
             this.userIcon = (ImageView) view.findViewById(R.id.chat_message_item_user_icon);
@@ -86,7 +106,16 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             this.timestamp = (TextView) view.findViewById(R.id.chat_message_item_timestamp);
             this.message = (TextView) view.findViewById(R.id.chat_message_item_message);
             this.plusPlus = (TextView) view.findViewById(R.id.chat_message_item_plus_plus);
+            this.userIconContainer = view.findViewById(R.id.chat_message_item_user_icon_container);
+            this.iconForEditable = view.findViewById(R.id.chat_message_item_icon_for_editable);
         }
     }
 
+    private static class DummyOnClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            // do nothing
+        }
+    }
 }
