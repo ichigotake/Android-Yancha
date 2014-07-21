@@ -1,7 +1,10 @@
 package net.ichigotake.android.yancha.app.chat;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +20,7 @@ import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAni
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
 import net.ichigotake.yancha.sdk.chat.ChatMessageFactory;
+import net.ichigotake.yancha.sdk.chat.ChatUser;
 import net.ichigotake.yancha.sdk.chat.ChatUserFactory;
 
 import org.json.JSONException;
@@ -27,6 +31,7 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
     private SparseArray<ChatMessage> messages = new SparseArray<ChatMessage>(100);
     private ChatMessageAdapter adapter;
     private AnimateDismissAdapter dismissAdapter;
+    private ChatUser myData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
@@ -65,18 +70,28 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
                     ChatMessage receivedMessage = ChatMessageFactory.create(new JSONObject(response));
                     messages.put(receivedMessage.getId(), receivedMessage);
                     adapter.notifyDataSetChanged();
+                    if (myData != null &&
+                            !TextUtils.equals(myData.getUserKey(), receivedMessage.getUserKey())) {
+                        vibe();
+                    }
                     break;
                 case DELETE_USER_MESSAGE:
                     ChatMessage deletedMessage = ChatMessageFactory.create(new JSONObject(response));
                     dismissAdapter.animateDismiss(messages.indexOfKey(deletedMessage.getId()));
                     break;
                 case TOKEN_LOGIN:
-                    adapter.setMyData(ChatUserFactory.fromTokenLoginEvent(response));
+                    myData = ChatUserFactory.fromTokenLoginEvent(response);
+                    adapter.setMyData(myData);
                     break;
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void vibe() {
+        Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
+        vibrator.vibrate(300);
     }
 
 }
