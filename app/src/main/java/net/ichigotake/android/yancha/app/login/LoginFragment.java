@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.EditText;
 
 import com.koushikdutta.async.http.AsyncHttpClient;
@@ -26,6 +25,7 @@ public final class LoginFragment extends DialogFragment {
 
     public static final String FRAGMENT_TAG = "LoginFragment";
     private OnGetTokenListener listener;
+    private boolean willDismiss;
 
     public static void open(FragmentManager fragmentManager) {
         fragmentManager.beginTransaction()
@@ -39,6 +39,11 @@ public final class LoginFragment extends DialogFragment {
         if (loginFragment != null) {
             loginFragment.dismiss();
         }
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -79,7 +84,7 @@ public final class LoginFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog =  super.onCreateDialog(savedInstanceState);
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.setTitle(R.string.login_welcome);
         setCancelable(false);
         return dialog;
     }
@@ -91,9 +96,23 @@ public final class LoginFragment extends DialogFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        if (willDismiss) {
+            dismiss();
+        }
+    }
+
+    @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        willDismiss = true;
     }
 
     private void onGetToken(String token) {
