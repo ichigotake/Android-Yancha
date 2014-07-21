@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.android.yancha.app.chat.SocketIoClient;
@@ -30,10 +29,11 @@ import java.util.List;
 public final class ChatActivity extends Activity
         implements SocketIoClientActivity, OnGetTokenListener {
 
+    private static final String KEY_PREFERENCE = "ChatActivity";
     private static final String KEY_CHAT_TOKEN = "chat_token";
     private final List<Fragment> attachedFragmentList = new ArrayList<Fragment>();
     private SocketIoClient socketIoClient;
-    private String token;
+    private String token = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public final class ChatActivity extends Activity
         requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        token = BundleMerger.merge(savedInstanceState).getString(KEY_CHAT_TOKEN, null);
+        token = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE).getString(KEY_CHAT_TOKEN, "");
         handleUriScheme(getIntent());
     }
 
@@ -89,6 +89,10 @@ public final class ChatActivity extends Activity
     }
 
     void connectSocket(final String token) {
+        getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE)
+                .edit()
+                .putString(KEY_CHAT_TOKEN, token)
+                .apply();
         this.token = token;
         try {
             socketIoClient = SocketIoClient.run(ChatServer.getServerHost(), new SocketIoEventListener() {
@@ -105,6 +109,9 @@ public final class ChatActivity extends Activity
                                 json.put("FROMLINGR", 0);
                                 socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
                                 break;
+                            case NO_SESSION:
+                                LoginFragment.open(getFragmentManager());
+                                break;
                             case DISCONNECT:
                                 break;
                         }
@@ -117,12 +124,6 @@ public final class ChatActivity extends Activity
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(KEY_CHAT_TOKEN, token);
     }
 
     @Override
