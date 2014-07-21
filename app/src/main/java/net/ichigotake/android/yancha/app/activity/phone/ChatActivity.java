@@ -102,7 +102,6 @@ public final class ChatActivity extends Activity
                             case TOKEN_LOGIN:
                                 JSONObject json = new JSONObject();
                                 json.put("PUBLIC", 0);
-                                json.put("KANKORE", 0);
                                 json.put("FROMLINGR", 0);
                                 socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
                                 break;
