@@ -2,6 +2,9 @@
 
 #!! ERROR: androidstudio is undefined. Use list command to see defined gitignore types !!#
 
+/app/src/release
+gradle.properties
+
 ### Android ###
 # Built application files
 *.apk

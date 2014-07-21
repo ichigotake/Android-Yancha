@@ -2,3 +2,11 @@ storeFile=__your_value__
 storeAlias=__your_value__
 storePassword=__your_value__
 keyPassword=__your_value__
+
+deployGateUserName=__your_value__
+deployGateToken=__your_value__
+
+crittercismApiKey=__your_value__
+crittercismApplicationId=__your_value__
+
+org.gradle.daemon=true
