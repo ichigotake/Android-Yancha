@@ -71,6 +71,7 @@
             android:layout_below="@+id/chat_message_item_nickname"
             android:layout_toRightOf="@+id/chat_message_item_user_icon_container"
             android:layout_marginBottom="4dp"
+            android:autoLink="web"
             tools:text="@string/app_dummy_chat_message_body"
             />
 
