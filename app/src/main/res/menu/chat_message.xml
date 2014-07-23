@@ -2,11 +2,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SettingActivity" >
 
+    <item android:id="@+id/action_information"
+        android:title="@string/information_label"
+        android:icon="@drawable/ic_action_dark_about"
+        android:orderInCategory="10"
+        android:showAsAction="ifRoom"
+        />
+
     <item android:id="@+id/action_search"
         android:title="@string/action_search"
         android:icon="@drawable/ic_action_dark_search"
         android:orderInCategory="10"
         android:showAsAction="ifRoom"
+        android:visible="false"
         />
 
     <item android:id="@+id/action_settings"
@@ -14,6 +22,7 @@
         android:icon="@drawable/ic_action_dark_settings"
         android:orderInCategory="100"
         android:showAsAction="ifRoom"
+        android:visible="false"
         />
 
 </menu>

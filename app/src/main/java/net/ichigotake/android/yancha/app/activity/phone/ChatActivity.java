@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -16,6 +17,7 @@ import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
 import net.ichigotake.android.yancha.app.chat.SocketIoEventListener;
+import net.ichigotake.android.yancha.app.information.InformationFragmentActionProvider;
 import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
 
@@ -68,6 +70,15 @@ public final class ChatActivity extends Activity
     public void onAttachFragment(Fragment fragment) {
         super.onAttachFragment(fragment);
         attachedFragmentList.add(fragment);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.chat_message, menu);
+        menu.findItem(R.id.action_information).setActionProvider(
+                new InformationFragmentActionProvider(this, getFragmentManager())
+        );
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
