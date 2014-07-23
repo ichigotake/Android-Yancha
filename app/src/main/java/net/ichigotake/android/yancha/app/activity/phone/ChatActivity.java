@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.Window;
@@ -84,7 +85,7 @@ public final class ChatActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
-        if (token == null) {
+        if (TextUtils.isEmpty(token)) {
             LoginDialogFragment.open(getFragmentManager());
         } else {
             connectSocket(token);
