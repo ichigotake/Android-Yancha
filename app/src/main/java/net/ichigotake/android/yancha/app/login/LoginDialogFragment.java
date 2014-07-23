@@ -2,7 +2,6 @@ package net.ichigotake.android.yancha.app.login;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.net.Uri;
@@ -17,27 +16,27 @@ import com.koushikdutta.async.http.AsyncHttpClient;
 import com.koushikdutta.async.http.AsyncHttpGet;
 import com.koushikdutta.async.http.AsyncHttpResponse;
 
+import net.ichigotake.android.common.app.BaseDialogFragment;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.api.ApiEndpoint;
 
-public final class LoginFragment extends DialogFragment {
+public final class LoginDialogFragment extends BaseDialogFragment {
 
     public static final String FRAGMENT_TAG = "LoginFragment";
     private OnGetTokenListener listener;
-    private boolean willDismiss;
 
     public static void open(FragmentManager fragmentManager) {
         fragmentManager.beginTransaction()
-                .add(new LoginFragment(), FRAGMENT_TAG)
+                .add(new LoginDialogFragment(), FRAGMENT_TAG)
                 .commitAllowingStateLoss();
     }
 
     public static void dismiss(FragmentManager fragmentManager) {
-        LoginFragment loginFragment = (LoginFragment)fragmentManager
-                .findFragmentByTag(LoginFragment.FRAGMENT_TAG);
-        if (loginFragment != null) {
-            loginFragment.dismiss();
+        LoginDialogFragment loginDialogFragment = (LoginDialogFragment)fragmentManager
+                .findFragmentByTag(LoginDialogFragment.FRAGMENT_TAG);
+        if (loginDialogFragment != null) {
+            loginDialogFragment.dismiss();
         }
     }
 
@@ -64,7 +63,7 @@ public final class LoginFragment extends DialogFragment {
             public void onClick(View v) {
                 String nickname = nicknameView.getText().toString().trim();
                 if (TextUtils.isEmpty(nickname)) {
-                    return ;
+                    return;
                 }
                 String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_SIMPLE
                         + "?token_only=1&nick=" + Uri.encode(nickname);
@@ -75,7 +74,8 @@ public final class LoginFragment extends DialogFragment {
                             public void onCompleted(Exception e, AsyncHttpResponse asyncHttpResponse, String s) {
                                 onGetToken(s);
                             }
-                        });
+                        }
+                );
             }
         });
         return view;
@@ -96,23 +96,9 @@ public final class LoginFragment extends DialogFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (willDismiss) {
-            dismiss();
-        }
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
         listener = null;
-    }
-
-    @Override
-    public void dismiss() {
-        super.dismiss();
-        willDismiss = true;
     }
 
     private void onGetToken(String token) {

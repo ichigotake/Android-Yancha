@@ -16,7 +16,7 @@ import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
 import net.ichigotake.android.yancha.app.chat.SocketIoEventListener;
-import net.ichigotake.android.yancha.app.login.LoginFragment;
+import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
 
 import org.json.JSONException;
@@ -60,7 +60,7 @@ public final class ChatActivity extends Activity
             return ;
         }
         String token = data.getQueryParameter("token");
-        LoginFragment.dismiss(getFragmentManager());
+        LoginDialogFragment.dismiss(getFragmentManager());
         connectSocket(token);
     }
 
@@ -74,7 +74,7 @@ public final class ChatActivity extends Activity
     protected void onResume() {
         super.onResume();
         if (token == null) {
-            LoginFragment.open(getFragmentManager());
+            LoginDialogFragment.open(getFragmentManager());
         } else {
             connectSocket(token);
         }
@@ -110,7 +110,7 @@ public final class ChatActivity extends Activity
                                 socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
                                 break;
                             case NO_SESSION:
-                                LoginFragment.open(getFragmentManager());
+                                LoginDialogFragment.open(getFragmentManager());
                                 break;
                             case DISCONNECT:
                                 break;
@@ -147,7 +147,7 @@ public final class ChatActivity extends Activity
 
     @Override
     public void onTokenResponse(String token) {
-        LoginFragment.dismiss(getFragmentManager());
+        LoginDialogFragment.dismiss(getFragmentManager());
         this.token = token;
         connectSocket(token);
     }
