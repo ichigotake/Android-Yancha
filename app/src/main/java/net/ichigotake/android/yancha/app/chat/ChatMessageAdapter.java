@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dmitriy.tarasov.android.intents.IntentUtils;
 import com.squareup.picasso.Picasso;
 
 import net.ichigotake.android.common.widget.SparseArrayAdapter;
+import net.ichigotake.android.common.widget.TextLinkUtils;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
@@ -23,13 +25,21 @@ import java.util.Collection;
 public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
 
     private final Activity activity;
+    private final OnMessageClickListener onMessageClickListener;
     private final String serverHost;
     private final LayoutInflater inflate;
     private final boolean hasSocketIoClient;
     private ChatUser myData;
 
     public ChatMessageAdapter(Activity activity, SparseArray<ChatMessage> messages) {
+        this(activity, messages, null);
+    }
+
+    public ChatMessageAdapter(
+            Activity activity, SparseArray<ChatMessage> messages, OnMessageClickListener onMessageClickListener
+    ) {
         this.activity = activity;
+        this.onMessageClickListener = onMessageClickListener;
         this.inflate = activity.getLayoutInflater();
         this.serverHost = ChatServer.getServerHost();
         this.objects = messages;
@@ -37,7 +47,7 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         final ChatMessage item = getItem(position);
         ViewHolder holder;
         if (convertView == null) {
@@ -66,6 +76,20 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             holder.plusPlus.setText(plusPlus);
             holder.plusPlus.setVisibility(View.VISIBLE);
         }
+
+        TextLinkUtils.autoLink(holder.message, new TextLinkUtils.OnClickListener() {
+            @Override
+            public void onLinkClicked(String link) {
+                IntentUtils.openLink(link);
+            }
+
+            @Override
+            public void onClicked() {
+                if (onMessageClickListener != null) {
+                    onMessageClickListener.onClick(position, item);
+                }
+            }
+        });
 
         if (hasSocketIoClient && myData != null
                 && TextUtils.equals(item.getUserKey(), myData.getUserKey())) {
