@@ -4,7 +4,7 @@
 
     <item android:id="@+id/action_information"
         android:title="@string/information_label"
-        android:icon="@drawable/ic_action_dark_about"
+        android:icon="@drawable/ic_action_light_about"
         android:orderInCategory="10"
         android:showAsAction="ifRoom"
         />

@@ -2,8 +2,8 @@
 <resources>
 
     <color name="text_bright">#aaaaaa</color>
-    <color name="action_bar_background_overlay">#aa004065</color>
     <color name="theme_main">#004065</color>
+    <color name="theme_sub">#aa004065</color>
     <color name="theme_background">#dddddd</color>
     <color name="item_background">#ffffff</color>
     <color name="chat_message_plus_plus">#ffffbb33</color>

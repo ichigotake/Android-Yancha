@@ -12,7 +12,6 @@
         android:id="@+id/fragment_chat_message_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="56dp"
         android:stackFromBottom="true"
         android:transcriptMode="normal"
         tools:listitem="@layout/chat_message_item"
