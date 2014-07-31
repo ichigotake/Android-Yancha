@@ -18,7 +18,7 @@ Androidアプリ版 Yanchaチャットクライアント
 
 ## 開発環境
 
-- AndroidStudio 0.8.3
+- AndroidStudio 0.8.+
 
 ## LICENSE
 
