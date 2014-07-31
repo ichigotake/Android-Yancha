@@ -46,6 +46,9 @@ import java.util.List;
  *
  *  {@link ChatMessageInputFragment}
  *      セッション管理は {@link ChatActivity} へ任せ、テキストの送信に関わるイベントを取り扱う
+ *
+ *  {@link LoginDialogFragment}
+ *      ログイン処理を担い、ログイン成功時に {@link ChatActivity} の持つ {@link OnGetTokenListener} へコールバックする
  */
 public final class ChatActivity extends Activity
         implements SocketIoClientActivity, OnGetTokenListener {

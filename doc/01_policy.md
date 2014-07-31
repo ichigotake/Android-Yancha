@@ -1,6 +1,6 @@
 # 開発ポリシー
 
-## Activity や Fragment を始めとした各種実装
+## Activity と Fragment
 
 Activity と Fragment 構成の詳細は各種 Activity に記しています。
 
