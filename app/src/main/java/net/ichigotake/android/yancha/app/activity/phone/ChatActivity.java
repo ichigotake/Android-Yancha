@@ -8,11 +8,12 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
-import android.view.Window;
 import android.view.WindowManager;
 
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
+import net.ichigotake.android.yancha.app.chat.ChatMessagesFragment;
+import net.ichigotake.android.yancha.app.chat.ChatMessageInputFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoClient;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
@@ -29,6 +30,23 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * チャット画面
+ *
+ *  {@link ChatActivity} で {@link SocketIoClient} を保持する。
+ *  {@link Fragment} では {@link SocketIoClientActivity} を利用して {@link SocketIoClient} を受け取る。
+ *
+ * SocketIO のイベントハンドルの役割
+ *
+ *  {@link ChatActivity}
+ *      主にセッション管理にまつわるイベントを実装する
+ *
+ *  {@link ChatMessagesFragment}
+ *      セッション管理は {@link ChatActivity} へ任せ、発言一覧の表示に関わるイベントを取り扱う
+ *
+ *  {@link ChatMessageInputFragment}
+ *      セッション管理は {@link ChatActivity} へ任せ、テキストの送信に関わるイベントを取り扱う
+ */
 public final class ChatActivity extends Activity
         implements SocketIoClientActivity, OnGetTokenListener {
 
