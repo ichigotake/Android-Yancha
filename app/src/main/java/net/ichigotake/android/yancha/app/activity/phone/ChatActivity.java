@@ -5,11 +5,12 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
 import android.view.Window;
 import android.view.WindowManager;
 
-import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.android.yancha.app.chat.SocketIoClient;
@@ -17,7 +18,8 @@ import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
 import net.ichigotake.android.yancha.app.chat.SocketIoEventListener;
-import net.ichigotake.android.yancha.app.login.LoginFragment;
+import net.ichigotake.android.yancha.app.information.InformationFragmentActionProvider;
+import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
 
 import org.json.JSONException;
@@ -30,18 +32,18 @@ import java.util.List;
 public final class ChatActivity extends Activity
         implements SocketIoClientActivity, OnGetTokenListener {
 
+    private static final String KEY_PREFERENCE = "ChatActivity";
     private static final String KEY_CHAT_TOKEN = "chat_token";
     private final List<Fragment> attachedFragmentList = new ArrayList<Fragment>();
     private SocketIoClient socketIoClient;
-    private String token;
+    private String token = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-        requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        token = BundleMerger.merge(savedInstanceState).getString(KEY_CHAT_TOKEN, null);
+        token = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE).getString(KEY_CHAT_TOKEN, "");
         handleUriScheme(getIntent());
     }
 
@@ -60,7 +62,7 @@ public final class ChatActivity extends Activity
             return ;
         }
         String token = data.getQueryParameter("token");
-        LoginFragment.dismiss(getFragmentManager());
+        LoginDialogFragment.dismiss(getFragmentManager());
         connectSocket(token);
     }
 
@@ -71,10 +73,19 @@ public final class ChatActivity extends Activity
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.chat_message, menu);
+        menu.findItem(R.id.action_information).setActionProvider(
+                new InformationFragmentActionProvider(this, getFragmentManager())
+        );
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        if (token == null) {
-            LoginFragment.open(getFragmentManager());
+        if (TextUtils.isEmpty(token)) {
+            LoginDialogFragment.open(getFragmentManager());
         } else {
             connectSocket(token);
         }
@@ -89,6 +100,10 @@ public final class ChatActivity extends Activity
     }
 
     void connectSocket(final String token) {
+        getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE)
+                .edit()
+                .putString(KEY_CHAT_TOKEN, token)
+                .apply();
         this.token = token;
         try {
             socketIoClient = SocketIoClient.run(ChatServer.getServerHost(), new SocketIoEventListener() {
@@ -102,9 +117,11 @@ public final class ChatActivity extends Activity
                             case TOKEN_LOGIN:
                                 JSONObject json = new JSONObject();
                                 json.put("PUBLIC", 0);
-                                json.put("KANKORE", 0);
                                 json.put("FROMLINGR", 0);
                                 socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
+                                break;
+                            case NO_SESSION:
+                                LoginDialogFragment.open(getFragmentManager());
                                 break;
                             case DISCONNECT:
                                 break;
@@ -118,12 +135,6 @@ public final class ChatActivity extends Activity
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString(KEY_CHAT_TOKEN, token);
     }
 
     @Override
@@ -147,7 +158,7 @@ public final class ChatActivity extends Activity
 
     @Override
     public void onTokenResponse(String token) {
-        LoginFragment.dismiss(getFragmentManager());
+        LoginDialogFragment.dismiss(getFragmentManager());
         this.token = token;
         connectSocket(token);
     }

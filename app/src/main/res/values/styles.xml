@@ -1,14 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/AppActionBarStyle</item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@color/theme_background</item>
-    </style>
-
-    <style name="AppActionBarStyle" parent="android:Widget.Holo.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/action_bar_background_overlay</item>
-        <item name="android:textColorPrimary">#ffffff</item>
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
     </style>
 
     <style name="AppDivider">

@@ -1,4 +1,5 @@
 <resources>
     <dimen name="chat_message_icon_size">40dp</dimen>
     <dimen name="font_x_small">14sp</dimen>
+    <dimen name="baseline_padding">16dp</dimen>
 </resources>

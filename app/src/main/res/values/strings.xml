@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">yancha</string>
+
+    <string name="dialog_close">閉じる</string>
+
     <string name="account_setting">アカウント設定</string>
     <string name="api_endpoint_login_twitter">/login</string>
     <string name="api_demo_site_domain">http://yancha.hachiojipm.org</string>
@@ -23,5 +26,17 @@
     <string name="app_dummy_chat_message_nickname">\@myname</string>
     <string name="app_dummy_chat_message_timestamp">2014&#8211;07&#8211;04 21:47</string>
     <string name="app_dummy_chat_message_plus_plus">★★★★★★★★</string>
+
+    <string name="information_label">このアプリの情報</string>
+    <string name="information_about_this">yanchaのデモサイトである http://yancha.hachiojipm.org へ接続するチャットアプリです</string>
+    <string name="information_if_uneasiness_this">当アプリが使えない/扱いづらい等の問題がありましたら、WEBブラウザからデモサイトをお試しください</string>
+    <string name="information_future_feature_label">実装予定の機能</string>
+    <string name="information_link_label">関連リンク</string>
+    <string name="information_link_demo_site_label">WEBブラウザ向けチャットのデモサイト</string>
+    <string name="information_link_demo_site_url">http://yancha.hachiojipm.org/</string>
+    <string name="information_link_server_official_repository_label">チャットサーバーの公開リポジトリ</string>
+    <string name="information_link_server_official_repository_url">https://github.com/uzulla/yancha</string>
+    <string name="information_link_application_official_repository_label">当アプリの公開リポジトリ</string>
+    <string name="information_link_application_official_repository_url">https://github.com/ichigotake/Android-Yancha</string>
 
 </resources>

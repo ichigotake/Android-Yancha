@@ -2,7 +2,6 @@ package net.ichigotake.android.yancha.app.chat;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,11 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 
+import net.ichigotake.android.common.app.BaseDialogFragment;
 import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
 
-public final class DeleteMessageDialogFragment extends DialogFragment {
+public final class DeleteMessageDialogFragment extends BaseDialogFragment {
 
     private static final String FRAGMENT_TAG = "delete_message_dialog";
     private static final String KEY_MESSAGE = "message";

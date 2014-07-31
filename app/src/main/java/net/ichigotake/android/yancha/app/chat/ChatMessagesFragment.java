@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.nhaarman.listviewanimations.itemmanipulation.AnimateDismissAdapter;
@@ -32,15 +31,13 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_messages, parent, false);
         ListView messagesView = (ListView) view.findViewById(R.id.fragment_chat_message_list);
-        messagesView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter = new ChatMessageAdapter(getActivity(), messages, new OnMessageClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ChatMessage item = (ChatMessage) parent.getItemAtPosition(position);
+            public void onClick(int position, ChatMessage item) {
                 SocketIoClient client = ((SocketIoClientActivity)getActivity()).getSocketIoClient();
                 client.emit(SocketIoEvent.PLUS_PLUS, item.getId() + "");
             }
         });
-        adapter = new ChatMessageAdapter(getActivity(), messages);
         SwingBottomInAnimationAdapter swingAdapter = new SwingBottomInAnimationAdapter(adapter);
         swingAdapter.setAbsListView(messagesView);
         dismissAdapter = new AnimateDismissAdapter(swingAdapter, new OnDismissCallback() {
