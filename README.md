@@ -8,7 +8,8 @@ Androidアプリ版 Yanchaチャットクライアント
 
 [http://yancha.hachiojipm.org](http://yancha.hachiojipm.org) へアクセスするデモアプリです
 
-1. [Google Play のテスター登録ページへアクセスする](https://play.google.com/apps/testing/net.ichigotake.android.yancha.app)
+1. [テスター登録をするために、Google Groupへ登録する](https://groups.google.com/forum/#!forum/yancha-chat)
+2. [Google Play のテスター登録ページへアクセスする](https://play.google.com/apps/testing/net.ichigotake.android.yancha.app)
 2. 画面の案内に従い、テスター登録をする
 3. テスター登録後に Google Play のアプリページへアクセスする
 4. Google Play のアプリページからアプリをインストールする
