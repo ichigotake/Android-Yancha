@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'retrolambda'
+
+retrolambda {}
 
 def revisionHash = ["sh",  "-c",  "cd ${project.rootDir} ; git rev-parse --short HEAD"].execute().in.text.trim()
 def version = new Version(file("VERSION").readLines()[0], revisionHash);
@@ -36,6 +39,11 @@ android {
             runProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

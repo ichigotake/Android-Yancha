@@ -37,6 +37,7 @@ Androidアプリ版 Yanchaチャットクライアント
 ## 開発環境
 
 - AndroidStudio 0.8.+
+- Java 8 ( [retrolambda](https://github.com/orfjackal/retrolambda) を利用しているため )
 
 ## LICENSE
 

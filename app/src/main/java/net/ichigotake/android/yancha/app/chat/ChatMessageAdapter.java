@@ -99,7 +99,7 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             holder.iconForEditable.setVisibility(View.VISIBLE);
         } else {
             holder.iconForEditable.setVisibility(View.GONE);
-            holder.userIconContainer.setOnClickListener(new DummyOnClickListener());
+            holder.userIconContainer.setOnClickListener((view) -> {});
         }
         return convertView;
     }
@@ -135,11 +135,4 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         }
     }
 
-    private static class DummyOnClickListener implements View.OnClickListener {
-
-        @Override
-        public void onClick(View v) {
-            // do nothing
-        }
-    }
 }

@@ -3,7 +3,6 @@ package net.ichigotake.android.yancha.app.chat;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -55,20 +54,11 @@ public final class DeleteMessageDialogFragment extends BaseDialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setView(createView(getActivity().getLayoutInflater(), message))
-                .setPositiveButton("削除する", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        SocketIoClient client = ((SocketIoClientActivity)getActivity()).getSocketIoClient();
-                        client.emit(SocketIoEvent.DELETE_USER_MESSAGE, message.getId() + "");
-                    }
+                .setPositiveButton("削除する", (dialog, which) -> {
+                    SocketIoClient client = ((SocketIoClientActivity)getActivity()).getSocketIoClient();
+                    client.emit(SocketIoEvent.DELETE_USER_MESSAGE, message.getId() + "");
                 })
-                .setNegativeButton("閉じる",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                dismiss();
-                            }
-                        }
-                );
+                .setNegativeButton("閉じる", (dialog, whichButton) -> dismiss());
         return builder.create();
     }
 
