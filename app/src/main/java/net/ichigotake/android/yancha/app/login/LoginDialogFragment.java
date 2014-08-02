@@ -48,35 +48,29 @@ public final class LoginDialogFragment extends BaseDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, parent, false);
-        view.findViewById(R.id.fragment_login_with_twitter).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_TWITTER
-                        + "?callback_url=yancha://login/twitter&token_only=1";
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(requestUrl));
-                startActivityForResult(intent, 0);
-            }
+        view.findViewById(R.id.fragment_login_with_twitter).setOnClickListener(v -> {
+            String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_TWITTER
+                    + "?callback_url=yancha://login/twitter&token_only=1";
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(requestUrl));
+            startActivityForResult(intent, 0);
         });
         final EditText nicknameView = (EditText) view.findViewById(R.id.fragment_login_with_nickname_input);
-        view.findViewById(R.id.fragment_login_with_nickname).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String nickname = nicknameView.getText().toString().trim();
-                if (TextUtils.isEmpty(nickname)) {
-                    return;
-                }
-                String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_SIMPLE
-                        + "?token_only=1&nick=" + Uri.encode(nickname);
-                AsyncHttpClient.getDefaultInstance().executeString(
-                        new AsyncHttpGet(requestUrl),
-                        new AsyncHttpClient.StringCallback() {
-                            @Override
-                            public void onCompleted(Exception e, AsyncHttpResponse asyncHttpResponse, String s) {
-                                onGetToken(s);
-                            }
-                        }
-                );
+        view.findViewById(R.id.fragment_login_with_nickname).setOnClickListener(v -> {
+            String nickname = nicknameView.getText().toString().trim();
+            if (TextUtils.isEmpty(nickname)) {
+                return;
             }
+            String requestUrl = ChatServer.getServerHost() + ApiEndpoint.LOGIN_SIMPLE
+                    + "?token_only=1&nick=" + Uri.encode(nickname);
+            AsyncHttpClient.getDefaultInstance().executeString(
+                    new AsyncHttpGet(requestUrl),
+                    new AsyncHttpClient.StringCallback() {
+                        @Override
+                        public void onCompleted(Exception e, AsyncHttpResponse asyncHttpResponse, String s) {
+                            onGetToken(s);
+                        }
+                    }
+            );
         });
         return view;
     }

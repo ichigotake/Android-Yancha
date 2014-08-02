@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public abstract class SparseArrayAdapter<E> extends BaseAdapter {
 
-    protected SparseArray<E> objects = new SparseArray<E>();
+    protected SparseArray<E> objects = new SparseArray<>();
 
     public void add(int key, E object) {
         objects.put(key, object);

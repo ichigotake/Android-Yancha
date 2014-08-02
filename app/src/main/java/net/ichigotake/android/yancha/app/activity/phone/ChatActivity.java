@@ -18,7 +18,6 @@ import net.ichigotake.android.yancha.app.chat.SocketIoClient;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
-import net.ichigotake.android.yancha.app.chat.SocketIoEventListener;
 import net.ichigotake.android.yancha.app.information.InformationFragmentActionProvider;
 import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
@@ -55,7 +54,7 @@ public final class ChatActivity extends Activity
 
     private static final String KEY_PREFERENCE = "ChatActivity";
     private static final String KEY_CHAT_TOKEN = "chat_token";
-    private final List<Fragment> attachedFragmentList = new ArrayList<Fragment>();
+    private final List<Fragment> attachedFragmentList = new ArrayList<>();
     private SocketIoClient socketIoClient;
     private String token = "";
 
@@ -127,32 +126,31 @@ public final class ChatActivity extends Activity
                 .apply();
         this.token = token;
         try {
-            socketIoClient = SocketIoClient.run(ChatServer.getServerHost(), new SocketIoEventListener() {
-                @Override
-                public void onResponse(SocketIoEvent event, String response) {
-                    try {
-                        switch (event) {
-                            case CONNECT:
-                                socketIoClient.emit(SocketIoEvent.TOKEN_LOGIN, token);
-                                break;
-                            case TOKEN_LOGIN:
-                                JSONObject json = new JSONObject();
-                                json.put("PUBLIC", 0);
-                                json.put("FROMLINGR", 0);
-                                socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
-                                break;
-                            case NO_SESSION:
-                                LoginDialogFragment.open(getFragmentManager());
-                                break;
-                            case DISCONNECT:
-                                break;
+            socketIoClient = SocketIoClient.run(
+                    ChatServer.getServerHost(),
+                    (SocketIoEvent event, String response) -> {
+                        try {
+                            switch (event) {
+                                case CONNECT:
+                                    socketIoClient.emit(SocketIoEvent.TOKEN_LOGIN, token);
+                                    break;
+                                case TOKEN_LOGIN:
+                                    JSONObject json = new JSONObject();
+                                    json.put("PUBLIC", 0);
+                                    json.put("FROMLINGR", 0);
+                                    socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
+                                    break;
+                                case NO_SESSION:
+                                    LoginDialogFragment.open(getFragmentManager());
+                                    break;
+                                case DISCONNECT:
+                                    break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    dispatchSocketIoEvent(event, response);
-                }
-            });
+                        dispatchSocketIoEvent(event, response);
+                    });
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -167,12 +165,7 @@ public final class ChatActivity extends Activity
         Log.d("ChatActivity", event + " => " + response);
         for (final Fragment fragment : attachedFragmentList) {
             if (fragment.isResumed() && fragment instanceof SocketIoClientFragment) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        ((SocketIoClientFragment) fragment).onSocketIoEvent(event, response);
-                    }
-                });
+                runOnUiThread(() -> ((SocketIoClientFragment) fragment).onSocketIoEvent(event, response));
             }
         }
     }
