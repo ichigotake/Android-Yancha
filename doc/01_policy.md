@@ -35,8 +35,6 @@ Fragment 間通信のために Fragment から Activity へイベントを送信
 
 多少ネストが深くても、「半年ぶりに見てすぐに実装を思い出して修正出来る」ような見通しのよさを重視していく。
 
-例えば、RxJava のようなリッチな実装をするようなライブラリは使わずに、シンプルな Future を利用する。
-
 ## Java 7,8 の記法を利用する
 
 [retrolambda](https://github.com/orfjackal/retrolambda) を導入し、Java 7,8 の省略記法を積極的に利用していく。
