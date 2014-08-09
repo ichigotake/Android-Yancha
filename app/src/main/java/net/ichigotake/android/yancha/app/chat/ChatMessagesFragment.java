@@ -1,5 +1,6 @@
 package net.ichigotake.android.yancha.app.chat;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.SparseArray;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import com.nhaarman.listviewanimations.itemmanipulation.AnimateDismissAdapter;
 import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
 
+import net.ichigotake.android.common.os.ActivityJobWorker;
+import net.ichigotake.android.common.os.ActivityJobWorkerClient;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
 import net.ichigotake.yancha.sdk.chat.ChatMessageFactory;
@@ -24,12 +27,28 @@ public final class ChatMessagesFragment extends Fragment implements SocketIoClie
     private SparseArray<ChatMessage> messages = new SparseArray<>(100);
     private ChatMessageAdapter adapter;
     private AnimateDismissAdapter dismissAdapter;
+    private ActivityJobWorker worker;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (!(activity instanceof ActivityJobWorkerClient)) {
+            throw new IllegalStateException("Activity must be implements ActivityJobWorkerClient");
+        }
+        this.worker = ((ActivityJobWorkerClient)activity).getWorker();
+    }
+
+    @Override
+    public void onDetach() {
+        this.worker = null;
+        super.onDetach();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_messages, parent, false);
         ListView messagesView = (ListView) view.findViewById(R.id.fragment_chat_message_list);
-        adapter = new ChatMessageAdapter(getActivity(), messages, (position, item) -> {
+        adapter = new ChatMessageAdapter(getActivity(), worker, messages, (position, item) -> {
             SocketIoClient client = ((SocketIoClientActivity)getActivity()).getSocketIoClient();
             client.emit(SocketIoEvent.PLUS_PLUS, item.getId() + "");
         });

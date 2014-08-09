@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.WindowManager;
 
+import net.ichigotake.android.common.os.ActivityJobWorker;
+import net.ichigotake.android.common.os.ActivityJobWorkerClient;
 import net.ichigotake.android.yancha.app.ChatServer;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.android.yancha.app.chat.ChatMessagesFragment;
@@ -50,19 +52,21 @@ import java.util.List;
  *      トークン取得処理を担い、成功時に {@link ChatActivity} の持つ {@link OnGetTokenListener} へコールバックする
  */
 public final class ChatActivity extends Activity
-        implements SocketIoClientActivity, OnGetTokenListener {
+        implements SocketIoClientActivity, OnGetTokenListener, ActivityJobWorkerClient {
 
     private static final String KEY_PREFERENCE = "ChatActivity";
     private static final String KEY_CHAT_TOKEN = "chat_token";
     private final List<Fragment> attachedFragmentList = new ArrayList<>();
     private SocketIoClient socketIoClient;
     private String token = "";
+    private ActivityJobWorker worker = new ActivityJobWorker();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        worker.setActivity(this);
         token = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE).getString(KEY_CHAT_TOKEN, "");
         handleUriScheme(getIntent());
     }
@@ -82,7 +86,7 @@ public final class ChatActivity extends Activity
             return ;
         }
         String token = data.getQueryParameter("token");
-        LoginDialogFragment.dismiss(getFragmentManager());
+        worker.enqueueFragmentManagerJob(LoginDialogFragment::dismiss);
         connectSocket(token);
     }
 
@@ -96,7 +100,7 @@ public final class ChatActivity extends Activity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.chat_message, menu);
         menu.findItem(R.id.action_information).setActionProvider(
-                new InformationFragmentActionProvider(this, getFragmentManager())
+                new InformationFragmentActionProvider(getApplicationContext(), this)
         );
         return super.onCreateOptionsMenu(menu);
     }
@@ -104,8 +108,9 @@ public final class ChatActivity extends Activity
     @Override
     protected void onResume() {
         super.onResume();
+        worker.resume();
         if (TextUtils.isEmpty(token)) {
-            LoginDialogFragment.open(getFragmentManager());
+            worker.enqueueFragmentManagerJob(LoginDialogFragment::open);
         } else {
             connectSocket(token);
         }
@@ -114,6 +119,7 @@ public final class ChatActivity extends Activity
     @Override
     protected void onPause() {
         super.onPause();
+        worker.pause();
         if (socketIoClient != null) {
             socketIoClient.disconnect();
         }
@@ -141,7 +147,7 @@ public final class ChatActivity extends Activity
                                     socketIoClient.emit(SocketIoEvent.JOIN_TAG, json);
                                     break;
                                 case NO_SESSION:
-                                    LoginDialogFragment.open(getFragmentManager());
+                                    worker.enqueueFragmentManagerJob(LoginDialogFragment::open);
                                     break;
                                 case DISCONNECT:
                                     break;
@@ -172,8 +178,13 @@ public final class ChatActivity extends Activity
 
     @Override
     public void onTokenResponse(String token) {
-        LoginDialogFragment.dismiss(getFragmentManager());
+        worker.enqueueFragmentManagerJob(LoginDialogFragment::dismiss);
         this.token = token;
         connectSocket(token);
+    }
+
+    @Override
+    public ActivityJobWorker getWorker() {
+        return worker;
     }
 }
