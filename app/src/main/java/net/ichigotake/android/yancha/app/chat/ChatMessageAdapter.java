@@ -1,6 +1,7 @@
 package net.ichigotake.android.yancha.app.chat;
 
 import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.util.SparseArray;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.dmitriy.tarasov.android.intents.IntentUtils;
 import com.squareup.picasso.Picasso;
 
+import net.ichigotake.android.common.os.ActivityJobWorker;
 import net.ichigotake.android.common.widget.SparseArrayAdapter;
 import net.ichigotake.android.common.widget.TextLinkUtils;
 import net.ichigotake.android.yancha.app.ChatServer;
@@ -24,26 +26,28 @@ import java.util.Collection;
 
 public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
 
-    private final Activity activity;
+    private final Context context;
     private final OnMessageClickListener onMessageClickListener;
     private final String serverHost;
     private final LayoutInflater inflate;
     private final boolean hasSocketIoClient;
+    private final ActivityJobWorker worker;
     private ChatUser myData;
 
-    public ChatMessageAdapter(Activity activity, SparseArray<ChatMessage> messages) {
-        this(activity, messages, null);
+    public ChatMessageAdapter(Activity activity, ActivityJobWorker worker, SparseArray<ChatMessage> messages) {
+        this(activity, worker, messages, null);
     }
 
     public ChatMessageAdapter(
-            Activity activity, SparseArray<ChatMessage> messages, OnMessageClickListener onMessageClickListener
+            Activity activity, ActivityJobWorker worker, SparseArray<ChatMessage> messages, OnMessageClickListener onMessageClickListener
     ) {
-        this.activity = activity;
+        this.context = activity.getApplicationContext();
         this.onMessageClickListener = onMessageClickListener;
         this.inflate = activity.getLayoutInflater();
         this.serverHost = ChatServer.getServerHost();
         this.objects = messages;
         this.hasSocketIoClient = true;
+        this.worker = worker;
     }
 
     @Override
@@ -59,7 +63,7 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
         }
         String profileImageUrl = TextUtils.isEmpty(item.getProfileImageUrl())
                 ? serverHost + ChatUser.DEFAULT_PROFILE_IMAGE_PATH : item.getProfileImageUrl();
-        Picasso.with(activity).load(profileImageUrl).into(holder.userIcon);
+        Picasso.with(context).load(profileImageUrl).into(holder.userIcon);
         holder.nickname.setText(item.getNickname());
         holder.message.setText(item.getMessage());
         holder.timestamp.setText(DateFormat.format("yyyy-M-d HH:mm", item.getCreatedTime()));
@@ -91,11 +95,13 @@ public class ChatMessageAdapter extends SparseArrayAdapter<ChatMessage> {
             }
         });
 
-        if (hasSocketIoClient && myData != null
-                && TextUtils.equals(item.getUserKey(), myData.getUserKey())) {
-            holder.userIconContainer.setOnClickListener(
-                    new OpenDeleteMessageDialogClickListener(activity.getFragmentManager(), item)
-            );
+        boolean canDeleteMessage = hasSocketIoClient
+                && myData != null
+                && TextUtils.equals(item.getUserKey(), myData.getUserKey());
+        if (canDeleteMessage) {
+            holder.userIconContainer.setOnClickListener(v -> {
+                worker.enqueueFragmentManagerJob(value -> DeleteMessageDialogFragment.open(value, item));
+            });
             holder.iconForEditable.setVisibility(View.VISIBLE);
         } else {
             holder.iconForEditable.setVisibility(View.GONE);

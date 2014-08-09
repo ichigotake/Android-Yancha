@@ -1,26 +1,28 @@
 package net.ichigotake.android.yancha.app.information;
 
-import android.app.FragmentManager;
 import android.content.Context;
 import android.view.ActionProvider;
 import android.view.View;
 
+import net.ichigotake.android.common.os.ActivityJobWorkerClient;
+
 public final class InformationFragmentActionProvider extends ActionProvider {
 
-    private final FragmentManager fragmentManager;
+    private final ActivityJobWorkerClient workerClient;
 
-    public InformationFragmentActionProvider(Context context, FragmentManager fragmentManager) {
+    public InformationFragmentActionProvider(Context context, ActivityJobWorkerClient workerClient) {
         super(context);
-        this.fragmentManager = fragmentManager;
+        this.workerClient = workerClient;
     }
 
     @Override
     public View onCreateActionView() {
         return null;
     }
+
     @Override
     public boolean onPerformDefaultAction() {
-        InformationFragment.open(fragmentManager);
+        workerClient.getWorker().enqueueFragmentManagerJob(InformationFragment::open);
         return super.onPerformDefaultAction();
     }
 }

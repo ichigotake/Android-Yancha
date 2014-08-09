@@ -1,5 +1,6 @@
 package net.ichigotake.android.yancha.app.chat;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import net.ichigotake.android.common.app.BaseDialogFragment;
+import net.ichigotake.android.common.os.ActivityJobWorker;
+import net.ichigotake.android.common.os.ActivityJobWorkerClient;
 import net.ichigotake.android.common.os.BundleMerger;
 import net.ichigotake.android.yancha.app.R;
 import net.ichigotake.yancha.sdk.chat.ChatMessage;
@@ -19,6 +22,7 @@ public final class DeleteMessageDialogFragment extends BaseDialogFragment {
     private static final String FRAGMENT_TAG = "delete_message_dialog";
     private static final String KEY_MESSAGE = "message";
     private ChatMessage message;
+    private ActivityJobWorker worker;
 
     public static void open(FragmentManager fragmentManager, ChatMessage message) {
         DeleteMessageDialogFragment fragment = new DeleteMessageDialogFragment();
@@ -28,6 +32,15 @@ public final class DeleteMessageDialogFragment extends BaseDialogFragment {
         fragmentManager.beginTransaction()
                 .add(fragment, FRAGMENT_TAG)
                 .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (!(activity instanceof ActivityJobWorkerClient)) {
+            throw new IllegalStateException("Activity must be implements ActivityJobWorkerClient");
+        }
+        this.worker = ((ActivityJobWorkerClient)activity).getWorker();
     }
 
     @Override
@@ -41,7 +54,7 @@ public final class DeleteMessageDialogFragment extends BaseDialogFragment {
         ListView messagesView = (ListView) view.findViewById(R.id.fragment_delete_message_confirm_messages);
         SparseArray<ChatMessage> messages = new SparseArray<ChatMessage>();
         messages.put(message.getId(), message);
-        ChatMessageAdapter adapter = new ChatMessageAdapter(getActivity(), messages);
+        ChatMessageAdapter adapter = new ChatMessageAdapter(getActivity(), worker, messages);
         messagesView.setAdapter(adapter);
         return view;
     }
@@ -67,4 +80,11 @@ public final class DeleteMessageDialogFragment extends BaseDialogFragment {
         super.onSaveInstanceState(outState);
         outState.putParcelable(KEY_MESSAGE, message);
     }
+
+    @Override
+    public void onDetach() {
+        this.worker = null;
+        super.onDetach();
+    }
+
 }
