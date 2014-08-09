@@ -21,6 +21,7 @@ import net.ichigotake.android.yancha.app.chat.SocketIoClientActivity;
 import net.ichigotake.android.yancha.app.chat.SocketIoClientFragment;
 import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
 import net.ichigotake.android.yancha.app.information.InformationFragmentActionProvider;
+import net.ichigotake.android.yancha.app.joinusers.JoinUsersFragment;
 import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
 
@@ -66,6 +67,9 @@ public final class ChatActivity extends Activity
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        getFragmentManager().beginTransaction()
+                .add(android.R.id.content, JoinUsersFragment.newInstance())
+                .commit();
         worker.setActivity(this);
         token = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE).getString(KEY_CHAT_TOKEN, "");
         handleUriScheme(getIntent());

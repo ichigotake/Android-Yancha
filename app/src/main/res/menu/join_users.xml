@@ -1,0 +1,12 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SettingActivity" >
+
+    <item android:id="@+id/action_join_users"
+        android:title="@string/information_label"
+        android:icon="@drawable/ic_action_light_group"
+        android:orderInCategory="10"
+        android:showAsAction="ifRoom"
+        />
+
+</menu>

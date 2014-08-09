@@ -36,7 +36,6 @@ public final class InformationFragment extends BaseDialogFragment {
                 "通知",
                 "過去ログ検索",
                 "画像投稿",
-                "ログインユーザー一覧の閲覧",
                 "購読タグの管理",
                 "省エネモード",
                 "未読管理",
