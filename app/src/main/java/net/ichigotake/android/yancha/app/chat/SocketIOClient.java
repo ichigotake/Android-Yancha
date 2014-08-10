@@ -46,6 +46,10 @@ public final class SocketIoClient {
         socket.emit(event.getEventName(), json);
     }
 
+    public boolean isConnected() {
+        return socket.isConnected();
+    }
+
     public void disconnect() {
         Log.d(LOG_TAG, "disconnect");
         socket.disconnect();
