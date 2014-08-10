@@ -23,6 +23,7 @@ import net.ichigotake.android.yancha.app.chat.SocketIoEvent;
 import net.ichigotake.android.yancha.app.information.InformationFragmentActionProvider;
 import net.ichigotake.android.yancha.app.login.LoginDialogFragment;
 import net.ichigotake.android.yancha.app.login.OnGetTokenListener;
+import net.ichigotake.android.yancha.app.ui.ProgressBarFragment;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -132,15 +133,18 @@ public final class ChatActivity extends Activity
                 .apply();
         this.token = token;
         try {
+            worker.enqueueFragmentManagerJob(ProgressBarFragment::show);
             socketIoClient = SocketIoClient.run(
                     ChatServer.getServerHost(),
                     (SocketIoEvent event, String response) -> {
                         try {
                             switch (event) {
                                 case CONNECT:
+                                    worker.enqueueFragmentManagerJob(ProgressBarFragment::hide);
                                     socketIoClient.emit(SocketIoEvent.TOKEN_LOGIN, token);
                                     break;
                                 case TOKEN_LOGIN:
+                                    worker.enqueueFragmentManagerJob(ProgressBarFragment::hide);
                                     JSONObject json = new JSONObject();
                                     json.put("PUBLIC", 0);
                                     json.put("FROMLINGR", 0);
