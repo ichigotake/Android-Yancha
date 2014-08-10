@@ -5,9 +5,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.WindowManager;
 
 import net.ichigotake.android.common.os.ActivityJobWorker;
@@ -58,6 +60,7 @@ public final class ChatActivity extends Activity
     private static final String KEY_PREFERENCE = "ChatActivity";
     private static final String KEY_CHAT_TOKEN = "chat_token";
     private final List<Fragment> attachedFragmentList = new ArrayList<>();
+    private View reloadView;
     private SocketIoClient socketIoClient;
     private String token = "";
     private ActivityJobWorker worker = new ActivityJobWorker();
@@ -70,6 +73,12 @@ public final class ChatActivity extends Activity
         worker.setActivity(this);
         token = getSharedPreferences(KEY_PREFERENCE, MODE_PRIVATE).getString(KEY_CHAT_TOKEN, "");
         handleUriScheme(getIntent());
+        reloadView = findViewById(R.id.activity_chat_reload);
+        reloadView.setVisibility(View.GONE);
+        reloadView.setOnClickListener((v) -> {
+            reloadView.setVisibility(View.GONE);
+            connectSocket(token);
+        });
     }
 
     @Override
@@ -132,6 +141,13 @@ public final class ChatActivity extends Activity
                 .putString(KEY_CHAT_TOKEN, token)
                 .apply();
         this.token = token;
+        new Handler().postDelayed(() -> {
+            if (socketIoClient.isConnected()) {
+                reloadView.setVisibility(View.GONE);
+            } else {
+                reloadView.setVisibility(View.VISIBLE);
+            }
+        }, 10000);
         try {
             worker.enqueueFragmentManagerJob(ProgressBarFragment::show);
             socketIoClient = SocketIoClient.run(
@@ -154,6 +170,7 @@ public final class ChatActivity extends Activity
                                     worker.enqueueFragmentManagerJob(LoginDialogFragment::open);
                                     break;
                                 case DISCONNECT:
+                                    reloadView.setVisibility(View.VISIBLE);
                                     break;
                             }
                         } catch (JSONException e) {
@@ -182,6 +199,7 @@ public final class ChatActivity extends Activity
 
     @Override
     public void onTokenResponse(String token) {
+        reloadView.setVisibility(View.GONE);
         worker.enqueueFragmentManagerJob(LoginDialogFragment::dismiss);
         this.token = token;
         connectSocket(token);

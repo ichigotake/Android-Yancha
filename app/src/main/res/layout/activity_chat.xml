@@ -30,4 +30,13 @@
         tools:layout="@layout/fragment_chat_messages_input"
         />
 
+    <TextView
+        android:id="@+id/activity_chat_reload"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="タップして再読み込みする"
+        android:textSize="24sp"
+        />
+
 </RelativeLayout>
